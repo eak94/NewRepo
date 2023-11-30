@@ -9,7 +9,7 @@ Console.WriteLine($"Введите {length} элементов массива");
 for (int i = 0; i < number.Length; i++)
 {
     // добавлен комментарий
-    number[i] = int.Parse(Console.ReadLine());
+    number[i] = int.Parse(Console.ReadLine()); 
 }
 // счетчики для поиска максимального и минимального значения в массиве
 float min = number[0]; 
