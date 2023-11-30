@@ -28,7 +28,7 @@ Console.Clear();
 Console.WriteLine("Введенная вами матрица");
 // Цикл для сведения введеных элементов матрицы к виду nxm
 for (int i = 0; i < n; i++)
-{
+{ 
     for (int j = 0; j < m; j++)
     {
         Console.Write("{0:0.0}\t", matrix[i, j]);
