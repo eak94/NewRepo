@@ -8,6 +8,7 @@ int[] number;
 number = new int[length];
 Console.WriteLine($"Введите {length} элементов массива");
 // Заполнение массива значениями
+// Заполнение массива значениями
 for (int i = 0; i < number.Length; i++)
 {
 #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
