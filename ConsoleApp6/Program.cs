@@ -1,5 +1,6 @@
 ﻿//Вывод сообщения в консоль
 Console.WriteLine("Введите длину массива");
+Console.WriteLine("Введите длину массива1");
 #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 int length = int.Parse(Console.ReadLine());
 #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
