@@ -1,17 +1,14 @@
 ﻿//Вывод сообщения в консоль
 Console.WriteLine("Введите длину массива");
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 int length = int.Parse(Console.ReadLine());
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 int[] number;
 number = new int[length];
 Console.WriteLine($"Введите {length} элементов массива");
 // Заполнение массива значениями
 for (int i = 0; i < number.Length; i++)
 {
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+    // добавлен комментарий
     number[i] = int.Parse(Console.ReadLine());
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 }
 // счетчики для поиска максимального и минимального значения в массиве
 float min = number[0]; 
