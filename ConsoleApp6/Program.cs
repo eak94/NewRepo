@@ -1,5 +1,6 @@
 ﻿//Вывод сообщения в консоль
 Console.WriteLine("Введите длину массива");
+//Вывод сообщения в консоль
 int length = int.Parse(Console.ReadLine());
 int[] number;
 number = new int[length];
