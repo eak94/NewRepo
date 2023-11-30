@@ -20,6 +20,10 @@ for (int i = 1; i < number.Length; i++)
     {
         min = number[i];
     }
+    if (min1 > number[i])
+    {
+        min1 = number[i];
+    }
     else 
     {
         max = number[i];
