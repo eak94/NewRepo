@@ -10,7 +10,7 @@ int m = int.Parse(Console.ReadLine());
 #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 int[,] matrix = new int[n, m];
 Console.WriteLine("Введите элементы матрицы(ввод элементов построчный)");
-//Цикл для ввода элементов матрицы
+//Цикл для ввода элементов матрицы 
 for (int i = 0; i < n; i++)
 {
     for (int j = 0; j < m; j++)
