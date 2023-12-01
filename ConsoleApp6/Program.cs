@@ -13,6 +13,7 @@ for (int i = 0; i < number.Length; i++)
     number[i] = int.Parse(Console.ReadLine()); 
 }
 // счетчики для поиска максимального и минимального значения в массиве
+// счетчики для поиска максимального и минимального значения в массиве1
 float min = number[0]; 
 float max = number[0];
 // цикл для поиска максимального и минимального значения в массиве
@@ -29,11 +30,13 @@ for (int i = 1; i < number.Length; i++)
 }
 // счетчики для вычисления суммы и количества чисел 
 float sum = 0;
-float count = 0; 
+float count = 0;
+float count1 = 0;
 for (int i = 0; i < number.Length; i++)
 {
     sum += number[i];
     count +=1;
+    count1 += 1;
 }
 //сумма без учета масимального и минимального значения
 float summa = sum - max - min;
