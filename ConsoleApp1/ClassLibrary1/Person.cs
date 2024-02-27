@@ -1,4 +1,5 @@
-﻿namespace ClassLibrary1
+﻿
+namespace ClassLibrary1
 {
     public class Person
     {
@@ -13,9 +14,53 @@
         private string _surname;
 
         /// <summary>
-        /// Возраст пользователя 
+        /// Возраст пользователя
         /// </summary>
-        private int _age;
+        private string _age;
 
+        /// <summary>
+        /// Конструктор класса имя
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
+        /// <summary>
+        /// Конструктор класса Фамилия
+        /// </summary>
+        public string Surname
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                _surname = value;
+            }
+        }
+
+        /// <summary>
+        /// Конструктор класса Возраст
+        /// </summary>
+        public string Age
+        {
+            get
+            {
+                return _age;
+            }
+            set
+            {
+                _age = value;
+            }
+        }
     }
 }
