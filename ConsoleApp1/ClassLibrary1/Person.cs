@@ -1,4 +1,4 @@
-﻿
+
 namespace ClassLibrary1
 {
     public class Person
@@ -19,7 +19,7 @@ namespace ClassLibrary1
         private string _age;
 
         /// <summary>
-        /// Конструктор класса имя
+        /// Свойства класса имя
         /// </summary>
         public string Name
         {
@@ -34,7 +34,7 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Конструктор класса Фамилия
+        /// Свойства класса Фамилия
         /// </summary>
         public string Surname
         {
@@ -49,9 +49,9 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Конструктор класса Возраст
+        /// Свойства класса Возраст
         /// </summary>
-        public string Age
+        public int Age
         {
             get
             {
@@ -61,6 +61,25 @@ namespace ClassLibrary1
             {
                 _age = value;
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Gender Sex { get; set; }
+
+        /// <summary>
+        /// Конструктор класса Person
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="surname"></param>
+        /// <param name="age"></param>
+        /// <param name="sex"></param>
+        public Person(string name, string surname, int age, Gender sex)
+        {
+            Name = name;
+            Surname = surname;
+            Age = age;
+            Sex = sex;
         }
     }
 }

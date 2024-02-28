@@ -4,7 +4,7 @@ namespace ClassLibrary1
     /// <summary>
     /// Пол
     /// </summary>
-    internal class Gender
+    public enum Gender
     {
         Male,
         Female,
