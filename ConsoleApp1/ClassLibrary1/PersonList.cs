@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
@@ -12,12 +7,12 @@ namespace ClassLibrary1
     public class PersonList
     {
         /// <summary>
-        /// Массив, содержащий объекты класса
+        /// Одномерный пустой массив, содержащий объекты класса
         /// </summary>
         private Person[] _people = new Person[0];
 
         /// <summary>
-        /// Метод для добавления элементов
+        /// Метод для добавления новых элементов в одномерный массив
         /// </summary>
         /// <param name="person">Данные о персоне</param>
         public void AddPerson(Person person)
@@ -39,21 +34,31 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Метод для удаления всех элементов
+        /// Метод для удаления элемента по введеному индексу 
         /// </summary>
-        /// <param name="person"></param>
-        public void DeleteArrayPerson()
-        {
-            Array.Clear(_people, 0, _people.Length);
-        }
-        /// <summary>
-        /// Метод для удаления всех элементов по индексу
-        /// </summary>
-        /// <param name="index">Индекс</param>
+        /// <param name="index">Индекс персоны,которую надо удалить</param>
         public void DeleteIndexPerson(int index)
         {
             _people[index] = null;
         }
+
+        /// <summary>
+        /// Метод очищает весь список, начиная с 0
+        /// </summary>
+        public void DeleteArrayPerson()
+        {
+            Array.Clear(_people, 0, _people.Length);
+        }
+
+        /// <summary>
+        /// Метод для поиска персоны по указанному индексу
+        /// </summary>
+        /// <param name="index">Индекс персоны</param>
+        public void IndexByPerson(int index)
+        {
+            _people[index].PrintPerson;
+        }
+
 
     }
 }

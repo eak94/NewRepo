@@ -81,5 +81,12 @@ namespace ClassLibrary1
             Age = age;
             Sex = sex;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void PrintPerson()
+        {
+
+        }
     }
 }
