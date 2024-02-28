@@ -17,9 +17,9 @@ namespace ClassLibrary1
         private Person[] _people = new Person[0];
 
         /// <summary>
-        /// Добавление элемента
+        /// Метод для добавления элементов
         /// </summary>
-        /// <returns>Записывает новые элементы</returns>
+        /// <param name="person">Данные о персоне</param>
         public void AddPerson(Person person)
         {
             Array.Resize(ref _people, _people.Length + 1);
@@ -37,5 +37,23 @@ namespace ClassLibrary1
                 _people[i] = person;
             }
         }
+
+        /// <summary>
+        /// Метод для удаления всех элементов
+        /// </summary>
+        /// <param name="person"></param>
+        public void DeleteArrayPerson()
+        {
+            Array.Clear(_people, 0, _people.Length);
+        }
+        /// <summary>
+        /// Метод для удаления всех элементов по индексу
+        /// </summary>
+        /// <param name="index">Индекс</param>
+        public void DeleteIndexPerson(int index)
+        {
+            _people[index] = null;
+        }
+
     }
 }
