@@ -43,6 +43,31 @@ namespace ClassLibrary1
         }
 
         /// <summary>
+        /// Метод для поиска персоны по указанному индексу
+        /// </summary>
+        /// <param name="index">Вовзращается персоны по
+        /// введенному индексу </param>
+        public void IndexPerson(int index)
+        {
+            if (index >= _people.Length || _people[index] == null)
+            {
+                Console.WriteLine("Элемент с данным индексом не существует");
+            }
+            else
+            {
+                _people[index].PrintPerson();
+            }
+        }
+        /// <summary>
+        /// Метод для поиска элемента при его наличии в списке
+        /// </summary>
+        /// <param name="index">Вовзращает индекс элемента, при наличии в списке</param>
+        public Person FindIndexPerson(int index)
+        {
+            return _people[index];
+        }
+
+        /// <summary>
         /// Метод очищает весь список, начиная с 0
         /// </summary>
         public void DeleteArrayPerson()
@@ -51,14 +76,13 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Метод для поиска персоны по указанному индексу
+        /// Метод для определения количества персон в списке 
         /// </summary>
-        /// <param name="index">Индекс персоны</param>
-        public void IndexByPerson(int index)
+        /// <returns>Возвращает количество персон в списке</returns>
+        public int CountPerson()
         {
-            _people[index].PrintPerson;
+            return _ = _people.Length;
         }
-
 
     }
 }

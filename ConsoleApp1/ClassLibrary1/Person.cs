@@ -11,12 +11,17 @@ namespace ClassLibrary1
         /// <summary>
         /// Фамилия пользователя
         /// </summary>
-        private string _surname;
+        private string _secondName;
 
         /// <summary>
         /// Возраст пользователя
         /// </summary>
-        private string _age;
+        private int _age;
+
+        /// <summary>
+        /// Пол пользователя
+        /// </summary>
+        private Gender _gender;
 
         /// <summary>
         /// Свойства класса имя
@@ -36,15 +41,15 @@ namespace ClassLibrary1
         /// <summary>
         /// Свойства класса Фамилия
         /// </summary>
-        public string Surname
+        public string SecondName
         {
             get
             {
-                return _surname;
+                return _secondName;
             }
             set
             {
-                _surname = value;
+                _secondName = value;
             }
         }
 
@@ -63,9 +68,19 @@ namespace ClassLibrary1
             }
         }
         /// <summary>
-        /// 
+        /// Свойства класса Пол
         /// </summary>
-        public Gender Sex { get; set; }
+        public Gender Gender
+        {
+            get
+            {
+                return _gender;
+            }
+            set
+            {
+                _gender = value;
+            }
+        }
 
         /// <summary>
         /// Конструктор класса Person
@@ -73,20 +88,23 @@ namespace ClassLibrary1
         /// <param name="name"></param>
         /// <param name="surname"></param>
         /// <param name="age"></param>
-        /// <param name="sex"></param>
-        public Person(string name, string surname, int age, Gender sex)
+        /// <param name="gender"></param>
+        public Person(string name, string secondName, int age, Gender gender)
         {
             Name = name;
-            Surname = surname;
+            SecondName = secondName;
             Age = age;
-            Sex = sex;
+            Gender = gender;
         }
         /// <summary>
         /// 
         /// </summary>
         public void PrintPerson()
         {
-
+            Console.WriteLine($"Имя: {Name}" +
+                              $"Фамилия: {SecondName}" +
+                              $"Возраст: {Age}" +
+                              $"Пол: {Gender}");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+
 namespace ClassLibrary1
 {
     /// <summary>
@@ -6,8 +6,19 @@ namespace ClassLibrary1
     /// </summary>
     public enum Gender
     {
+        /// <summary>
+        /// Мужской пол
+        /// </summary>
         Male,
+
+        /// <summary>
+        /// Женский пол
+        /// </summary>
         Female,
+
+        /// <summary>
+        /// Не определен
+        /// </summary>
         Undefined
     }
 }
