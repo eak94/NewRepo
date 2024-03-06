@@ -7,9 +7,48 @@ namespace ClassLibrary1
     public class PersonList
     {
         /// <summary>
-        /// Одномерный пустой массив, содержащий объекты класса
+        /// Массив для хранения перечня людей
         /// </summary>
-        private Person[] _people = new Person[0];
+        private Person[] _people;
+
+        /// <summary>
+        /// Наименование массива 
+        /// </summary>
+        private string _nameArrayPerson;
+
+        /// <summary>
+        ///  Конструктор класса Список Персон 1
+        /// </summary>
+        /// <param name="nameArrayPerson">Название массива</param>
+        public PersonList(string nameArrayPerson)
+        {
+            _nameArrayPerson = nameArrayPerson;
+            _people = new Person[0];
+        }
+
+        public string NamelistPerson
+        {
+            get
+            {
+                return _nameArrayPerson;
+            }
+            set
+            {
+                _nameArrayPerson = value;
+            }
+        }
+
+        /// <summary>
+        /// Конструктор класса Список Персон 2
+        /// </summary>
+        /// <param name="arrayPerson">Список Персон</param>
+        /// <param name="nameArrayPerson">Название списка</param>
+        public PersonList(Person[] arrayPerson, string nameArrayPerson)
+        {
+            _nameArrayPerson = nameArrayPerson;
+            _people = arrayPerson;
+        }
+
 
         /// <summary>
         /// Метод для добавления новых элементов в одномерный массив

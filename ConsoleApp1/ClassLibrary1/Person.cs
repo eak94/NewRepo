@@ -97,14 +97,11 @@ namespace ClassLibrary1
             Gender = gender;
         }
         /// <summary>
-        /// 
+        /// Метод для вывода информации о персоне
         /// </summary>
         public void PrintPerson()
         {
-            Console.WriteLine($"Имя: {Name}" +
-                              $"Фамилия: {SecondName}" +
-                              $"Возраст: {Age}" +
-                              $"Пол: {Gender}");
+            Console.WriteLine($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}");
         }
     }
 }
