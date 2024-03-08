@@ -23,7 +23,7 @@ namespace ClassLibrary1
         public PersonList(string nameArrayPerson)
         {
             _nameArrayPerson = nameArrayPerson;
-            _people = new Person[0];
+            _people = new Person[3];
         }
 
         /// <summary>
@@ -52,6 +52,7 @@ namespace ClassLibrary1
             }
         }
 
+
         /// <summary>
         /// Метод для отображения списка персон 
         /// </summary>
@@ -60,7 +61,11 @@ namespace ClassLibrary1
             Console.WriteLine($"Список персон в {_nameArrayPerson}:");
             foreach (var person in _people)
             {
-                person.PrintPerson();
+                // Печатаем, если объект не null
+                if (person != null)
+                {
+                    person.PrintPerson();
+                }
             }
         }
 
@@ -97,30 +102,42 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Метод для удаления элемента по введеному индексу 
+        /// Метод для удаления элемента по введенному индексу 
         /// </summary>
-        /// <param name="index">Индекс персоны,которую надо удалить</param>
+        /// <param name="index">Индекс персоны, которую надо удалить</param>
         public void DeleteIndexPerson(int index)
         {
-            _people[index] = null;
+            if (index >= 0 && index < _people.Length)
+            {
+                // Сдвигаем элементы, чтобы заполнить пробел
+                for (int i = index; i < _people.Length - 1; i++)
+                {
+                    _people[i] = _people[i + 1];
+                }
+
+                // Изменяем размер массива, чтобы удалить последний элемент
+                Array.Resize(ref _people, _people.Length - 1);
+            }
         }
 
         /// <summary>
         /// Метод для поиска персоны по указанному индексу
         /// </summary>
-        /// <param name="index">Вовзращается персоны по
-        /// введенному индексу </param>
-        public void IndexPerson(int index)
+        /// <param name="index">Индекс персоны</param>
+        /// <returns>Персона по указанному индексу или null, если индекс некорректен</returns>
+        public Person IndexPerson(int index)
         {
-            if (index >= _people.Length || _people[index] == null)
+            if (index >= 0 && index < _people.Length)
             {
-                Console.WriteLine("Элемент с данным индексом не существует");
+                return _people[index];
             }
             else
             {
-                _people[index].PrintPerson();
+                // Можно выбросить исключение или вернуть null в зависимости от логики приложения
+                return null;
             }
         }
+
         /// <summary>
         /// Метод для поиска элемента при его наличии в списке
         /// </summary>
@@ -145,6 +162,33 @@ namespace ClassLibrary1
         public int CountPerson()
         {
             return _ = _people.Length;
+        }
+        /// <summary>
+        /// Индексатор для доступа к элементам списка по индексу
+        /// </summary>
+        /// <param name="index">Индекс элемента</param>
+        /// <returns>Элемент списка по указанному индексу</returns>
+        public Person this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < _people.Length)
+                {
+                    return _people[index];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (index >= 0 && index < _people.Length)
+                {
+                    _people[index] = value;
+                }
+            }
+
         }
     }
 }

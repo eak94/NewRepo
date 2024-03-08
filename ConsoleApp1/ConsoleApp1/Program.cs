@@ -9,22 +9,59 @@ namespace ConsoleApp1
         /// </summary>
         private static void Main()
         {
-            Console.WriteLine("Для тестирования методов автоматически создано два списка людей.\n" +
+            //3a
+            Console.WriteLine("Для тестирования методов создано два списка людей.\n" +
                 "В каждом из списков содержатся записи о трех людях.\n" +
                 "Для продолжения нажмите Enter для отображения");
             _ = Console.ReadKey();
-            Console.WriteLine("\nСодержание списков:");
-            PersonList firstPersonList = new PersonList("1 массиве");
             Console.WriteLine();
-            firstPersonList.AddPerson(new Person("Иван", "Иванов", 25, Gender.Male));
-            firstPersonList.AddPerson(new Person("Анна", "Анновна", 30, Gender.Female));
-            firstPersonList.AddPerson(new Person("Император", "Великий", 100, Gender.Undefined));
+            Console.WriteLine("3ab. Вывод содержимого списков:");
+            Console.WriteLine();
+            PersonList firstPersonList = new PersonList("1 массив");
+            firstPersonList[0] = new Person("Иван", "Иванов", 25, Gender.Male);
+            firstPersonList[1] = new Person("Анна", "Анновна", 30, Gender.Female);
+            firstPersonList[2] = new Person("Император", "Великий", 100, Gender.Undefined);
             firstPersonList.PrintPeople();
-            PersonList secondPersonList = new PersonList("2 массиве");
             Console.WriteLine();
-            secondPersonList.AddPerson(new Person("Петр", "Петров", 2, Gender.Male));
-            secondPersonList.AddPerson(new Person("Иван", "Киселев", 45, Gender.Male));
-            secondPersonList.AddPerson(new Person("Анастасия", "Левина", 56, Gender.Female));
+            PersonList secondPersonList = new PersonList("2 массив");
+            secondPersonList[0] = new Person("Сидоров", "Сидор", 45, Gender.Male);
+            secondPersonList[1] = new Person("Анастасия", "Подкорытова", 25, Gender.Female);
+            secondPersonList[2] = new Person("Валерия", "Ващенко", 30, Gender.Female);
+            secondPersonList.PrintPeople();
+            _ = Console.ReadKey();
+
+            //3b
+            Console.WriteLine();
+            Console.WriteLine("3с. Добавление новой персоны в список 1");
+            Console.WriteLine();
+            firstPersonList.AddPerson(new Person("Новый", "Человек", 40, Gender.Male));
+            firstPersonList.PrintPeople();
+            _ = Console.ReadKey();
+
+            //3с
+            Console.WriteLine();
+            Console.WriteLine("3d. Копирование второго человека из первого списка в конец второго списка");
+            Console.WriteLine();
+            int index = 1;
+            secondPersonList.AddPerson(firstPersonList.IndexPerson(index));
+            secondPersonList.PrintPeople();
+            _ = Console.ReadKey();
+
+            //3d
+            Console.WriteLine();
+            Console.WriteLine("3e. Удаление второго человека из первого списка");
+            Console.WriteLine();
+            int indexToDelete = 1;
+            firstPersonList.DeleteIndexPerson(indexToDelete);
+            firstPersonList.PrintPeople();
+            _ = Console.ReadKey();
+
+            //3d
+            Console.WriteLine();
+            Console.WriteLine("3f. Очистка второго списка");
+            Console.WriteLine();
+            secondPersonList.DeleteArrayPerson();
+            Console.WriteLine("Содержимое второго списка");
             secondPersonList.PrintPeople();
             _ = Console.ReadKey();
         }
