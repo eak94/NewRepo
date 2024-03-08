@@ -17,7 +17,7 @@ namespace ClassLibrary1
         private string _nameArrayPerson;
 
         /// <summary>
-        ///  Конструктор класса Список Персон 1
+        /// Конструктор класса Массив Персон 1
         /// </summary>
         /// <param name="nameArrayPerson">Название массива</param>
         public PersonList(string nameArrayPerson)
@@ -26,6 +26,20 @@ namespace ClassLibrary1
             _people = new Person[0];
         }
 
+        /// <summary>
+        /// Конструктор класса Массив Персон 2
+        /// </summary>
+        /// <param name="arrayPerson">Список Персон</param>
+        /// <param name="nameArrayPerson">Название списка</param>
+        public PersonList(Person[] arrayPerson, string nameArrayPerson)
+        {
+            _nameArrayPerson = nameArrayPerson;
+            _people = arrayPerson;
+        }
+
+        /// <summary>
+        /// Определения свойства названия массивов
+        /// </summary>
         public string NamelistPerson
         {
             get
@@ -39,22 +53,32 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Конструктор класса Список Персон 2
+        /// Метод для отображения списка персон 
         /// </summary>
-        /// <param name="arrayPerson">Список Персон</param>
-        /// <param name="nameArrayPerson">Название списка</param>
-        public PersonList(Person[] arrayPerson, string nameArrayPerson)
+        public void PrintPeople()
         {
-            _nameArrayPerson = nameArrayPerson;
-            _people = arrayPerson;
+            Console.WriteLine($"Список персон в {_nameArrayPerson}:");
+            foreach (var person in _people)
+            {
+                person.PrintPerson();
+            }
         }
-
 
         /// <summary>
         /// Метод для добавления новых элементов в одномерный массив
         /// </summary>
         /// <param name="person">Данные о персоне</param>
         public void AddPerson(Person person)
+        {
+            Array.Resize(ref _people, _people.Length + 1);
+            _people[_people.Length - 1] = person;
+        }
+
+        /// <summary>
+        /// Метод для добавления новых элементов в одномерный массив
+        /// </summary>
+        /// <param name="person">Данные о персоне</param>
+        public void AddPerson1(Person person)
         {
             Array.Resize(ref _people, _people.Length + 1);
             int element = 0;
@@ -122,6 +146,5 @@ namespace ClassLibrary1
         {
             return _ = _people.Length;
         }
-
     }
 }

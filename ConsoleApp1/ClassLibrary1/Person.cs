@@ -85,10 +85,10 @@ namespace ClassLibrary1
         /// <summary>
         /// Конструктор класса Person
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="surname"></param>
-        /// <param name="age"></param>
-        /// <param name="gender"></param>
+        /// <param name="name">Имя</param>
+        /// <param name="secondName">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Пол</param>
         public Person(string name, string secondName, int age, Gender gender)
         {
             Name = name;
@@ -96,12 +96,13 @@ namespace ClassLibrary1
             Age = age;
             Gender = gender;
         }
+
         /// <summary>
-        /// Метод для вывода информации о персоне
+        /// Вывод данных в консоль
         /// </summary>
         public void PrintPerson()
         {
-            Console.WriteLine($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}");
+            Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
         }
     }
 }
