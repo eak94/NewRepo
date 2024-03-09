@@ -52,6 +52,33 @@ namespace ClassLibrary1
             }
         }
 
+        /// <summary>
+        /// Метод для установки значений в массив _people
+        /// </summary>
+        /// <param name="index">Индекс элемента</param>
+        /// <returns>Элемент списка по указанному индексу</returns>
+        public Person this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < _people.Length)
+                {
+                    return _people[index];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (index >= 0 && index < _people.Length)
+                {
+                    _people[index] = value;
+                }
+            }
+
+        }
 
         /// <summary>
         /// Метод для отображения списка персон 
@@ -61,7 +88,6 @@ namespace ClassLibrary1
             Console.WriteLine($"Список персон в {_nameArrayPerson}:");
             foreach (var person in _people)
             {
-                // Печатаем, если объект не null
                 if (person != null)
                 {
                     person.PrintPerson();
@@ -80,28 +106,6 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Метод для добавления новых элементов в одномерный массив
-        /// </summary>
-        /// <param name="person">Данные о персоне</param>
-        public void AddPerson1(Person person)
-        {
-            Array.Resize(ref _people, _people.Length + 1);
-            int element = 0;
-            for (int i = 0; i < _people.Length; i++)
-            {
-                if (_people[i] == null)
-                {
-                    element = i;
-                    break;
-                }
-            }
-            for (int i = element; i < element + 1; i++)
-            {
-                _people[i] = person;
-            }
-        }
-
-        /// <summary>
         /// Метод для удаления элемента по введенному индексу 
         /// </summary>
         /// <param name="index">Индекс персоны, которую надо удалить</param>
@@ -109,13 +113,10 @@ namespace ClassLibrary1
         {
             if (index >= 0 && index < _people.Length)
             {
-                // Сдвигаем элементы, чтобы заполнить пробел
                 for (int i = index; i < _people.Length - 1; i++)
                 {
                     _people[i] = _people[i + 1];
                 }
-
-                // Изменяем размер массива, чтобы удалить последний элемент
                 Array.Resize(ref _people, _people.Length - 1);
             }
         }
@@ -124,7 +125,7 @@ namespace ClassLibrary1
         /// Метод для поиска персоны по указанному индексу
         /// </summary>
         /// <param name="index">Индекс персоны</param>
-        /// <returns>Персона по указанному индексу или null, если индекс некорректен</returns>
+        /// <returns>Вовращает элемнт по индексу</returns>
         public Person IndexPerson(int index)
         {
             if (index >= 0 && index < _people.Length)
@@ -133,7 +134,6 @@ namespace ClassLibrary1
             }
             else
             {
-                // Можно выбросить исключение или вернуть null в зависимости от логики приложения
                 return null;
             }
         }
@@ -163,32 +163,7 @@ namespace ClassLibrary1
         {
             return _ = _people.Length;
         }
-        /// <summary>
-        /// Индексатор для доступа к элементам списка по индексу
-        /// </summary>
-        /// <param name="index">Индекс элемента</param>
-        /// <returns>Элемент списка по указанному индексу</returns>
-        public Person this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < _people.Length)
-                {
-                    return _people[index];
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            set
-            {
-                if (index >= 0 && index < _people.Length)
-                {
-                    _people[index] = value;
-                }
-            }
 
-        }
+
     }
 }

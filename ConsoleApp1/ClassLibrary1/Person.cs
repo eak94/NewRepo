@@ -104,5 +104,31 @@ namespace ClassLibrary1
         {
             Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
         }
+
+        /// <summary>
+        /// Метод для ввода и чтения персоны с клавиатуры и вывода персоны на экран 
+        /// </summary>
+        public static Person AddPersonConsole()
+        {
+            Console.WriteLine("Введите данные");
+            Console.WriteLine("Имя");
+            string name = Console.ReadLine();
+            Console.WriteLine("Фамилия");
+            string secondName = Console.ReadLine();
+            Console.WriteLine("Возраст");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Пол");
+            Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine());
+            Person newPerson = new Person(name, secondName, age, gender);
+            return newPerson;
+        }
+
+        /// <summary>
+        /// Метод для рандомного создания персон 
+        /// </summary>
+        public static GetRandomPerson()
+        {
+
+        }
     }
 }

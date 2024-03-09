@@ -30,7 +30,7 @@ namespace ConsoleApp1
             secondPersonList.PrintPeople();
             _ = Console.ReadKey();
 
-            //3b
+            //3c
             Console.WriteLine();
             Console.WriteLine("3с. Добавление новой персоны в список 1");
             Console.WriteLine();
@@ -38,7 +38,7 @@ namespace ConsoleApp1
             firstPersonList.PrintPeople();
             _ = Console.ReadKey();
 
-            //3с
+            //3d
             Console.WriteLine();
             Console.WriteLine("3d. Копирование второго человека из первого списка в конец второго списка");
             Console.WriteLine();
@@ -47,7 +47,7 @@ namespace ConsoleApp1
             secondPersonList.PrintPeople();
             _ = Console.ReadKey();
 
-            //3d
+            //3e
             Console.WriteLine();
             Console.WriteLine("3e. Удаление второго человека из первого списка");
             Console.WriteLine();
@@ -56,7 +56,7 @@ namespace ConsoleApp1
             firstPersonList.PrintPeople();
             _ = Console.ReadKey();
 
-            //3d
+            //3f
             Console.WriteLine();
             Console.WriteLine("3f. Очистка второго списка");
             Console.WriteLine();
@@ -64,6 +64,15 @@ namespace ConsoleApp1
             Console.WriteLine("Содержимое второго списка");
             secondPersonList.PrintPeople();
             _ = Console.ReadKey();
+
+            //4
+            Console.WriteLine("Для тестирования метода ввода персоны с клавиатуры нажмите Enter");
+            _ = Console.ReadKey();
+            Person newPerson = Person.AddPersonConsole();
+            Console.WriteLine($"Создан новый объект Person:");
+            newPerson.PrintPerson();
+            _ = Console.ReadKey();
+
         }
     }
 }
