@@ -1,4 +1,3 @@
-
 namespace ClassLibrary1
 {
     public class Person
@@ -110,25 +109,63 @@ namespace ClassLibrary1
         /// </summary>
         public static Person AddPersonConsole()
         {
-            Console.WriteLine("Введите данные");
-            Console.WriteLine("Имя");
+            Console.WriteLine("Новые данные");
+            Console.WriteLine("Введите ваше Имя");
             string name = Console.ReadLine();
-            Console.WriteLine("Фамилия");
+            Console.WriteLine("Введите вашу Фамилия");
             string secondName = Console.ReadLine();
-            Console.WriteLine("Возраст");
+            Console.WriteLine("Введите ваш Возраст");
             int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Пол");
+            Console.WriteLine("Введите ваш Пол (М/Ж)");
             Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine());
             Person newPerson = new Person(name, secondName, age, gender);
             return newPerson;
         }
 
         /// <summary>
-        /// Метод для рандомного создания персон 
+        /// По установлен по умолчанию
         /// </summary>
-        public static GetRandomPerson()
-        {
+        public Person() : this("Иван", "Иванов", 50, Gender.Male)
+        { }
 
+        /// <summary>
+        /// Метод для генерации случайных персон
+        /// </summary>
+        /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
+        public static Person GetRandomPerson()
+        {
+            Person randomPerson = new Person();
+            var nameFemale = new string[] {"Катя", "Алина", "Анна", "Екатерина",
+        "Алиса", "Наталья", "Валентина"};
+            var nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
+        "Борис", "Роман", "Петр"};
+            var secondnameMale = new string[] {"Стенов", "Любимов", "Стулов", "Попов",
+        "Андреев", "Иванов", "Пушкин"};
+            var secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
+        "Сечина", "Ручкина", "Спицина"};
+
+            Random rnd = new Random();
+
+            randomPerson.Gender = (Gender)rnd.Next(2);
+
+            if (randomPerson.Gender == Gender.Female)
+            {
+                var rndPersonNameFemale = rnd.Next(0, nameFemale.Length);
+                var rndPersonSecondnameFemale = rnd.Next(0, secondnameFemale.Length);
+                randomPerson.Name = nameFemale[rndPersonNameFemale];
+                randomPerson.SecondName = secondnameFemale[rndPersonSecondnameFemale];
+            }
+            else
+            {
+                var rndPersonNameMale = rnd.Next(0, nameMale.Length);
+                var rndPersonSecondnameMale = rnd.Next(0, secondnameMale.Length);
+                randomPerson.Name = nameMale[rndPersonNameMale];
+                randomPerson.SecondName = secondnameMale[rndPersonSecondnameMale];
+            }
+
+            randomPerson.Age = rnd.Next(0, 150);
+
+            return randomPerson;
         }
     }
 }

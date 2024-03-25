@@ -14,11 +14,6 @@ namespace ClassLibrary1
         /// <summary>
         /// Женский пол
         /// </summary>
-        Female,
-
-        /// <summary>
-        /// Не определен
-        /// </summary>
-        Undefined
+        Female
     }
 }
