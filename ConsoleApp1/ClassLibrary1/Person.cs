@@ -69,17 +69,7 @@ namespace ClassLibrary1
         /// <summary>
         /// Свойства класса Пол
         /// </summary>
-        public Gender Gender
-        {
-            get
-            {
-                return _gender;
-            }
-            set
-            {
-                _gender = value;
-            }
-        }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Конструктор класса Person
