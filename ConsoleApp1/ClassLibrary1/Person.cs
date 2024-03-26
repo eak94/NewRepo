@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace ClassLibrary1
 {
     public class Person
@@ -18,11 +20,6 @@ namespace ClassLibrary1
         private int _age;
 
         /// <summary>
-        /// Пол пользователя
-        /// </summary>
-        private Gender _gender;
-
-        /// <summary>
         /// Свойства класса имя
         /// </summary>
         public string Name
@@ -33,7 +30,20 @@ namespace ClassLibrary1
             }
             set
             {
-                _name = value;
+                bool isValid = false;
+                while (!isValid)
+                {
+                    try
+                    {
+                        _name = ExceptionsName(value);
+                        isValid = true;
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"{ex.Message}Пожалуйста, введите имя заново:");
+                        value = Console.ReadLine();
+                    }
+                }
             }
         }
 
@@ -48,8 +58,61 @@ namespace ClassLibrary1
             }
             set
             {
-                _secondName = value;
+                bool isValid = false;
+                while (!isValid)
+                {
+                    try
+                    {
+                        _secondName = ExceptionsName(value);
+                        isValid = true;
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"{ex.Message}Пожалуйста, введите фамилии заново:");
+                        value = Console.ReadLine();
+                    }
+                }
             }
+        }
+        /// <summary>
+        /// Проверка символов, вводимых в поле Имя и Фамилия
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Возвращает обратную строку</returns>
+        private static string ExceptionsName(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Имеются незаполненные поля\n");
+            }
+
+            string nameSecondnamePattern = "^[а-яА-Яa-zA-Z]+-?[а-яА-Яa-zA-Z]*$";
+
+            Regex regex = new Regex(nameSecondnamePattern);
+            string validatedValue = string.Empty;
+
+            foreach (Match match in regex.Matches(value))
+            {
+                validatedValue += match.Value;
+            }
+
+            if (string.IsNullOrEmpty(validatedValue))
+            {
+                throw new ArgumentException("Имя должно содержать только русские или англиские буквы\n");
+            }
+
+            string[] words = validatedValue.Split(' ');
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i].Length >= 1)
+                {
+                    words[i] = words[i].Substring(0, 1).ToUpper() +
+                               words[i].Substring(1).ToLower();
+                }
+            }
+
+            validatedValue = string.Join(" ", words);
+            return validatedValue;
         }
 
         /// <summary>
@@ -113,7 +176,7 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// По установлен по умолчанию
+        /// Экземляр класса по умолчанию
         /// </summary>
         public Person() : this("Иван", "Иванов", 50, Gender.Male)
         { }
