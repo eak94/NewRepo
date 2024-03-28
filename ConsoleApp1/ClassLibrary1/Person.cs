@@ -18,6 +18,14 @@ namespace ClassLibrary1
         /// Возраст пользователя
         /// </summary>
         private int _age;
+        /// <summary>
+        /// Минимальный возраст
+        /// </summary>
+        private const int _minAge = 0;
+        /// <summary>
+        /// Максимальный возраст
+        /// </summary>
+        private const int _maxAge = 100;
 
         /// <summary>
         /// Свойства класса имя
@@ -35,7 +43,7 @@ namespace ClassLibrary1
                 {
                     try
                     {
-                        _name = ExceptionsName(value);
+                        _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
                         isValid = true;
                     }
                     catch (ArgumentException ex)
@@ -63,7 +71,7 @@ namespace ClassLibrary1
                 {
                     try
                     {
-                        _secondName = ExceptionsName(value);
+                        _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
                         isValid = true;
                     }
                     catch (ArgumentException ex)
@@ -79,7 +87,7 @@ namespace ClassLibrary1
         /// </summary>
         /// <param name="value"></param>
         /// <returns>Возвращает обратную строку</returns>
-        private static string ExceptionsName(string value)
+        private static string ExceptionsName(string value, string errorMessage)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -98,7 +106,7 @@ namespace ClassLibrary1
 
             if (string.IsNullOrEmpty(validatedValue))
             {
-                throw new ArgumentException("Имя должно содержать только русские или англиские буквы\n");
+                throw new ArgumentException(errorMessage);
             }
 
             string[] words = validatedValue.Split(' ');
@@ -126,9 +134,41 @@ namespace ClassLibrary1
             }
             set
             {
-                _age = value;
+                while (true)
+                {
+                    try
+                    {
+                        _ = ExceptionsAge(value);
+                        break;
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"{ex.Message} Пожалуйста, введите возраст заново:");
+                        value = Convert.ToInt32(Console.ReadLine());
+                    }
+                }
             }
         }
+
+        private int ExceptionsAge(int age)
+        {
+            if ( < _minAge)
+            {
+                throw new ArgumentException($"Возраст не может быть отрицательным\n");
+            }
+
+            if (value > _maxAge)
+            {
+                throw new ArgumentException($"Возраст не может быть больше {_maxAge}\n");
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Имеются незаполненные поля\n");
+            }
+            return value;
+        }
+
         /// <summary>
         /// Свойства класса Пол
         /// </summary>
@@ -180,45 +220,5 @@ namespace ClassLibrary1
         /// </summary>
         public Person() : this("Иван", "Иванов", 50, Gender.Male)
         { }
-
-        /// <summary>
-        /// Метод для генерации случайных персон
-        /// </summary>
-        /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
-        public static Person GetRandomPerson()
-        {
-            Person randomPerson = new Person();
-            var nameFemale = new string[] {"Катя", "Алина", "Анна", "Екатерина",
-        "Алиса", "Наталья", "Валентина"};
-            var nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
-        "Борис", "Роман", "Петр"};
-            var secondnameMale = new string[] {"Стенов", "Любимов", "Стулов", "Попов",
-        "Андреев", "Иванов", "Пушкин"};
-            var secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
-        "Сечина", "Ручкина", "Спицина"};
-
-            Random rnd = new Random();
-
-            randomPerson.Gender = (Gender)rnd.Next(2);
-
-            if (randomPerson.Gender == Gender.Female)
-            {
-                var rndPersonNameFemale = rnd.Next(0, nameFemale.Length);
-                var rndPersonSecondnameFemale = rnd.Next(0, secondnameFemale.Length);
-                randomPerson.Name = nameFemale[rndPersonNameFemale];
-                randomPerson.SecondName = secondnameFemale[rndPersonSecondnameFemale];
-            }
-            else
-            {
-                var rndPersonNameMale = rnd.Next(0, nameMale.Length);
-                var rndPersonSecondnameMale = rnd.Next(0, secondnameMale.Length);
-                randomPerson.Name = nameMale[rndPersonNameMale];
-                randomPerson.SecondName = secondnameMale[rndPersonSecondnameMale];
-            }
-
-            randomPerson.Age = rnd.Next(0, 150);
-
-            return randomPerson;
-        }
     }
 }
