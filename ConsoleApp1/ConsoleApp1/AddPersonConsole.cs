@@ -15,8 +15,8 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Person PersonConsole(PersonList personList)
         {
-            string name = NameInput("Введите ваше Имя", "Имя не может быть пустым.");
-            string secondName = NameInput("Введите вашу Фамилию", "Фамилия не может быть пустой.");
+            string name = NameInput("Введите ваше Имя", "Имя не может быть пустым");
+            string secondName = NameInput("Введите вашу Фамилию", "Фамилия не может быть пустой");
 
             int age = AgeInput("Введите ваш Возраст", "Возраст не может быть пустым и должен быть числом");
 
@@ -31,7 +31,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Метод для обработки пустого поля имени и фамилии
+        /// Метод для обработки поле имени и фамилии
         /// </summary>
         /// <param name="name">Имя или фамилия</param>
         /// <param name="errorMessage">Ошибка</param>
@@ -53,7 +53,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Метод для обработки пустого поля возраста
+        /// Метод для обработки возраста
         /// </summary>
         /// <param name="age">Возраст</param>
         /// <returns>Возвращает поле для ввода</returns>
