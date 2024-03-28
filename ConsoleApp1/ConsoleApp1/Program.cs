@@ -4,8 +4,8 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        private static PersonList _firstPersonList = new PersonList("1 массиве");
-        private static PersonList _secondPersonList = new PersonList("2 массиве");
+        private static PersonList _firstPersonList = new PersonList("1 массив");
+        private static PersonList _secondPersonList = new PersonList("2 массив");
 
         /// <summary>
         /// Основная программа
@@ -24,6 +24,7 @@ namespace ConsoleApp1
                     "5  -  Очистить список полностью\n" +
                     "6  -  Ввести персону вручную\n" +
                     "7  -  RandomPerson\n");
+
                 number = Console.ReadLine();
                 switch (number)
                 {

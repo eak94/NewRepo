@@ -15,12 +15,12 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Person PersonConsole(PersonList personList)
         {
-            string name = RequestInput("Введите ваше Имя", "Имя не может быть пустым.");
-            string secondName = RequestInput("Введите вашу Фамилию", "Фамилия не может быть пустой.");
+            string name = NameInput("Введите ваше Имя", "Имя не может быть пустым.");
+            string secondName = NameInput("Введите вашу Фамилию", "Фамилия не может быть пустой.");
 
-            int age = RequestIntegerInput("Введите ваш Возраст", "Возраст не может быть пустым и должен быть числом");
+            int age = AgeInput("Введите ваш Возраст", "Возраст не может быть пустым и должен быть числом");
 
-            Gender gender = RequestGenderInput("Введите ваш Пол (М/Ж) или (M/F)");
+            Gender gender = GenderInput("Введите ваш Пол (М/Ж) или (M/F)");
 
             Person newPerson = new Person(name, secondName, age, gender);
             personList.AddPerson(newPerson);
@@ -31,12 +31,12 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// 
+        /// Метод для обработки пустого поля имени и фамилии
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static string RequestInput(string name, string errorMessage)
+        /// <param name="name">Имя или фамилия</param>
+        /// <param name="errorMessage">Ошибка</param>
+        /// <returns>Возвращает поле для ввода</returns>
+        public static string NameInput(string name, string errorMessage)
         {
             string input;
             do
@@ -53,16 +53,16 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// 
+        /// Метод для обработки пустого поля возраста
         /// </summary>
-        /// <param name="age"></param>
-        /// <returns></returns>
-        public static int RequestIntegerInput(string prompt, string errorMessage)
+        /// <param name="age">Возраст</param>
+        /// <returns>Возвращает поле для ввода</returns>
+        public static int AgeInput(string age, string errorMessage)
         {
             int input;
             do
             {
-                Console.WriteLine(prompt);
+                Console.WriteLine(age);
                 if (!int.TryParse(Console.ReadLine(), out input))
                 {
                     Console.WriteLine(errorMessage);
@@ -73,11 +73,11 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// 
+        /// Метод для обработки пола
         /// </summary>
-        /// <param name="genderPrompt"></param>
-        /// <returns></returns>
-        public static Gender RequestGenderInput(string genderInput)
+        /// <param name="genderInput"> Пол</param>
+        /// <returns>Возвращает поля для ввода</returns>
+        public static Gender GenderInput(string genderInput)
         {
             while (true)
             {

@@ -7,7 +7,7 @@ namespace ClassLibrary1
     public class PersonList
     {
         /// <summary>
-        /// Массив для хранения перечня людей
+        /// Массив для хранения персон
         /// </summary>
         private Person[] _people;
 
@@ -53,14 +53,13 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Конструктор по умолчанию
+        /// Конструктор массива по умолчанию
         /// </summary>
         public PersonList()
         {
             _people = new Person[0];
-            _nameArrayPerson = "новом списке";
+            _nameArrayPerson = "созданный вручную";
         }
-
 
         /// <summary>
         /// Метод для установки значений в массив _people
@@ -95,7 +94,7 @@ namespace ClassLibrary1
         /// </summary>
         public void PrintPeople()
         {
-            Console.WriteLine($"Список персон в {_nameArrayPerson}:");
+            Console.WriteLine($"Список персон {_nameArrayPerson}:");
             foreach (var person in _people)
             {
                 if (person != null)

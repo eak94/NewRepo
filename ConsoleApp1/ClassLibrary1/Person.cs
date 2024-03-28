@@ -85,8 +85,8 @@ namespace ClassLibrary1
         /// <summary>
         /// Проверка символов, вводимых в поле Имя и Фамилия
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns>Возвращает обратную строку</returns>
+        /// <param name="value">введенное Имя или Фамилия </param>
+        /// <returns>Возвращает строку с Именем или Фамилией с заглавной буквы</returns>
         public static string ExceptionsName(string value, string errorMessage)
         {
             if (string.IsNullOrEmpty(value))
@@ -140,13 +140,18 @@ namespace ClassLibrary1
                 }
                 catch (ArgumentException ex)
                 {
-                    Console.WriteLine($"{ex.Message} Введите возраст заново:");
+                    Console.WriteLine($"{ex.Message}Введите возраст заново:");
                     int newAge = int.Parse(Console.ReadLine());
                     Age = newAge;
                 }
             }
         }
-
+        /// <summary>
+        /// Метод для обработки возвраста
+        /// </summary>
+        /// <param name="age">Возраст</param>
+        /// <returns>Возвращает поле для возраста</returns>
+        /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
             if (age % 1 != 0)
@@ -188,7 +193,7 @@ namespace ClassLibrary1
         }
 
         /// <summary>
-        /// Вывод данных в консоль
+        /// Вывод персоны в консоле
         /// </summary>
         public void PrintPerson()
         {
