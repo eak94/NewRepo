@@ -1,6 +1,4 @@
 using ClassLibrary1;
-using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1
 {
@@ -21,7 +19,7 @@ namespace ConsoleApp1
                 Console.WriteLine("МЕНЮ\n" +
                     "1  -  Создание программно двух списков персон в каждом из которых по три человека+вывести содержимое на экран\n" +
                     "2  -  Добавить нового челока в первый список\n" +
-                    "3  - Копирование второго человека из первого списка в конец второго списка\n" +
+                    "3  -  Копирование второго человека из первого списка в конец второго списка\n" +
                     "4  -  Удаление второго человека из первого списка\n" +
                     "5  -  Очистить список полностью\n" +
                     "6  -  Ввести персону вручную\n" +
@@ -114,14 +112,25 @@ namespace ConsoleApp1
                         {
                             Console.WriteLine("\nДля тестирования метода ввода персоны с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
-                            Person newPerson = Person.AddPersonConsole();
-                            Console.WriteLine($"\nСоздан новый объект Person:");
-                            newPerson.PrintPerson();
+
+                            Console.WriteLine("Введите количество персон для создания:");
+                            int count = int.Parse(Console.ReadLine());
+
+                            PersonList personList = new PersonList();
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                Console.WriteLine($"\nСоздаем персону {i + 1}");
+
+                                _ = AddPersonConsole.PersonConsole(personList);
+                            }
+
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 6");
                             _ = Console.ReadKey();
                             Console.Clear();
                             break;
                         }
+
                     case "7":
                         {
                             Console.WriteLine();

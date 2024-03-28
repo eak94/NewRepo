@@ -152,21 +152,17 @@ namespace ClassLibrary1
 
         private int ExceptionsAge(int age)
         {
-            if ( < _minAge)
+            if (age < _minAge)
             {
                 throw new ArgumentException($"Возраст не может быть отрицательным\n");
             }
 
-            if (value > _maxAge)
+            if (age > _maxAge)
             {
                 throw new ArgumentException($"Возраст не может быть больше {_maxAge}\n");
             }
 
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Имеются незаполненные поля\n");
-            }
-            return value;
+            return age;
         }
 
         /// <summary>
@@ -195,24 +191,6 @@ namespace ClassLibrary1
         public void PrintPerson()
         {
             Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
-        }
-
-        /// <summary>
-        /// Метод для ввода и чтения персоны с клавиатуры и вывода персоны на экран 
-        /// </summary>
-        public static Person AddPersonConsole()
-        {
-            Console.WriteLine("Новые данные");
-            Console.WriteLine("Введите ваше Имя");
-            string name = Console.ReadLine();
-            Console.WriteLine("Введите вашу Фамилия");
-            string secondName = Console.ReadLine();
-            Console.WriteLine("Введите ваш Возраст");
-            int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите ваш Пол (М/Ж)");
-            Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine());
-            Person newPerson = new Person(name, secondName, age, gender);
-            return newPerson;
         }
 
         /// <summary>

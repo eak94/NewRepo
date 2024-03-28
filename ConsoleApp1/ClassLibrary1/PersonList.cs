@@ -53,6 +53,16 @@ namespace ClassLibrary1
         }
 
         /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public PersonList()
+        {
+            _people = new Person[0];
+            _nameArrayPerson = "новом списоке";
+        }
+
+
+        /// <summary>
         /// Метод для установки значений в массив _people
         /// </summary>
         /// <param name="index">Индекс элемента</param>
@@ -163,7 +173,5 @@ namespace ClassLibrary1
         {
             return _ = _people.Length;
         }
-
-
     }
 }
