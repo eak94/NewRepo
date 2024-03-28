@@ -10,7 +10,7 @@ namespace ConsoleApp1
         /// <summary>
         /// Основная программа
         /// </summary>
-        private static void Main()
+        public static void Main()
         {
             string number;
 
@@ -121,7 +121,6 @@ namespace ConsoleApp1
                             for (int i = 0; i < count; i++)
                             {
                                 Console.WriteLine($"\nСоздаем персону {i + 1}");
-
                                 _ = AddPersonConsole.PersonConsole(personList);
                             }
 
@@ -133,13 +132,18 @@ namespace ConsoleApp1
 
                     case "7":
                         {
-                            Console.WriteLine();
-                            Console.WriteLine("Для тестирования метода RandomPerson нажмите Enter");
+                            Console.WriteLine("\nДля тестирования метода RandomPerson нажмите Enter");
                             _ = Console.ReadKey();
-                            Console.WriteLine();
-                            Person randomPerson = RandomPerson.GetRandomPerson();
-                            Console.WriteLine("\nСлучайная персона:");
-                            randomPerson.PrintPerson();
+                            Console.WriteLine("Введите количество персон для создания:");
+                            int count = int.Parse(Console.ReadLine());
+
+                            RandomPerson personList = new RandomPerson();
+                            for (int i = 0; i < count; i++)
+                            {
+                                Person randomPerson = RandomPerson.GetRandomPerson();
+                                personList.AddPerson(randomPerson);
+                            }
+                            personList.PrintPeople();
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 7");
                             _ = Console.ReadKey();
                             Console.Clear();

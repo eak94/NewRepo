@@ -11,14 +11,14 @@ namespace ClassLibrary1
         public static Person GetRandomPerson()
         {
             Person randomPerson = new Person();
-            var nameFemale = new string[] {"Катя", "Алена", "Анна", "Екатерина",
+            string[] nameFemale = new string[] {"Валерия", "Алена", "Анна", "Екатерина",
         "Алина", "Кира", "Валентина"};
-            var nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
+            string[] nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
         "Борис", "Роман", "Петр"};
-            var secondnameMale = new string[] {"Стенов", "Любимов", "Стулов", "Попов",
+            string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов", "Попов",
         "Андреев", "Иванов", "Пушкин"};
-            var secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
-        "Сечина", "Ручкина", "Спицина"};
+            string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
+        "Сечина", "Ручкина", "Доскова"};
 
             Random rnd = new Random();
             int minAge = 0;
@@ -47,5 +47,6 @@ namespace ClassLibrary1
 
             return randomPerson;
         }
+
     }
 }

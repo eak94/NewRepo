@@ -58,7 +58,7 @@ namespace ClassLibrary1
         public PersonList()
         {
             _people = new Person[0];
-            _nameArrayPerson = "новом списоке";
+            _nameArrayPerson = "новом списке";
         }
 
 

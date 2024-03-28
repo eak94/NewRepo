@@ -1,4 +1,5 @@
 using ClassLibrary1;
+using System.Xml.Linq;
 
 namespace ConsoleApp1
 {
@@ -9,17 +10,18 @@ namespace ConsoleApp1
     {
 
         /// <summary>
-        /// 
+        /// Метод для вывода введеного в консоль персона
         /// </summary>
+        /// <param name="personList"></param>
         /// <returns></returns>
         public static Person PersonConsole(PersonList personList)
         {
             string name = RequestInput("Введите ваше Имя", "Имя не может быть пустым.");
             string secondName = RequestInput("Введите вашу Фамилию", "Фамилия не может быть пустой.");
 
-            int age = RequestIntegerInput("Введите ваш Возраст.");
+            int age = RequestIntegerInput("Введите ваш Возраст", "Возраст не может быть пустым и должен быть числом");
 
-            Gender gender = RequestGenderInput("Введите ваш Пол (М/Ж)");
+            Gender gender = RequestGenderInput("Введите ваш Пол (М/Ж) или (M/F)");
 
             Person newPerson = new Person(name, secondName, age, gender);
             personList.AddPerson(newPerson);
@@ -35,7 +37,7 @@ namespace ConsoleApp1
         /// <param name="name"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        private static string RequestInput(string name, string errorMessage)
+        public static string RequestInput(string name, string errorMessage)
         {
             string input;
             do
@@ -56,31 +58,46 @@ namespace ConsoleApp1
         /// </summary>
         /// <param name="age"></param>
         /// <returns></returns>
-        private static int RequestIntegerInput(string age)
+        public static int RequestIntegerInput(string age, string errorMessage)
         {
             int input;
             do
             {
                 Console.WriteLine(age);
+                input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine(errorMessage);
+                }
             }
-            while (!int.TryParse(Console.ReadLine(), out input));
+            while (string.IsNullOrWhiteSpace(input));
             return input;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="gender"></param>
+        /// <param name="genderPrompt"></param>
         /// <returns></returns>
-        private static Gender RequestGenderInput(string genderPeople)
+        public static Gender RequestGenderInput(string genderInput)
         {
-            Gender gender;
-            do
+            while (true)
             {
-                Console.WriteLine(genderPeople);
+                Console.WriteLine(genderInput);
+                string insertedGender = Console.ReadLine().ToUpper();
+                switch (insertedGender)
+                {
+                    case "M":
+                    case "М":
+                        return Gender.Male;
+                    case "F":
+                    case "Ж":
+                        return Gender.Female;
+                    default:
+                        Console.WriteLine("Неправильно указан пол");
+                        break;
+                }
             }
-            while (!Enum.TryParse(Console.ReadLine(), out gender) || gender != Gender.Male && gender != Gender.Female);
-            return gender;
         }
     }
 }

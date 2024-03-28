@@ -48,7 +48,7 @@ namespace ClassLibrary1
                     }
                     catch (ArgumentException ex)
                     {
-                        Console.WriteLine($"{ex.Message}Пожалуйста, введите имя заново:");
+                        Console.WriteLine($"{ex.Message}Введите фамилию заново:");
                         value = Console.ReadLine();
                     }
                 }
@@ -76,7 +76,7 @@ namespace ClassLibrary1
                     }
                     catch (ArgumentException ex)
                     {
-                        Console.WriteLine($"{ex.Message}Пожалуйста, введите фамилии заново:");
+                        Console.WriteLine($"{ex.Message} Введите фамилию заново:");
                         value = Console.ReadLine();
                     }
                 }
@@ -87,7 +87,7 @@ namespace ClassLibrary1
         /// </summary>
         /// <param name="value"></param>
         /// <returns>Возвращает обратную строку</returns>
-        private static string ExceptionsName(string value, string errorMessage)
+        public static string ExceptionsName(string value, string errorMessage)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -134,24 +134,26 @@ namespace ClassLibrary1
             }
             set
             {
-                while (true)
+                try
                 {
-                    try
-                    {
-                        _ = ExceptionsAge(value);
-                        break;
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        Console.WriteLine($"{ex.Message} Пожалуйста, введите возраст заново:");
-                        value = Convert.ToInt32(Console.ReadLine());
-                    }
+                    _age = ExceptionsAge(value);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine($"{ex.Message} Введите возраст заново:");
+                    int newAge = int.Parse(Console.ReadLine());
+                    Age = newAge;
                 }
             }
         }
 
-        private int ExceptionsAge(int age)
+        public int ExceptionsAge(int age)
         {
+            if (age % 1 != 0)
+            {
+                throw new ArgumentException($"Возраст должен быть целым числом\n");
+            }
+
             if (age < _minAge)
             {
                 throw new ArgumentException($"Возраст не может быть отрицательным\n");
