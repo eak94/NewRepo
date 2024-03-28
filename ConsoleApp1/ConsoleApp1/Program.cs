@@ -130,26 +130,6 @@ namespace ConsoleApp1
                             break;
                         }
 
-                    case "7":
-                        {
-                            Console.WriteLine("\nДля тестирования метода RandomPerson нажмите Enter");
-                            _ = Console.ReadKey();
-                            Console.WriteLine("Введите количество персон для создания:");
-                            int count = int.Parse(Console.ReadLine());
-
-                            RandomPerson personList = new RandomPerson();
-                            for (int i = 0; i < count; i++)
-                            {
-                                Person randomPerson = RandomPerson.GetRandomPerson();
-                                personList.AddPerson(randomPerson);
-                            }
-                            personList.PrintPeople();
-                            Console.WriteLine("\nНажмите Enter для выхода из пункта 7");
-                            _ = Console.ReadKey();
-                            Console.Clear();
-                            break;
-                        }
-
                     default:
                         Console.WriteLine("Некорректный выбор. Пожалуйста, выберите пункт из меню.");
                         break;

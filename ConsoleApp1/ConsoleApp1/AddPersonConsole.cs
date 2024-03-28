@@ -1,5 +1,4 @@
 using ClassLibrary1;
-using System.Xml.Linq;
 
 namespace ConsoleApp1
 {
@@ -58,19 +57,18 @@ namespace ConsoleApp1
         /// </summary>
         /// <param name="age"></param>
         /// <returns></returns>
-        public static int RequestIntegerInput(string age, string errorMessage)
+        public static int RequestIntegerInput(string prompt, string errorMessage)
         {
             int input;
             do
             {
-                Console.WriteLine(age);
-                input = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(input))
+                Console.WriteLine(prompt);
+                if (!int.TryParse(Console.ReadLine(), out input))
                 {
                     Console.WriteLine(errorMessage);
                 }
             }
-            while (string.IsNullOrWhiteSpace(input));
+            while (input == 0);
             return input;
         }
 
