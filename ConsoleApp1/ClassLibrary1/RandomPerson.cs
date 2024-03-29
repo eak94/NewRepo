@@ -12,6 +12,7 @@ namespace ClassLibrary1
         {
             Person randomPerson = new Person();
 
+            //TODO: RSDN
             string[] nameFemale = new string[] {"Валерия", "Алена", "Анна", "Екатерина",
         "Алина", "Кира", "Валентина"};
             string[] nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
@@ -22,6 +23,7 @@ namespace ClassLibrary1
         "Сечина", "Ручкина", "Доскова"};
 
             Random random = new Random();
+            //TODO: remove
             int minAge = 0;
             int maxAge = 100;
             randomPerson.Gender = (Gender)random.Next(2);
@@ -50,6 +52,5 @@ namespace ClassLibrary1
 
             return randomPerson;
         }
-
     }
 }

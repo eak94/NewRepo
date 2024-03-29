@@ -1,7 +1,9 @@
 using System.Text.RegularExpressions;
 
+//TODO: rename
 namespace ClassLibrary1
 {
+    //TODO: XML
     public class Person
     {
         /// <summary>
@@ -22,8 +24,8 @@ namespace ClassLibrary1
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        /// 
         private const int _minAge = 0;
+
         /// <summary>
         /// Максимальный возраст
         /// </summary>
@@ -45,12 +47,14 @@ namespace ClassLibrary1
                 {
                     try
                     {
+                        //TODO: RSDN
                         _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
                         flag = true;
                     }
                     catch (ArgumentException exception)
                     {
-                        Console.WriteLine($"{exception.Message}Введите имя заново:");
+                        Console.WriteLine($"{exception.Message} Введите имя заново:");
+                        //TODO: remove
                         value = Console.ReadLine();
                     }
                 }
@@ -73,12 +77,14 @@ namespace ClassLibrary1
                 {
                     try
                     {
+                        //TODO: RSDN
                         _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
                         flag = true;
                     }
                     catch (ArgumentException exception)
                     {
                         Console.WriteLine($"{exception.Message}Введите фамилию заново:");
+                        //TODO: remove
                         value = Console.ReadLine();
                     }
                 }
@@ -138,8 +144,10 @@ namespace ClassLibrary1
                 }
                 catch (ArgumentException exception)
                 {
-                    Console.WriteLine($"{exception.Message}Введите возраст заново:");
+                    Console.WriteLine($"{exception.Message} Введите возраст заново:");
+                    //TODO: remove
                     int newAge = int.Parse(Console.ReadLine());
+
                     Age = newAge;
                 }
             }
@@ -152,6 +160,7 @@ namespace ClassLibrary1
         /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
+            //TODO: remove
             if (age % 1 != 0)
             {
                 throw new ArgumentException($"Возраст должен быть целым числом\n");
@@ -195,6 +204,7 @@ namespace ClassLibrary1
         /// </summary>
         public void PrintPerson()
         {
+            //TODO: remove
             Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
         }
 

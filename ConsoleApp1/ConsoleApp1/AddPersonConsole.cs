@@ -15,6 +15,7 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Person PersonConsole(PersonList personList)
         {
+            //TODO: RSDN
             string name = NameInput("Введите ваше Имя", "Имя не может быть пустым");
             string secondName = NameInput("Введите вашу Фамилию", "Фамилия не может быть пустой");
 

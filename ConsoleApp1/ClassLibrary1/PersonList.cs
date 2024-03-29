@@ -11,6 +11,7 @@ namespace ClassLibrary1
         /// </summary>
         private List<Person> _people = new List<Person>();
 
+        //TODO: remove
         /// <summary>
         /// Метод для отображения списка персон 
         /// </summary>
