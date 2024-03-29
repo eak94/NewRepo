@@ -9,92 +9,13 @@ namespace ClassLibrary1
         /// <summary>
         /// Массив для хранения персон
         /// </summary>
-        private Person[] _people;
-
-        /// <summary>
-        /// Наименование массива 
-        /// </summary>
-        private string _nameArrayPerson;
-
-        /// <summary>
-        /// Конструктор класса Массив Персон 1
-        /// </summary>
-        /// <param name="nameArrayPerson">Название массива</param>
-        public PersonList(string nameArrayPerson)
-        {
-            _nameArrayPerson = nameArrayPerson;
-            _people = new Person[3];
-        }
-
-        /// <summary>
-        /// Конструктор класса Массив Персон 2
-        /// </summary>
-        /// <param name="arrayPerson">Список Персон</param>
-        /// <param name="nameArrayPerson">Название списка</param>
-        public PersonList(Person[] arrayPerson, string nameArrayPerson)
-        {
-            _nameArrayPerson = nameArrayPerson;
-            _people = arrayPerson;
-        }
-
-        /// <summary>
-        /// Определения свойства названия массивов
-        /// </summary>
-        public string NamelistPerson
-        {
-            get
-            {
-                return _nameArrayPerson;
-            }
-            set
-            {
-                _nameArrayPerson = value;
-            }
-        }
-
-        /// <summary>
-        /// Конструктор массива по умолчанию
-        /// </summary>
-        public PersonList()
-        {
-            _people = new Person[0];
-            _nameArrayPerson = "созданный вручную";
-        }
-
-        /// <summary>
-        /// Метод для установки значений в массив _people
-        /// </summary>
-        /// <param name="index">Индекс элемента</param>
-        /// <returns>Элемент списка по указанному индексу</returns>
-        public Person this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < _people.Length)
-                {
-                    return _people[index];
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            set
-            {
-                if (index >= 0 && index < _people.Length)
-                {
-                    _people[index] = value;
-                }
-            }
-
-        }
+        private List<Person> _people = new List<Person>();
 
         /// <summary>
         /// Метод для отображения списка персон 
         /// </summary>
         public void PrintPeople()
         {
-            Console.WriteLine($"Список персон {_nameArrayPerson}:");
             foreach (var person in _people)
             {
                 if (person != null)
@@ -107,11 +28,10 @@ namespace ClassLibrary1
         /// <summary>
         /// Метод для добавления новых элементов в одномерный массив
         /// </summary>
-        /// <param name="person">Данные о персоне</param>
+        /// <param name="person">Персона</param>
         public void AddPerson(Person person)
         {
-            Array.Resize(ref _people, _people.Length + 1);
-            _people[_people.Length - 1] = person;
+            _people.Add(person);
         }
 
         /// <summary>
@@ -120,14 +40,7 @@ namespace ClassLibrary1
         /// <param name="index">Индекс персоны, которую надо удалить</param>
         public void DeleteIndexPerson(int index)
         {
-            if (index >= 0 && index < _people.Length)
-            {
-                for (int i = index; i < _people.Length - 1; i++)
-                {
-                    _people[i] = _people[i + 1];
-                }
-                Array.Resize(ref _people, _people.Length - 1);
-            }
+            _people.RemoveAt(index);
         }
 
         /// <summary>
@@ -137,7 +50,7 @@ namespace ClassLibrary1
         /// <returns>Вовращает элемнт по индексу</returns>
         public Person IndexPerson(int index)
         {
-            if (index >= 0 && index < _people.Length)
+            if (index >= 0 && index < _people.Count)
             {
                 return _people[index];
             }
@@ -150,10 +63,17 @@ namespace ClassLibrary1
         /// <summary>
         /// Метод для поиска элемента при его наличии в списке
         /// </summary>
-        /// <param name="index">Вовзращает индекс элемента, при наличии в списке</param>
-        public Person FindIndexPerson(int index)
+        /// <param name="index">Возвращает индекс элемента, при наличии в списке</param>
+        public Person FindIndexPerson(Person person)
         {
-            return _people[index];
+            if (_people.Contains(person))
+            {
+                return person;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -161,7 +81,7 @@ namespace ClassLibrary1
         /// </summary>
         public void DeleteArrayPerson()
         {
-            Array.Clear(_people, 0, _people.Length);
+            _people.Clear();
         }
 
         /// <summary>
@@ -170,7 +90,7 @@ namespace ClassLibrary1
         /// <returns>Возвращает количество персон в списке</returns>
         public int CountPerson()
         {
-            return _ = _people.Length;
+            return _people.Count;
         }
     }
 }

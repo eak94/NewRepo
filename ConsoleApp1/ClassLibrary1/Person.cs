@@ -18,9 +18,11 @@ namespace ClassLibrary1
         /// Возраст пользователя
         /// </summary>
         private int _age;
+
         /// <summary>
         /// Минимальный возраст
         /// </summary>
+        /// 
         private const int _minAge = 0;
         /// <summary>
         /// Максимальный возраст
