@@ -11,6 +11,7 @@ namespace ClassLibrary1
         public static Person GetRandomPerson()
         {
             Person randomPerson = new Person();
+
             string[] nameFemale = new string[] {"Валерия", "Алена", "Анна", "Екатерина",
         "Алина", "Кира", "Валентина"};
             string[] nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
@@ -28,16 +29,16 @@ namespace ClassLibrary1
             switch (randomPerson.Gender)
             {
                 case Gender.Female:
-                    var rndPersonNameFemale = random.Next(0, nameFemale.Length);
-                    var rndPersonSecondnameFemale = random.Next(0, secondnameFemale.Length);
-                    randomPerson.Name = nameFemale[rndPersonNameFemale];
-                    randomPerson.SecondName = secondnameFemale[rndPersonSecondnameFemale];
+                    var randomPersonNameFemale = random.Next(0, nameFemale.Length);
+                    var randomPersonSecondnameFemale = random.Next(0, secondnameFemale.Length);
+                    randomPerson.Name = nameFemale[randomPersonNameFemale];
+                    randomPerson.SecondName = secondnameFemale[randomPersonSecondnameFemale];
                     break;
                 case Gender.Male:
-                    var rndPersonNameMale = random.Next(0, nameMale.Length);
-                    var rndPersonSecondnameMale = random.Next(0, secondnameMale.Length);
-                    randomPerson.Name = nameMale[rndPersonNameMale];
-                    randomPerson.SecondName = secondnameMale[rndPersonSecondnameMale];
+                    var randomPersonNameMale = random.Next(0, nameMale.Length);
+                    var randomPersonSecondnameMale = random.Next(0, secondnameMale.Length);
+                    randomPerson.Name = nameMale[randomPersonNameMale];
+                    randomPerson.SecondName = secondnameMale[randomPersonSecondnameMale];
                     break;
                 default:
                     break;

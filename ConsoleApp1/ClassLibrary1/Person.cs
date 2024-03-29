@@ -48,9 +48,9 @@ namespace ClassLibrary1
                         _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
                         flag = true;
                     }
-                    catch (ArgumentException ex)
+                    catch (ArgumentException exception)
                     {
-                        Console.WriteLine($"{ex.Message}Введите имя заново:");
+                        Console.WriteLine($"{exception.Message}Введите имя заново:");
                         value = Console.ReadLine();
                     }
                 }
@@ -76,9 +76,9 @@ namespace ClassLibrary1
                         _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
                         flag = true;
                     }
-                    catch (ArgumentException ex)
+                    catch (ArgumentException exception)
                     {
-                        Console.WriteLine($"{ex.Message}Введите фамилию заново:");
+                        Console.WriteLine($"{exception.Message}Введите фамилию заново:");
                         value = Console.ReadLine();
                     }
                 }
@@ -136,9 +136,9 @@ namespace ClassLibrary1
                 {
                     _age = ExceptionsAge(value);
                 }
-                catch (ArgumentException ex)
+                catch (ArgumentException exception)
                 {
-                    Console.WriteLine($"{ex.Message}Введите возраст заново:");
+                    Console.WriteLine($"{exception.Message}Введите возраст заново:");
                     int newAge = int.Parse(Console.ReadLine());
                     Age = newAge;
                 }
