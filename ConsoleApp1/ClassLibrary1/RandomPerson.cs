@@ -34,12 +34,14 @@ namespace ClassLibrary1
                     randomPerson.Name = nameFemale[randomPersonNameFemale];
                     randomPerson.SecondName = secondnameFemale[randomPersonSecondnameFemale];
                     break;
+
                 case Gender.Male:
                     var randomPersonNameMale = random.Next(0, nameMale.Length);
                     var randomPersonSecondnameMale = random.Next(0, secondnameMale.Length);
                     randomPerson.Name = nameMale[randomPersonNameMale];
                     randomPerson.SecondName = secondnameMale[randomPersonSecondnameMale];
                     break;
+
                 default:
                     break;
             }

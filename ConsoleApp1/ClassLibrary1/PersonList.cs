@@ -47,7 +47,7 @@ namespace ClassLibrary1
         /// Метод для поиска персоны по указанному индексу
         /// </summary>
         /// <param name="index">Индекс персоны</param>
-        /// <returns>Вовращает элемнт по индексу</returns>
+        /// <returns></returns>
         public Person IndexPerson(int index)
         {
             if (index >= 0 && index < _people.Count)
@@ -63,7 +63,7 @@ namespace ClassLibrary1
         /// <summary>
         /// Метод для поиска элемента при его наличии в списке
         /// </summary>
-        /// <param name="index">Возвращает индекс элемента, при наличии в списке</param>
+        /// <param name="index"></param>
         public Person FindIndexPerson(Person person)
         {
             if (_people.Contains(person))
