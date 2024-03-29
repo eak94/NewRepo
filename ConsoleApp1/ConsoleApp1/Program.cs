@@ -11,6 +11,7 @@ namespace ConsoleApp1
         {
             PersonList firstlist = new PersonList();
             PersonList secondlist = new PersonList();
+
             string number;
 
             while (true)
@@ -119,18 +120,35 @@ namespace ConsoleApp1
                             Console.WriteLine("\nДля тестирования метода ввода персоны с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
 
-                            Console.WriteLine("Введите количество персон для создания:");
+                            Console.WriteLine("Введите количество персон для добавления в список 1:");
                             int count = int.Parse(Console.ReadLine());
-
-                            PersonList personList = new PersonList();
 
                             for (int i = 0; i < count; i++)
                             {
                                 Console.WriteLine($"\nСоздаем персону {i + 1}");
-                                _ = AddPersonConsole.PersonConsole(personList);
+                                _ = AddPersonConsole.PersonConsole(firstlist);
                             }
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 6");
+                            _ = Console.ReadKey();
+                            Console.Clear();
+                            break;
+                        }
+                    case "7":
+                        {
+                            Console.WriteLine("\nДля тестирования метода RandomPerson нажмите Enter");
+                            _ = Console.ReadKey();
+
+                            Console.WriteLine("Введите количество персон для создания:");
+                            int count = int.Parse(Console.ReadLine());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                Person randomPerson = RandomPerson.GetRandomPerson();
+                                firstlist.AddPerson(randomPerson);
+                            }
+                            firstlist.PrintPeople();
+                            Console.WriteLine("\nНажмите Enter для выхода из пункта 7");
                             _ = Console.ReadKey();
                             Console.Clear();
                             break;

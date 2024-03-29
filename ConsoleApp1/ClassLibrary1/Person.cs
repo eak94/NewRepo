@@ -78,7 +78,7 @@ namespace ClassLibrary1
                     }
                     catch (ArgumentException ex)
                     {
-                        Console.WriteLine($"{ex.Message} Введите фамилию заново:");
+                        Console.WriteLine($"{ex.Message}Введите фамилию заново:");
                         value = Console.ReadLine();
                     }
                 }

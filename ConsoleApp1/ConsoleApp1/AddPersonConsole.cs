@@ -25,6 +25,7 @@ namespace ConsoleApp1
             Person newPerson = new Person(name, secondName, age, gender);
             personList.AddPerson(newPerson);
 
+            Console.WriteLine("\nНовый список");
             personList.PrintPeople();
 
             return newPerson;
@@ -49,6 +50,7 @@ namespace ConsoleApp1
                 }
             }
             while (string.IsNullOrWhiteSpace(input));
+
             return input;
         }
 
@@ -69,6 +71,7 @@ namespace ConsoleApp1
                 }
             }
             while (input == 0);
+
             return input;
         }
 
