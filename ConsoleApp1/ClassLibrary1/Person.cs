@@ -40,13 +40,13 @@ namespace ClassLibrary1
             }
             set
             {
-                bool isValid = false;
-                while (!isValid)
+                bool flag = false;
+                while (!flag)
                 {
                     try
                     {
                         _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
-                        isValid = true;
+                        flag = true;
                     }
                     catch (ArgumentException ex)
                     {
@@ -68,13 +68,13 @@ namespace ClassLibrary1
             }
             set
             {
-                bool isValid = false;
-                while (!isValid)
+                bool flag = false;
+                while (!flag)
                 {
                     try
                     {
                         _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
-                        isValid = true;
+                        flag = true;
                     }
                     catch (ArgumentException ex)
                     {
@@ -91,10 +91,6 @@ namespace ClassLibrary1
         /// <returns>Возвращает строку с Именем или Фамилией с заглавной буквы</returns>
         public static string ExceptionsName(string value, string errorMessage)
         {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Имеются незаполненные поля\n");
-            }
 
             string nameSecondnamePattern = "^[а-яА-Яa-zA-Z]+-?[а-яА-Яa-zA-Z]*$";
 

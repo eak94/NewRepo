@@ -20,22 +20,22 @@ namespace ClassLibrary1
             string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
         "Сечина", "Ручкина", "Доскова"};
 
-            Random rnd = new Random();
+            Random random = new Random();
             int minAge = 0;
             int maxAge = 100;
-            randomPerson.Gender = (Gender)rnd.Next(2);
+            randomPerson.Gender = (Gender)random.Next(2);
 
             switch (randomPerson.Gender)
             {
                 case Gender.Female:
-                    var rndPersonNameFemale = rnd.Next(0, nameFemale.Length);
-                    var rndPersonSecondnameFemale = rnd.Next(0, secondnameFemale.Length);
+                    var rndPersonNameFemale = random.Next(0, nameFemale.Length);
+                    var rndPersonSecondnameFemale = random.Next(0, secondnameFemale.Length);
                     randomPerson.Name = nameFemale[rndPersonNameFemale];
                     randomPerson.SecondName = secondnameFemale[rndPersonSecondnameFemale];
                     break;
                 case Gender.Male:
-                    var rndPersonNameMale = rnd.Next(0, nameMale.Length);
-                    var rndPersonSecondnameMale = rnd.Next(0, secondnameMale.Length);
+                    var rndPersonNameMale = random.Next(0, nameMale.Length);
+                    var rndPersonSecondnameMale = random.Next(0, secondnameMale.Length);
                     randomPerson.Name = nameMale[rndPersonNameMale];
                     randomPerson.SecondName = secondnameMale[rndPersonSecondnameMale];
                     break;
@@ -43,7 +43,7 @@ namespace ClassLibrary1
                     break;
             }
 
-            randomPerson.Age = rnd.Next(minAge, maxAge);
+            randomPerson.Age = random.Next(minAge, maxAge);
 
             return randomPerson;
         }
