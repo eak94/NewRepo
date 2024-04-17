@@ -53,6 +53,7 @@ namespace Lb1
                 //{
                 //    break;
                 //}
+
             }
             while (string.IsNullOrWhiteSpace(input));
 
