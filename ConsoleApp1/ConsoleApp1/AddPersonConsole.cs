@@ -49,10 +49,10 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine(errorMessage);
                 }
-                if (Person.ExceptionsName(name))
-                {
-                    break;
-                }
+                //if (Person.ExceptionsName(name))
+                //{
+                //    break;
+                // }
             }
             while (string.IsNullOrWhiteSpace(input));
 
