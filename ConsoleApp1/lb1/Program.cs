@@ -1,6 +1,6 @@
-using ClassLibrary1;
+using LibraryPerson;
 
-namespace ConsoleApp1
+namespace Lb1
 {
     internal class Program
     {

@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 
 //TODO: rename
-namespace ClassLibrary1
+namespace LibraryPerson
 {
     //TODO: XML
     public class Person

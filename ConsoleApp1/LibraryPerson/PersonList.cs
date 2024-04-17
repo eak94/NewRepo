@@ -1,5 +1,5 @@
 
-namespace ClassLibrary1
+namespace LibraryPerson
 {
     /// <summary>
     /// Класс описывает абстракцию списка
