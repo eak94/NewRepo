@@ -26,7 +26,7 @@ namespace Lb1
             Person newPerson = new Person(name, secondName, age, gender);
             personList.AddPerson(newPerson);
 
-            Console.WriteLine("\nНовый список");
+            Console.WriteLine("\nНовый список/");
             personList.PrintPeople();
 
             return newPerson;
