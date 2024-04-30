@@ -1,9 +1,12 @@
 using System.Text.RegularExpressions;
 
-//TODO: rename
+//TODO: rename+
 namespace LibraryPerson
 {
-    //TODO: XML
+    //TODO: XML+
+    /// <summary>
+    /// Класс Person
+    /// </summary>
     public class Person
     {
         /// <summary>
@@ -24,12 +27,12 @@ namespace LibraryPerson
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        private const int _minAge = 0;
+        public const int MinAge = 0;
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        private const int _maxAge = 100;
+        public const int MaxAge = 100;
 
         /// <summary>
         /// Свойства класса имя
@@ -47,8 +50,9 @@ namespace LibraryPerson
                 {
                     try
                     {
-                        //TODO: RSDN
-                        _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
+                        //TODO: RSDN+
+                        _name = ExceptionsName(value,
+                            "Имя должно содержать только русские или английские буквы\n");
                         flag = true;
                     }
                     catch (ArgumentException exception)
@@ -77,8 +81,9 @@ namespace LibraryPerson
                 {
                     try
                     {
-                        //TODO: RSDN
-                        _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
+                        //TODO: RSDN+
+                        _secondName = ExceptionsName(value,
+                            "Фамилия должна содержать только русские или английские буквы\n");
                         flag = true;
                     }
                     catch (ArgumentException exception)
@@ -145,6 +150,7 @@ namespace LibraryPerson
                 catch (ArgumentException exception)
                 {
                     Console.WriteLine($"{exception.Message} Введите возраст заново:");
+
                     //TODO: remove
                     int newAge = int.Parse(Console.ReadLine());
 
@@ -160,20 +166,14 @@ namespace LibraryPerson
         /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
-            //TODO: remove
-            if (age % 1 != 0)
-            {
-                throw new ArgumentException($"Возраст должен быть целым числом\n");
-            }
-
-            if (age < _minAge)
+            if (age < MinAge)
             {
                 throw new ArgumentException($"Возраст не может быть отрицательным\n");
             }
 
-            if (age > _maxAge)
+            if (age > MaxAge)
             {
-                throw new ArgumentException($"Возраст не может быть больше {_maxAge}\n");
+                throw new ArgumentException($"Возраст не может быть больше {MaxAge}\n");
             }
 
             return age;
@@ -200,18 +200,18 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Вывод персоны в консоле
-        /// </summary>
-        public void PrintPerson()
-        {
-            //TODO: remove
-            Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
-        }
-
-        /// <summary>
         /// Экземляр класса по умолчанию
         /// </summary>
         public Person() : this("Иван", "Иванов", 50, Gender.Male)
         { }
+
+        /// <summary>
+        /// Метод для отображения информации об объекте класса
+        /// </summary>
+        public string GetPersonInfo()
+        {
+            return ($"{Name} {SecondName}," +
+                $"Возраст {Age}, Пол {Gender}\n");
+        }
     }
 }

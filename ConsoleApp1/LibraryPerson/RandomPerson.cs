@@ -1,9 +1,11 @@
 
 namespace LibraryPerson
 {
+    /// <summary>
+    /// Класс RandomPerson
+    /// </summary>
     public class RandomPerson
     {
-
         /// <summary>
         /// Метод для генерации случайных персон
         /// </summary>
@@ -12,20 +14,18 @@ namespace LibraryPerson
         {
             Person randomPerson = new Person();
 
-            //TODO: RSDN
-            string[] nameFemale = new string[] {"Валерия", "Алена", "Анна", "Екатерина",
-        "Алина", "Кира", "Валентина"};
-            string[] nameMale = new string[] {"Антон", "Виктор", "Андрей", "Михаил",
-        "Борис", "Роман", "Петр"};
-            string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов", "Попов",
-        "Андреев", "Иванов", "Пушкин"};
-            string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова", "Мешанкина",
-        "Сечина", "Ручкина", "Доскова"};
+            //TODO: RSDN+
+            string[] nameFemale = new string[] {"Валерия", "Алена", "Анна",
+                "Екатерина", "Алина", "Кира", "Валентина"};
+            string[] nameMale = new string[] {"Антон", "Виктор", "Андрей",
+                "Михаил","Борис", "Роман", "Петр"};
+            string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов",
+                "Попов","Андреев", "Иванов", "Пушкин"};
+            string[] secondnameFemale = new string[] {"Любимова", "Ващенко",
+                "Подкорытова", "Мешанкина","Сечина", "Ручкина", "Доскова"};
 
             Random random = new Random();
-            //TODO: remove
-            int minAge = 0;
-            int maxAge = 100;
+
             randomPerson.Gender = (Gender)random.Next(2);
 
             switch (randomPerson.Gender)
@@ -48,7 +48,7 @@ namespace LibraryPerson
                     break;
             }
 
-            randomPerson.Age = random.Next(minAge, maxAge);
+            randomPerson.Age = random.Next(Person.MinAge, Person.MaxAge);
 
             return randomPerson;
         }

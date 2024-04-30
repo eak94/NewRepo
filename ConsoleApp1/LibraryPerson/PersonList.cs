@@ -7,29 +7,14 @@ namespace LibraryPerson
     public class PersonList
     {
         /// <summary>
-        /// Массив для хранения персон
+        /// Объект класса Person
         /// </summary>
         private List<Person> _people = new List<Person>();
 
-        //TODO: remove
         /// <summary>
-        /// Метод для отображения списка персон 
+        /// Метод для добавления новых элементов в список
         /// </summary>
-        public void PrintPeople()
-        {
-            foreach (var person in _people)
-            {
-                if (person != null)
-                {
-                    person.PrintPerson();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Метод для добавления новых элементов в одномерный массив
-        /// </summary>
-        /// <param name="person">Персона</param>
+        /// <param name="person">объект класса персон</param>
         public void AddPerson(Person person)
         {
             _people.Add(person);
@@ -48,7 +33,6 @@ namespace LibraryPerson
         /// Метод для поиска персоны по указанному индексу
         /// </summary>
         /// <param name="index">Индекс персоны</param>
-        /// <returns></returns>
         public Person IndexPerson(int index)
         {
             if (index >= 0 && index < _people.Count)
@@ -64,7 +48,7 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для поиска элемента при его наличии в списке
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">объект класса персон</param>
         public Person FindIndexPerson(Person person)
         {
             if (_people.Contains(person))
@@ -92,6 +76,19 @@ namespace LibraryPerson
         public int CountPerson()
         {
             return _people.Count;
+        }
+
+        /// <summary>
+        /// Метод для вывода информации об объектах класса
+        /// </summary>
+        public string GetPersonsList()
+        {
+            string list = "";
+            foreach (Person person in _people)
+            {
+                list += person.GetPersonInfo();
+            }
+            return list;
         }
     }
 }

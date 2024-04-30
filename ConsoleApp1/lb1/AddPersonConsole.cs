@@ -3,34 +3,13 @@ using LibraryPerson;
 namespace Lb1
 {
     /// <summary>
-    /// 
+    /// класс для добавления персоны с консоли
     /// </summary>
     internal class AddPersonConsole
     {
 
-        /// <summary>
-        /// Метод для вывода введеного в консоль персона
-        /// </summary>
-        /// <param name="personList"></param>
-        /// <returns></returns>
-        public static Person PersonConsole(PersonList personList)
-        {
-            //TODO: RSDN
-            string name = NameInput("Введите ваше Имя", "Имя не может быть пустым");
-            string secondName = NameInput("Введите вашу Фамилию", "Фамилия не может быть пустой");
 
-            int age = AgeInput("Введите ваш Возраст", "Возраст не может быть пустым и должен быть числом");
 
-            Gender gender = GenderInput("Введите ваш Пол (М/Ж) или (M/F)");
-
-            Person newPerson = new Person(name, secondName, age, gender);
-            personList.AddPerson(newPerson);
-
-            Console.WriteLine("\nНовый список");
-            personList.PrintPeople();
-
-            return newPerson;
-        }
 
         /// <summary>
         /// Метод для обработки поле имени и фамилии
@@ -49,10 +28,6 @@ namespace Lb1
                 {
                     Console.WriteLine(errorMessage);
                 }
-                //if (Person.ExceptionsName(name))
-                //{
-                //    break;
-                //}
 
             }
             while (string.IsNullOrWhiteSpace(input));
