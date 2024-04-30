@@ -210,8 +210,8 @@ namespace LibraryPerson
         /// </summary>
         public string GetPersonInfo()
         {
-            return ($"{Name} {SecondName}," +
-                $"Возраст {Age}, Пол {Gender}\n");
+            return ($"Имя {Name}; Фамилия {SecondName}; " +
+                $"Возраст {Age}; Пол {Gender}\n");
         }
     }
 }
