@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace LibraryPerson
 {
-    //TODO: XML
+    /// <summary>
+    /// Класс персон
+    /// </summary>
+    //TODO: XML+
     public class Person
     {
         /// <summary>
@@ -28,12 +31,12 @@ namespace LibraryPerson
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        private const int _minAge = 0;
+        public const int _minAge = 0;
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        private const int _maxAge = 100;
+        public const int _maxAge = 100;
 
         /// <summary>
         /// Свойства класса имя
@@ -52,14 +55,15 @@ namespace LibraryPerson
                     try
                     {
                         //TODO: RSDN
-                        _name = ExceptionsName(value, "Имя должно содержать только русские или английские буквы\n");
+                        _name = ExceptionsName(value,
+                            "Имя должно содержать только русские или английские буквы\n");
                         flag = true;
                     }
                     catch (ArgumentException exception)
                     {
                         Console.WriteLine($"{exception.Message} Введите имя заново:");
-                        //TODO: remove
-                        value = Console.ReadLine();
+                        //TODO: remove+(удалила взаиможействие консоль)
+
                     }
                 }
             }
@@ -88,8 +92,7 @@ namespace LibraryPerson
                     catch (ArgumentException exception)
                     {
                         Console.WriteLine($"{exception.Message}Введите фамилию заново:");
-                        //TODO: remove
-                        value = Console.ReadLine();
+                        //TODO: remove+(удалила взаиможействие консоль)
                     }
                 }
             }
@@ -149,10 +152,7 @@ namespace LibraryPerson
                 catch (ArgumentException exception)
                 {
                     Console.WriteLine($"{exception.Message} Введите возраст заново:");
-                    //TODO: remove
-                    int newAge = int.Parse(Console.ReadLine());
-
-                    Age = newAge;
+                    //TODO: remove+(удалила взаиможействие консоль)
                 }
             }
         }
@@ -164,12 +164,7 @@ namespace LibraryPerson
         /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
-            //TODO: remove
-            if (age % 1 != 0)
-            {
-                throw new ArgumentException($"Возраст должен быть целым числом\n");
-            }
-
+            //TODO: remove +(удалила проверку дробного значения)
             if (age < _minAge)
             {
                 throw new ArgumentException($"Возраст не может быть отрицательным\n");
@@ -204,12 +199,12 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Вывод персоны в консоле
+        /// Возвращает строковое представление информации о человеке
         /// </summary>
-        public void PrintPerson()
+        /// <returns>Строковое представление информации о человеке</returns>
+        public string GetInfo()
         {
-            //TODO: remove
-            Console.WriteLine($"Имя: {Name}" + $" Фамилия: {SecondName}" + $" Возраст: {Age}" + $" Пол: {Gender}");
+            return $"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}";
         }
 
         /// <summary>

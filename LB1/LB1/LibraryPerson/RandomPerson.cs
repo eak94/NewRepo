@@ -1,9 +1,11 @@
 
 namespace LibraryPerson
 {
+    /// <summary>
+    ///  Класс рандомного создания персон
+    /// </summary>
     public class RandomPerson
     {
-
         /// <summary>
         /// Метод для генерации случайных персон
         /// </summary>
@@ -12,7 +14,7 @@ namespace LibraryPerson
         {
             Person randomPerson = new Person();
 
-            //TODO: RSDN
+            //TODO: RSDN+
             string[] nameFemale = new string[] {"Валерия", "Алена", "Анна",
                 "Екатерина", "Алина", "Кира", "Валентина"};
             string[] nameMale = new string[] {"Антон", "Виктор", "Андрей",
@@ -23,9 +25,7 @@ namespace LibraryPerson
                 "Мешанкина", "Сечина", "Ручкина", "Доскова"};
 
             Random random = new Random();
-            //TODO: remove
-            int minAge = 0;
-            int maxAge = 100;
+            //TODO: remove (исправила мин и макс возраст)
             randomPerson.Gender = (Gender)random.Next(2);
 
             switch (randomPerson.Gender)
@@ -48,7 +48,7 @@ namespace LibraryPerson
                     break;
             }
 
-            randomPerson.Age = random.Next(minAge, maxAge);
+            randomPerson.Age = random.Next(Person._minAge, Person._maxAge);
 
             return randomPerson;
         }
