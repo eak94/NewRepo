@@ -58,8 +58,7 @@ namespace LibraryPerson
                     catch (ArgumentException exception)
                     {
                         Console.WriteLine($"{exception.Message} Введите имя заново:");
-                        //TODO: remove
-                        value = Console.ReadLine();
+
                     }
                 }
             }
@@ -95,6 +94,7 @@ namespace LibraryPerson
                 }
             }
         }
+
         /// <summary>
         /// Проверка символов, вводимых в поле Имя и Фамилия
         /// </summary>
@@ -149,20 +149,16 @@ namespace LibraryPerson
                 }
                 catch (ArgumentException exception)
                 {
-                    Console.WriteLine($"{exception.Message} Введите возраст заново:");
-
-                    //TODO: remove
-                    int newAge = int.Parse(Console.ReadLine());
-
-                    Age = newAge;
+                    Console.WriteLine($"{exception.Message} Введите возраст заново ");
                 }
             }
         }
+
         /// <summary>
-        /// Метод для обработки возвраста
+        /// Метод для обработки возвраста 
         /// </summary>
         /// <param name="age">Возраст</param>
-        /// <returns>Возвращает поле для возраста</returns>
+        /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
