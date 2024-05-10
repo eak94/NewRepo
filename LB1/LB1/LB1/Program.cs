@@ -65,12 +65,19 @@ namespace LB1
                     case "2":
                         {
                             Console.WriteLine("\n3ab. Вывод содержимого списка 1:\n");
+                            for (int i = 0; i < 3; i++)
+                            {
+                                firstlist.AddPerson(RandomPerson.GetRandomPerson());
+                            }
+
                             firstlist.PrintPeople();
                             Console.WriteLine("\nДля просмотра добавления новой персоны нажмите Enter");
                             _ = Console.ReadKey();
+
                             Console.WriteLine("\nДобавление новой персоны в список 1\n");
                             firstlist.AddPerson(new Person("Новый", "Человек", 40, Gender.Male));
                             firstlist.PrintPeople();
+
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 2");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -79,15 +86,23 @@ namespace LB1
                     case "3":
                         {
                             Console.WriteLine("\n3ab. Вывод содержимого списка 2:\n");
+                            for (int i = 0; i < 3; i++)
+                            {
+                                firstlist.AddPerson(RandomPerson.GetRandomPerson());
+                                secondlist.AddPerson(RandomPerson.GetRandomPerson());
+                            }
                             firstlist.PrintPeople();
+
                             Console.WriteLine("Для просмотра копирования второго человека" +
                                 " первого списка в конец второго списка нажмите Enter");
                             _ = Console.ReadKey();
+
                             Console.WriteLine("\nКопирование второго человека из первого" +
                                 " списка в конец второго списка\n");
                             int index = 1;
                             secondlist.AddPerson(firstlist.IndexPerson(index));
                             secondlist.PrintPeople();
+
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 3");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -96,14 +111,22 @@ namespace LB1
                     case "4":
                         {
                             Console.WriteLine("\n3ab. Вывод содержимого списка 1:\n");
+                            for (int i = 0; i < 3; i++)
+                            {
+                                firstlist.AddPerson(RandomPerson.GetRandomPerson());
+                                secondlist.AddPerson(RandomPerson.GetRandomPerson());
+                            }
                             firstlist.PrintPeople();
                             Console.WriteLine("Для просмотра удаления второго " +
                                 "человека из первого списка нажмите Enter");
                             _ = Console.ReadKey();
+
                             Console.WriteLine("\nУдаление второго человека из первого списка\n");
                             int indexToDelete = 1;
-                            secondlist.DeleteIndexPerson(indexToDelete);
+                            firstlist.DeleteIndexPerson(indexToDelete);
+                            firstlist.PrintPeople();
                             secondlist.PrintPeople();
+
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 4");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -112,14 +135,24 @@ namespace LB1
                     case "5":
                         {
                             Console.WriteLine("\n3ab. Вывод содержимого списка 2:\n");
+                            for (int i = 0; i < 3; i++)
+                            {
+                                firstlist.AddPerson(RandomPerson.GetRandomPerson());
+                                secondlist.AddPerson(RandomPerson.GetRandomPerson());
+                            }
+                            Console.WriteLine("Для просмотра содержимого списков 1 и 2 нажмите Enter");
+                            firstlist.PrintPeople();
                             secondlist.PrintPeople();
+
                             Console.WriteLine("Для просмотра очистки второго списка нажмите Enter");
                             _ = Console.ReadKey();
                             Console.WriteLine("\nОчистка второго списка\n");
                             secondlist.DeleteArrayPerson();
-                            Console.WriteLine("\nСодержимое второго списка");
-                            Console.WriteLine("\nСодержимое успешно удалено");
+
+                            Console.WriteLine("\nСодержимое списка 2");
+                            Console.WriteLine("\n<Содержимое успешно удалено>");
                             secondlist.PrintPeople();
+
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 5");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -168,6 +201,20 @@ namespace LB1
                     default:
                         Console.WriteLine("Некорректный выбор. Пожалуйста, выберите пункт из меню.");
                         break;
+                }
+            }
+        }
+        //TODO: remove
+        /// <summary>
+        /// Метод для отображения списка персон 
+        /// </summary>
+        public void PrintPeople()
+        {
+            foreach (var person in _people)
+            {
+                if (person != null)
+                {
+                    person.PrintPerson();
                 }
             }
         }

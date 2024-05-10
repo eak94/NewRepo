@@ -1,38 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryPerson
 {
     /// <summary>
-    /// Класс описывает абстракцию списка
+    /// Класс лист персон
     /// </summary>
     public class PersonList
     {
         /// <summary>
-        /// Массив для хранения персон
+        /// Список персон
         /// </summary>
         private List<Person> _people = new List<Person>();
 
-        //TODO: remove
         /// <summary>
-        /// Метод для отображения списка персон 
-        /// </summary>
-        public void PrintPeople()
-        {
-            foreach (var person in _people)
-            {
-                if (person != null)
-                {
-                    person.PrintPerson();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Метод для добавления новых элементов в одномерный массив
+        /// Метод для добавления новых элементов в список 
         /// </summary>
         /// <param name="person">Персона</param>
         public void AddPerson(Person person)
@@ -53,33 +39,31 @@ namespace LibraryPerson
         /// Метод для поиска персоны по указанному индексу
         /// </summary>
         /// <param name="index">Индекс персоны</param>
-        /// <returns></returns>
+        /// <returns>Возврашается персона по указанному индексу</returns>
         public Person IndexPerson(int index)
         {
-            if (index >= 0 && index < _people.Count)
+            if ((_people.Count - 1)>=index && index>=0)
             {
                 return _people[index];
             }
             else
             {
-                return null;
+                throw new IndexOutOfRangeException($"Персоны" +
+                    $"с индексом {index} в списке нет");
             }
+
         }
 
         /// <summary>
-        /// Метод для поиска элемента при его наличии в списке
+        /// Метод для поиска индекса персоны по фамилии и имени при ее наличии в списке
         /// </summary>
-        /// <param name="index"></param>
-        public Person FindIndexPerson(Person person)
+        /// <param name="person">Персона для поиска</param>
+        /// <returns>Возвращается индекс персоны по его фамилии и имени</returns>
+        public int FindIndexPerson(string SecondName, string Name)
         {
-            if (_people.Contains(person))
-            {
-                return person;
-            }
-            else
-            {
-                return null;
-            }
+            int index = _people.FindIndex(s => s.SecondName == SecondName && s.Name == Name);
+            return index;
+
         }
 
         /// <summary>
