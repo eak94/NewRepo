@@ -204,7 +204,7 @@ namespace LibraryPerson
         /// <returns>Строковое представление информации о человеке</returns>
         public string GetInfo()
         {
-            return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}");
+            return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
         }
 
         /// <summary>

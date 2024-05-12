@@ -1,4 +1,4 @@
-﻿namespace LibraryPerson
+namespace LibraryPerson
 {
     /// <summary>
     /// Пол

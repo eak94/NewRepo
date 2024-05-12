@@ -20,7 +20,7 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для добавления новых элементов в список 
         /// </summary>
-        /// <param name="person">Персона</param>
+        /// <param name="person">Объект класса персон</param>
         public void AddPerson(Person person)
         {
             _people.Add(person);
@@ -42,7 +42,7 @@ namespace LibraryPerson
         /// <returns>Возврашается персона по указанному индексу</returns>
         public Person IndexPerson(int index)
         {
-            if ((_people.Count - 1)>=index && index>=0)
+            if ((_people.Count - 1) >= index && index>=0)
             {
                 return _people[index];
             }
@@ -58,12 +58,20 @@ namespace LibraryPerson
         /// Метод для поиска индекса персоны по фамилии и имени при ее наличии в списке
         /// </summary>
         /// <param name="person">Персона для поиска</param>
-        /// <returns>Возвращается индекс персоны по его фамилии и имени</returns>
+        /// <returns>Возвращается индекс объекта класса персоны по его фамилии и имени</returns>
         public int FindIndexPerson(string SecondName, string Name)
         {
             int index = _people.FindIndex(s => s.SecondName == SecondName && s.Name == Name);
-            return index;
 
+            if (index != -1)
+            {
+                return index;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException($"Персоны с Фамилией {SecondName} и" +
+                    $" Именем {Name} в списке нет");
+            }
         }
 
         /// <summary>
@@ -77,10 +85,20 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для определения количества персон в списке 
         /// </summary>
-        /// <returns>Возвращает количество персон в списке</returns>
+        /// <returns>Возвращает количество объектов класса персон в списке</returns>
         public int CountPerson()
         {
             return _people.Count;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetPersonsList()
+        {
+            string list = string.Join("", _people.Select(person => person.GetInfo()));
+            return list;
         }
     }
 }
