@@ -1,4 +1,5 @@
 using LibraryPerson;
+using System;
 
 namespace LB1
 {
@@ -18,12 +19,38 @@ namespace LB1
         }
 
         /// <summary>
-        /// Метод для ввода персона через консоль
+        /// Метод для ввода информации о персоне через консоль
         /// </summary>
-        public void AddPersonConsole()
+        /// <returns>Объект класса персон, предствляющий персону которая введена через консоль</returns>
+        public static Person AddPersonConsole()
         {
-        }
+            Person person = new Person();
+            bool inputValid = false;
 
+            do
+            {
+                try
+                {
+                    Console.WriteLine("Введите Имя:");
+                    string name = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(name))
+                    {
+                        throw new ArgumentException("Имя не может быть пустым. " +
+                            "Пожалуйста, введите имя заново.");
+                    }
+
+                    person.Name = name;
+                    inputValid = true;
+                }
+                catch (ArgumentException exception)
+                {
+                    Console.WriteLine("Ошибка: " + exception.Message);
+                }
+            } while (!inputValid);
+
+            return person;
+        }
 
         /// <summary>
         /// Основная программа
@@ -187,7 +214,8 @@ namespace LB1
                             for (int i = 0; i < count; i++)
                             {
                                 Console.WriteLine($"\nСоздаем персону {i + 1}");
-                                _ = AddPersonConsole.PersonConsole(firstlist);
+                                Person newPerson = AddPersonConsole();
+                                firstlist.AddPerson(newPerson);
                             }
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 6");
