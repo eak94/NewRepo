@@ -1,5 +1,6 @@
 using LibraryPerson;
 using System;
+using System.Reflection;
 
 namespace LB1
 {
@@ -26,7 +27,6 @@ namespace LB1
         {
             Person person = new Person();
             bool inputValid = false;
-
             do
             {
                 try
@@ -34,13 +34,11 @@ namespace LB1
                     Console.WriteLine("Введите Имя:");
                     string name = Console.ReadLine();
 
-                    if (string.IsNullOrWhiteSpace(name))
-                    {
-                        throw new ArgumentException("Имя не может быть пустым. " +
-                            "Пожалуйста, введите имя заново.");
-                    }
+                    Console.WriteLine("Введите Фамилию:");
+                    string secondName = Console.ReadLine();
 
                     person.Name = name;
+                    person.SecondName = secondName;
                     inputValid = true;
                 }
                 catch (ArgumentException exception)
@@ -208,7 +206,7 @@ namespace LB1
                                 " с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
 
-                            Console.WriteLine("Введите количество персон для добавления в список 1:");
+                            Console.WriteLine("Введите количество персон для добавления в список:");
                             int count = int.Parse(Console.ReadLine());
 
                             for (int i = 0; i < count; i++)

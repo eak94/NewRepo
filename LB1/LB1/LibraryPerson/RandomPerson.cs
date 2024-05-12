@@ -48,7 +48,7 @@ namespace LibraryPerson
                     break;
             }
 
-            randomPerson.Age = random.Next(Person._minAge, Person._maxAge);
+            randomPerson.Age = random.Next(Person.MinAge, Person.MaxAge);
 
             return randomPerson;
         }

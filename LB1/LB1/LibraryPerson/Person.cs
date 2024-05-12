@@ -29,14 +29,19 @@ namespace LibraryPerson
         private int _age;
 
         /// <summary>
+        /// 
+        /// </summary>
+        private Language _nameLanguage;
+
+        /// <summary>
         /// Минимальный возраст
         /// </summary>
-        public const int _minAge = 0;
+        public const int MinAge = 0;
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        public const int _maxAge = 100;
+        public const int MaxAge = 100;
 
         /// <summary>
         /// Свойства класса имя
@@ -49,23 +54,8 @@ namespace LibraryPerson
             }
             set
             {
-                bool flag = false;
-                while (!flag)
-                {
-                    try
-                    {
-                        //TODO: RSDN
-                        _name = ExceptionsName(value,
-                            "Имя должно содержать только русские или английские буквы\n");
-                        flag = true;
-                    }
-                    catch (ArgumentException exception)
-                    {
-                        Console.WriteLine($"{exception.Message} Введите имя заново:");
-                        //TODO: remove+(удалила взаиможействие консоль)
-
-                    }
-                }
+                string validatedName = ExceptionsName(value);
+                _name = validatedName;
             }
         }
 
@@ -80,44 +70,43 @@ namespace LibraryPerson
             }
             set
             {
-                bool flag = false;
-                while (!flag)
+                if (IsMatchingLanguage(value, _nameLanguage))
                 {
-                    try
-                    {
-                        //TODO: RSDN
-                        _secondName = ExceptionsName(value, "Фамилия должна содержать только русские или английские буквы\n");
-                        flag = true;
-                    }
-                    catch (ArgumentException exception)
-                    {
-                        Console.WriteLine($"{exception.Message}Введите фамилию заново:");
-                        //TODO: remove+(удалила взаиможействие консоль)
-                    }
+                    _secondName = ExceptionsName(value);
+                }
+                else
+                {
+                    throw new ArgumentException("Фамилия и Имя должны быть написаны на одном языке");
                 }
             }
         }
+
         /// <summary>
-        /// Проверка символов, вводимых в поле Имя и Фамилия
+        /// Проверка символов, вводимых в поле Имя
         /// </summary>
-        /// <param name="value">введенное Имя или Фамилия </param>
+        /// <param name="value">введенное Имя</param>
         /// <returns>Возвращает строку с Именем или Фамилией с заглавной буквы</returns>
-        public static string ExceptionsName(string value, string errorMessage)
+        public static string ExceptionsName(string value)
         {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentException("Ничего не введено. Пожалуйста, введите Имя");
+            }
 
             string nameSecondnamePattern = "^[а-яА-Яa-zA-Z]+-?[а-яА-Яa-zA-Z]*$";
 
             Regex regex = new Regex(nameSecondnamePattern);
+
+            if (!regex.IsMatch(value))
+            {
+                throw new ArgumentException("Введены недопустимые символы. " +
+                    "Пожалуйста, используйте только буквы русского и английского алфавитов");
+            }
             string validatedValue = string.Empty;
 
             foreach (Match match in regex.Matches(value))
             {
                 validatedValue += match.Value;
-            }
-
-            if (string.IsNullOrEmpty(validatedValue))
-            {
-                throw new ArgumentException(errorMessage);
             }
 
             string[] words = validatedValue.Split(' ');
@@ -129,10 +118,17 @@ namespace LibraryPerson
                                words[i].Substring(1).ToLower();
                 }
             }
-
             validatedValue = string.Join(" ", words);
             return validatedValue;
         }
+
+        public bool IsMatchingLanguage(string secondName, Language nameLanguage)
+        {
+            string pattern = nameLanguage == Language.Russian ? "^[а-яА-ЯёЁ]+$" : "^[a-zA-Z]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(secondName);
+        }
+
 
         /// <summary>
         /// Свойства класса Возраст
@@ -145,17 +141,11 @@ namespace LibraryPerson
             }
             set
             {
-                try
-                {
-                    _age = ExceptionsAge(value);
-                }
-                catch (ArgumentException exception)
-                {
-                    Console.WriteLine($"{exception.Message} Введите возраст заново:");
-                    //TODO: remove+(удалила взаиможействие консоль)
-                }
+                int validatedAge = ExceptionsAge(value);
+                _age = validatedAge;
             }
         }
+
         /// <summary>
         /// Метод для обработки возвраста
         /// </summary>
@@ -164,15 +154,14 @@ namespace LibraryPerson
         /// <exception cref="ArgumentException"></exception>
         public int ExceptionsAge(int age)
         {
-            //TODO: remove +(удалила проверку дробного значения)
-            if (age < _minAge)
+            if (age < MinAge)
             {
                 throw new ArgumentException($"Возраст не может быть отрицательным\n");
             }
 
-            if (age > _maxAge)
+            if (age > MaxAge)
             {
-                throw new ArgumentException($"Возраст не может быть больше {_maxAge}\n");
+                throw new ArgumentException($"Возраст не может быть больше {MaxAge}\n");
             }
 
             return age;

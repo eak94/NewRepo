@@ -42,7 +42,7 @@ namespace LibraryPerson
         /// <returns>Возврашается персона по указанному индексу</returns>
         public Person IndexPerson(int index)
         {
-            if ((_people.Count - 1) >= index && index>=0)
+            if ((_people.Count - 1) >= index && index >= 0)
             {
                 return _people[index];
             }
@@ -59,9 +59,9 @@ namespace LibraryPerson
         /// </summary>
         /// <param name="person">Персона для поиска</param>
         /// <returns>Возвращается индекс объекта класса персоны по его фамилии и имени</returns>
-        public int FindIndexPerson(string SecondName, string Name)
+        public int FindIndexPerson(string secondName, string name)
         {
-            int index = _people.FindIndex(s => s.SecondName == SecondName && s.Name == Name);
+            int index = _people.FindIndex(s => s.SecondName == secondName && s.Name == name);
 
             if (index != -1)
             {
@@ -69,8 +69,8 @@ namespace LibraryPerson
             }
             else
             {
-                throw new IndexOutOfRangeException($"Персоны с Фамилией {SecondName} и" +
-                    $" Именем {Name} в списке нет");
+                throw new IndexOutOfRangeException($"Персоны с Фамилией {secondName} и" +
+                    $" Именем {name} в списке нет");
             }
         }
 
