@@ -27,23 +27,30 @@ namespace LB1
         {
             Person person = new Person();
             bool inputValid = false;
+            bool nameValid = false;
+
             do
             {
                 try
                 {
-                    Console.WriteLine("Введите Имя:");
-                    string name = Console.ReadLine();
+                    if (!nameValid)
+                    {
+                        Console.WriteLine("Введите Имя:");
+                        string name = Console.ReadLine();
+                        person.Name = name;
+                        nameValid = true;
+                    }
 
                     Console.WriteLine("Введите Фамилию:");
                     string secondName = Console.ReadLine();
-
-                    person.Name = name;
                     person.SecondName = secondName;
+
                     inputValid = true;
                 }
                 catch (ArgumentException exception)
                 {
                     Console.WriteLine("Ошибка: " + exception.Message);
+                    nameValid = false;
                 }
             } while (!inputValid);
 

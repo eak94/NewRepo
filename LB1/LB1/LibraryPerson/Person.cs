@@ -76,7 +76,7 @@ namespace LibraryPerson
                 }
                 else
                 {
-                    throw new ArgumentException("Фамилия и Имя должны быть написаны на одном языке");
+                    throw new ArgumentException("Имя и Фамилия должны быть написаны на одном языке");
                 }
             }
         }
@@ -109,6 +109,8 @@ namespace LibraryPerson
                 validatedValue += match.Value;
             }
 
+
+
             string[] words = validatedValue.Split(' ');
             for (int i = 0; i < words.Length; i++)
             {
@@ -122,9 +124,15 @@ namespace LibraryPerson
             return validatedValue;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="secondName"></param>
+        /// <param name="nameLanguage"></param>
+        /// <returns></returns>
         public bool IsMatchingLanguage(string secondName, Language nameLanguage)
         {
-            string pattern = nameLanguage == Language.Russian ? "^[а-яА-ЯёЁ]+$" : "^[a-zA-Z]+$";
+            string pattern = nameLanguage == Language.Russian ? "^[а-яА-Я]+$" : "^[a-zA-Z]+$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(secondName);
         }
