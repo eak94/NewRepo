@@ -1,7 +1,4 @@
 using LibraryPerson;
-using System;
-using System.Reflection;
-
 namespace LB1
 {
     /// <summary>
@@ -28,6 +25,9 @@ namespace LB1
             Person person = new Person();
             bool inputValid = false;
             bool nameValid = false;
+            bool secondNameValid = false;
+            bool ageValid = false;
+            bool genderValid = false;
 
             do
             {
@@ -41,16 +41,77 @@ namespace LB1
                         nameValid = true;
                     }
 
-                    Console.WriteLine("Введите Фамилию:");
-                    string secondName = Console.ReadLine();
-                    person.SecondName = secondName;
+                    if (nameValid && !secondNameValid)
+                    {
+                        Console.WriteLine("Введите Фамилию:");
+                        string secondName = Console.ReadLine();
+                        person.SecondName = secondName;
+                        secondNameValid = true;
+                    }
 
-                    inputValid = true;
+                    if (nameValid && secondNameValid && !ageValid)
+                    {
+                        Console.WriteLine("Введите Возраст:");
+                        int age = Convert.ToInt32(Console.ReadLine());
+                        person.Age = age;
+                        ageValid = true;
+                    }
+
+                    if (nameValid && secondNameValid && ageValid && !genderValid)
+                    {
+                        Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
+                            "Ж(F) - Female (женский)");
+                        string insertedGender = Console.ReadLine().ToUpper();
+                        switch (insertedGender)
+                        {
+                            case "M":
+                            case "m":
+                            case "М":
+                            case "м":
+                                {
+                                    break;
+                                }
+                            case "F":
+                            case "f":
+                            case "Ж":
+                            case "ж":
+                                {
+                                    person.Gender = Gender.Female;
+                                    genderValid = true;
+                                    break;
+                                }
+                            default:
+                                {
+                                    throw new ArgumentException("Неправильно указан пол.\n");
+                                }
+                        }
+                    }
+
+                    if (nameValid && secondNameValid && ageValid && genderValid)
+                    {
+                        inputValid = true;
+                    }
                 }
                 catch (ArgumentException exception)
                 {
                     Console.WriteLine("Ошибка: " + exception.Message);
-                    nameValid = false;
+
+                    if (nameValid && secondNameValid && ageValid)
+                    {
+                        genderValid = false;
+                    }
+                    else if (nameValid && secondNameValid)
+                    {
+                        ageValid = false;
+                    }
+                    else if (nameValid)
+                    {
+                        secondNameValid = false;
+                    }
+                    else
+                    {
+                        nameValid = false;
+                    }
                 }
             } while (!inputValid);
 
@@ -87,7 +148,6 @@ namespace LB1
                 {
                     case "1":
                         {
-                            //TODO: RSDN+
                             Console.WriteLine("Для тестирования методов программно " +
                                 "создано два списка людей.\n" + "В каждом из списков содержатся" +
                                 " записи о трех людях.\n\nДля отображения нажмите Enter");
@@ -222,6 +282,8 @@ namespace LB1
                                 Person newPerson = AddPersonConsole();
                                 firstlist.AddPerson(newPerson);
                             }
+
+                            Console.WriteLine($"\nНовый список\n{firstlist.GetPersonsList()}");
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 6");
                             _ = Console.ReadKey();

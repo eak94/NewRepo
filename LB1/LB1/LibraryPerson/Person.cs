@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 namespace LibraryPerson
 {
     /// <summary>
@@ -27,11 +21,6 @@ namespace LibraryPerson
         /// Возраст пользователя
         /// </summary>
         private int _age;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Language _nameLanguage;
 
         /// <summary>
         /// Минимальный возраст
@@ -70,14 +59,8 @@ namespace LibraryPerson
             }
             set
             {
-                if (IsMatchingLanguage(value, _nameLanguage))
-                {
-                    _secondName = ExceptionsName(value);
-                }
-                else
-                {
-                    throw new ArgumentException("Имя и Фамилия должны быть написаны на одном языке");
-                }
+                string validatedName = ExceptionsName(value);
+                _secondName = validatedName;
             }
         }
 
@@ -109,8 +92,6 @@ namespace LibraryPerson
                 validatedValue += match.Value;
             }
 
-
-
             string[] words = validatedValue.Split(' ');
             for (int i = 0; i < words.Length; i++)
             {
@@ -122,19 +103,6 @@ namespace LibraryPerson
             }
             validatedValue = string.Join(" ", words);
             return validatedValue;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="secondName"></param>
-        /// <param name="nameLanguage"></param>
-        /// <returns></returns>
-        public bool IsMatchingLanguage(string secondName, Language nameLanguage)
-        {
-            string pattern = nameLanguage == Language.Russian ? "^[а-яА-Я]+$" : "^[a-zA-Z]+$";
-            Regex regex = new Regex(pattern);
-            return regex.IsMatch(secondName);
         }
 
 
