@@ -23,99 +23,73 @@ namespace LB1
         public static Person AddPersonConsole()
         {
             Person person = new Person();
-            bool inputValid = false;
-            bool nameValid = false;
-            bool secondNameValid = false;
-            bool ageValid = false;
-            bool genderValid = false;
-
-            do
+            var validationActions = new List<Action>()
             {
-                try
-                {
-                    if (!nameValid)
+                new Action(() =>
                     {
                         Console.WriteLine("Введите Имя:");
-                        string name = Console.ReadLine();
-                        person.Name = name;
-                        nameValid = true;
-                    }
-
-                    if (nameValid && !secondNameValid)
+                        person.Name = Console.ReadLine();
+                    }),
+                new Action(() =>
                     {
                         Console.WriteLine("Введите Фамилию:");
-                        string secondName = Console.ReadLine();
-                        person.SecondName = secondName;
-                        secondNameValid = true;
-                    }
-
-                    if (nameValid && secondNameValid && !ageValid)
+                        person.SecondName = Console.ReadLine();
+                    }),
+                new Action(() =>
                     {
                         Console.WriteLine("Введите Возраст:");
-                        int age = Convert.ToInt32(Console.ReadLine());
-                        person.Age = age;
-                        ageValid = true;
-                    }
-
-                    if (nameValid && secondNameValid && ageValid && !genderValid)
+                        person.Age = Convert.ToInt32(Console.ReadLine());
+                    }),
+                new Action(() =>
                     {
                         Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
-                            "Ж(F) - Female (женский)");
+                                    "Ж(F) - Female (женский)");
                         string insertedGender = Console.ReadLine().ToUpper();
                         switch (insertedGender)
                         {
                             case "M":
-                            case "m":
                             case "М":
-                            case "м":
-                                {
-                                    break;
-                                }
+                            {
+                                person.Gender = Gender.Male;
+                                break;
+                            }
                             case "F":
-                            case "f":
                             case "Ж":
-                            case "ж":
-                                {
-                                    person.Gender = Gender.Female;
-                                    genderValid = true;
-                                    break;
-                                }
+                            {
+                                person.Gender = Gender.Female;
+                                break;
+                            }
                             default:
-                                {
-                                    throw new ArgumentException("Неправильно указан пол.\n");
-                                }
+                            {
+                                throw new ArgumentException("Неправильно указан пол.\n");
+                            }
                         }
-                    }
+                    })
+            };
 
-                    if (nameValid && secondNameValid && ageValid && genderValid)
-                    {
-                        inputValid = true;
-                    }
+            foreach (var action in validationActions)
+            {
+                ActionHander(action);
+            }
+
+            return person;
+        }
+
+        //TODO: XML
+        private static void ActionHander(Action action)
+        {
+            while (true)
+            {
+                try
+                {
+                    action.Invoke();
+                    return;
                 }
                 catch (ArgumentException exception)
                 {
                     Console.WriteLine("Ошибка: " + exception.Message);
-
-                    if (nameValid && secondNameValid && ageValid)
-                    {
-                        genderValid = false;
-                    }
-                    else if (nameValid && secondNameValid)
-                    {
-                        ageValid = false;
-                    }
-                    else if (nameValid)
-                    {
-                        secondNameValid = false;
-                    }
-                    else
-                    {
-                        nameValid = false;
-                    }
                 }
-            } while (!inputValid);
-
-            return person;
+            }
         }
 
         /// <summary>
@@ -130,7 +104,6 @@ namespace LB1
 
             while (true)
             {
-                //TODO: RSDN+
                 Console.WriteLine("МЕНЮ\n" +
                     "1  -  Создание программно двух списков персон в каждом " +
                     "из которых по три человека+вывести содержимое на экран\n" +

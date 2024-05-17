@@ -14,18 +14,24 @@ namespace LibraryPerson
         {
             Person randomPerson = new Person();
 
-            //TODO: RSDN+
-            string[] nameFemale = new string[] {"Валерия", "Алена", "Анна",
-                "Екатерина", "Алина", "Кира", "Валентина"};
-            string[] nameMale = new string[] {"Антон", "Виктор", "Андрей",
-                "Михаил","Борис", "Роман", "Петр"};
+            string[] nameFemale = new string[]
+            {
+                "Валерия", "Алена", "Анна",
+                "Екатерина", "Алина", "Кира",
+                "Валентина"
+            };
+            string[] nameMale = new string[]
+            {
+                "Антон", "Виктор", "Андрей",
+                "Михаил","Борис", "Роман",
+                "Петр"
+            };
             string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов",
                 "Попов","Андреев", "Иванов", "Пушкин"};
             string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова",
                 "Мешанкина", "Сечина", "Ручкина", "Доскова"};
 
             Random random = new Random();
-            //TODO: remove (исправила мин и макс возраст)
             randomPerson.Gender = (Gender)random.Next(2);
 
             switch (randomPerson.Gender)

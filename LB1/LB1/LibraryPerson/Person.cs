@@ -4,7 +4,6 @@ namespace LibraryPerson
     /// <summary>
     /// Класс персон
     /// </summary>
-    //TODO: XML+
     public class Person
     {
         /// <summary>
@@ -122,6 +121,7 @@ namespace LibraryPerson
             }
         }
 
+        //TODO: rename
         /// <summary>
         /// Метод для обработки возвраста
         /// </summary>
