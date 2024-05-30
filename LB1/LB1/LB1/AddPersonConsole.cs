@@ -62,6 +62,10 @@ namespace LB1
                         Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
                                     "Ж(F) - Female (женский)");
                         string insertedGender = Console.ReadLine().ToUpper();
+                        if (string.IsNullOrWhiteSpace(insertedGender))
+                        {
+                            throw new ArgumentException("Поле Пол не может быть пустым. Введите M или F.");
+                        }
                         switch (insertedGender)
                         {
                             case "M":
@@ -108,7 +112,7 @@ namespace LB1
                 }
                 catch (ArgumentException exception)
                 {
-                    Console.WriteLine("Ошибка: " + exception.Message);
+                    Console.WriteLine($"Ошибка: {exception.Message}");
                 }
             }
         }

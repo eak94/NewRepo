@@ -179,10 +179,12 @@ namespace LB1
                                     count = int.Parse(inputCount);
                                     break;
                                 }
+
                                 catch (ArgumentException exception)
                                 {
                                     Console.WriteLine(exception.Message);
                                 }
+
                             }
 
                             for (int i = 0; i < count; i++)

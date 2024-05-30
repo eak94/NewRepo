@@ -129,7 +129,7 @@ namespace LibraryPerson
 
             if (!nameLanguage.IsMatch(nameOrSecondName))
             {
-                throw new FormatException("Введёное слово не распознано." +
+                throw new ArgumentException("Введёное слово не распознано." +
                     "Введите, пожалуйста, еще раз");
             }
 
