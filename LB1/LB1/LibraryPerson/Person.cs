@@ -42,8 +42,13 @@ namespace LibraryPerson
             }
             set
             {
-                string validatedName = ExceptionsName(value);
-                _name = validatedName;
+                _name = ConvertRegistr
+                    (CheckNullorEmptyName(value, nameof(Name)));
+
+                if (_secondName != null)
+                {
+                    CheckLanguage(_name, _secondName);
+                }
             }
         }
 
@@ -58,52 +63,123 @@ namespace LibraryPerson
             }
             set
             {
-                string validatedName = ExceptionsName(value);
-                _secondName = validatedName;
+                _secondName = ConvertRegistr
+                    (CheckNullorEmptyName(value, nameof(SecondName)));
+
+                if (_name != null)
+                {
+                    CheckLanguage(_name, _secondName);
+                }
             }
         }
 
         /// <summary>
-        /// Проверка символов, вводимых в поле Имя
+        /// Метод для проверки не заполненности поля Имени 
         /// </summary>
-        /// <param name="value">введенное Имя</param>
-        /// <returns>Возвращает строку с Именем или Фамилией с заглавной буквы</returns>
-        public static string ExceptionsName(string value)
+        /// <param name="value"> Имя </param>
+        /// <param name="propertiname"> Cвойство имени </param>
+        /// <returns> Возвращается имя и фамилия </returns>
+        public string CheckNullorEmptyName(string value, string propertiname)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (value == null || string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Ничего не введено. Пожалуйста, введите Имя");
+                throw new ArgumentException($"Поле {propertiname} не может быть пустым." +
+                    $" Введите, пожалуйста, еще раз");
             }
 
-            string nameSecondnamePattern = "^[а-яА-Яa-zA-Z]+-?[а-яА-Яa-zA-Z]*$";
-
-            Regex regex = new Regex(nameSecondnamePattern);
-
-            if (!regex.IsMatch(value))
-            {
-                throw new ArgumentException("Введены недопустимые символы. " +
-                    "Пожалуйста, используйте только буквы русского и английского алфавитов");
-            }
-            string validatedValue = string.Empty;
-
-            foreach (Match match in regex.Matches(value))
-            {
-                validatedValue += match.Value;
-            }
-
-            string[] words = validatedValue.Split(' ');
-            for (int i = 0; i < words.Length; i++)
-            {
-                if (words[i].Length >= 1)
-                {
-                    words[i] = words[i].Substring(0, 1).ToUpper() +
-                               words[i].Substring(1).ToLower();
-                }
-            }
-            validatedValue = string.Join(" ", words);
-            return validatedValue;
+            return value;
         }
 
+        /// <summary>
+        /// Метод для преобразования верхнего регистра Имени или Фамилии персоны
+        /// </summary>
+        /// <param name="nameOrSecondName"> Имя или Фамилия персоны </param>
+        /// <returns> Возвращается преобразованное в верхний регистр Имя или Фамилия персоны </returns>
+        public string ConvertRegistr(string nameOrSecondName)
+        {
+            nameOrSecondName = nameOrSecondName[0].ToString().ToUpper()
+                        + nameOrSecondName.Substring(1);
+
+            Regex regexNameOrSecondName = new Regex(@"[-]");
+
+            if (regexNameOrSecondName.IsMatch(nameOrSecondName))
+            {
+                string[] words = nameOrSecondName.Split(new char[] { '-' });
+                string firstWord = words[0];
+                string secondWord = words[1];
+                firstWord = firstWord[0].ToString().ToUpper() + firstWord.Substring(1);
+                secondWord = secondWord[0].ToString().ToUpper() + secondWord.Substring(1);
+                nameOrSecondName = firstWord + '-' + secondWord;
+            }
+
+            return nameOrSecondName;
+        }
+
+        /// <summary>
+        /// Проверка на ввод имени или фамилии на одном языке с возможность ввода двойного имени и фамилии
+        /// </summary>
+        /// <param name="nameOrSecondName"> Введенное Имя или Фамилия </param>
+        /// <returns> Возвращается Имя или Фамилия персоны </returns>
+        public string CheckNameSurname(string nameOrSecondName)
+        {
+            string regexnameOrSecondName = @"(^[А-яё]+(-[А-яё])?[А-яё]*$)" +
+                "|(^[A-Za-z]+(-[A-Za-z])?[A-Za-z]*$)";
+
+            Regex nameLanguage = new Regex(regexnameOrSecondName);
+
+            if (!nameLanguage.IsMatch(nameOrSecondName))
+            {
+                throw new FormatException("Введёное слово не распознано." +
+                    "Введите, пожалуйста, еще раз");
+            }
+
+            return nameOrSecondName;
+        }
+
+        /// <summary>
+        /// Метод для сравнения языка имени и фамилии
+        /// </summary>
+        /// <param name="name"> Имя </param>
+        /// <param name="secondName"> Фамилия </param>
+        public void CheckLanguage(string name, string secondName)
+        {
+            Language nameLanguage = DefineLanguage(name);
+            Language secondNameLanguage = DefineLanguage(secondName);
+
+            if (nameLanguage != secondNameLanguage)
+            {
+                throw new ArgumentException("Язык Имени и Фамилии" +
+                    " должен совпадать. Введите, пожалуйста, еще раз.");
+            }
+        }
+
+        /// <summary>
+        /// Метод для проверки языка 
+        /// </summary>
+        /// <param name="word"> Строка </param>
+        /// /// <returns> Возвращается язык </returns>
+        private Language DefineLanguage(string word)
+        {
+            Regex englishLanguage = new Regex(@"[a-zA-Z]");
+            Regex russianLanguage = new Regex(@"[а-яА-Я]");
+
+            if (englishLanguage.IsMatch(word))
+            {
+                return Language.English;
+            }
+
+            else if (russianLanguage.IsMatch(word))
+            {
+                return Language.Russian;
+            }
+
+            else
+            {
+                throw new ArgumentException("Разрешено вводить только символы " +
+                    "русского или английского алфавита.\n" +
+                    "Введите, пожалуйста, еще раз");
+            }
+        }
 
         /// <summary>
         /// Свойства класса Возраст
@@ -116,19 +192,17 @@ namespace LibraryPerson
             }
             set
             {
-                int validatedAge = ExceptionsAge(value);
-                _age = validatedAge;
+                _age = CheckAge(value);
             }
         }
 
-        //TODO: rename
+        //TODO: rename+
         /// <summary>
         /// Метод для обработки возвраста
         /// </summary>
-        /// <param name="age">Возраст</param>
-        /// <returns>Возвращает поле для возраста</returns>
-        /// <exception cref="ArgumentException"></exception>
-        public int ExceptionsAge(int age)
+        /// <param name="age"> Возраст </param>
+        /// <returns> Возвращает поле для возраста </returns>
+        public int CheckAge(int age)
         {
             if (age < MinAge)
             {
@@ -141,6 +215,7 @@ namespace LibraryPerson
             }
 
             return age;
+
         }
 
         /// <summary>
@@ -166,7 +241,7 @@ namespace LibraryPerson
         /// <summary>
         /// Возвращает строковое представление информации о человеке
         /// </summary>
-        /// <returns>Строковое представление информации о человеке</returns>
+        /// <returns> Строковое представление информации о человеке </returns>
         public string GetInfo()
         {
             return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");

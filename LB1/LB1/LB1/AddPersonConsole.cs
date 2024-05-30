@@ -1,0 +1,116 @@
+using LibraryPerson;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LB1
+{
+    public class AddPersonConsole
+    {
+        /// <summary>
+        /// Метод для вывода информации об объектах
+        /// </summary>
+        /// <param name="person"> Объект класса персон </param>
+        public void PrintPeople(Person person)
+        {
+            Console.Write(person.GetInfo());
+        }
+
+        /// <summary>
+        /// Метод для ввода информации о персоне через консоль
+        /// </summary>
+        /// <returns> Объект класса персон, предствляющий персону которая введена через консоль </returns>
+        public static Person PersonConsole()
+        {
+            Person person = new Person();
+            var validationActions = new List<Action>()
+            {
+                new Action(() =>
+                    {
+                        Console.WriteLine("Введите Имя:");
+                        person.Name = Console.ReadLine();
+                    }),
+                new Action(() =>
+                    {
+                        Console.WriteLine("Введите Фамилию:");
+                        person.SecondName = Console.ReadLine();
+                    }),
+                new Action(() =>
+                    {
+                        Console.WriteLine("Введите Возраст:");
+                        string ageInput = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(ageInput))
+                        {
+                            throw new ArgumentException("Поле Возраст не может быть пустым. Введите число.");
+                        }
+
+                        try
+                        {
+                            person.Age = Convert.ToInt32(ageInput);
+                        }
+
+                        catch (FormatException exception)
+                        {
+                            throw new ArgumentException("Некорректный формат ввода. Введите целое число.", exception);
+                        }
+                    }),
+                new Action(() =>
+                    {
+                        Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
+                                    "Ж(F) - Female (женский)");
+                        string insertedGender = Console.ReadLine().ToUpper();
+                        switch (insertedGender)
+                        {
+                            case "M":
+                            case "М":
+                            {
+                                person.Gender = Gender.Male;
+                                break;
+                            }
+                            case "F":
+                            case "Ж":
+                            {
+                                person.Gender = Gender.Female;
+                                break;
+                            }
+                            default:
+                            {
+                                throw new ArgumentException("Неправильно указан пол.\n");
+                            }
+                        }
+                    })
+            };
+
+            foreach (var action in validationActions)
+            {
+                ActionHander(action);
+            }
+
+            return person;
+        }
+
+        //TODO: XML+
+        /// <summary>
+        /// Метод обработки возможных исключений.
+        /// </summary>
+        /// <param name="action"> Действие </param>
+        private static void ActionHander(Action action)
+        {
+            while (true)
+            {
+                try
+                {
+                    action.Invoke();
+                    return;
+                }
+                catch (ArgumentException exception)
+                {
+                    Console.WriteLine("Ошибка: " + exception.Message);
+                }
+            }
+        }
+    }
+}

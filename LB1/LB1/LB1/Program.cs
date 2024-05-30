@@ -7,90 +7,6 @@ namespace LB1
     internal class Program
     {
 
-        /// <summary>
-        /// Метод для вывода информации об объектах
-        /// </summary>
-        /// <param name="person">Объект класса персон</param>
-        public void PrintPeople(Person person)
-        {
-            Console.Write(person.GetInfo());
-        }
-
-        /// <summary>
-        /// Метод для ввода информации о персоне через консоль
-        /// </summary>
-        /// <returns>Объект класса персон, предствляющий персону которая введена через консоль</returns>
-        public static Person AddPersonConsole()
-        {
-            Person person = new Person();
-            var validationActions = new List<Action>()
-            {
-                new Action(() =>
-                    {
-                        Console.WriteLine("Введите Имя:");
-                        person.Name = Console.ReadLine();
-                    }),
-                new Action(() =>
-                    {
-                        Console.WriteLine("Введите Фамилию:");
-                        person.SecondName = Console.ReadLine();
-                    }),
-                new Action(() =>
-                    {
-                        Console.WriteLine("Введите Возраст:");
-                        person.Age = Convert.ToInt32(Console.ReadLine());
-                    }),
-                new Action(() =>
-                    {
-                        Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
-                                    "Ж(F) - Female (женский)");
-                        string insertedGender = Console.ReadLine().ToUpper();
-                        switch (insertedGender)
-                        {
-                            case "M":
-                            case "М":
-                            {
-                                person.Gender = Gender.Male;
-                                break;
-                            }
-                            case "F":
-                            case "Ж":
-                            {
-                                person.Gender = Gender.Female;
-                                break;
-                            }
-                            default:
-                            {
-                                throw new ArgumentException("Неправильно указан пол.\n");
-                            }
-                        }
-                    })
-            };
-
-            foreach (var action in validationActions)
-            {
-                ActionHander(action);
-            }
-
-            return person;
-        }
-
-        //TODO: XML
-        private static void ActionHander(Action action)
-        {
-            while (true)
-            {
-                try
-                {
-                    action.Invoke();
-                    return;
-                }
-                catch (ArgumentException exception)
-                {
-                    Console.WriteLine("Ошибка: " + exception.Message);
-                }
-            }
-        }
 
         /// <summary>
         /// Основная программа
@@ -246,13 +162,33 @@ namespace LB1
                                 " с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
 
-                            Console.WriteLine("Введите количество персон для добавления в список:");
-                            int count = int.Parse(Console.ReadLine());
+                            int count;
+
+                            while (true)
+                            {
+                                try
+                                {
+                                    Console.WriteLine("Введите количество персон для добавления в список:");
+                                    string inputCount = Console.ReadLine();
+
+                                    if (string.IsNullOrWhiteSpace(inputCount))
+                                    {
+                                        throw new ArgumentException("Поле с количеством персон не может быть пустым. Введите число.");
+                                    }
+
+                                    count = int.Parse(inputCount);
+                                    break;
+                                }
+                                catch (ArgumentException exception)
+                                {
+                                    Console.WriteLine(exception.Message);
+                                }
+                            }
 
                             for (int i = 0; i < count; i++)
                             {
                                 Console.WriteLine($"\nСоздаем персону {i + 1}");
-                                Person newPerson = AddPersonConsole();
+                                Person newPerson = AddPersonConsole.PersonConsole();
                                 firstlist.AddPerson(newPerson);
                             }
 
