@@ -44,7 +44,7 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(ageInput))
                         {
-                            throw new ArgumentException("Поле Возраст не может быть пустым. Введите число.");
+                            throw new ArgumentException("Поле не может быть пустым. Введите число.");
                         }
 
                         try
@@ -54,7 +54,7 @@ namespace LB1
 
                         catch (FormatException exception)
                         {
-                            throw new ArgumentException("Некорректный формат ввода. Введите целое число.", exception);
+                            throw new ArgumentException("Некорректный ввод. Введите целое число.", exception);
                         }
                     }),
                 new Action(() =>
@@ -64,7 +64,7 @@ namespace LB1
                         string insertedGender = Console.ReadLine().ToUpper();
                         if (string.IsNullOrWhiteSpace(insertedGender))
                         {
-                            throw new ArgumentException("Поле Пол не может быть пустым. Введите M или F.");
+                            throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
                         }
                         switch (insertedGender)
                         {

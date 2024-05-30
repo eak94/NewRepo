@@ -6,8 +6,6 @@ namespace LB1
     /// </summary>
     internal class Program
     {
-
-
         /// <summary>
         /// Основная программа
         /// </summary>
@@ -80,6 +78,7 @@ namespace LB1
                             Console.Clear();
                             break;
                         }
+
                     case "3":
                         {
                             Console.WriteLine("\nКопирование второго человека из" +
@@ -106,6 +105,7 @@ namespace LB1
                             Console.Clear();
                             break;
                         }
+
                     case "4":
                         {
                             Console.WriteLine("\nУдаление второго человека из первого списка:\n");
@@ -130,6 +130,7 @@ namespace LB1
                             Console.Clear();
                             break;
                         }
+
                     case "5":
                         {
                             Console.WriteLine("\nОчистить список полностью\n");
@@ -156,6 +157,7 @@ namespace LB1
                             Console.Clear();
                             break;
                         }
+
                     case "6":
                         {
                             Console.WriteLine("\nДля тестирования метода ввода персоны" +
@@ -184,7 +186,6 @@ namespace LB1
                                 {
                                     Console.WriteLine(exception.Message);
                                 }
-
                             }
 
                             for (int i = 0; i < count; i++)
@@ -201,6 +202,7 @@ namespace LB1
                             Console.Clear();
                             break;
                         }
+
                     case "7":
                         {
                             Console.WriteLine("\nДля тестирования метода RandomPerson нажмите Enter");
@@ -228,6 +230,5 @@ namespace LB1
                 }
             }
         }
-
     }
 }

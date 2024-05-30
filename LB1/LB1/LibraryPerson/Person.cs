@@ -43,7 +43,7 @@ namespace LibraryPerson
             set
             {
                 _name = ConvertRegistr
-                    (CheckNullorEmptyName(value, nameof(Name)));
+                    (CheckNullorEmptyName(value));
 
                 if (_secondName != null)
                 {
@@ -64,7 +64,7 @@ namespace LibraryPerson
             set
             {
                 _secondName = ConvertRegistr
-                    (CheckNullorEmptyName(value, nameof(SecondName)));
+                    (CheckNullorEmptyName(value));
 
                 if (_name != null)
                 {
@@ -79,11 +79,11 @@ namespace LibraryPerson
         /// <param name="value"> Имя </param>
         /// <param name="propertiname"> Cвойство имени </param>
         /// <returns> Возвращается имя и фамилия </returns>
-        public string CheckNullorEmptyName(string value, string propertiname)
+        public string CheckNullorEmptyName(string value)
         {
             if (value == null || string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException($"Поле {propertiname} не может быть пустым." +
+                throw new ArgumentException($"Поле не может быть пустым." +
                     $" Введите, пожалуйста, еще раз");
             }
 
@@ -160,25 +160,21 @@ namespace LibraryPerson
         /// /// <returns> Возвращается язык </returns>
         private Language DefineLanguage(string word)
         {
-            Regex englishLanguage = new Regex(@"[a-zA-Z]");
-            Regex russianLanguage = new Regex(@"[а-яА-Я]");
-
-            if (englishLanguage.IsMatch(word))
+            if (Regex.IsMatch(word, @"^[a-zA-Zа-яА-Я]+$"))
             {
-                return Language.English;
+                if (Regex.IsMatch(word, @"^[a-zA-Z]+$"))
+                {
+                    return Language.English;
+                }
+                else if (Regex.IsMatch(word, @"^[а-яА-Я]+$"))
+                {
+                    return Language.Russian;
+                }
             }
 
-            else if (russianLanguage.IsMatch(word))
-            {
-                return Language.Russian;
-            }
-
-            else
-            {
-                throw new ArgumentException("Разрешено вводить только символы " +
-                    "русского или английского алфавита.\n" +
-                    "Введите, пожалуйста, еще раз");
-            }
+            throw new ArgumentException("Поле должно содержать символы " +
+                "русского или английского алфавита.\n" +
+                "Введите, пожалуйста, еще раз");
         }
 
         /// <summary>
