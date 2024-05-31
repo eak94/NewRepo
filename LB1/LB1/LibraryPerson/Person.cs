@@ -1,4 +1,6 @@
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
+
 namespace LibraryPerson
 {
     /// <summary>
@@ -43,11 +45,6 @@ namespace LibraryPerson
             set
             {
                 _name = ConvertRegistr(value);
-
-                if (_secondName != null)
-                {
-                    CheckLanguage(_name, _secondName);
-                }
             }
         }
 
