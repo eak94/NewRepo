@@ -126,22 +126,22 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для проверки языка  
         /// </summary>
-        /// <param name="word">Слво(Имя или Фамилия)</param>
+        /// <param name="value">Слво(Имя или Фамилия)</param>
         /// <returns>Вовзращается язык</returns>
-        private Language DefineLanguage(string word)
+        private Language DefineLanguage(string value)
         {
-            if (!Regex.IsMatch(word, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
+            if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
             {
                 throw new ArgumentException("Поле должно содержать символы только" +
                     " русского или только английского алфавита, возможно с дефисом." +
                     "Введите, пожалуйста, еще раз");
             }
 
-            if (Regex.IsMatch(word, @"^[a-zA-Z]+(-[a-zA-Z]+)?$"))
+            if (Regex.IsMatch(value, @"^[a-zA-Z]+(-[a-zA-Z]+)?$"))
             {
                 return Language.English;
             }
-            else if (Regex.IsMatch(word, @"^[а-яА-Я]+(-[а-яА-Я]+)?$"))
+            else if (Regex.IsMatch(value, @"^[а-яА-Я]+(-[а-яА-Я]+)?$"))
             {
                 return Language.Russian;
             }
