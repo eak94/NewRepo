@@ -164,7 +164,6 @@ namespace LibraryPerson
             }
         }
 
-        //TODO: rename+
         /// <summary>
         /// Метод для обработки возвраста
         /// </summary>
