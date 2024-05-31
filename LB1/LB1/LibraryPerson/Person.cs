@@ -34,7 +34,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойства класса имя
         /// </summary>
-       public string Name
+        public string Name
         {
             get
             {
