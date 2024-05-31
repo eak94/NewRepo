@@ -47,15 +47,9 @@ namespace LB1
                             throw new ArgumentException("Поле не может быть пустым. Введите число.");
                         }
 
-                        try
-                        {
-                            person.Age = Convert.ToInt32(ageInput);
-                        }
-
-                        catch (ArgumentException exception)
-                        {
-                            throw new ArgumentException("Некорректный ввод. Введите целое число.", exception);
-                        }
+                        person.Age = int.TryParse(ageInput, out var age)
+                            ? age
+                            : throw new ArgumentException("Некорректный ввод. Введите целое число.");
                     }),
                 new Action(() =>
                     {
@@ -67,6 +61,7 @@ namespace LB1
                         {
                             throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
                         }
+
                         switch (insertedGender)
                         {
                             case "M":
@@ -97,7 +92,6 @@ namespace LB1
             return person;
         }
 
-        //TODO: XML+
         /// <summary>
         /// Метод обработки возможных исключений.
         /// </summary>

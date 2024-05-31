@@ -14,8 +14,6 @@ namespace LB1
             PersonList firstlist = new PersonList();
             PersonList secondlist = new PersonList();
 
-            string number;
-
             while (true)
             {
                 Console.WriteLine("МЕНЮ\n" +
@@ -29,7 +27,7 @@ namespace LB1
                     "6  -  Ввести персону вручную\n" +
                     "7  -  RandomPerson\n");
 
-                number = Console.ReadLine();
+                var number = Console.ReadLine();
 
                 switch (number)
                 {
@@ -181,7 +179,6 @@ namespace LB1
                                     count = int.Parse(inputCount);
                                     break;
                                 }
-
                                 catch (ArgumentException exception)
                                 {
                                     Console.WriteLine(exception.Message);
