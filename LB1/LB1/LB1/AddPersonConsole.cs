@@ -52,7 +52,7 @@ namespace LB1
                             person.Age = Convert.ToInt32(ageInput);
                         }
 
-                        catch (FormatException exception)
+                        catch (ArgumentException exception)
                         {
                             throw new ArgumentException("Некорректный ввод. Введите целое число.", exception);
                         }

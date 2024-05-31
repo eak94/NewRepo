@@ -77,7 +77,6 @@ namespace LibraryPerson
         /// Метод для проверки не заполненности поля Имени 
         /// </summary>
         /// <param name="value"> Имя </param>
-        /// <param name="propertiname"> Cвойство имени </param>
         /// <returns> Возвращается имя и фамилия </returns>
         public string CheckNullorEmptyName(string value)
         {
@@ -129,7 +128,7 @@ namespace LibraryPerson
 
             if (!nameLanguage.IsMatch(nameOrSecondName))
             {
-                throw new ArgumentException("Введёное слово не распознано." +
+               throw new ArgumentException("Введёное слово не распознано." +
                     "Введите, пожалуйста, еще раз");
             }
 
