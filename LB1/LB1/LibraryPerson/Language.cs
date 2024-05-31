@@ -15,6 +15,10 @@ namespace LibraryPerson
         /// <summary>
         /// Русский
         /// </summary>
-        Russian
+        Russian,
+        /// <summary>
+        /// Язык не определен
+        /// </summary>
+        Unknown
     }
 }

@@ -62,6 +62,7 @@ namespace LB1
                         Console.WriteLine("Укажите пол: М(M) - Male (мужской)," +
                                     "Ж(F) - Female (женский)");
                         string insertedGender = Console.ReadLine().ToUpper();
+
                         if (string.IsNullOrWhiteSpace(insertedGender))
                         {
                             throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
