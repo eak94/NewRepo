@@ -127,7 +127,7 @@ namespace LibraryPerson
         /// <returns>Вовзращается язык</returns>
         private Language DefineLanguage(string word)
         {
-            if (!Regex.IsMatch(word, @"^([a-zA-Z]+|[а-яА-Я]+)(-[a-zA-Z]+|-[а-яА-Я]+)?$"))
+            if (!Regex.IsMatch(word, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
             {
                 throw new ArgumentException("Поле должно содержать символы только" +
                     " русского или только английского алфавита, возможно с дефисом." +
