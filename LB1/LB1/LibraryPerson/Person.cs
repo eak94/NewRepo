@@ -128,8 +128,8 @@ namespace LibraryPerson
 
             if (!nameLanguage.IsMatch(nameOrSecondName))
             {
-               throw new ArgumentException("Введёное слово не распознано." +
-                    "Введите, пожалуйста, еще раз");
+                throw new ArgumentException("Введёное слово не распознано." +
+                    " Введите, пожалуйста, еще раз");
             }
 
             return nameOrSecondName;
