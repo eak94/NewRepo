@@ -34,7 +34,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойства класса имя
         /// </summary>
-        public string Name
+       public string Name
         {
             get
             {
@@ -108,15 +108,18 @@ namespace LibraryPerson
         /// </summary>
         /// <param name="name"> Имя </param>
         /// <param name="secondName"> Фамилия </param>
-        public void CheckLanguage(string name, string secondName)
+        private void CheckLanguage(string name, string secondName)
         {
             Language nameLanguage = DefineLanguage(name);
             Language secondNameLanguage = DefineLanguage(secondName);
 
-            if (nameLanguage != secondNameLanguage)
+            if (nameLanguage != Language.Unknown && secondNameLanguage != Language.Unknown)
             {
-                throw new ArgumentException("Язык Имени и Фамилии" +
-                    " должен совпадать. Введите, пожалуйста, еще раз.");
+                if (nameLanguage != secondNameLanguage)
+                {
+                    throw new ArgumentException("Имя и фамилия должны быть на одном языке." +
+                        " Пожалуйста, введите данные заново.");
+                }
             }
         }
 
