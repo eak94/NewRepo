@@ -123,7 +123,7 @@ namespace LibraryPerson
             }
             else
             {
-                info += $"Партнер: {Parther}? ";
+                info += $"Партнер: {Parther}, ";
             }
             return info;
         }

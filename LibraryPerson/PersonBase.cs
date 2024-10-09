@@ -1,8 +1,8 @@
 using LibraryPerson;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 
-namespace PersonBase
+
+namespace LibraryPerson
 {
     /// <summary>
     /// Класс персон
@@ -27,12 +27,12 @@ namespace PersonBase
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        public const int MinAge = 0;
+        public virtual int MinAge { get; }
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        public const int MaxAge = 100;
+        public virtual int MaxAge { get; } = 100;
 
         /// <summary>
         /// Экземляр класса по умолчанию
@@ -98,7 +98,7 @@ namespace PersonBase
         /// </summary>
         /// <param name="value"> Имя или Фамилия персоны </param>
         /// <returns> Возвращается преобразованное в верхний регистр Имя или Фамилия персоны </returns>
-        public string ConvertRegistr(string value)
+        public static string ConvertRegistr(string value)
         {
             if (value == null || string.IsNullOrEmpty(value))
             {
@@ -133,7 +133,7 @@ namespace PersonBase
         /// </summary>
         /// <param name="name"> Имя </param>
         /// <param name="secondName"> Фамилия </param>
-        public void CheckLanguage(string name, string secondName)
+        public static void CheckLanguage(string name, string secondName)
         {
             Language nameLanguage = DefineLanguage(name);
             Language secondNameLanguage = DefineLanguage(secondName);
@@ -153,7 +153,7 @@ namespace PersonBase
         /// </summary>
         /// <param name="value">Слво(Имя или Фамилия)</param>
         /// <returns>Вовзращается язык</returns>
-        public Language DefineLanguage(string value)
+        public static Language DefineLanguage(string value)
 
         {
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
@@ -221,7 +221,7 @@ namespace PersonBase
         /// Возвращает строковое представление информации о человеке
         /// </summary>
         /// <returns> Строковое представление информации о человеке </returns>
-        public string GetInfo()
+        public virtual string GetInfo()
         {
             return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
         }

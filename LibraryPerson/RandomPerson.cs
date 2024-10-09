@@ -10,9 +10,9 @@ namespace LibraryPerson
         /// Метод для генерации случайных персон
         /// </summary>
         /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
-        public static Person GetRandomPerson()
+        public static PersonBase GetRandomPerson()
         {
-            Person randomPerson = new Person();
+            PersonBase randomPerson = new Random();
 
             string[] nameFemale = new string[]
             {
@@ -54,9 +54,33 @@ namespace LibraryPerson
                     break;
             }
 
-            randomPerson.Age = random.Next(Person.MinAge, Person.MaxAge);
+            randomPerson.Age = random.Next(PersonBase.MinAge, PersonBase.MaxAge);
 
             return randomPerson;
+        }
+
+
+        /// <summary>
+        /// Возвращает случайного взрослого с случайными параметрами.
+        /// </summary>
+        /// <param name="adult">Взрослый, для которого устанавливаются параметры.</param>
+        public static void SetRandomAdult(Adult adult)
+        {
+            Random random = new Random();
+
+            List<string> job = new List<string>()
+            {
+                "ABC", "Пятерочка", "Красное-Белое", "Чиним двери", "ИА СО ЕЭС ОСВР",
+                "РОССЕТИ", "Скат", "S7", "Aston"
+            };
+
+            adult.Age = random.Next(adult.MinAge, adult.MaxAge);
+            if (random.Next(0, 2) == 0)
+            {
+                adult.Job = job[random.Next(0, job.Count)];
+            }
+            adult.PassportSeries = random.Next(1111, 9999);
+            adult.PassportNumber = random.Next(111111, 999999);
         }
     }
 }

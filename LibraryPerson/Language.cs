@@ -10,7 +10,7 @@ namespace LibraryPerson
     /// <summary>
     /// Язык
     /// </summary>
-    internal enum Language
+    public enum Language
     {
         /// <summary>
         /// Анлийский
