@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LibraryPerson
 {
-    //TODO: XML
+    //TODO: XML+
+    /// <summary>
+    /// Язык
+    /// </summary>
     internal enum Language
     {
         /// <summary>

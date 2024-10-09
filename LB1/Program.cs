@@ -6,6 +6,7 @@ namespace LB1
     /// </summary>
     internal class Program
     {
+        //TODO: исправить логику с добавлением в список 
         /// <summary>
         /// Основная программа
         /// </summary>
@@ -25,7 +26,8 @@ namespace LB1
                     "4  -  Удаление второго человека из первого списка\n" +
                     "5  -  Очистить список полностью\n" +
                     "6  -  Ввести персону вручную\n" +
-                    "7  -  RandomPerson\n");
+                    "7  -  RandomPerson\n"+
+                    "\nВыберите цифру\n");
 
                 var number = Console.ReadLine();
 
@@ -48,6 +50,8 @@ namespace LB1
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
 
                             Console.WriteLine($"Список 2\n{secondlist.GetPersonsList()}");
+                            firstlist.DeleteArrayPerson();
+                            secondlist.DeleteArrayPerson();
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 1");
                             _ = Console.ReadKey();
@@ -57,7 +61,7 @@ namespace LB1
 
                     case "2":
                         {
-                            Console.WriteLine("\nДобавить нового челока в первый список:");
+                            Console.WriteLine("\nДобавить нового человека в первый список:");
                             for (int i = 0; i < 3; i++)
                             {
                                 firstlist.AddPerson(RandomPerson.GetRandomPerson());
@@ -70,7 +74,8 @@ namespace LB1
                             firstlist.AddPerson(new Person("Новый", "Человек", 40, Gender.Male));
 
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
-
+                            firstlist.DeleteArrayPerson();
+                            secondlist.DeleteArrayPerson();
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 2");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -87,16 +92,20 @@ namespace LB1
                                 secondlist.AddPerson(RandomPerson.GetRandomPerson());
                             }
 
-                            Console.WriteLine("Для просмотра копирования второго человека" +
-                                " первого списка в конец второго списка нажмите Enter\n");
-
                             Console.WriteLine($"Список 1\n{firstlist.GetPersonsList()}");
+                            _ = Console.ReadKey();
+
+                            Console.WriteLine($"Список 2\n{secondlist.GetPersonsList()}");
                             _ = Console.ReadKey();
 
                             int index = 1;
 
                             secondlist.AddPerson(firstlist.IndexPerson(index));
+                            Console.WriteLine("Копирование второго человека из первого " +
+                                "списка в конец второго списка\n");
                             Console.WriteLine($"Список 2\n{secondlist.GetPersonsList()}");
+                            firstlist.DeleteArrayPerson();
+                            secondlist.DeleteArrayPerson();
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 3");
                             _ = Console.ReadKey();
@@ -114,15 +123,12 @@ namespace LB1
                             }
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
 
-                            Console.WriteLine("Для просмотра удаления второго " +
-                                "человека из первого списка нажмите Enter");
-                            _ = Console.ReadKey();
-
                             Console.WriteLine("\nУдаление второго человека из первого списка");
                             int indexToDelete = 1;
                             firstlist.DeleteIndexPerson(indexToDelete);
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
-
+                            firstlist.DeleteArrayPerson();
+                            secondlist.DeleteArrayPerson();
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 4");
                             _ = Console.ReadKey();
                             Console.Clear();
@@ -137,7 +143,7 @@ namespace LB1
                                 firstlist.AddPerson(RandomPerson.GetRandomPerson());
                                 secondlist.AddPerson(RandomPerson.GetRandomPerson());
                             }
-                            Console.WriteLine("Для просмотра содержимого списков 1 и 2 нажмите Enter");
+                            Console.WriteLine("Содержимое списков 1 и 2");
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
                             Console.WriteLine($"\nСписок 2\n{secondlist.GetPersonsList()}");
 
@@ -173,7 +179,8 @@ namespace LB1
 
                                     if (string.IsNullOrWhiteSpace(inputCount))
                                     {
-                                        throw new ArgumentException("Поле с количеством персон не может быть пустым. Введите число.");
+                                        throw new ArgumentException("Поле с количеством персон не может " +
+                                            "быть пустым. Введите число.");
                                     }
 
                                     count = int.Parse(inputCount);

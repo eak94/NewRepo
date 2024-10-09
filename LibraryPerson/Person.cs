@@ -83,9 +83,14 @@ namespace LibraryPerson
                     $" Введите, пожалуйста, еще раз");
             }
 
+            if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-ЯёЁ\s-]+$"))
+            {
+                throw new ArgumentException("Имя или фамилия могут содержать только буквы и дефисы.");
+            }
+
             value = value[0].ToString().ToUpper() + value.Substring(1);
 
-            Regex regexNameOrSecondName = new Regex(@"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$");
+            Regex regexNameOrSecondName = new Regex(@"^[a-zA-Zа-яА-ЯёЁ]+(?:-[a-zA-Zа-яА-ЯёЁ]+)?$");
 
             if (regexNameOrSecondName.IsMatch(value))
             {
@@ -126,6 +131,7 @@ namespace LibraryPerson
         /// <param name="value">Слво(Имя или Фамилия)</param>
         /// <returns>Вовзращается язык</returns>
         private Language DefineLanguage(string value)
+
         {
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
             {
