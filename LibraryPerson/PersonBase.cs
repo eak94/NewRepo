@@ -1,25 +1,26 @@
+using LibraryPerson;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-namespace LibraryPerson
+namespace PersonBase
 {
     /// <summary>
     /// Класс персон
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
-        /// Имя пользователя
+        /// Имя человека
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// Фамилия пользователя
+        /// Фамилия человека
         /// </summary>
         private string _secondName;
 
         /// <summary>
-        /// Возраст пользователя
+        /// Возраст человека
         /// </summary>
         private int _age;
 
@@ -32,6 +33,12 @@ namespace LibraryPerson
         /// Максимальный возраст
         /// </summary>
         public const int MaxAge = 100;
+
+        /// <summary>
+        /// Экземляр класса по умолчанию
+        /// </summary>
+        public PersonBase() : this("Иван", "Иванов", 50, Gender.Male)
+        { }
 
         /// <summary>
         /// Свойства класса имя
@@ -200,7 +207,7 @@ namespace LibraryPerson
         /// <param name="secondName">Фамилия</param>
         /// <param name="age">Возраст</param>
         /// <param name="gender">Пол</param>
-        public Person(string name, string secondName, int age, Gender gender)
+        public PersonBase(string name, string secondName, int age, Gender gender)
         {
             Name = name;
             SecondName = secondName;
@@ -216,11 +223,5 @@ namespace LibraryPerson
         {
             return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
         }
-
-        /// <summary>
-        /// Экземляр класса по умолчанию
-        /// </summary>
-        public Person() : this("Иван", "Иванов", 50, Gender.Male)
-        { }
     }
 }
