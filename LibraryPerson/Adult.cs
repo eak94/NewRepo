@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace LibraryPerson
 {
     /// <summary>
@@ -25,7 +18,8 @@ namespace LibraryPerson
         /// <summary>
         /// Поле партнет
         /// </summary>
-        private int _partner;
+        private Adult _partner;
+
 
         /// <summary>
         /// Свойство для серии паспорта
@@ -57,6 +51,7 @@ namespace LibraryPerson
             }
         }
 
+
         public Adult Parther;
         {
             get
@@ -69,6 +64,68 @@ namespace LibraryPerson
             }
         }
 
+        /// <summary>
+        /// Cвойство место работы
+        /// </summary>
+        public string Job { get; set; }
 
+        /// <summary>
+        /// Конструктор класса Adult
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="secondName">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Пол</param>
+        /// <param name="passportSeries">Серия паспорта</param>
+        /// <param name="passportNumber">Номер паспорта</param>
+        /// <param name="parther">партнер</param>
+        /// <param name="job">Место работы</param>
+        public Adult(string name, string secondName, int age,
+            Gender gender, int passportSeries, int passportNumber,
+            Adult parther, string job)
+            : base(name, secondName,
+            age, gender)
+        {
+            PassportSeries = passportSeries;
+            PassportNumber = passportNumber;
+            Parther = parther;
+            Job = job;
+        }
+
+        /// <summary>
+        /// Экземляр класса по умолчанию
+        /// </summary>
+        public Adult() : this("Иван", "Иванов", 18, Gender.Male,
+                               1111, 111111, null, null)
+        { }
+
+        /// <summary>
+        /// Переопределяемый метод для получения информации о взрослом 
+        /// </summary>
+        /// <returns>Информация о взрослом человеке</returns>
+        public override string GetInfo()
+        {
+            string info = $"{base.GetInfo()}" +
+                $"Паспортные данные: серия {PassportSeries} номер {PassportNumber}";
+
+            if (Job == null)
+            {
+                info += $"Место работы: безработный, ";
+            }
+            else
+            {
+                info += $"Место работы: {Job}, ";
+            }
+
+            if (Parther == null)
+            {
+                info += $"Партнер: отсутствует, ";
+            }
+            else
+            {
+                info += $"Партнер: {Parther}? ";
+            }
+            return info;
+        }
     }
 }

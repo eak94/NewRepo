@@ -41,6 +41,22 @@ namespace PersonBase
         { }
 
         /// <summary>
+        /// Конструктор класса Person
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="secondName">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Пол</param>
+        public PersonBase(string name, string secondName,
+            int age, Gender gender)
+        {
+            Name = name;
+            SecondName = secondName;
+            Age = age;
+            Gender = gender;
+        }
+
+        /// <summary>
         /// Свойства класса имя
         /// </summary>
         public string Name
@@ -117,7 +133,7 @@ namespace PersonBase
         /// </summary>
         /// <param name="name"> Имя </param>
         /// <param name="secondName"> Фамилия </param>
-        private void CheckLanguage(string name, string secondName)
+        public void CheckLanguage(string name, string secondName)
         {
             Language nameLanguage = DefineLanguage(name);
             Language secondNameLanguage = DefineLanguage(secondName);
@@ -137,7 +153,7 @@ namespace PersonBase
         /// </summary>
         /// <param name="value">Слво(Имя или Фамилия)</param>
         /// <returns>Вовзращается язык</returns>
-        private Language DefineLanguage(string value)
+        public Language DefineLanguage(string value)
 
         {
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
@@ -200,20 +216,6 @@ namespace PersonBase
         /// </summary>
         public Gender Gender { get; set; }
 
-        /// <summary>
-        /// Конструктор класса Person
-        /// </summary>
-        /// <param name="name">Имя</param>
-        /// <param name="secondName">Фамилия</param>
-        /// <param name="age">Возраст</param>
-        /// <param name="gender">Пол</param>
-        public PersonBase(string name, string secondName, int age, Gender gender)
-        {
-            Name = name;
-            SecondName = secondName;
-            Age = age;
-            Gender = gender;
-        }
 
         /// <summary>
         /// Возвращает строковое представление информации о человеке
