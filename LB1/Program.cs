@@ -25,7 +25,7 @@ namespace LB1
                     "4  -  Удаление второго человека из первого списка\n" +
                     "5  -  Очистить список полностью\n" +
                     "6  -  Ввести персону вручную\n" +
-                    "7  -  RandomPerson\n"+
+                    "7  -  RandomPerson\n" +
                     "\nВыберите цифру\n");
 
                 var number = Console.ReadLine();
@@ -178,18 +178,32 @@ namespace LB1
 
                                     if (string.IsNullOrWhiteSpace(inputCount))
                                     {
-                                        throw new ArgumentException("Поле с количеством персон не может " +
+                                        throw new FormatException("Поле с количеством персон не может " +
                                             "быть пустым. Введите число.");
+                                    }
+
+                                    if (!int.TryParse(inputCount, out count))
+                                    {
+                                        throw new FormatException("Некорректный ввод. Пожалуйста, введите целое число.");
+                                    }
+
+                                    if (count <= 0)
+                                    {
+                                        throw new ArgumentOutOfRangeException("Количество персон должно быть больше нуля.");
                                     }
 
                                     count = int.Parse(inputCount);
                                     break;
                                 }
-                                catch (ArgumentException exception)
+                                catch (FormatException exception)
                                 {
                                     Console.WriteLine(exception.Message);
                                 }
-                                //BUG: format exception
+                                catch (ArgumentOutOfRangeException exception)
+                                {
+                                    Console.WriteLine(exception.Message);
+                                }
+                                //BUG: format exception+
                             }
 
                             for (int i = 0; i < count; i++)

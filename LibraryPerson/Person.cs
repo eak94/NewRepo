@@ -79,7 +79,7 @@ namespace LibraryPerson
         {
             if (value == null || string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException($"Поле не может быть пустым." +
+                throw new ArgumentException($"Поле не может быть пустым.\n" +
                     $" Введите, пожалуйста, еще раз");
             }
 
@@ -94,7 +94,7 @@ namespace LibraryPerson
 
             if (regexNameOrSecondName.IsMatch(value))
             {
-                string[] words = value.Split(new char[] { '-' });
+                string[] words = value.Split(new char[] { '-', ' ' });
                 for (int i = 0; i < words.Length; i++)
                 {
                     words[i] = words[i][0].ToString().ToUpper() + words[i].Substring(1);
@@ -119,7 +119,7 @@ namespace LibraryPerson
             {
                 if (nameLanguage != secondNameLanguage)
                 {
-                    throw new ArgumentException("Имя и фамилия должны быть на одном языке." +
+                    throw new ArgumentException("Имя и фамилия должны быть на одном языке.\n" +
                         " Пожалуйста, введите данные заново.");
                 }
             }
@@ -136,7 +136,7 @@ namespace LibraryPerson
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-Я]+(?:-[a-zA-Zа-яА-Я]+)?$"))
             {
                 throw new ArgumentException("Поле должно содержать символы только" +
-                    " русского или только английского алфавита, возможно с дефисом." +
+                    " русского или только английского алфавита, возможно с дефисом.\n" +
                     "Введите, пожалуйста, еще раз");
             }
 

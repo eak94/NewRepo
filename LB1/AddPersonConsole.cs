@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    //TODO: XML
+    //TODO: XML+
+    /// <summary>
+    /// Класс для добавления персоны через консоль
+    /// </summary>
+
     public class AddPersonConsole
     {
         /// <summary>
@@ -50,7 +54,7 @@ namespace LB1
 
                         person.Age = int.TryParse(ageInput, out var age)
                             ? age
-                            : throw new ArgumentException("Некорректный ввод. Введите целое число.");
+                            : throw new ArgumentException("Некорректный ввод.");
                     }),
                 new Action(() =>
                     {
