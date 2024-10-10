@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
+    //TODO: XML
     public class AddPersonConsole
     {
         /// <summary>
