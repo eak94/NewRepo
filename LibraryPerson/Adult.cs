@@ -27,7 +27,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство для серии паспорта
         /// </summary>
-        public string PassportSeries;
+        public string PassportSeries
         {
             get
             {
@@ -51,7 +51,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство для номера паспорта
         /// </summary>
-        public string PassportNumber;
+        public string PassportNumber
         {
             get
             {
@@ -73,7 +73,7 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Метод для првоерки данных паспорта 
+        /// Метод для проверки данных паспорта 
         /// </summary>
         /// <param name="number">Номер/серия</param>
         /// <param name="length">Допустимый размер поля </param>
@@ -93,6 +93,9 @@ namespace LibraryPerson
             return Regex.IsMatch(number, @"^\d+$");
         }
 
+        /// <summary>
+        /// Свойства парнера 
+        /// </summary>
         public Adult Parther;
         {
             get
@@ -132,7 +135,7 @@ namespace LibraryPerson
         /// <param name="parther">партнер</param>
         /// <param name="job">Место работы</param>
         public Adult(string name, string secondName, int age,
-            Gender gender, int passportSeries, int passportNumber,
+            Gender gender, string passportSeries, string passportNumber,
             Adult parther, string job)
             : base(name, secondName,
             age, gender)
@@ -147,7 +150,7 @@ namespace LibraryPerson
         /// Экземляр класса по умолчанию
         /// </summary>
         public Adult() : this("Иван", "Иванов", 18, Gender.Male,
-                               1111, 111111, null, null)
+                               "1111", "111111", null, null)
         { }
 
         /// <summary>
