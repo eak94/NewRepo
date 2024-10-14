@@ -23,7 +23,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство поля матери
         /// </summary>
-        public Adult Mother;
+        public Adult Mother
         {
             get
             {
@@ -31,14 +31,29 @@ namespace LibraryPerson
             }
             set
             {
-                _mother = value;
+                if (value?.Gender != Gender.Female && value! = null)
+                {
+                    throw new ArgumentException
+                        ("Мать должна быть женского пола");
+                }
+
+                if (Mother != null)
+                {
+                    throw new ArgumentException
+                        ("У ребенка уже есть мать");
+                }
+
+                else
+                {
+                    _mother = value;
+                }
             }
         }
 
         /// <summary>
         /// Свойство поля отца
         /// </summary>
-        public Adult Father;
+        public Adult Father
         {
             get
             {
@@ -46,7 +61,22 @@ namespace LibraryPerson
             }
             set
             {
-                _father = value;
+                if (value?.Gender != Gender.Male && value! = null)
+                {
+                    throw new ArgumentException
+                        ("Отец должен быть мужского пола");
+                }
+
+                if (Father != null)
+                {
+                    throw new ArgumentException
+                        ("У ребенка уже есть отец");
+                }
+
+                else
+                {
+                    _father = value;
+                }
             }
         }
 
@@ -54,7 +84,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство поля места обучения
         /// </summary>
-        public string Education;
+        public string Education
         {
             get
             {
@@ -62,9 +92,23 @@ namespace LibraryPerson
             }
             set
             {
-                _education = value;
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException
+                        ("Поле не может быть пустым.\n " +
+                        "Если нет информации, то поставьте минус ");
+                }
+                else
+                {
+                    _education = value;
+                }
             }
         }
+
+        /// <summary>
+        /// Свойство для поля минимального возраста ребенка
+        /// </summary>
+        public override int MaxAge { get; } = 18;
 
         /// <summary>
         /// Экземляр класса по умолчанию

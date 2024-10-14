@@ -10,26 +10,35 @@ namespace LibraryPerson
         /// Метод для генерации случайных взрослых
         /// </summary>
         /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
-        public static void GetRandomPerson(PersonBase person, Gender gender)
+        public static void GetRandomPerson(PersonBase person)
         {
             PersonBase randomPerson = new Random();
 
-            string[] nameFemale = new string[]
+            List<string> nameFemale = new List<string>()
             {
                 "Валерия", "Алена", "Анна",
                 "Екатерина", "Алина", "Кира",
                 "Валентина"
             };
-            string[] nameMale = new string[]
+
+            List<string> nameMale = new List<string>()
             {
                 "Антон", "Виктор", "Андрей",
                 "Михаил","Борис", "Роман",
                 "Петр"
             };
-            string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов",
-                "Попов","Андреев", "Иванов", "Пушкин"};
-            string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова",
-                "Мешанкина", "Сечина", "Ручкина", "Доскова"};
+
+            List<string> secondnameMale = new List<string>()
+            {
+                "Стенов", "Любимов", "Стулов",
+                "Попов","Андреев", "Иванов", "Пушкин"
+            };
+
+            List<string> secondnameFemale = new List<string>()
+            {
+                "Любимова", "Ващенко", "Подкорытова",
+                "Мешанкина", "Сечина", "Ручкина", "Доскова"
+            };
 
             Random random = new Random();
             randomPerson.Gender = (Gender)random.Next(2);
@@ -37,15 +46,15 @@ namespace LibraryPerson
             switch (randomPerson.Gender)
             {
                 case Gender.Female:
-                    var randomPersonNameFemale = random.Next(0, nameFemale.Length);
-                    var randomPersonSecondnameFemale = random.Next(0, secondnameFemale.Length);
+                    var randomPersonNameFemale = random.Next(0, nameFemale.Count);
+                    var randomPersonSecondnameFemale = random.Next(0, secondnameFemale.Count);
                     randomPerson.Name = nameFemale[randomPersonNameFemale];
                     randomPerson.SecondName = secondnameFemale[randomPersonSecondnameFemale];
                     break;
 
                 case Gender.Male:
-                    var randomPersonNameMale = random.Next(0, nameMale.Length);
-                    var randomPersonSecondnameMale = random.Next(0, secondnameMale.Length);
+                    var randomPersonNameMale = random.Next(0, nameMale.Count);
+                    var randomPersonSecondnameMale = random.Next(0, secondnameMale.Count);
                     randomPerson.Name = nameMale[randomPersonNameMale];
                     randomPerson.SecondName = secondnameMale[randomPersonSecondnameMale];
                     break;
@@ -53,10 +62,7 @@ namespace LibraryPerson
                 default:
                     break;
             }
-
-            randomPerson.Age = random.Next(PersonBase.MinAge, PersonBase.MaxAge);
-
-            return randomPerson;
+            randomPerson.Age = random.Next(person.MinAge, person.MaxAge);
         }
 
 
@@ -67,6 +73,7 @@ namespace LibraryPerson
         public static void SetRandomAdult(Adult adult)
         {
             Random random = new Random();
+            string[] jobs = new string[];
 
             List<string> job = new List<string>()
             {

@@ -96,7 +96,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойства парнера 
         /// </summary>
-        public Adult Parther;
+        public Adult Parther
         {
             get
             {
@@ -147,9 +147,14 @@ namespace LibraryPerson
         }
 
         /// <summary>
+        /// Свойство поля минимального возраста взрослого
+        /// </summary>
+        public override int MinAge { get; } = 18;
+
+        /// <summary>
         /// Экземляр класса по умолчанию
         /// </summary>
-        public Adult() : this("Иван", "Иванов", 18, Gender.Male,
+        public Adult() : this("Иван", "Иванов", 50, Gender.Male,
                                "1111", "111111", null, null)
         { }
 
