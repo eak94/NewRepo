@@ -163,48 +163,10 @@ namespace LB1
 
                     case "6":
                         {
-                            Console.WriteLine("\nДля тестирования метода ввода персоны" +
-                                " с клавиатуры нажмите Enter");
+                            Console.WriteLine("\nДля тестирования метода ввода персоны с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
 
-                            int count;
-
-                            while (true)
-                            {
-                                try
-                                {
-                                    Console.WriteLine("Введите количество персон для добавления в список:");
-                                    string inputCount = Console.ReadLine();
-
-                                    if (string.IsNullOrWhiteSpace(inputCount))
-                                    {
-                                        throw new FormatException("Поле с количеством персон не может " +
-                                            "быть пустым. Введите число.");
-                                    }
-
-                                    if (!int.TryParse(inputCount, out count))
-                                    {
-                                        throw new FormatException("Некорректный ввод. Пожалуйста, введите целое число.");
-                                    }
-
-                                    if (count <= 0)
-                                    {
-                                        throw new ArgumentOutOfRangeException("Количество персон должно быть больше нуля.");
-                                    }
-
-                                    count = int.Parse(inputCount);
-                                    break;
-                                }
-                                catch (FormatException exception)
-                                {
-                                    Console.WriteLine(exception.Message);
-                                }
-                                catch (ArgumentOutOfRangeException exception)
-                                {
-                                    Console.WriteLine(exception.Message);
-                                }
-                                //BUG: format exception+
-                            }
+                            int count = GetPersonCount.PersonCount();
 
                             for (int i = 0; i < count; i++)
                             {
@@ -250,3 +212,4 @@ namespace LB1
         }
     }
 }
+
