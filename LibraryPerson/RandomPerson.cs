@@ -7,10 +7,10 @@ namespace LibraryPerson
     public class RandomPerson
     {
         /// <summary>
-        /// Метод для генерации случайных персон
+        /// Метод для генерации случайных взрослых
         /// </summary>
         /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
-        public static PersonBase GetRandomPerson()
+        public static void GetRandomPerson(PersonBase person, Gender gender)
         {
             PersonBase randomPerson = new Random();
 

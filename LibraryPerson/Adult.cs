@@ -1,3 +1,6 @@
+using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace LibraryPerson
 {
     /// <summary>
@@ -8,12 +11,12 @@ namespace LibraryPerson
         /// <summary>
         /// Поле серии паспорта 
         /// </summary>
-        private int _passportSeries;
+        private string _passportSeries;
 
         /// <summary>
         /// Поле номера паспорта 
         /// </summary>
-        private int _passportNumber;
+        private string _passportNumber;
 
         /// <summary>
         /// Поле партнет
@@ -24,7 +27,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство для серии паспорта
         /// </summary>
-        public int PassportSeries;
+        public string PassportSeries;
         {
             get
             {
@@ -32,14 +35,23 @@ namespace LibraryPerson
             }
             set
             {
-                _passportSeries = value;
+                if (!CheckPassport(value, 4))
+                {
+                    throw new ArgumentException
+                        ("Серия паспорта должен содержать 6 цифр");
+                }
+
+                else
+                {
+                    _passportSeries = value;
+                }
             }
         }
 
         /// <summary>
         /// Свойство для номера паспорта
         /// </summary>
-        public int PassportNumber;
+        public string PassportNumber;
         {
             get
             {
@@ -47,10 +59,39 @@ namespace LibraryPerson
             }
             set
             {
-            _passportNumber = value;
+                if (!CheckPassport(value, 6))
+                {
+                    throw new ArgumentException
+                        ("Номер паспорта должен содержать 4 цифры");
+                }
+                else
+                {
+                    _passportNumber = value;
+                }
+
             }
         }
 
+        /// <summary>
+        /// Метод для првоерки данных паспорта 
+        /// </summary>
+        /// <param name="number">Номер/серия</param>
+        /// <param name="length">Допустимый размер поля </param>
+        /// <returns>Результат проверки</returns>
+        private static bool CheckPassport(string number, int length)
+        {
+            if (string.IsNullOrEmpty(number))
+            {
+                return false;
+            }
+
+            if (number.Length != length)
+            {
+                return false;
+            }
+
+            return Regex.IsMatch(number, @"^\d+$");
+        }
 
         public Adult Parther;
         {
@@ -60,7 +101,17 @@ namespace LibraryPerson
             }
             set
             {
+                if (value?.Gender == Gender)
+                {
+                    throw new ArgumentException
+                        ("Однополые браки запрещены");
+                }
                 _partner = value;
+
+                if (value != null)
+                {
+                    value._partner = this;
+                }
             }
         }
 

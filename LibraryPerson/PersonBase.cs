@@ -151,7 +151,7 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для проверки языка  
         /// </summary>
-        /// <param name="value">Слво(Имя или Фамилия)</param>
+        /// <param name="value">Слово(Имя или Фамилия)</param>
         /// <returns>Вовзращается язык</returns>
         public static Language DefineLanguage(string value)
 
@@ -224,6 +224,11 @@ namespace LibraryPerson
         public virtual string GetInfo()
         {
             return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
+        }
+
+        public static implicit operator PersonBase(Random v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
