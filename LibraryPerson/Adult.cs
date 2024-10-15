@@ -11,12 +11,12 @@ namespace LibraryPerson
         /// <summary>
         /// Поле серии паспорта 
         /// </summary>
-        private string _passportSeries;
+        private int _passportSeries;
 
         /// <summary>
         /// Поле номера паспорта 
         /// </summary>
-        private string _passportNumber;
+        private int _passportNumber;
 
         /// <summary>
         /// Поле партнет
@@ -27,7 +27,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство для серии паспорта
         /// </summary>
-        public string PassportSeries
+        public int PassportSeries
         {
             get
             {
@@ -51,7 +51,7 @@ namespace LibraryPerson
         /// <summary>
         /// Свойство для номера паспорта
         /// </summary>
-        public string PassportNumber
+        public int PassportNumber
         {
             get
             {
@@ -78,19 +78,9 @@ namespace LibraryPerson
         /// <param name="number">Номер/серия</param>
         /// <param name="length">Допустимый размер поля </param>
         /// <returns>Результат проверки</returns>
-        private static bool CheckPassport(string number, int length)
+        private static bool CheckPassport(int number, int length)
         {
-            if (string.IsNullOrEmpty(number))
-            {
-                return false;
-            }
-
-            if (number.Length != length)
-            {
-                return false;
-            }
-
-            return Regex.IsMatch(number, @"^\d+$");
+            return number.ToString().Length == length;
         }
 
         /// <summary>
@@ -135,7 +125,7 @@ namespace LibraryPerson
         /// <param name="parther">партнер</param>
         /// <param name="job">Место работы</param>
         public Adult(string name, string secondName, int age,
-            Gender gender, string passportSeries, string passportNumber,
+            Gender gender, int passportSeries, int passportNumber,
             Adult parther, string job)
             : base(name, secondName,
             age, gender)
@@ -155,7 +145,7 @@ namespace LibraryPerson
         /// Экземляр класса по умолчанию
         /// </summary>
         public Adult() : this("Иван", "Иванов", 50, Gender.Male,
-                               "1111", "111111", null, null)
+                               1111, 111111, null, null)
         { }
 
         /// <summary>
