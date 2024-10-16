@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace LibraryPerson
 {
@@ -66,7 +67,7 @@ namespace LibraryPerson
         /// </summary>
         /// <param name="person">Случайна персона</param>
         /// <param name="gender">Пол</param>
-        public static void SetRandomPerson(PersonBase person, Gender gender)
+        public static void SetRandomPersonGender(PersonBase person, Gender gender)
         {
             List<string> nameMale = new List<string>()
             {
@@ -129,7 +130,7 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Метод для генерации случайноq персоны
+        /// Метод для генерации случайной персоны
         /// </summary>
         /// <returns>Возвращает случайного взрослого</returns>
         public static PersonBase GetRandomPerson()
@@ -140,7 +141,7 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Метод для генерации случайного взрослого 
+        /// Метод для генерации случайного взрослого со случайными параметрами
         /// </summary>
         /// <returns>Возвращает случайного взрослого</returns>
         public static PersonBase GetRandomAdult()
@@ -148,6 +149,19 @@ namespace LibraryPerson
             Adult adult = new Adult();
             SetRandomPerson(adult);
             return adult;
+        }
+
+        /// <summary>
+        /// Метод для создания случайного взрослого заданного пола 
+        /// </summary>
+        /// <returns></returns>
+        public static Adult GetRandomAdultGenger(Gender gender)
+        {
+            Adult adult = new Adult();
+            SetRandomPersonGender(adult, gender);
+
+            return adult;
+
         }
 
         /// <summary>
@@ -165,10 +179,10 @@ namespace LibraryPerson
             child.Education = educations[randomChild.Next(0, educations.Count)];
 
             child.Father = new Adult();
-            SetRandomPerson(child.Father, Gender.Male);
+            SetRandomPersonGender(child.Father, Gender.Male);
 
             child.Mother = new Adult();
-            SetRandomPerson(child.Mother, Gender.Female);
+            SetRandomPersonGender(child.Mother, Gender.Female);
         }
 
         /// <summary>
@@ -178,6 +192,7 @@ namespace LibraryPerson
         public static Child GetRandomChild()
         {
             Child child = new Child();
+            SetRandomPerson(child);
             SetRandomChild(child);
             return child;
         }
