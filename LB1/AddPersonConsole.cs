@@ -1,9 +1,4 @@
 using LibraryPerson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LB1
 {
@@ -13,7 +8,7 @@ namespace LB1
         /// Метод для вывода информации об объектах
         /// </summary>
         /// <param name="person"> Объект класса персон </param>
-        public void PrintPeople(Person person)
+        public void PrintPeople(PersonBase person)
         {
             Console.Write(person.GetInfo());
         }
@@ -22,9 +17,10 @@ namespace LB1
         /// Метод для ввода информации о персоне через консоль
         /// </summary>
         /// <returns> Объект класса персон, предствляющий персону которая введена через консоль </returns>
-        public static Person PersonConsole()
+        public static PersonBase PersonConsole()
         {
-            Person person = new Person();
+            PersonBase person = new Adult();
+
             var validationActions = new List<Action>()
             {
                 new Action(() =>
