@@ -144,7 +144,7 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Переопределяемый метод для получения информации о ребенке 
+        /// Метод для получения информации о ребенке 
         /// </summary>
         /// <returns>Информация о ребенке</returns>
         public override string GetInfo()
