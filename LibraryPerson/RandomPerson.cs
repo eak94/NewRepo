@@ -44,6 +44,8 @@ namespace LibraryPerson
                 "Стулова", "Попова", "Сечина", "Ручкина", "Доскова"
             };
 
+            person.Gender = _random.Next(2) == 0 ? Gender.Male : Gender.Female;
+
             switch (person.Gender)
             {
                 case Gender.Male:
@@ -148,20 +150,48 @@ namespace LibraryPerson
         {
             Adult adult = new Adult();
             SetRandomPerson(adult);
+            SetRandomAdult(adult);
+            SetRandomPartner(adult);
             return adult;
         }
 
         /// <summary>
         /// Метод для создания случайного взрослого заданного пола 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Возвращает случайного взрослого заданного пола</returns>
         public static Adult GetRandomAdultGenger(Gender gender)
         {
             Adult adult = new Adult();
             SetRandomPersonGender(adult, gender);
-
+            SetRandomAdult(adult);
             return adult;
+        }
 
+        /// <summary>
+        /// Метод для генерации партнера 
+        /// </summary>
+        /// <param name="adult">Возвращает взрослого для которого
+        /// устанавливается партнер по фамилии</param>
+        public static void SetRandomPartner(Adult adult)
+        {
+            Adult partner = new Adult();
+
+            if (_random.Next(0, 2) == 0)
+            {
+                switch (adult.Gender)
+                {
+                    case Gender.Male:
+                        partner = GetRandomAdultGenger(Gender.Female);
+                        break;
+
+                    case Gender.Female:
+                        partner = GetRandomAdultGenger(Gender.Male);
+                        break;
+                    default:
+                        break;
+                }
+                adult.Parther = partner;
+            }
         }
 
         /// <summary>

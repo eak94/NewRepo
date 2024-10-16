@@ -8,13 +8,13 @@ namespace LibraryPerson
         /// <summary>
         /// Список персон
         /// </summary>
-        private List<Person> _people = new List<Person>();
+        private List<PersonBase> _people = new List<PersonBase>();
 
         /// <summary>
         /// Метод для добавления новых элементов в список 
         /// </summary>
         /// <param name="person">Объект класса персон</param>
-        public void AddPerson(Person person)
+        public void AddPerson(PersonBase person)
         {
             _people.Add(person);
         }
@@ -33,7 +33,7 @@ namespace LibraryPerson
         /// </summary>
         /// <param name="index">Индекс персоны</param>
         /// <returns>Возврашается персона по указанному индексу</returns>
-        public Person IndexPerson(int index)
+        public PersonBase IndexPerson(int index)
         {
             if ((_people.Count - 1) >= index && index >= 0)
             {
