@@ -2,6 +2,7 @@ using LibraryPerson;
 
 namespace LB1
 {
+    //TODO: XML
     public class AddPersonConsole
     {
         /// <summary>
@@ -40,6 +41,7 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(ageInput))
                         {
+                            //TODO: RSDN
                             throw new ArgumentException("Поле не может быть пустым. Введите число.");
                         }
 
@@ -55,6 +57,7 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(insertedGender))
                         {
+                            //TODO: RSDN
                             throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
                         }
 

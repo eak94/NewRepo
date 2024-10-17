@@ -106,12 +106,12 @@ namespace LibraryPerson
             }
 
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-ЯёЁ\s-]+$"))
-            {
+            {//TODO: RSDN
                 throw new ArgumentException("Имя или фамилия могут содержать только буквы и дефисы.");
             }
 
             value = value[0].ToString().ToUpper() + value.Substring(1);
-
+            //TODO: RSDN
             Regex regexNameOrSecondName = new Regex(@"^[a-zA-Zа-яА-ЯёЁ]+(?:-[a-zA-Zа-яА-ЯёЁ]+)?$");
 
             if (regexNameOrSecondName.IsMatch(value))
@@ -225,6 +225,7 @@ namespace LibraryPerson
             return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
         }
 
+        //TODO: XML
         public static implicit operator PersonBase(Random v)
         {
             throw new NotImplementedException();

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace LibraryPerson
 {
-    //TODO: XML+
     /// <summary>
     /// Язык
     /// </summary>
@@ -16,10 +15,12 @@ namespace LibraryPerson
         /// Анлийский
         /// </summary>
         English,
+
         /// <summary>
         /// Русский
         /// </summary>
         Russian,
+
         /// <summary>
         /// Язык не определен
         /// </summary>

@@ -37,7 +37,6 @@ namespace LibraryPerson
                     throw new ArgumentException
                         ("Серия паспорта должен содержать 6 цифр");
                 }
-
                 else
                 {
                     _passportSeries = value;
