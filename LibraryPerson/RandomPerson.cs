@@ -148,7 +148,6 @@ namespace LibraryPerson
             Adult adult = new Adult();
             SetRandomPerson(adult);
             SetRandomAdult(adult);
-            SetRandomPartner(adult);
             return adult;
         }
 
@@ -162,33 +161,6 @@ namespace LibraryPerson
             SetRandomPersonGender(adult, gender);
             SetRandomAdult(adult);
             return adult;
-        }
-
-        /// <summary>
-        /// Метод для генерации партнера 
-        /// </summary>
-        /// <param name="adult">Возвращает взрослого для которого
-        /// устанавливается партнер по фамилии</param>
-        public static void SetRandomPartner(Adult adult)
-        {
-            Adult partner = new Adult();
-
-            if (_random.Next(0, 2) == 0)
-            {
-                switch (adult.Gender)
-                {
-                    case Gender.Male:
-                        partner = GetRandomAdultGenger(Gender.Female);
-                        break;
-
-                    case Gender.Female:
-                        partner = GetRandomAdultGenger(Gender.Male);
-                        break;
-                    default:
-                        break;
-                }
-                adult.Parther = partner;
-            }
         }
 
         /// <summary>
