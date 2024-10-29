@@ -47,7 +47,8 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(ageInput))
                         {
-                            throw new ArgumentException("Поле не может быть пустым. Введите число.");
+                            throw new ArgumentException("Поле не может быть пустым." +
+                                " Введите число.");
                         }
 
                         person.Age = int.TryParse(ageInput, out var age)
@@ -62,7 +63,8 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(insertedGender))
                         {
-                            throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
+                            throw new ArgumentException("Поле не может быть пустым." +
+                                " Введите M или F.");
                         }
 
                         switch (insertedGender)

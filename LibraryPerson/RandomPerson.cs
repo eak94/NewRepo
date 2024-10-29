@@ -26,10 +26,18 @@ namespace LibraryPerson
                 "Михаил","Борис", "Роман",
                 "Петр"
             };
-            string[] secondnameMale = new string[] {"Стенов", "Любимов", "Стулов",
-                "Попов","Андреев", "Иванов", "Пушкин"};
-            string[] secondnameFemale = new string[] {"Любимова", "Ващенко", "Подкорытова",
-                "Мешанкина", "Сечина", "Ручкина", "Доскова"};
+            string[] secondnameMale = new string[]
+            {
+                "Стенов", "Любимов", "Стулов",
+                "Попов","Андреев", "Иванов",
+                "Пушкин"
+            };
+            string[] secondnameFemale = new string[]
+            {
+                "Любимова", "Ващенко", "Подкорытова",
+                "Мешанкина", "Сечина", "Ручкина",
+                "Доскова"
+            };
 
             Random random = new Random();
             randomPerson.Gender = (Gender)random.Next(2);

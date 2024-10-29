@@ -146,7 +146,8 @@ namespace LB1
                             Console.WriteLine($"\nСписок 1\n{firstlist.GetPersonsList()}");
                             Console.WriteLine($"\nСписок 2\n{secondlist.GetPersonsList()}");
 
-                            Console.WriteLine("Для просмотра очистки второго списка нажмите Enter");
+                            Console.WriteLine("Для просмотра очистки " +
+                                "второго списка нажмите Enter");
                             _ = Console.ReadKey();
                             Console.WriteLine("\nОчистка второго списка\n");
                             secondlist.DeleteArrayPerson();
@@ -163,7 +164,8 @@ namespace LB1
 
                     case "6":
                         {
-                            Console.WriteLine("\nДля тестирования метода ввода персоны с клавиатуры нажмите Enter");
+                            Console.WriteLine("\nДля тестирования метода ввода " +
+                                "персоны с клавиатуры нажмите Enter");
                             _ = Console.ReadKey();
 
                             int count = GetPersonCount.PersonCount();
@@ -185,7 +187,8 @@ namespace LB1
 
                     case "7":
                         {
-                            Console.WriteLine("\nДля тестирования метода RandomPerson нажмите Enter");
+                            Console.WriteLine("\nДля тестирования метода " +
+                                "RandomPerson нажмите Enter");
                             _ = Console.ReadKey();
 
                             Console.WriteLine("Введите количество персон для создания:");
@@ -197,7 +200,8 @@ namespace LB1
                                 Person randomPerson = RandomPerson.GetRandomPerson();
                                 firstlist.AddPerson(randomPerson);
                             }
-                            Console.WriteLine($"\nРандомный список персон\n{firstlist.GetPersonsList()}");
+                            Console.WriteLine($"\nРандомный список" +
+                                $" персон\n{firstlist.GetPersonsList()}");
 
                             Console.WriteLine("\nНажмите Enter для выхода из пункта 7");
                             _ = Console.ReadKey();
@@ -206,7 +210,8 @@ namespace LB1
                         }
 
                     default:
-                        Console.WriteLine("Некорректный выбор. Пожалуйста, выберите пункт из меню.");
+                        Console.WriteLine("Некорректный выбор." +
+                            " Пожалуйста, выберите пункт из меню.");
                         break;
                 }
             }
