@@ -48,10 +48,12 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Метод для поиска индекса персоны по фамилии и имени при ее наличии в списке
+        /// Метод для поиска индекса персоны
+        /// по фамилии и имени при ее наличии в списке
         /// </summary>
         /// <param name="person">Персона для поиска</param>
-        /// <returns>Возвращается индекс объекта класса персоны по его фамилии и имени</returns>
+        /// <returns>Возвращается индекс объекта
+        /// класса персоны по его фамилии и имени</returns>
         public int FindIndexPerson(string secondName, string name)
         {
             int index = _people.FindIndex(s => s.SecondName == secondName && s.Name == name);
@@ -78,7 +80,8 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для определения количества персон в списке 
         /// </summary>
-        /// <returns>Возвращает количество объектов класса персон в списке</returns>
+        /// <returns>Возвращает количество
+        /// объектов класса персон в списке</returns>
         public int CountPerson()
         {
             return _people.Count;

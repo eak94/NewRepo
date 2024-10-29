@@ -24,7 +24,8 @@ namespace LB1
         /// <summary>
         /// Метод для ввода информации о персоне через консоль
         /// </summary>
-        /// <returns> Объект класса персон, предствляющий персону которая введена через консоль </returns>
+        /// <returns> Объект класса персон, предствляющий персону
+        /// которая введена через консоль </returns>
         public static Person PersonConsole()
         {
             Person person = new Person();

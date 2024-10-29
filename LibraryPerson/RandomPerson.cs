@@ -9,7 +9,8 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для генерации случайных персон
         /// </summary>
-        /// <returns>Возвращает персону, которая сгенерирована случайным образом</returns>
+        /// <returns>Возвращает персону, которая
+        /// сгенерирована случайным образом</returns>
         public static Person GetRandomPerson()
         {
             Person randomPerson = new Person();
