@@ -2,7 +2,10 @@ using LibraryPerson;
 
 namespace LB1
 {
-    //TODO: XML
+    //TODO: XML+
+    /// <summary>
+    /// Класс для добавления персоны через консоль
+    /// </summary>
     public class AddPersonConsole
     {
         /// <summary>
@@ -17,7 +20,8 @@ namespace LB1
         /// <summary>
         /// Метод для ввода информации о персоне через консоль
         /// </summary>
-        /// <returns> Объект класса персон, предствляющий персону которая введена через консоль </returns>
+        /// <returns> Объект класса персон,
+        /// предствляющий персону которая введена через консоль </returns>
         public static PersonBase PersonConsole()
         {
             PersonBase person = new Adult();
@@ -41,13 +45,15 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(ageInput))
                         {
-                            //TODO: RSDN
-                            throw new ArgumentException("Поле не может быть пустым. Введите число.");
+                            //TODO: RSDN+
+                            throw new ArgumentException("Поле не может быть " +
+                                "пустым. Введите число.");
                         }
 
                         person.Age = int.TryParse(ageInput, out var age)
                             ? age
-                            : throw new ArgumentException("Некорректный ввод. Введите целое число.");
+                            : throw new ArgumentException("Некорректный ввод." +
+                            " Введите целое число.");
                     }),
                 new Action(() =>
                     {
@@ -57,8 +63,9 @@ namespace LB1
 
                         if (string.IsNullOrWhiteSpace(insertedGender))
                         {
-                            //TODO: RSDN
-                            throw new ArgumentException("Поле не может быть пустым. Введите M или F.");
+                            //TODO: RSDN+
+                            throw new ArgumentException("Поле не может быть пустым." +
+                                " Введите M или F.");
                         }
 
                         switch (insertedGender)

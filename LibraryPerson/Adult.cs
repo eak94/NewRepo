@@ -35,7 +35,7 @@ namespace LibraryPerson
                 if (!CheckPassport(value, 4))
                 {
                     throw new ArgumentException
-                        ("Серия паспорта должен содержать 6 цифр");
+                        ("Серия паспорта должен содержать 4 цифр");
                 }
                 else
                 {
@@ -58,7 +58,7 @@ namespace LibraryPerson
                 if (!CheckPassport(value, 6))
                 {
                     throw new ArgumentException
-                        ("Номер паспорта должен содержать 4 цифры");
+                        ("Номер паспорта должен содержать 6 цифры");
                 }
                 else
                 {
@@ -151,7 +151,8 @@ namespace LibraryPerson
         public override string GetInfo()
         {
             string info = $"{base.GetInfo()}" +
-                $"Паспортные данные: серия {PassportSeries} номер {PassportNumber}";
+                $"Паспортные данные: серия {PassportSeries} " +
+                $"номер {PassportNumber}";
 
             if (Job == null)
             {

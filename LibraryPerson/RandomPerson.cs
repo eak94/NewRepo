@@ -111,7 +111,8 @@ namespace LibraryPerson
         /// <summary>
         /// Метод для генерации параметров случайного взрослого 
         /// </summary>
-        /// <param name="adult">взрослый, для которого устанавливаются параметры</param>
+        /// <param name="adult">взрослый, для которого
+        /// устанавливаются параметры</param>
         public static void SetRandomAdult(Adult adult)
         {
             Random randomAdult = new Random();
@@ -140,7 +141,8 @@ namespace LibraryPerson
         }
 
         /// <summary>
-        /// Метод для генерации случайного взрослого со случайными параметрами
+        /// Метод для генерации случайного
+        /// взрослого со случайными параметрами
         /// </summary>
         /// <returns>Возвращает случайного взрослого</returns>
         public static PersonBase GetRandomAdult()
@@ -172,7 +174,8 @@ namespace LibraryPerson
             Random randomChild = new Random();
             List<string> educations = new List<string>()
             {
-                "МБОУ СОШ №1", "Гимназия №2", "Детский сад Солнышко", "Изобразительный колледж"
+                "МБОУ СОШ №1", "Гимназия №2",
+                "Детский сад Солнышко", "Изобразительный колледж"
             };
 
             child.Education = educations[randomChild.Next(0, educations.Count)];

@@ -96,7 +96,8 @@ namespace LibraryPerson
         /// Метод для преобразования верхнего регистра Имени или Фамилии персоны 
         /// </summary>
         /// <param name="value"> Имя или Фамилия персоны </param>
-        /// <returns> Возвращается преобразованное в верхний регистр Имя или Фамилия персоны </returns>
+        /// <returns> Возвращается преобразованное в
+        /// верхний регистр Имя или Фамилия персоны </returns>
         public static string ConvertRegistr(string value)
         {
             if (value == null || string.IsNullOrEmpty(value))
@@ -106,12 +107,13 @@ namespace LibraryPerson
             }
 
             if (!Regex.IsMatch(value, @"^[a-zA-Zа-яА-ЯёЁ\s-]+$"))
-            {//TODO: RSDN
-                throw new ArgumentException("Имя или фамилия могут содержать только буквы и дефисы.");
+            {//TODO: RSDN+
+                throw new ArgumentException("Имя или фамилия могут " +
+                    "содержать только буквы и дефисы.");
             }
 
             value = value[0].ToString().ToUpper() + value.Substring(1);
-            //TODO: RSDN
+            //TODO: RSDN+
             Regex regexNameOrSecondName = new Regex(@"^[a-zA-Zа-яА-ЯёЁ]+(?:-[a-zA-Zа-яА-ЯёЁ]+)?$");
 
             if (regexNameOrSecondName.IsMatch(value))
@@ -222,13 +224,9 @@ namespace LibraryPerson
         /// <returns> Строковое представление информации о человеке </returns>
         public virtual string GetInfo()
         {
-            return ($"Имя: {Name}, Фамилия: {SecondName}, Возраст: {Age}, Пол: {Gender}\n");
+            return ($"Имя: {Name}, Фамилия: {SecondName}, " +
+                $"Возраст: {Age}, Пол: {Gender}\n");
         }
 
-        //TODO: XML
-        public static implicit operator PersonBase(Random v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
