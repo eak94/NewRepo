@@ -29,7 +29,7 @@ namespace LB1
 
                     if (string.IsNullOrWhiteSpace(inputCount))
                     {
-                        throw new FormatException("Поле с количеством персон не может быть пустым. Введите число.");
+                        throw new FormatException("Поле с количеством персон не может быть пустым. Пожалуйста, введите число.");
                     }
 
                     if (!int.TryParse(inputCount, out count))
@@ -39,7 +39,7 @@ namespace LB1
 
                     if (count <= 0)
                     {
-                        throw new ArgumentOutOfRangeException("Количество персон не может быть отрицательным");
+                        throw new ArgumentOutOfRangeException("Количество персон не может быть меньше или равно нулю.");
                     }
 
                     return count;
@@ -52,6 +52,8 @@ namespace LB1
                 {
                     Console.WriteLine(exception.Message);
                 }
+
+                Console.WriteLine("Пожалуйста, попробуйте еще раз.");
             }
         }
     }
