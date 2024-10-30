@@ -29,16 +29,12 @@ namespace LibraryPerson
             {
                 return _mother;
             }
+
             set
             {
-                if (value == null)
+                if (value?.Gender != Gender.Female && value != null)
                 {
-                    _mother = null;
-                    return;
-                }
 
-                if (value.Gender != Gender.Female)
-                {
                     throw new ArgumentException
                         ("Мать должна быть женского пола");
                 }
@@ -48,9 +44,10 @@ namespace LibraryPerson
                     throw new ArgumentException
                         ("У ребенка уже есть мать");
                 }
-
-                _mother = value;
-
+                else
+                {
+                    _mother = value;
+                }
             }
         }
 
@@ -59,19 +56,11 @@ namespace LibraryPerson
         /// </summary>
         public Adult Father
         {
-            get
-            {
-                return _father;
-            }
+            get { return _father; }
+
             set
             {
-                if (value == null)
-                {
-                    _father = null;
-                    return;
-                }
-
-                if (value.Gender != Gender.Male)
+                if (value?.Gender != Gender.Male && value != null)
                 {
                     throw new ArgumentException
                         ("Отец должен быть мужского пола");
@@ -80,10 +69,12 @@ namespace LibraryPerson
                 if (Father != null)
                 {
                     throw new ArgumentException
-                        ("У ребенка уже есть мать");
+                        ("У ребенка уже есть отец");
                 }
-
-                _father = value;
+                else
+                {
+                    _father = value;
+                }
             }
         }
 

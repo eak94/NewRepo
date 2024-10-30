@@ -7,58 +7,48 @@ namespace LibraryPerson
     public class RandomPerson
     {
         /// <summary>
-        /// объект класса Random
-        /// </summary>
-        private static Random _random = new Random();
-
-        /// <summary>
         /// Метод для генерации случайной персоны заданного пола 
         /// </summary>
         /// <param name="person">Случайна персона</param>
         public static void SetRandomPerson(PersonBase person)
         {
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+
             List<string> nameMale = new List<string>()
             {
                 "Антон", "Виктор", "Андрей",
-                "Михаил", "Борис", "Роман", "Петр"
-            };
-
-            List<string> secondnameMale = new List<string>()
-            {
-                "Стенов", "Любимов", "Стулов", "Досков",
-                "Попов", "Андреев", "Ручкин", "Пушкин", "Подкорытов"
+                "Михаил", "Борис", "Роман"
             };
 
             List<string> nameFemale = new List<string>()
             {
                 "Валерия", "Алена", "Анна",
-                "Екатерина", "Алина", "Кира", "Валентина"
+                "Екатерина", "Алина", "Кира"
             };
 
-            List<string> secondnameFemale = new List<string>()
+            List<string> secondNames = new List<string>()
             {
-                "Любимова", "Ващенко", "Подкорытова",
-                "Стулова", "Попова", "Сечина", "Ручкина", "Доскова"
+                "Короленко", "Ващенко", "Дурново",
+                "Челибидахе", "Попова", "Черных"
             };
 
-            person.Gender = _random.Next(2) == 0 ? Gender.Male : Gender.Female;
+            person.Age = random.Next(person.MinAge, person.MaxAge);
+            person.Gender = (Gender)random.Next(0, 2);
 
             switch (person.Gender)
             {
                 case Gender.Male:
-                    person.Name = nameMale[_random.Next(nameMale.Count)];
-                    person.SecondName = secondnameMale[_random.Next(secondnameMale.Count)];
+                    person.Name = nameMale[random.Next(0, nameMale.Count)];
                     break;
 
                 case Gender.Female:
-                    person.Name = nameFemale[_random.Next(nameFemale.Count)];
-                    person.SecondName = secondnameFemale[_random.Next(secondnameFemale.Count)];
+                    person.Name = nameFemale[random.Next(0, nameFemale.Count)];
                     break;
                 default:
                     break;
             }
 
-            person.Age = _random.Next(person.MinAge, person.MaxAge);
+            person.SecondName = secondNames[random.Next(0, secondNames.Count)];
         }
 
         /// <summary>
@@ -66,46 +56,54 @@ namespace LibraryPerson
         /// </summary>
         /// <param name="person">Случайна персона</param>
         /// <param name="gender">Пол</param>
-        public static void SetRandomPersonGender(PersonBase person, Gender gender)
+        public static void SetRandomPerson(PersonBase person, Gender gender)
         {
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+
             List<string> nameMale = new List<string>()
             {
                 "Антон", "Виктор", "Андрей",
-                "Михаил", "Борис", "Роман", "Петр"
-            };
-
-            List<string> secondnameMale = new List<string>()
-            {
-                "Стенов", "Любимов", "Стулов", "Досков",
-                "Попов", "Андреев", "Ручкин", "Пушкин", "Подкорытов"
+                "Михаил", "Борис", "Роман"
             };
 
             List<string> nameFemale = new List<string>()
             {
                 "Валерия", "Алена", "Анна",
-                "Екатерина", "Алина", "Кира", "Валентина"
+                "Екатерина", "Алина", "Кира"
             };
 
-            List<string> secondnameFemale = new List<string>()
+            List<string> secondNames = new List<string>()
             {
-                "Любимова", "Ващенко", "Подкорытова",
-                "Стулова", "Попова", "Сечина", "Ручкина", "Доскова"
+                "Короленко", "Ващенко", "Дурново",
+                "Челибидахе", "Попова", "Черных"
             };
 
-            person.Gender = gender;
+            person.Age = random.Next(person.MinAge, person.MaxAge);
 
             if (gender == Gender.Male)
             {
-                person.Name = nameMale[_random.Next(nameMale.Count)];
-                person.SecondName = secondnameMale[_random.Next(secondnameMale.Count)];
-            }
-            else
-            {
-                person.Name = nameFemale[_random.Next(nameFemale.Count)];
-                person.SecondName = secondnameFemale[_random.Next(secondnameFemale.Count)];
+                person.Gender = Gender.Male;
             }
 
-            person.Age = _random.Next(person.MinAge, person.MaxAge);
+            else
+            {
+                person.Gender = Gender.Female;
+            }
+
+            switch (person.Gender)
+            {
+                case Gender.Male:
+                    person.Name = nameMale[random.Next(0, nameMale.Count)];
+                    break;
+
+                case Gender.Female:
+                    person.Name = nameFemale[random.Next(0, nameFemale.Count)];
+                    break;
+                default:
+                    break;
+            }
+
+            person.SecondName = secondNames[random.Next(0, secondNames.Count)];
         }
 
         /// <summary>
@@ -115,7 +113,7 @@ namespace LibraryPerson
         /// устанавливаются параметры</param>
         public static void SetRandomAdult(Adult adult)
         {
-            Random randomAdult = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
 
             List<string> jobs = new List<string>()
             {
@@ -123,10 +121,14 @@ namespace LibraryPerson
                 "Сбертех", "Сбербанк", "Альфабанк", "Минеральные воды"
             };
 
-            adult.Age = randomAdult.Next(adult.MinAge, adult.MaxAge);
-            adult.Job = jobs[randomAdult.Next(0, jobs.Count)];
-            adult.PassportNumber = randomAdult.Next(111111, 999999);
-            adult.PassportSeries = randomAdult.Next(1111, 9999);
+            adult.Age = random.Next(adult.MinAge, adult.MaxAge);
+
+            if (random.Next(0, 2) == 0)
+            {
+                adult.Job = jobs[random.Next(0, jobs.Count)];
+            }
+            adult.PassportSeries = random.Next(1111, 9999);
+            adult.PassportNumber = random.Next(111111, 999999);
         }
 
         /// <summary>
@@ -135,6 +137,7 @@ namespace LibraryPerson
         /// <returns>Возвращает случайного взрослого</returns>
         public static PersonBase GetRandomPerson()
         {
+            Random random = new Random();
             PersonBase person = new Adult();
             SetRandomPerson(person);
             return person;
@@ -145,11 +148,12 @@ namespace LibraryPerson
         /// взрослого со случайными параметрами
         /// </summary>
         /// <returns>Возвращает случайного взрослого</returns>
-        public static PersonBase GetRandomAdult()
+        public static Adult GetRandomAdult()
         {
             Adult adult = new Adult();
             SetRandomPerson(adult);
             SetRandomAdult(adult);
+            SetRandomPartner(adult);
             return adult;
         }
 
@@ -157,12 +161,40 @@ namespace LibraryPerson
         /// Метод для создания случайного взрослого заданного пола 
         /// </summary>
         /// <returns>Возвращает случайного взрослого заданного пола</returns>
-        public static Adult GetRandomAdultGenger(Gender gender)
+        public static Adult GetRandomAdult(Gender gender)
         {
             Adult adult = new Adult();
-            SetRandomPersonGender(adult, gender);
+            SetRandomPerson(adult, gender);
             SetRandomAdult(adult);
             return adult;
+        }
+
+        /// <summary>
+        /// Метод для создания случайного человка
+        /// </summary>
+        /// <param name="adult">Взрослый,для которого устанавливается партнер</param>
+        public static void SetRandomPartner(Adult adult)
+        {
+            Adult partner = new Adult();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+
+            if (random.Next(0, 2) == 0)
+            {
+                switch (adult.Gender)
+                {
+                    case Gender.Male:
+                        partner = GetRandomAdult(Gender.Female);
+                        break;
+
+                    case Gender.Female:
+                        partner = GetRandomAdult(Gender.Male);
+                        break;
+                    default:
+                        break;
+                }
+
+                adult.Parther = partner;
+            }
         }
 
         /// <summary>
@@ -171,20 +203,27 @@ namespace LibraryPerson
         /// <param name="child">ребенок, для которого задаются параметры</param>
         public static void SetRandomChild(Child child)
         {
-            Random randomChild = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+
             List<string> educations = new List<string>()
             {
                 "МБОУ СОШ №1", "Гимназия №2",
                 "Детский сад Солнышко", "Изобразительный колледж"
             };
 
-            child.Education = educations[randomChild.Next(0, educations.Count)];
+            child.Education = educations[random.Next(0, educations.Count)];
 
-            child.Father = new Adult();
-            SetRandomPersonGender(child.Father, Gender.Male);
+            if (random.Next(0, 2) == 0)
+            {
+                Adult father = GetRandomAdult(Gender.Male);
+                child.Father = father;
+            }
 
-            child.Mother = new Adult();
-            SetRandomPersonGender(child.Mother, Gender.Female);
+            if (random.Next(0, 2) == 0)
+            {
+                Adult mother = GetRandomAdult(Gender.Female);
+                child.Mother = mother;
+            }
         }
 
         /// <summary>
