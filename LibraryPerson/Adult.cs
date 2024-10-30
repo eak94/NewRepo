@@ -150,9 +150,8 @@ namespace LibraryPerson
         /// <returns>Информация о взрослом человеке</returns>
         public override string GetInfo()
         {
-            string info = $"{base.GetInfo()}" +
-                $"Паспортные данные: серия {PassportSeries} " +
-                $"номер {PassportNumber}";
+            string info = $"{base.GetInfo()}," +
+                $" Данные паспорта: {PassportSeries} {PassportNumber}, ";
 
             if (Job == null)
             {
@@ -165,13 +164,30 @@ namespace LibraryPerson
 
             if (Parther == null)
             {
-                info += $"Партнер: отсутствует, ";
+                info += $"Партнер: отсутствует";
             }
             else
             {
-                info += $"Партнер: {Parther}, ";
+                info += $"Партнер: {Parther.SecondName} {Parther.Name}";
             }
+
             return info;
+        }
+
+        /// <summary>
+        /// Уникальный метод для класса Adult
+        /// </summary>
+        public string UniqueAdult()
+        {
+            string[] hobby =
+            {
+                "заниматься бегом", "играть в комп",
+                "усердно работать на работе"
+            };
+
+            string type = hobby[new Random().Next(1, hobby.Length)];
+
+            return $"Хобби у {Name} {SecondName} - {type}";
         }
     }
 }

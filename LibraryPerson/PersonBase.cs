@@ -224,8 +224,8 @@ namespace LibraryPerson
         /// <returns> Строковое представление информации о человеке </returns>
         public virtual string GetInfo()
         {
-            return ($"Имя: {Name}, Фамилия: {SecondName}, " +
-                $"Возраст: {Age}, Пол: {Gender}\n");
+            return ($"\nИмя: {Name}, Фамилия: {SecondName}, " +
+                $"Возраст: {Age}, Пол: {Gender} ");
         }
 
     }

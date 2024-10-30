@@ -140,38 +140,34 @@ namespace LibraryPerson
         /// <returns>Информация о ребенке</returns>
         public override string GetInfo()
         {
-            string info = $"{base.GetInfo()}" +
-                $"Данные о ребенке: Мать: {Mother}, Отец: {Father}, " +
-                $"Образование: {Education}";
+            string father = "Нет отца";
+            string mother = "Нет матери";
 
-            if (Father == null)
+            if (Father != null)
             {
-                info += $"Отец: - ";
+                father = Father.Name + " " + Father.SecondName;
             }
-            else
+            if (Mother != null)
             {
-                info += $"Отец: {Father}, ";
-            }
-
-            if (Mother == null)
-            {
-                info += $"Мать: - ";
-            }
-            else
-            {
-                info += $"Мать: {Mother} ";
+                mother = Mother.Name + " " + Mother.SecondName;
             }
 
-            if (Education == null)
+            return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {Education}";
+        }
+
+        /// <summary>
+        /// Уникальный метод для класса Child
+        /// </summary>
+        public string UniqueChild()
+        {
+            string[] breakfast =
             {
-                info += $"Образование (детский сад/школа): - ";
-            }
-            else
-            {
-                info += $"Образование (детский сад/школа): {Education} ";
-            }
-            return info;
+                "невкусную кашу", "яичницу", "чипсы"
+            };
+
+            string type = breakfast[new Random().Next(1, breakfast.Length)];
+
+            return $"На завтрак {Name} {SecondName} ест {type}";
         }
     }
-
 }
