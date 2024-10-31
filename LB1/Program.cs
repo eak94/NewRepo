@@ -1,6 +1,4 @@
 using LibraryPerson;
-using System;
-
 
 namespace LB1
 {
@@ -9,7 +7,6 @@ namespace LB1
     /// </summary>
     internal class Program
     {
-        //TODO: исправить логику с добавлением в список+ 
         /// <summary>
         /// Основная программа
         /// </summary>
@@ -48,20 +45,20 @@ namespace LB1
             switch (person)
             {
                 case Adult:
-                    {
-                        Adult adult = (Adult)person;
-                        Console.WriteLine("Это взрослый");
-                        Console.WriteLine(adult.UniqueAdult());
-                        break;
-                    }
+                {
+                    Adult adult = (Adult)person;
+                    Console.WriteLine("Это взрослый");
+                    Console.WriteLine(adult.UniqueAdult());
+                    break;
+                }
 
                 case Child:
-                    {
-                        Child child = (Child)person;
-                        Console.WriteLine("Это ребенок");
-                        Console.WriteLine(child.UniqueChild());
-                        break;
-                    }
+                {
+                    Child child = (Child)person;
+                    Console.WriteLine("Это ребенок");
+                    Console.WriteLine(child.UniqueChild());
+                    break;
+                }
                 default:
                     break;
             }
