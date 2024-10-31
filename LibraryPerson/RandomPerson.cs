@@ -29,7 +29,7 @@ namespace LibraryPerson
             List<string> secondNames = new List<string>()
             {
                 "Короленко", "Ващенко", "Дурново",
-                "Челибидахе", "Попова", "Черных"
+                "Челибидахе", "Михайленко", "Черных"
             };
 
             person.Age = random.Next(person.MinAge, person.MaxAge);
@@ -75,7 +75,7 @@ namespace LibraryPerson
             List<string> secondNames = new List<string>()
             {
                 "Короленко", "Ващенко", "Дурново",
-                "Челибидахе", "Попова", "Черных"
+                "Челибидахе", "Михайленко", "Черных"
             };
 
             person.Age = random.Next(person.MinAge, person.MaxAge);
