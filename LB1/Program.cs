@@ -192,7 +192,6 @@ namespace LB1
                             _ = Console.ReadKey();
 
                             Console.WriteLine("Введите количество персон для создания:");
-                            //BUG: 7 7 Enter +
                             int count = GetPersonCount.PersonCount();
 
                             for (int i = 0; i < count; i++)
