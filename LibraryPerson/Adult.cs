@@ -1,7 +1,7 @@
 namespace LibraryPerson
 {
     /// <summary>
-    /// Дочерний класс Adult
+    /// Дочерний класс Adult, который описывает взрослого человека 
     /// </summary>
     public class Adult : PersonBase
     {

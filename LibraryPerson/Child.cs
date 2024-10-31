@@ -1,7 +1,7 @@
 namespace LibraryPerson
 {
     /// <summary>
-    /// Дочерний класс Child
+    /// Дочерний класс Child, который описывает ребенка 
     /// </summary>
     public class Child : PersonBase
     {

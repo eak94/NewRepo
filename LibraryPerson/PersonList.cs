@@ -1,7 +1,7 @@
 namespace LibraryPerson
 {
     /// <summary>
-    /// Класс лист персон
+    /// Класс для работы с персонами
     /// </summary>
     public class PersonList
     {

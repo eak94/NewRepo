@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace LibraryPerson
 {
     /// <summary>
-    /// Класс персон
+    /// Класс персон, представляющий базовую концепцию персоны 
     /// </summary>
     public abstract class PersonBase
     {
