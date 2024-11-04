@@ -1,5 +1,4 @@
-using 
-namespace Model
+namespace LB3
 {
     /// <summary>
     /// Основная программа
