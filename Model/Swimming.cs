@@ -62,10 +62,12 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(string style, double distance)
+        public Swimming(string style, double distance, double weight, double time)
         {
             Style = style;
             Distance = distance;
+            Weight = weight;
+            Time = time;
         }
 
         /// <summary>
@@ -73,5 +75,38 @@ namespace Model
         /// </summary>
         public Swimming()
         { }
+
+        /// <summary>
+        /// Метод для расчета каллорий при плавании 
+        /// </summary>
+        public override void CalculateCalories()
+        {
+            double met = CalculateMetValue(Style);
+            caloriesBurned = met * Weight * Time;
+        }
+
+        /// <summary>
+        /// Метод для опрееделения Met
+        /// </summary>
+        /// <param name="style">стиль плавания</param>
+        /// <returns></returns>
+        private double CalculateMetValue(string style)
+        {
+            switch (style)
+            {
+                case "Брасс":
+                    return 5;
+                case "Кроль-умеренный":
+                    return 6;
+                case "Кроль-быстрый":
+                    return 8;
+                case "На спине":
+                    return 4.5;
+                case "Дельфин":
+                    return 10;
+                default:
+                    return 0;
+            }
+        }
     }
 }

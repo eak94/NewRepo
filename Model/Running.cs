@@ -25,7 +25,20 @@ namespace Model
         /// </summary>
         private double _distance;
 
-        private conts
+        /// <summary>
+        /// MET= 8 в беге при медленном теме(около 8 км/ч) 
+        /// </summary>
+        private const int MetSlow = 8;
+
+        /// <summary>
+        /// MET=10 в беге при умеренном теме(около 10 км/ч) 
+        /// </summary>
+        private const int MetModerate = 10;
+
+        /// <summary>
+        /// MET=12 в беге при быстром теме(более 12 км/ч) 
+        /// </summary>
+        private const int MetFast = 12;
 
         /// <summary>
         /// Свойство поля интенсивность
@@ -63,10 +76,12 @@ namespace Model
         /// </summary>
         /// <param name="intensity">интенсивность бега</param>
         /// <param name="distance">расстояние</param>
-        public Running(int intensity, double distance)
+        public Running(int intensity, double distance, double weight, double time))
         {
             Intensity = intensity;
             Distance = distance;
+            Weight = weight;
+            Time = time;
         }
 
         /// <summary>
@@ -75,16 +90,34 @@ namespace Model
         public Running()
         { }
 
-        public double CalculateCaloriesRunning()
-        {
-
+        /// <summary>
+        /// Метод для расчета каллорий при беге 
+        /// </summary>
+        /// <returns></returns>
+        public override void CalculateCalories()
+        { 
+            double met = CalculateMet(Intensity);
+            calories = met * Weight * Time;
         }
 
+        /// <summary>
+        /// Метод для определения Met
+        /// </summary>
+        /// <param name="intensity">интенсивность</param>
         private void CalculateMet(int intensity)
         {
-            if (intensity < 8)
+            if (intensity < MetSlow)
             {
-                return 8
+                return MetSlow
+            }
+
+            else if (intensity <= MetModerate)
+            {
+                return MetModerate;
+            }
+            else
+            {
+                return MetFast;
             }
         }
     }
