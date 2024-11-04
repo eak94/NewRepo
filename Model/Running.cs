@@ -25,6 +25,8 @@ namespace Model
         /// </summary>
         private double _distance;
 
+        private conts
+
         /// <summary>
         /// Свойство поля интенсивность
         /// </summary>
@@ -73,6 +75,17 @@ namespace Model
         public Running()
         { }
 
+        public double CalculateCaloriesRunning()
+        {
 
+        }
+
+        private void CalculateMet(int intensity)
+        {
+            if (intensity < 8)
+            {
+                return 8
+            }
+        }
     }
 }

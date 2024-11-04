@@ -6,12 +6,13 @@ namespace LB3
     internal class Program
     {
         /// <summary>
-        /// Основная программа
+        /// Главный метод программы.
         /// </summary>
-        public static void Main()
+        private static void Main()
         {
 
         }
     }
+
 }
 

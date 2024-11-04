@@ -5,6 +5,11 @@ namespace Model
     /// </summary>
     public abstract class ExerciseBase
     {
-        protected static double 
+        /// <summary>
+        /// 
+        /// </summary>
+        public double Weight { get; }
+
+
     }
 }
