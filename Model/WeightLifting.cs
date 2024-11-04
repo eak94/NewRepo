@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class WeightLifting
+    /// <summary>
+    /// Класс реализующий вид управжения: жим штанги
+    /// </summary>
+    public class WeightLifting : ExerciseBase
     {
+        /// <summary>
+        /// Поле вес 
+        /// </summary>
+        private double weight;
+
+        /// <summary>
+        /// Поле количество повторений
+        /// </summary>
+        private int repetitions;
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public WeightLifting()
+        { }
     }
 }

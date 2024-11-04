@@ -1,6 +1,9 @@
 namespace Model
 {
-    public class ExerciseBase
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class ExerciseBase
     {
 
     }

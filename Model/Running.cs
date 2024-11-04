@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Running
+    /// <summary>
+    /// Класс реализующий вид управжения: бег 
+    /// </summary>
+    public class Running : ExerciseBase
     {
+        /// <summary>
+        /// Поле интенсивность в км/ч 
+        /// </summary>
+        private int intensity;
+
+        /// <summary>
+        /// Поле расстояние
+        /// </summary>
+        private double distance;
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public Running()
+        { }
+
     }
 }
