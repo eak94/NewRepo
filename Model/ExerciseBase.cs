@@ -8,12 +8,12 @@ namespace Model
         /// <summary>
         /// Поле время тренировки 
         /// </summary>
-        private double _time;
+        protected double _time;
 
         /// <summary>
         /// Поле вес человека
         /// </summary>
-        private double _weightpepople;
+        protected double _weightpepople;
 
         /// <summary>
         /// Свойство Вес 
@@ -31,7 +31,6 @@ namespace Model
             }
         }
 
-         
         /// <summary>
         /// Свойство Время
         /// </summary>
@@ -45,8 +44,20 @@ namespace Model
             set
             {
                 _time = CheckNumber(value);
+            }
         }
 
+        /// <summary>
+        /// Конструктор для инициализации нового экземляра класса Running
+        /// с указанными параметрами
+        /// </summary>
+        /// <param name="intensity">интенсивность бега</param>
+        /// <param name="distance">расстояние</param>
+        public ExerciseBase(double weight, double time)
+        {
+            Weight = weight;
+            Time = time;
+        }
 
         /// <summary>
         /// Метод для проверки введенного числа 

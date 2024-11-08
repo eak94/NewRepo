@@ -18,7 +18,7 @@ namespace Model
         /// <summary>
         /// Поле интенсивность в км/ч 
         /// </summary>
-        private int _intensity;
+        private double _intensity;
 
         /// <summary>
         /// Поле расстояние
@@ -28,22 +28,22 @@ namespace Model
         /// <summary>
         /// MET= 8 в беге при медленном теме(около 8 км/ч) 
         /// </summary>
-        private const int MetSlow = 8;
+        private const int _metSlow = 8;
 
         /// <summary>
         /// MET=10 в беге при умеренном теме(около 10 км/ч) 
         /// </summary>
-        private const int MetModerate = 10;
+        private const int _metModerate = 10;
 
         /// <summary>
         /// MET=12 в беге при быстром теме(более 12 км/ч) 
         /// </summary>
-        private const int MetFast = 12;
+        private const int _metFast = 12;
 
         /// <summary>
         /// Свойство поля интенсивность
         /// </summary>
-        public int Intensity
+        public double Intensity
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Model
         /// <param name="intensity">интенсивность бега</param>
         /// <param name="distance">расстояние</param>
         public Running(int intensity, double distance,
-           : base(double weight, double time)
+           : base(double weight, double time))
         {
             Intensity = intensity;
             Distance = distance;
@@ -108,18 +108,18 @@ namespace Model
         /// <param name="intensity">интенсивность</param>
         private int CalculateMet(int intensity)
         {
-            if (intensity < MetSlow)
+            if (intensity < _metSlow)
             {
-                return MetSlow
+                return _metSlow;
             }
 
-            else if (intensity <= MetModerate)
+            else if (intensity <= _metModerate)
             {
-                return MetModerate;
+                return _metModerate;
             }
             else
             {
-                return MetFast;
+                return _metFast;
             }
         }
     }

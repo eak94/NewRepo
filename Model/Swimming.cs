@@ -29,27 +29,27 @@ namespace Model
         /// <summary>
         /// Met для Брасс
         /// </summary>
-        private const double BrassMet = 5;
+        private const double _brassMet = 5;
 
         /// <summary>
         /// Met для Кроль-умеренный
         /// </summary>
-        private const double CrawlModerateMet = 6;
+        private const double _crawlModerateMet = 6;
 
         /// <summary>
         /// Met для Кроль-быстрый
         /// </summary>
-        private const double CrawlFastMet = 8;
+        private const double _crawlFastMet = 8;
 
         /// <summary>
         /// Met для На спине
         /// </summary>
-        private const double BackstrokeMet = 4.5;
+        private const double _backstrokeMet = 4.5;
 
         /// <summary>
         /// Met для Дельфин
         /// </summary>
-        private const double DolphinMet = 10;
+        private const double _dolphinMet = 10;
 
         /// <summary>
         /// Свойство поля стиля плавания
@@ -87,8 +87,8 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(string style, double distance):
-           base(double weight, double time)
+        public Swimming(string style, double distance)
+            : base(double weight, double time)
         {
             Style = style;
             Distance = distance;
@@ -121,15 +121,15 @@ namespace Model
             switch (style)
             {
                 case "Брасс":
-                    return BrassMet;
+                    return _brassMet;
                 case "Кроль-умеренный":
-                    return CrawlModerateMet;
+                    return _crawlModerateMet;
                 case "Кроль-быстрый":
-                    return CrawlFastMet;
+                    return _crawlFastMet;
                 case "На спине":
-                    return BackstrokeMet;
+                    return _backstrokeMet;
                 case "Дельфин":
-                    return DolphinMet;
+                    return _dolphinMet;
                 default:
                     return 0;
             }

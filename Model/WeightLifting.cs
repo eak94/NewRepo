@@ -74,14 +74,14 @@ namespace Model
             }
             set
             {
-                _repetitions = CheckNumber(value);
+                _repetitions = (int)CheckNumber(value);
             }
         }
 
         /// <summary>
         /// Свойство поля количество повторений
         /// </summary>
-        public int MaxWeight
+        public double MaxWeight
         {
             get
             {
@@ -118,9 +118,9 @@ namespace Model
         /// <summary>
         /// Метод для рассчета MET
         /// </summary>
-        public void CalculateMet()
+        public void CalculateMet(workingWeight, maxWeight)
         {
-            double weightPercentage = _workingWeight / _maxWeight * 100;
+            double weightPercentage = workingWeight / maxWeight * 100;
 
             if (weightPercentage >= 80)
             {
