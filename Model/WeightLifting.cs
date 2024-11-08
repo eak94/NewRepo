@@ -59,7 +59,7 @@ namespace Model
             }
             set
             {
-                _workingweight = value;
+                _workingweight = CheckNumber(value);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Model
             }
             set
             {
-                _repetitions = value;
+                _repetitions = CheckNumber(value);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Model
             }
             set
             {
-                _maxweight = value;
+                _maxweight = CheckNumber(value);
             }
         }
 
@@ -99,7 +99,8 @@ namespace Model
         /// </summary>
         /// <param name="weight">вес</param>
         /// <param name="repetitions">количество повторений</param>
-        public WeightLifting(double workingweightt, int repetitions, double weight, double time, double maxweight)
+        public WeightLifting(double workingweightt, int repetitions,
+            double maxweight) : base(double weight, double time)
         {
             WorkingWeight = workingweight;
             Repetitions = repetitions;

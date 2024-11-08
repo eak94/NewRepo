@@ -51,7 +51,7 @@ namespace Model
             }
             set
             {
-                _intensity = value;
+                _intensity = CheckNumber(value);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Model
             }
             set
             {
-                _distance = value;
+                _distance = CheckNumber(value);
             }
         }
 
@@ -76,7 +76,8 @@ namespace Model
         /// </summary>
         /// <param name="intensity">интенсивность бега</param>
         /// <param name="distance">расстояние</param>
-        public Running(int intensity, double distance, double weight, double time))
+        public Running(int intensity, double distance,
+           : base(double weight, double time)
         {
             Intensity = intensity;
             Distance = distance;
@@ -97,14 +98,15 @@ namespace Model
         public override void CalculateCalories()
         { 
             double met = CalculateMet(Intensity);
-            calories = met * Weight * Time;
+            caloriesBurned = met * Weight * Time;
         }
+
 
         /// <summary>
         /// Метод для определения Met
         /// </summary>
         /// <param name="intensity">интенсивность</param>
-        private void CalculateMet(int intensity)
+        private int CalculateMet(int intensity)
         {
             if (intensity < MetSlow)
             {

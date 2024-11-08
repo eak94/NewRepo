@@ -27,6 +27,31 @@ namespace Model
         private double _distance;
 
         /// <summary>
+        /// Met для Брасс
+        /// </summary>
+        private const double BrassMet = 5;
+
+        /// <summary>
+        /// Met для Кроль-умеренный
+        /// </summary>
+        private const double CrawlModerateMet = 6;
+
+        /// <summary>
+        /// Met для Кроль-быстрый
+        /// </summary>
+        private const double CrawlFastMet = 8;
+
+        /// <summary>
+        /// Met для На спине
+        /// </summary>
+        private const double BackstrokeMet = 4.5;
+
+        /// <summary>
+        /// Met для Дельфин
+        /// </summary>
+        private const double DolphinMet = 10;
+
+        /// <summary>
         /// Свойство поля стиля плавания
         /// </summary>
         public string Style
@@ -52,7 +77,7 @@ namespace Model
             }
             set
             {
-                _distance = value;
+                _distance = CheckNumber(value);
             }
         }
 
@@ -62,7 +87,8 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(string style, double distance, double weight, double time)
+        public Swimming(string style, double distance):
+           base(double weight, double time)
         {
             Style = style;
             Distance = distance;
@@ -95,15 +121,15 @@ namespace Model
             switch (style)
             {
                 case "Брасс":
-                    return 5;
+                    return BrassMet;
                 case "Кроль-умеренный":
-                    return 6;
+                    return CrawlModerateMet;
                 case "Кроль-быстрый":
-                    return 8;
+                    return CrawlFastMet;
                 case "На спине":
-                    return 4.5;
+                    return BackstrokeMet;
                 case "Дельфин":
-                    return 10;
+                    return DolphinMet;
                 default:
                     return 0;
             }
