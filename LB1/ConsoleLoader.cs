@@ -3,7 +3,7 @@ namespace LB3
     /// <summary>
     /// Основная программа
     /// </summary>
-    internal class Program
+    internal class ConsoleLoader
     {
         /// <summary>
         /// Главный метод программы.
