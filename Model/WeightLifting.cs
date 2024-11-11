@@ -36,17 +36,12 @@ namespace Model
         /// <summary>
         /// MET=3 при легких весах
         /// </summary>
-        private const int MetSlow = 3;
+        private const int _metSlow = 3;
 
         /// <summary>
         /// MET=5 при умеренных весах
         /// </summary>
-        private const int MetModerate = 5;
-
-        /// <summary>
-        /// MET=6 при тяжелых весах
-        /// </summary>
-        private const int MetFast = 6;
+        private const int _metModerate = 5;
 
         /// <summary>
         /// Свойство поля вес 
@@ -94,18 +89,29 @@ namespace Model
         }
 
         /// <summary>
-        /// Конструктор для инициализации нового экземляра класса WeightLifting
+        /// Метод для расчета каллорий для жима штанги
+        /// </summary>
+        public override double CalculateCalories
+        {
+            get
+            {
+                double met = CalculateMet(WorkingWeight, MaxWeight);
+                return met * Time * WeightPerson;
+            }
+        }
+
+        /// <summary>
+        /// Конструктор для инициализации нового экземляра
+        /// класса тяжелая атлетика(жим штанги)
         /// с указанными параметрами
         /// </summary>
         /// <param name="weight">вес</param>
         /// <param name="repetitions">количество повторений</param>
         public WeightLifting(double workingweightt, int repetitions,
-            double maxweight) : base(double weight, double time)
+            double maxweight, double weightperson, double time) : base(weightperson, time)
         {
-            WorkingWeight = workingweight;
+            WorkingWeight = workingweightt;
             Repetitions = repetitions;
-            Weight = weight;
-            Time = time;
             MaxWeight = maxweight;
         }
 
@@ -118,31 +124,22 @@ namespace Model
         /// <summary>
         /// Метод для рассчета MET
         /// </summary>
-        public void CalculateMet(workingWeight, maxWeight)
+        public double CalculateMet(double workingWeight, double maxWeight)
         {
             double weightPercentage = workingWeight / maxWeight * 100;
 
             if (weightPercentage >= 80)
             {
-                return MetSlow;
+                return _metSlow;
             }
             else if (weightPercentage >= 60)
             {
-                return MetModerate;
+                return _metModerate;
             }
             else
             {
-                return MetSlow;
+                return _metSlow;
             }
-        }
-
-        /// <summary>
-        /// Метод для расчета каллорий при жиме 
-        /// </summary>
-        public override void CalculateCalories()
-        {
-            double met = CalculateMet(WorkingWeight);
-            caloriesBurned = met * Weight * Time;
         }
     }
 }

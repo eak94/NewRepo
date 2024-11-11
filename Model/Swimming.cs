@@ -82,18 +82,28 @@ namespace Model
         }
 
         /// <summary>
+        /// Метод для расчета каллорий при плавании 
+        /// </summary>
+        public override double CalculateCalories
+        {
+            get
+            {
+                double met = CalculateMet(Style);
+                return met * Time * WeightPerson;
+            }
+        }
+
+        /// <summary>
         /// Конструктор для инициализации нового экземляра класса Swimming
         /// с указанными параметрами
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(string style, double distance)
-            : base(double weight, double time)
+        public Swimming(string style, double distance, double weightperson, double time)
+            : base(weightperson, time)
         {
             Style = style;
             Distance = distance;
-            Weight = weight;
-            Time = time;
         }
 
         /// <summary>
@@ -102,21 +112,13 @@ namespace Model
         public Swimming()
         { }
 
-        /// <summary>
-        /// Метод для расчета каллорий при плавании 
-        /// </summary>
-        public override void CalculateCalories()
-        {
-            double met = CalculateMetValue(Style);
-            caloriesBurned = met * Weight * Time;
-        }
 
         /// <summary>
         /// Метод для опрееделения Met
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <returns></returns>
-        private double CalculateMetValue(string style)
+        private double CalculateMet(string style)
         {
             switch (style)
             {

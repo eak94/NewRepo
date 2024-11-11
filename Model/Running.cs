@@ -71,18 +71,27 @@ namespace Model
         }
 
         /// <summary>
-        /// Конструктор для инициализации нового экземляра класса Running
-        /// с указанными параметрами
+        /// Метод для расчета каллорий при беге 
         /// </summary>
-        /// <param name="intensity">интенсивность бега</param>
-        /// <param name="distance">расстояние</param>
-        public Running(int intensity, double distance,
-           : base(double weight, double time))
+        public override double CalculateCalories
+        {
+            get
+            {
+                int met = CalculateMet(Intensity);
+                return met * Time * WeightPerson;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="intensity"></param>
+        /// <param name="distance"></param>
+        public Running(int intensity, double distance, double weightperson, double time)
+            : base(weightperson, time)
         {
             Intensity = intensity;
             Distance = distance;
-            Weight = weight;
-            Time = time;
         }
 
         /// <summary>
@@ -91,22 +100,12 @@ namespace Model
         public Running()
         { }
 
-        /// <summary>
-        /// Метод для расчета каллорий при беге 
-        /// </summary>
-        /// <returns></returns>
-        public override void CalculateCalories()
-        { 
-            double met = CalculateMet(Intensity);
-            caloriesBurned = met * Weight * Time;
-        }
-
 
         /// <summary>
         /// Метод для определения Met
         /// </summary>
         /// <param name="intensity">интенсивность</param>
-        private int CalculateMet(int intensity)
+        private int CalculateMet(double intensity)
         {
             if (intensity < _metSlow)
             {

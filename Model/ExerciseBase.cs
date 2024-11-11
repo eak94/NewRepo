@@ -8,26 +8,25 @@ namespace Model
         /// <summary>
         /// Поле время тренировки 
         /// </summary>
-        protected double _time;
+        private double _time;
 
         /// <summary>
         /// Поле вес человека
         /// </summary>
-        protected double _weightpepople;
+        private double _weightperson;
 
         /// <summary>
-        /// Свойство Вес 
+        /// Свойство Вес человека
         /// </summary>
-        public double Weight
+        public double WeightPerson
         {
             get
-
             {
-                return _weightpepople;
+                return _weightperson;
             }
             set
             {
-                _weightpepople = CheckNumber(value);
+                _weightperson = CheckNumber(value);
             }
         }
 
@@ -48,16 +47,22 @@ namespace Model
         }
 
         /// <summary>
-        /// Конструктор для инициализации нового экземляра класса Running
-        /// с указанными параметрами
+        /// Конструктор, инициализирующий поля веса человека и времени тренировки
         /// </summary>
-        /// <param name="intensity">интенсивность бега</param>
-        /// <param name="distance">расстояние</param>
-        public ExerciseBase(double weight, double time)
+        /// <param name="weightperson">Вес человека</param>
+        /// <param name="time">Время тренировки</param>
+        public ExerciseBase(double weightperson, double time)
         {
-            Weight = weight;
+            WeightPerson = weightperson;
             Time = time;
         }
+
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// </summary>
+        public ExerciseBase() : this(0, 0)
+        { }
+
 
         /// <summary>
         /// Метод для проверки введенного числа 
