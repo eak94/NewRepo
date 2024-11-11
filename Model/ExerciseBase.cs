@@ -74,7 +74,7 @@ namespace Model
         {
             if (number <= 0)
             {
-                throw new ArgumentException("Число должно быть положительным.");
+                throw new ArgumentOutOfRangeException("Число должно быть положительным.");
             }
             else
             {
@@ -87,5 +87,6 @@ namespace Model
         /// </summary>
         /// <returns>Каллории.</returns>
         public abstract double CalculateCalories { get; }
+
     }
 }
