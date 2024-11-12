@@ -51,7 +51,7 @@ namespace Model
             }
             set
             {
-                _intensity = CheckNumber(value);
+                _intensity = CheckNumberBase(value);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Model
             }
             set
             {
-                _distance = CheckNumber(value);
+                _distance = CheckNumberBase(value);
             }
         }
 

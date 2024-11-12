@@ -49,10 +49,11 @@ namespace LB3
 
             Action actionExercise = new Action(() =>
             {
-                Console.WriteLine($"1 - Бег,\n" +
-                    $"2 - Плавание,\n" +
-                    $"3 - Жим гантелей." +
-                    $"Выберите тип упражнения");
+                Console.WriteLine($"\nВыберете из списка упражнение: " +
+                    $"\n1 - Бег\n" +
+                    $"2 - Плавание\n" +
+                    $"3 - Жим гантелей");
+
                 _ = int.TryParse(Console.ReadLine(), out int what);
 
                 switch (what)
@@ -75,8 +76,8 @@ namespace LB3
                     default:
                         {
                             throw new ArgumentException
-                            ("Такого вида упражнений нет в списке.\n" +
-                            " Попробуйте еще раз.");
+                            ("Такого вида упражнений нет в списке." +
+                            "\nПопробуйте еще раз.");
                         }
                 }
             });
@@ -88,6 +89,7 @@ namespace LB3
                     Console.Write("Введите ваш вес: ");
                     Running running = (Running)exercise;
                     running.WeightPerson = CheckNumber(Console.ReadLine());
+
                 }), "Ваш вес"),
 
                 (new Action(() =>
@@ -100,17 +102,19 @@ namespace LB3
                     Console.Write("Введите продолжительность вашей тренировки: ");
                     Running running = (Running)exercise;
                     running.Time = CheckNumber(Console.ReadLine());
+
                 }), "Время тренировки"),
 
 
                (new Action(() =>
                        {
                            Console.Write("Выберите темп тренировки:" +
-                               "1 - Медленный" +
-                               "2 - Умеренный" +
-                               "3 - Быстрый");
+                               "1 - Медленный ()" +
+                               "2 - Умеренный ()" +
+                               "3 - Быстрый ()");
                            Running running = (Running)exercise;
                            running.Intensity = CheckNumber(Console.ReadLine());
+
                        }), "Интенсивность тренировки"),
 
                        (new Action(() =>
@@ -122,10 +126,124 @@ namespace LB3
                            Console.WriteLine("Нажмите любую кнопку для продолжения");
                            _ = Console.ReadKey();
                            Console.WriteLine(" ");
+
                        }), "Количество сожженых каллорий")
                    };
 
-            ActionHandler(actionExercise, "Тип упражнения");
+            var actionSwimming = new List<(Action, string)>
+            {
+                (new Action(() =>
+                {
+                    Console.Write("Введите ваш вес: ");
+                    Swimming swimming = (Swimming)exercise;
+                    swimming.WeightPerson = CheckNumber(Console.ReadLine());
+
+                }), "Ваш вес"),
+
+                (new Action(() =>
+                {
+                    //сюда добавить выбор минуты, часы, секунды (додумать)
+                    Console.Write("Выберите единицы измерения времени: " +
+                        "1 - Час" +
+                        "2 - Минуты" +
+                        "3 - Секунды");
+                    Console.Write("Введите продолжительность вашей тренировки: ");
+                    Swimming swimming = (Swimming)exercise;
+                    swimming.Time = CheckNumber(Console.ReadLine());
+
+                }), "Время тренировки"),
+
+
+               (new Action(() =>
+                       {
+                           Console.Write("Введите вашу дистанцию");
+                           Swimming swimming = (Swimming)exercise;
+                           swimming.Distance = CheckNumber(Console.ReadLine());
+
+                       }), "Дистанция"),
+
+                (new Action(() =>
+                {
+                           Console.Write("Выберите стиль плавания:" +
+                               "1 - Брасс" +
+                               "2 - Кроль-умеренный" +
+                               "3 - Кроль-быстрый" +
+                               "4 - На спине" +
+                               "5 - Дельфин");
+                           Swimming swimming = (Swimming)exercise;
+                           swimming.Style = Console.ReadLine();
+
+                       }), "Стиль плавания"),
+
+                (new Action(() =>
+                       {
+                           Console.Write("Количество сожженых каллорий:");
+                           Swimming swimming = (Swimming)exercise;
+                           Console.WriteLine($"Количество сожженых каллорий: " +
+                               $"{Math.Round(exercise.CalculateCalories, RoundNumber)}\n");
+                           Console.WriteLine("Нажмите любую кнопку для продолжения");
+                           _ = Console.ReadKey();
+                           Console.WriteLine(" ");
+
+                       }), "Количество сожженых каллорий")
+            };
+
+            var actionWeightLifting = new List<(Action, string)>
+            {
+                (new Action(() =>
+                {
+                    Console.Write("Введите ваш вес: ");
+                    WeightLifting weightLifting = (WeightLifting)exercise;
+                    weightLifting.WeightPerson = CheckNumber(Console.ReadLine());
+
+                }), "Ваш вес"),
+
+                (new Action(() =>
+                       {
+                           Console.Write("Введите максимальный рабочий вес: ");
+                           WeightLifting weightLifting = (WeightLifting)exercise;
+                           weightLifting.MaxWeight = CheckNumber(Console.ReadLine());
+
+                       }), "Максимальный рабочий вес"),
+
+                (new Action(() =>
+                {
+                    //сюда добавить выбор минуты, часы, секунды (додумать)
+                    Console.Write("Выберите единицы измерения времени: " +
+                        "1 - Час" +
+                        "2 - Минуты" +
+                        "3 - Секунды");
+                    Console.Write("Введите продолжительность вашей тренировки: ");
+                    WeightLifting weightLifting = (WeightLifting)exercise;
+                    weightLifting.Time = CheckNumber(Console.ReadLine());
+
+                }), "Время тренировки"),
+
+
+               (new Action(() =>
+                       {
+                           Console.Write("Введите рабочий вес: ");
+                           WeightLifting weightLifting = (WeightLifting)exercise;
+                           weightLifting.WorkingWeight = CheckNumber(Console.ReadLine());
+
+                       }), "Рабочий вес"),
+
+
+                (new Action(() =>
+                       {
+                           Console.Write("Количество сожженых каллорий:");
+                           WeightLifting weightLifting = (WeightLifting)exercise;
+                           Console.WriteLine($"Количество сожженых каллорий: " +
+                               $"{Math.Round(exercise.CalculateCalories, RoundNumber)}\n");
+                           Console.WriteLine("Нажмите любую кнопку для продолжения");
+                           _ = Console.ReadKey();
+                           Console.WriteLine(" ");
+
+                       }), "Количество сожженых каллорий")
+            };
+
+
+            ActionHandler(actionExercise);
 
             var figureActionDictionary = new Dictionary<Type, List<(Action, string)>>
             {
@@ -134,7 +252,7 @@ namespace LB3
 
             foreach (var action in figureActionDictionary[exercise.GetType()])
             {
-                ActionHandler(action.Item1, action.Item2);
+                ActionHandler(action.Item1);
             }
         }
 
@@ -143,7 +261,7 @@ namespace LB3
         /// </summary>
         /// <param name="action"></param>
         /// <param name="propertyName"></param>
-        private static void ActionHandler(Action action, string propertyName)
+        private static void ActionHandler(Action action)
         {
 
             while (true)
@@ -156,8 +274,7 @@ namespace LB3
                 catch (ArgumentException exception)
                 {
 
-                    Console.WriteLine($"Ошибка при вводе {propertyName}. " +
-                            $"Описание ошибки: {exception.Message}");
+                    Console.WriteLine(exception.Message);
 
                 }
             }

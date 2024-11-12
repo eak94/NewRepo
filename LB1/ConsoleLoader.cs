@@ -1,5 +1,3 @@
-using Model;
-
 namespace LB3
 {
     /// <summary>
@@ -25,7 +23,7 @@ namespace LB3
                 if (!isParsed)
                 {
                     Console.WriteLine("Некорректный ввод. " +
-                        "Необходимо выбрать цифру из пункта МЕНЮ");
+                        "\nПопробуйте еще раз. Необходимо выбрать из пункта МЕНЮ.\n");
                 }
                 switch (action)
                 {
@@ -40,7 +38,7 @@ namespace LB3
                         }
                     default:
                         {
-                            Console.WriteLine("Выберите только из пунктов МЕНЮ");
+                            Console.WriteLine("Такого пункта нет в МЕНЮ. Попробуйте еще раз.\n");
                             break;
                         }
                 }

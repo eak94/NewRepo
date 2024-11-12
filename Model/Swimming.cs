@@ -77,7 +77,7 @@ namespace Model
             }
             set
             {
-                _distance = CheckNumber(value);
+                _distance = CheckNumberBase(value);
             }
         }
 

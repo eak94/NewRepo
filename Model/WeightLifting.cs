@@ -54,7 +54,7 @@ namespace Model
             }
             set
             {
-                _workingweight = CheckNumber(value);
+                _workingweight = CheckNumberBase(value);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Model
             }
             set
             {
-                _repetitions = (int)CheckNumber(value);
+                _repetitions = (int)CheckNumberBase(value);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Model
             }
             set
             {
-                _maxweight = CheckNumber(value);
+                _maxweight = CheckNumberBase(value);
             }
         }
 

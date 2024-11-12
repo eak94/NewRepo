@@ -26,7 +26,7 @@ namespace Model
             }
             set
             {
-                _weightperson = CheckNumber(value);
+                _weightperson = CheckNumberBase(value);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Model
             }
             set
             {
-                _time = CheckNumber(value);
+                _time = CheckNumberBase(value);
             }
         }
 
@@ -70,9 +70,9 @@ namespace Model
         /// <param name="number">Число</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        protected static double CheckNumber(double number)
+        protected static double CheckNumberBase(double number)
         {
-            if (number <= 0)
+            if (number < 0)
             {
                 throw new ArgumentOutOfRangeException("Число должно быть положительным.");
             }
