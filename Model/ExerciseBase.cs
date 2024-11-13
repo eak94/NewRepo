@@ -16,6 +16,11 @@ namespace Model
         private double _weightperson;
 
         /// <summary>
+        /// Единицы измерения времени
+        /// </summary>
+        private TimeUnit _timeUnit;
+
+        /// <summary>
         /// Свойство Вес человека
         /// </summary>
         public double WeightPerson
@@ -44,6 +49,15 @@ namespace Model
             {
                 _time = CheckNumberBase(value);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TimeUnit TimeUnit
+        {
+            get => _timeUnit;
+            set => _timeUnit = value;
         }
 
         /// <summary>
@@ -87,6 +101,5 @@ namespace Model
         /// </summary>
         /// <returns>Каллории.</returns>
         public abstract double CalculateCalories { get; }
-
     }
 }

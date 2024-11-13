@@ -82,33 +82,58 @@ namespace LB3
                 }
             });
 
-            var actionRunning = new List<(Action, string)>
-            {
-                (new Action(() =>
-                {
-                    Console.Write("Введите ваш вес: ");
-                    Running running = (Running)exercise;
-                    running.WeightPerson = CheckNumber(Console.ReadLine());
+            Console.Write("Введите ваш вес: ");
+            exercise.WeightPerson = CheckNumber(Console.ReadLine());
 
-                }), "Ваш вес"),
-
-                (new Action(() =>
-                {
-                    //сюда добавить выбор минуты, часы, секунды (додумать)
-                    Console.Write("Выберите единицы измерения времени: " +
+            Console.Write("Выберите единицы измерения времени вашей тренировки: " +
                         "1 - Час" +
                         "2 - Минуты" +
                         "3 - Секунды");
-                    Console.Write("Введите продолжительность вашей тренировки: ");
-                    Running running = (Running)exercise;
-                    running.Time = CheckNumber(Console.ReadLine());
 
-                }), "Время тренировки"),
+            _ = int.TryParse(Console.ReadLine(), out int timeUnitChoice);
 
+            switch (timeUnitChoice)
+            {
+                case 1:
+                    exercise.TimeUnit = TimeUnit.Hours;
+                    break;
+                case 2:
+                    exercise.TimeUnit = TimeUnit.Minutes;
+                    break;
+                case 3:
+                    exercise.TimeUnit = TimeUnit.Seconds;
+                    break;
+                default:
+                    throw new ArgumentException
+                        ("Некорректный выбор единиц измерения времени.");
+            }
 
+            Console.Write("Введите продолжительность вашей тренировки: ");
+            double timeValue = CheckNumber(Console.ReadLine());
+
+            switch (exercise.TimeUnit)
+            {
+                case TimeUnit.Hours:
+                    exercise.Time = timeValue;
+                    Console.Write(exercise.Time);
+                    break;
+                case TimeUnit.Minutes:
+                    exercise.Time = timeValue / 60;
+                    Console.Write(exercise.Time);
+                    break;
+                case TimeUnit.Seconds:
+                    exercise.Time = timeValue / 3600;
+                    Console.Write(exercise.Time);
+                    break;
+                default:
+                    break;
+            }
+
+            var actionRunning = new List<(Action, string)>
+            {
                (new Action(() =>
                        {
-                           Console.Write("Выберите темп тренировки:" +
+                           Console.Write("Выберите интенсивность тренировки:" +
                                "1 - Медленный ()" +
                                "2 - Умеренный ()" +
                                "3 - Быстрый ()");
@@ -132,27 +157,6 @@ namespace LB3
 
             var actionSwimming = new List<(Action, string)>
             {
-                (new Action(() =>
-                {
-                    Console.Write("Введите ваш вес: ");
-                    Swimming swimming = (Swimming)exercise;
-                    swimming.WeightPerson = CheckNumber(Console.ReadLine());
-
-                }), "Ваш вес"),
-
-                (new Action(() =>
-                {
-                    //сюда добавить выбор минуты, часы, секунды (додумать)
-                    Console.Write("Выберите единицы измерения времени: " +
-                        "1 - Час" +
-                        "2 - Минуты" +
-                        "3 - Секунды");
-                    Console.Write("Введите продолжительность вашей тренировки: ");
-                    Swimming swimming = (Swimming)exercise;
-                    swimming.Time = CheckNumber(Console.ReadLine());
-
-                }), "Время тренировки"),
-
 
                (new Action(() =>
                        {
@@ -190,13 +194,6 @@ namespace LB3
 
             var actionWeightLifting = new List<(Action, string)>
             {
-                (new Action(() =>
-                {
-                    Console.Write("Введите ваш вес: ");
-                    WeightLifting weightLifting = (WeightLifting)exercise;
-                    weightLifting.WeightPerson = CheckNumber(Console.ReadLine());
-
-                }), "Ваш вес"),
 
                 (new Action(() =>
                        {
@@ -205,20 +202,6 @@ namespace LB3
                            weightLifting.MaxWeight = CheckNumber(Console.ReadLine());
 
                        }), "Максимальный рабочий вес"),
-
-                (new Action(() =>
-                {
-                    //сюда добавить выбор минуты, часы, секунды (додумать)
-                    Console.Write("Выберите единицы измерения времени: " +
-                        "1 - Час" +
-                        "2 - Минуты" +
-                        "3 - Секунды");
-                    Console.Write("Введите продолжительность вашей тренировки: ");
-                    WeightLifting weightLifting = (WeightLifting)exercise;
-                    weightLifting.Time = CheckNumber(Console.ReadLine());
-
-                }), "Время тренировки"),
-
 
                (new Action(() =>
                        {
