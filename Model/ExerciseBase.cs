@@ -13,12 +13,12 @@ namespace Model
         /// <summary>
         /// Поле вес человека
         /// </summary>
-        private double _weightperson;
+        private double _weightPerson;
 
         /// <summary>
-        /// Единицы измерения времени
+        /// Константа хранит максимальный вес человека
         /// </summary>
-        private TimeUnit _timeUnit;
+        private const int _maxWeightPerson = 300;
 
         /// <summary>
         /// Свойство Вес человека
@@ -27,11 +27,11 @@ namespace Model
         {
             get
             {
-                return _weightperson;
+                return _weightPerson;
             }
             set
             {
-                _weightperson = CheckNumberBase(value);
+                _weightPerson = CheckNumberBase(value);
             }
         }
 
@@ -48,16 +48,8 @@ namespace Model
             set
             {
                 _time = CheckNumberBase(value);
-            }
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public TimeUnit TimeUnit
-        {
-            get => _timeUnit;
-            set => _timeUnit = value;
+            }
         }
 
         /// <summary>
@@ -89,6 +81,12 @@ namespace Model
             if (number < 0)
             {
                 throw new ArgumentOutOfRangeException("Число должно быть положительным.");
+            }
+
+            if (number > _maxWeightPerson)
+            {
+                throw new ArgumentException($"Возраст не может быть больше " +
+                    $"{_maxWeightPerson}");
             }
             else
             {
