@@ -21,6 +21,11 @@ namespace Model
         private const int _maxWeightPerson = 300;
 
         /// <summary>
+        /// Константа хранит максимальный вес человека
+        /// </summary>
+        private const double _maxTime = 24;
+
+        /// <summary>
         /// Свойство Вес человека
         /// </summary>
         public double WeightPerson
@@ -32,6 +37,12 @@ namespace Model
             set
             {
                 _weightPerson = CheckNumberBase(value);
+
+                if (value > _maxWeightPerson)
+                {
+                    throw new ArgumentException("Вес не может быть " +
+                        $"больше {_maxWeightPerson} кг");
+                }
             }
         }
 
@@ -49,6 +60,11 @@ namespace Model
             {
                 _time = CheckNumberBase(value);
 
+                if (value > _maxTime)
+                {
+                    throw new ArgumentException("Время тренировки не может" +
+                        $" быть больше {_maxTime} ч");
+                }
             }
         }
 
@@ -66,7 +82,7 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию.
         /// </summary>
-        public ExerciseBase() : this(0, 0)
+        public ExerciseBase() : this(1, 1)
         { }
 
 
@@ -78,15 +94,10 @@ namespace Model
         /// <exception cref="ArgumentException"></exception>
         protected static double CheckNumberBase(double number)
         {
-            if (number < 0)
+            if (number <= 0)
             {
-                throw new ArgumentOutOfRangeException("Число должно быть положительным.");
-            }
-
-            if (number > _maxWeightPerson)
-            {
-                throw new ArgumentException($"Возраст не может быть больше " +
-                    $"{_maxWeightPerson}");
+                throw new ArgumentException("Введенное число должно быть положительным " +
+                    "или не равным нулю");
             }
             else
             {
@@ -97,7 +108,6 @@ namespace Model
         /// <summary>
         /// Метод расчета каллорий 
         /// </summary>
-        /// <returns>Каллории.</returns>
         public abstract double CalculateCalories { get; }
     }
 }

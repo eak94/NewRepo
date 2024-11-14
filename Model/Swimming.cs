@@ -8,7 +8,7 @@ namespace Model
         /// <summary>
         /// Поле стиль плавания
         /// </summary>
-        private string _style;
+        private int _style;
 
         /// <summary>
         /// Поле дистанция 
@@ -18,32 +18,32 @@ namespace Model
         /// <summary>
         /// Met для Брасс
         /// </summary>
-        private const double _brassMet = 5;
+        private const int _brassMet = 5;
 
         /// <summary>
         /// Met для Кроль-умеренный
         /// </summary>
-        private const double _crawlModerateMet = 6;
+        private const int _crawlModerateMet = 6;
 
         /// <summary>
         /// Met для Кроль-быстрый
         /// </summary>
-        private const double _crawlFastMet = 8;
+        private const int _crawlFastMet = 8;
 
         /// <summary>
         /// Met для На спине
         /// </summary>
-        private const double _backstrokeMet = 4.5;
+        private const int _backstrokeMet = 4;
 
         /// <summary>
         /// Met для Дельфин
         /// </summary>
-        private const double _dolphinMet = 10;
+        private const int _dolphinMet = 10;
 
         /// <summary>
         /// Свойство поля стиля плавания
         /// </summary>
-        public string Style
+        public int Style
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Model
             }
             set
             {
-                _style = value;
+                _style = (int)CheckNumberBase(value);
             }
         }
 
@@ -77,8 +77,8 @@ namespace Model
         {
             get
             {
-                double met = CalculateMet(Style);
-                return met * Time * WeightPerson;
+                CalculateMet();
+                return _style * Time * WeightPerson;
             }
         }
 
@@ -88,7 +88,7 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(string style, double distance, double weightperson, double time)
+        public Swimming(int style, double distance, double weightperson, double time)
             : base(weightperson, time)
         {
             Style = style;
@@ -107,22 +107,28 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <returns></returns>
-        private double CalculateMet(string style)
+        private void CalculateMet()
         {
-            switch (style)
+            switch (Style)
             {
-                case "Брасс":
-                    return _brassMet;
-                case "Кроль-умеренный":
-                    return _crawlModerateMet;
-                case "Кроль-быстрый":
-                    return _crawlFastMet;
-                case "На спине":
-                    return _backstrokeMet;
-                case "Дельфин":
-                    return _dolphinMet;
+                case 1:
+                    Style = _brassMet;
+                    break;
+                case 2:
+                    Style = _crawlModerateMet;
+                    break;
+                case 3:
+                    Style = _crawlFastMet;
+                    break;
+                case 4:
+                    Style = _backstrokeMet;
+                    break;
+                case 5:
+                    Style = _dolphinMet;
+                    break;
                 default:
-                    return 0;
+                    Style = 0;
+                    break;
             }
         }
     }

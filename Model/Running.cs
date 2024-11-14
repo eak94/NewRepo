@@ -67,8 +67,8 @@ namespace Model
         {
             get
             {
-                int met = CalculateMet(Distance, Time);
-                return met * Time * WeightPerson;
+                CalculateMet(Distance, Time);
+                return Intensity * Time * WeightPerson;
             }
         }
 
@@ -90,30 +90,27 @@ namespace Model
         public Running()
         { }
 
-
-
         /// <summary>
         /// Метод для определения MET
         /// </summary>
-        /// <param name="distance">lдистанция</param>
+        /// <param name="distance">дистанция</param>
         /// <param name="time">время</param>
         /// <returns></returns>
-        private int CalculateMet(double distance, double time)
+        private void CalculateMet(double distance, double time)
         {
-            if (distance / time < _metSlow)
+            if ((distance / time) < _metSlow)
             {
-                return _metSlow;
+                Intensity = _metSlow;
             }
 
-            else if (distance / time <= _metModerate)
+            else if ((distance / time) <= _metModerate)
             {
-                return _metModerate;
+                Intensity = _metModerate;
             }
             else
             {
-                return _metFast;
+                Intensity = _metFast;
             }
         }
-
     }
 }
