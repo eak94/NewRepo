@@ -21,16 +21,6 @@ namespace Model
         private int _repetitions;
 
         /// <summary>
-        /// MET=3 при легких весах
-        /// </summary>
-        private const int _metSlow = 3;
-
-        /// <summary>
-        /// MET=5 при умеренных весах
-        /// </summary>
-        private const int _metModerate = 5;
-
-        /// <summary>
         /// Свойство поля вес 
         /// </summary>
         public double WorkingWeight
@@ -114,24 +104,13 @@ namespace Model
         public double CalculateMet(double workingWeight, double maxWeight)
         {
             double weightPercentage = workingWeight / maxWeight * 100;
+            int metSlow = 3;
+            int metModerate = 5;
 
-            if (weightPercentage >= 80)
-            {
-                return _metSlow;
-            }
-            else if (weightPercentage >= 60)
-            {
-                return _metModerate;
-            }
-            else
-            {
-                return _metSlow;
-            }
-
-            // return weightPercentage >= 80
-            //     || weightPercentage < 60
-            //     ? _metSlow
-            //     : _metModerate;
+            return weightPercentage >= 80
+                || weightPercentage < 60
+                ? metSlow
+                : metModerate;
         }
     }
 }

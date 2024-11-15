@@ -55,12 +55,12 @@ namespace LB3
                     $"2 - Плавание\n" +
                     $"3 - Жим гантелей");
 
-                //TODO: rename
-                _ = int.TryParse(Console.ReadLine(), out int what);
+                //TODO: rename+
+                _ = int.TryParse(Console.ReadLine(), out int exerciseType);
 
-                switch (what)
+                switch (exerciseType)
                 {
-                    //TODO: RSDN
+                    //TODO: RSDN+
                     case 1:
                         {
                             exercise = new Running();
@@ -155,32 +155,30 @@ namespace LB3
                                "3 - Кроль-быстрый\n" +
                                "4 - На спине\n" +
                                "5 - Дельфин\n");
-                           Swimming swimming = (Swimming)exercise;
-                           if (int.TryParse(Console.ReadLine(), out int styleChoice))
+                           while (true)
                            {
-                               switch (styleChoice)
-                                       {
-                                           case 1:
-                                               swimming.Style = 1;
-                                               break;
-                                           case 2:
-                                               swimming.Style = 2;
-                                               break;
-                                           case 3:
-                                               swimming.Style = 3;
-                                               break;
-                                           case 4:
-                                               swimming.Style = 4;
-                                               break;
-                                           case 5:
-                                               swimming.Style = 5;
-                                               break;
-                                           default:
-                                               Console.WriteLine("Некорректный ввод стиля.");
-                                               break;
-                                       }
-                           }
-                }), "Стиль плавания"),
+                                if (exercise is Swimming swimming)
+                                {
+                                    if (int.TryParse(Console.ReadLine(), out int styleChoice))
+                                    {
+                                        if (Enum.IsDefined(typeof(SwimmingStyle), styleChoice))
+                                        {
+                                            swimming.Style = (SwimmingStyle)styleChoice;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Некорректный ввод стиля плавания.");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Некорректный ввод стиля плавания.");
+                                    }
+                                }
+                    }
+                    }), "Стиль плавания"
+                ),
 
                 (new Action(() =>
                        {
