@@ -102,7 +102,6 @@ namespace Model
             {
                 Intensity = _metSlow;
             }
-
             else if ((distance / time) <= _metModerate)
             {
                 Intensity = _metModerate;

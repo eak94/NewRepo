@@ -55,10 +55,12 @@ namespace LB3
                     $"2 - Плавание\n" +
                     $"3 - Жим гантелей");
 
+                //TODO: rename
                 _ = int.TryParse(Console.ReadLine(), out int what);
 
                 switch (what)
                 {
+                    //TODO: RSDN
                     case 1:
                         {
                             exercise = new Running();
@@ -109,7 +111,7 @@ namespace LB3
 
                        }), "Дистанция"),
 
-            (new Action(() =>
+                (new Action(() =>
                        {
                            Running running = (Running)exercise;
                            Console.WriteLine($"Количество сожженых каллорий: " +

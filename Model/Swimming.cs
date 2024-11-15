@@ -5,6 +5,7 @@ namespace Model
     /// </summary>
     public class Swimming : ExerciseBase
     {
+        //TODO: refactor to enumeration and dictionary with coefficients
         /// <summary>
         /// Поле стиль плавания
         /// </summary>

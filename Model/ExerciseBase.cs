@@ -15,11 +15,14 @@ namespace Model
         /// </summary>
         private double _weightPerson;
 
+        //TODO: refactor
         /// <summary>
         /// Константа хранит максимальный вес человека
         /// </summary>
         private const int _maxWeightPerson = 300;
 
+        //TODO: refactor
+        //TODO: XML
         /// <summary>
         /// Константа хранит максимальный вес человека
         /// </summary>
