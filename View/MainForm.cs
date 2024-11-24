@@ -76,24 +76,7 @@ namespace View
         {
             CalloriesAddedEventArgs addedEventArgs =
                  exerciseBase as CalloriesAddedEventArgs;
-
-            if (addedEventArgs?.ExerciseBase != null)
-            {
-                _calloriesList.Add(addedEventArgs.ExerciseBase);
-            }
-        }
-
-        /// <summary>
-        /// Обработчик для отмены добавления данных в список calloriesList
-        /// </summary>
-        /// <param name="sender">объект, который вызвал событие</param>
-        /// <param name="exerciseBase">аргументы события, которые содержат 
-        /// данные, передаваемые при вызове события</param>
-        private void CancelCallories(object sender, EventArgs exerciseBase)
-        {
-            CalloriesAddedEventArgs addedEventArgs =
-                exerciseBase as CalloriesAddedEventArgs;
-            _calloriesList.Remove(addedEventArgs?.ExerciseBase);
+            _calloriesList.Add(addedEventArgs?.ExerciseBase);
         }
 
         /// <summary>

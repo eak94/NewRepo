@@ -19,10 +19,11 @@ namespace View
         /// <exception cref="ArgumentNullException">Проверка на null</exception>
         public CalloriesAddedEventArgs(ExerciseBase exerciseBase)
         {
-            if (ExerciseBase == null)
+            if (exerciseBase == null)
             {
                 throw new ArgumentNullException();
             }
+
             ExerciseBase = exerciseBase;
         }
     }
