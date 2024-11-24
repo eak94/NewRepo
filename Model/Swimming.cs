@@ -5,10 +5,11 @@ namespace Model
     /// </summary>
     public class Swimming : ExerciseBase
     {
+        //TODO: refactor to enumeration and dictionary with coefficients+
         /// <summary>
         /// Поле стиль плавания
         /// </summary>
-        private int _style;
+        private SwimmingStyle _style;
 
         /// <summary>
         /// Поле дистанция 
@@ -16,34 +17,22 @@ namespace Model
         private double _distance;
 
         /// <summary>
-        /// Met для Брасс
+        /// Словарь коэффициентов для стилей плавания
         /// </summary>
-        private const int _brassMet = 5;
-
-        /// <summary>
-        /// Met для Кроль-умеренный
-        /// </summary>
-        private const int _crawlModerateMet = 6;
-
-        /// <summary>
-        /// Met для Кроль-быстрый
-        /// </summary>
-        private const int _crawlFastMet = 8;
-
-        /// <summary>
-        /// Met для На спине
-        /// </summary>
-        private const int _backstrokeMet = 4;
-
-        /// <summary>
-        /// Met для Дельфин
-        /// </summary>
-        private const int _dolphinMet = 10;
+        private Dictionary<SwimmingStyle, int>
+            _metCoefficients = new Dictionary<SwimmingStyle, int>
+        {
+            { SwimmingStyle.Brass, 5 },
+            { SwimmingStyle.CrawlModerate, 6 },
+            { SwimmingStyle.CrawlFast, 8 },
+            { SwimmingStyle.Backstroke, 4 },
+            { SwimmingStyle.Dolphin, 10 }
+        };
 
         /// <summary>
         /// Свойство поля стиля плавания
         /// </summary>
-        public int Style
+        public SwimmingStyle Style
         {
             get
             {
@@ -51,7 +40,14 @@ namespace Model
             }
             set
             {
-                _style = (int)CheckNumberBase(value);
+                if (Enum.IsDefined(typeof(SwimmingStyle), value))
+                {
+                    _style = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Недопустимый ввод стиля плавания");
+                }
             }
         }
 
@@ -78,7 +74,7 @@ namespace Model
             get
             {
                 CalculateMet();
-                return _style * Time * WeightPerson;
+                return _metCoefficients[_style] * Time * WeightPerson;
             }
         }
 
@@ -88,7 +84,7 @@ namespace Model
         /// </summary>
         /// <param name="style">стиль плавания</param>
         /// <param name="distance">дистанция</param>
-        public Swimming(int style, double distance, double weightperson, double time)
+        public Swimming(SwimmingStyle style, double distance, double weightperson, double time)
             : base(weightperson, time)
         {
             Style = style;
@@ -111,23 +107,17 @@ namespace Model
         {
             switch (Style)
             {
-                case 1:
-                    Style = _brassMet;
+                case SwimmingStyle.Brass:
                     break;
-                case 2:
-                    Style = _crawlModerateMet;
+                case SwimmingStyle.CrawlModerate:
                     break;
-                case 3:
-                    Style = _crawlFastMet;
+                case SwimmingStyle.CrawlFast:
                     break;
-                case 4:
-                    Style = _backstrokeMet;
+                case SwimmingStyle.Backstroke:
                     break;
-                case 5:
-                    Style = _dolphinMet;
+                case SwimmingStyle.Dolphin:
                     break;
                 default:
-                    Style = 0;
                     break;
             }
         }
