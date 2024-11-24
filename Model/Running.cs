@@ -16,21 +16,6 @@ namespace Model
         private double _distance;
 
         /// <summary>
-        /// MET= 8 в беге при медленном теме (около 8 км/ч) 
-        /// </summary>
-        private const int _metSlow = 8;
-
-        /// <summary>
-        /// MET=10 в беге при умеренном теме (около 10 км/ч) 
-        /// </summary>
-        private const int _metModerate = 10;
-
-        /// <summary>
-        /// MET=12 в беге при быстром теме (более 12 км/ч) 
-        /// </summary>
-        private const int _metFast = 12;
-
-        /// <summary>
         /// Свойство поля интенсивность
         /// </summary>
         public double Intensity
@@ -98,18 +83,21 @@ namespace Model
         /// <returns></returns>
         private void CalculateMet(double distance, double time)
         {
-            if ((distance / time) < _metSlow)
-            {
-                Intensity = _metSlow;
-            }
+            int metSlow = 8;
+            int metModerate = 10;
+            int metFast = 12;
 
-            else if ((distance / time) <= _metModerate)
+            if ((distance / time) < metSlow)
             {
-                Intensity = _metModerate;
+                Intensity = metSlow;
+            }
+            else if ((distance / time) <= metModerate)
+            {
+                Intensity = metModerate;
             }
             else
             {
-                Intensity = _metFast;
+                Intensity = metFast;
             }
         }
     }
