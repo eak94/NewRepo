@@ -3,14 +3,15 @@
     partial class MainForm
     {
         /// <summary>
-        ///  Required designer variable.
+        ///  Необходимая переменная дизайнера.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Метод для явного освобождения ресурсов.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true если ресурсы необходимо
+        /// удалить,иначе false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -29,23 +30,22 @@
         private void InitializeComponent()
         {
             _groupBoxResultCalloties = new GroupBox();
-            dataGridView1 = new DataGridView();
+            _dataControlCallories = new DataGridView();
             _buttonOpenCallories = new Button();
             _buttonResetCallories = new Button();
-            this.buttonAdd = new Button();
-            buttonDelete = new Button();
-            label1 = new Label();
+            _buttonAddCallories = new Button();
+            _buttonDelete = new Button();
             _buttonSaveCallories = new Button();
             _buttonAddRandom = new Button();
             _buttonFindCallories = new Button();
             _groupBoxResultCalloties.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_dataControlCallories).BeginInit();
             SuspendLayout();
             // 
             // _groupBoxResultCalloties
             // 
             _groupBoxResultCalloties.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _groupBoxResultCalloties.Controls.Add(dataGridView1);
+            _groupBoxResultCalloties.Controls.Add(_dataControlCallories);
             _groupBoxResultCalloties.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             _groupBoxResultCalloties.ForeColor = Color.Black;
             _groupBoxResultCalloties.Location = new Point(40, 88);
@@ -56,17 +56,18 @@
             _groupBoxResultCalloties.Text = "Результаты расчетов каллорий";
             _groupBoxResultCalloties.Enter += _groupBoxResultCalloties_Enter;
             // 
-            // dataGridView1
+            // dataControlCallories
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.GridColor = Color.White;
-            dataGridView1.Location = new Point(8, 28);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 28;
-            dataGridView1.Size = new Size(810, 301);
-            dataGridView1.TabIndex = 0;
+            _dataControlCallories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _dataControlCallories.BackgroundColor = Color.White;
+            _dataControlCallories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            _dataControlCallories.GridColor = Color.White;
+            _dataControlCallories.Location = new Point(8, 28);
+            _dataControlCallories.Name = "dataControlCallories";
+            _dataControlCallories.RowTemplate.Height = 28;
+            _dataControlCallories.Size = new Size(810, 301);
+            _dataControlCallories.TabIndex = 0;
+            _dataControlCallories.CellContentClick += dataGridView1_CellContentClick;
             // 
             // _buttonOpenCallories
             // 
@@ -91,37 +92,28 @@
             _buttonResetCallories.UseVisualStyleBackColor = true;
             _buttonResetCallories.Click += _buttonResetCallories_Click;
             // 
-            // buttonAdd
+            // buttonAddCallories
             // 
-            this.buttonAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            this.buttonAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.buttonAdd.Location = new Point(734, 440);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new Size(130, 31);
-            this.buttonAdd.TabIndex = 5;
-            this.buttonAdd.Text = "Добавить";
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            _buttonAddCallories.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _buttonAddCallories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _buttonAddCallories.Location = new Point(734, 440);
+            _buttonAddCallories.Name = "buttonAddCallories";
+            _buttonAddCallories.Size = new Size(130, 31);
+            _buttonAddCallories.TabIndex = 5;
+            _buttonAddCallories.Text = "Добавить";
+            _buttonAddCallories.UseVisualStyleBackColor = true;
+            _buttonAddCallories.Click += buttonAddCallories_Click;
             // 
             // buttonDelete
             // 
-            buttonDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDelete.Location = new Point(598, 440);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(130, 31);
-            buttonDelete.TabIndex = 6;
-            buttonDelete.Text = "Удалить";
-            buttonDelete.UseVisualStyleBackColor = true;
-            buttonDelete.Click += button2_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(48, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 21);
-            label1.TabIndex = 7;
-            label1.Click += label1_Click;
+            _buttonDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _buttonDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _buttonDelete.Location = new Point(598, 440);
+            _buttonDelete.Name = "buttonDelete";
+            _buttonDelete.Size = new Size(130, 31);
+            _buttonDelete.TabIndex = 6;
+            _buttonDelete.Text = "Удалить";
+            _buttonDelete.UseVisualStyleBackColor = true;
             // 
             // _buttonSaveCallories
             // 
@@ -164,9 +156,8 @@
             Controls.Add(_buttonFindCallories);
             Controls.Add(_buttonAddRandom);
             Controls.Add(_buttonSaveCallories);
-            Controls.Add(label1);
-            Controls.Add(buttonDelete);
-            Controls.Add(this.buttonAdd);
+            Controls.Add(_buttonDelete);
+            Controls.Add(_buttonAddCallories);
             Controls.Add(_buttonResetCallories);
             Controls.Add(_buttonOpenCallories);
             Controls.Add(_groupBoxResultCalloties);
@@ -174,23 +165,55 @@
             Name = "MainForm";
             Text = "Калькулятор каллорий";
             _groupBoxResultCalloties.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_dataControlCallories).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        /// <summary>
+        /// GroupBox для результатов расчета каллорий
+        /// </summary>
         private GroupBox _groupBoxResultCalloties;
+
+        /// <summary>
+        /// Кнопка "Открыть"
+        /// </summary>
         private Button _buttonOpenCallories;
+
+        /// <summary>
+        /// Кнопка "Настроить фильтр"
+        /// </summary>
         private Button _buttonFindCallories;
+
+        /// <summary>
+        /// Кнопка "Сбросить фильтр"
+        /// </summary>
         private Button _buttonResetCallories;
-        private Button buttonAdd;
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button buttonDelete;
-        private Label label1;
+
+        /// <summary>
+        /// Кнопка "Добавить"
+        /// </summary>
+        private Button _buttonAddCallories;
+
+        /// <summary>
+        /// Таблица результатов расчета
+        /// </summary>
+        private DataGridView _dataControlCallories;
+
+        /// <summary>
+        /// Кнопка "Удалить"
+        /// </summary>
+        private Button _buttonDelete;
+
+        /// <summary>
+        /// Кнопка "Сохранить"
+        /// </summary>
         private Button _buttonSaveCallories;
+
+        /// <summary>
+        /// Кнопка "Добавить рандомный расчет"
+        /// </summary>
         private Button _buttonAddRandom;
     }
 }

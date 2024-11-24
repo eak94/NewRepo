@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,29 @@ using System.Windows.Forms;
 
 namespace View
 {
+    /// <summary>
+    /// Форма ввода данных
+    /// </summary>
     public partial class DataForm : Form
     {
+        /// <summary>
+		/// Поле для обработки события добавления
+		/// </summary>
+		public EventHandler CalloriesAdded;
+
+        /// <summary>
+		/// Поле для обработки события отмена
+		/// </summary>
+		public EventHandler CalloriesCancel;
+
+        /// <summary>
+		/// Поле для хранения последнего добавленного объекта
+		/// </summary>
+		private ExerciseBase _lastCallories;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public DataForm()
         {
             InitializeComponent();
