@@ -15,15 +15,6 @@ namespace Model
         /// </summary>
         private double _weightPerson;
 
-        /// <summary>
-        /// Константа хранит максимальный вес человека
-        /// </summary>
-        private const int _maxWeightPerson = 300;
-
-        /// <summary>
-        /// Константа хранит максимальный вес человека
-        /// </summary>
-        private const double _maxTime = 24;
 
         /// <summary>
         /// Свойство Вес человека
@@ -36,12 +27,13 @@ namespace Model
             }
             set
             {
+                int maxWeightPerson = 300;
                 _weightPerson = CheckNumberBase(value);
 
-                if (value > _maxWeightPerson)
+                if (value > maxWeightPerson)
                 {
                     throw new ArgumentException("Вес не может быть " +
-                        $"больше {_maxWeightPerson} кг");
+                        $"больше {maxWeightPerson} кг");
                 }
             }
         }
@@ -58,12 +50,13 @@ namespace Model
             }
             set
             {
+                int maxTime = 24;
                 _time = CheckNumberBase(value);
 
-                if (value > _maxTime)
+                if (value > maxTime)
                 {
                     throw new ArgumentException("Время тренировки не может" +
-                        $" быть больше {_maxTime} ч");
+                        $" быть больше {maxTime} ч");
                 }
             }
         }
