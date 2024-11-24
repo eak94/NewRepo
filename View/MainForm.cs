@@ -1,16 +1,16 @@
 using Model;
 using System.ComponentModel;
 
-
 namespace View
 {
     /// <summary>
     /// Главная форма расчета каллорий 
     /// </summary>
-    public partial class MainForm : System.Windows.Forms.Form
+    public partial class MainForm : Form
     {
         /// <summary>
         /// Лист для заполнения таблицы
+        /// результатов расчета каллорий
         /// </summary>
         private BindingList<ExerciseBase> _calloriesList =
             new BindingList<ExerciseBase>();
@@ -22,32 +22,17 @@ namespace View
         private bool _isDataFormOpen = false;
 
         /// <summary>
-        ///  Поле для хранения состояния формы FindForm.
-        /// </summary>
-        private bool _isFindFormOpen = false;
-
-        /// <summary>
-        /// Поле для хранения состояния фильтра.
-        /// </summary>
-        private bool _isFiltered = false;
-
-        /// <summary>
-        /// Конструктор BasicForm
+        /// Конструктор Главной формы
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
 
-            _buttonResetCallories.Click += _buttonResetCallories_Click;
-
-            _buttonSaveCallories.Click += _buttonSaveCallories_Click;
-
-            _buttonOpenCallories.Click -= _buttonOpenCallories_Click;
-
-            _buttonOpenCallories.Click += _buttonOpenCallories_Click;
-
             FillingDataGridView(_calloriesList);
 
+            _buttonAddCallories.Click += AddCalloriesButtonClick;
+
+            DeactivateElements();
         }
 
         /// <summary>
@@ -77,7 +62,6 @@ namespace View
                     DeactivateElements();
                 };
                 DataForm.CalloriesAdded += AddedCallories;
-                DataForm.CalloriesCancel += CancelCallories;
                 DataForm.Show();
             }
         }
@@ -92,7 +76,11 @@ namespace View
         {
             CalloriesAddedEventArgs addedEventArgs =
                  exerciseBase as CalloriesAddedEventArgs;
-            _calloriesList.Add(addedEventArgs?.ExerciseBase);
+
+            if (addedEventArgs?.ExerciseBase != null)
+            {
+                _calloriesList.Add(addedEventArgs.ExerciseBase);
+            }
         }
 
         /// <summary>
@@ -113,15 +101,7 @@ namespace View
         /// </summary>
         private void DeactivateElements()
         {
-            _buttonAddCallories.Enabled = !_isFindFormOpen && 
-                !_isDataFormOpen && !_isFiltered;
-
-            _buttonFindCallories.Enabled = !_isFindFormOpen &&
-                !_isDataFormOpen;
-
-            _buttonSaveCallories.Enabled = !_isFiltered;
-
-            _buttonOpenCallories.Enabled = !_isFiltered;
+            _buttonAddCallories.Enabled = !_isDataFormOpen;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
