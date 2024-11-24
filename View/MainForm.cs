@@ -10,14 +10,14 @@ namespace View
     {
         /// <summary>
         /// Лист для заполнения таблицы
-        /// результатов расчета каллорий
+        /// результатами расчета каллорий
         /// </summary>
         private BindingList<ExerciseBase> _calloriesList =
             new BindingList<ExerciseBase>();
 
         /// <summary>
         /// Поле для хранения состояния формы DataForm 
-        /// (форма добавления параметров для расчет)
+        /// (форма добавления параметров для расчета)
         /// </summary>
         private bool _isDataFormOpen = false;
 
