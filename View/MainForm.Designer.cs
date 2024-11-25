@@ -1,5 +1,8 @@
 ﻿namespace View
 {
+    /// <summary>
+    /// Главная форма
+    /// </summary>
     partial class MainForm
     {
         /// <summary>
@@ -65,6 +68,7 @@
             _dataControlCallories.GridColor = Color.White;
             _dataControlCallories.Location = new Point(8, 28);
             _dataControlCallories.Name = "_dataControlCallories";
+            _dataControlCallories.ReadOnly = true;
             _dataControlCallories.RowTemplate.Height = 28;
             _dataControlCallories.Size = new Size(810, 301);
             _dataControlCallories.TabIndex = 0;
@@ -130,6 +134,7 @@
             // 
             // _buttonAddRandom
             // 
+            _buttonAddRandom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _buttonAddRandom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _buttonAddRandom.Location = new Point(610, 36);
             _buttonAddRandom.Name = "_buttonAddRandom";

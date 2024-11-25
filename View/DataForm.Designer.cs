@@ -1,5 +1,8 @@
 ﻿namespace View
 {
+    /// <summary>
+    /// Форма для добавления
+    /// </summary>
     partial class DataForm
     {
         /// <summary>
@@ -156,6 +159,8 @@
             // _groupBoxParametrExercise
             // 
             _groupBoxParametrExercise.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _groupBoxParametrExercise.BackColor = Color.Transparent;
+            _groupBoxParametrExercise.FlatStyle = FlatStyle.Flat;
             _groupBoxParametrExercise.Location = new Point(351, 44);
             _groupBoxParametrExercise.Name = "_groupBoxParametrExercise";
             _groupBoxParametrExercise.Size = new Size(387, 321);

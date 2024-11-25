@@ -1,5 +1,6 @@
 using Model;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace View
 {
@@ -44,6 +45,15 @@ namespace View
         private void FillingDataGridView(BindingList<ExerciseBase> calloriesList)
         {
             _dataControlCallories.DataSource = calloriesList;
+            _dataControlCallories.AllowUserToResizeColumns = false;
+            _dataControlCallories.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+            _dataControlCallories.DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            _dataControlCallories.ColumnHeadersDefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            _dataControlCallories.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>

@@ -1,5 +1,9 @@
 ﻿namespace View
 {
+    /// <summary>
+    /// Пользовательский элемент управления
+    /// для типа упражнения жима штанги
+    /// </summary>
     partial class AddWeightLiftingUserControl
     {
         /// <summary> 
@@ -29,7 +33,7 @@
         private void InitializeComponent()
         {
             _groupBoxWeightLifting = new GroupBox();
-            _textBoxWeightLifting = new TextBox();
+            _textBoxMetWeightLifting = new TextBox();
             _labelMetWeightLifting = new Label();
             _textBoxWorkingWeight = new TextBox();
             _textBoxMaxWeight = new TextBox();
@@ -42,7 +46,7 @@
             // 
             // _groupBoxWeightLifting
             // 
-            _groupBoxWeightLifting.Controls.Add(_textBoxWeightLifting);
+            _groupBoxWeightLifting.Controls.Add(_textBoxMetWeightLifting);
             _groupBoxWeightLifting.Controls.Add(_labelMetWeightLifting);
             _groupBoxWeightLifting.Controls.Add(_textBoxWorkingWeight);
             _groupBoxWeightLifting.Controls.Add(_textBoxMaxWeight);
@@ -58,12 +62,12 @@
             _groupBoxWeightLifting.TabStop = false;
             _groupBoxWeightLifting.Text = "Параметры жима штанги";
             // 
-            // _textBoxWeightLifting
+            // _textBoxMetWeightLifting
             // 
-            _textBoxWeightLifting.Location = new Point(19, 243);
-            _textBoxWeightLifting.Name = "_textBoxWeightLifting";
-            _textBoxWeightLifting.Size = new Size(292, 29);
-            _textBoxWeightLifting.TabIndex = 7;
+            _textBoxMetWeightLifting.Location = new Point(19, 243);
+            _textBoxMetWeightLifting.Name = "_textBoxMetWeightLifting";
+            _textBoxMetWeightLifting.Size = new Size(292, 29);
+            _textBoxMetWeightLifting.TabIndex = 7;
             // 
             // _labelMetWeightLifting
             // 
@@ -127,6 +131,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(_groupBoxWeightLifting);
             Name = "AddWeightLiftingUserControl";
             Size = new Size(343, 307);
@@ -137,14 +142,49 @@
 
         #endregion
 
+        /// <summary>
+        /// groupBox для типа упражнения жим штанги
+        /// </summary>
         private GroupBox _groupBoxWeightLifting;
+
+        /// <summary>
+        /// textBox для максимального веса
+        /// </summary>
         private TextBox _textBoxMaxWeight;
+
+        /// <summary>
+        /// надпись для максимального веса
+        /// </summary>
         private Label _labelMaxWeight;
+
+        /// <summary>
+        /// textBox для количества повторений
+        /// </summary>
         private TextBox _textBoxRepetitions;
+
+        /// <summary>
+        /// надпись для количества повторений
+        /// </summary>
         private Label _labelRepetitions;
+
+        /// <summary>
+        /// надпись для рабочего веса 
+        /// </summary>
         private Label _labelWorkingWeight;
+
+        /// <summary>
+        /// textBox для рабочего веса 
+        /// </summary>
         private TextBox _textBoxWorkingWeight;
-        private TextBox _textBoxWeightLifting;
+
+        /// <summary>
+        /// textBox для Met для типа упражнения жим штанги
+        /// </summary>
+        private TextBox _textBoxMetWeightLifting;
+
+        /// <summary>
+        /// надпись для Met для типа упражнения жим штанги
+        /// </summary>
         private Label _labelMetWeightLifting;
     }
 }

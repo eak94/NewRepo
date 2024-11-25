@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace View
 {
-    public partial class UserControl1 : UserControl
+    public partial class AddRunningUserControl : UserControl
     {
-        public UserControl1()
+        public AddRunningUserControl()
         {
             InitializeComponent();
+        }
+
+        private void _textBoxMetRunning_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

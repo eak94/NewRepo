@@ -1,5 +1,9 @@
 ﻿namespace View
 {
+    /// <summary>
+    /// Пользовательский элемент управления для 
+    /// типа упражнения плавание
+    /// </summary>
     partial class AddSwimmingUserControl
     {
         /// <summary> 
@@ -95,6 +99,7 @@
             _comboBoxStyleSwimming.Name = "_comboBoxStyleSwimming";
             _comboBoxStyleSwimming.Size = new Size(292, 29);
             _comboBoxStyleSwimming.TabIndex = 1;
+            _comboBoxStyleSwimming.SelectedIndexChanged += _comboBoxStyleSwimming_SelectedIndexChanged;
             // 
             // _labelStyleSwimming
             // 
@@ -109,6 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(_groupBoxSwimming);
             Name = "AddSwimmingUserControl";
             Size = new Size(346, 253);

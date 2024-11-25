@@ -38,14 +38,22 @@ namespace View
         };
 
         /// <summary>
+        /// Словарь тип упражнения
+        /// </summary>
+        
+
+        /// <summary>
         /// Форма для добавления параметров расчета каллорий
         /// </summary>
         public DataForm()
         {
             InitializeComponent();
-            FillComboBox(_typesExersice.Keys.ToArray(),
-                _comboBoxExercise);
+
+            FillComboBox(_typesExersice.Keys.ToArray(), _comboBoxExercise);
+
             _buttonDataAgree.Click += new EventHandler(AgreeButtonClick);
+
+            _comboBoxExercise.SelectedIndexChanged += new EventHandler(AddGroupBoxData);
         }
 
         /// <summary>
@@ -75,41 +83,80 @@ namespace View
                 switch (typeExercise)
                 {
                     case ExerciseType.Running:
-                        {
-                            exercise = new Running();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
+                    {
+                        exercise = new Running();
+                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        break;
+                    }
 
                     case ExerciseType.Swimming:
-                        {
-                            exercise = new Swimming();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
+                    {
+                        exercise = new Swimming();
+                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        break;
+                    }
 
                     case ExerciseType.WeightLifting:
-                        {
-                            exercise = new WeightLifting();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
+                    {
+                        exercise = new WeightLifting();
+                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        break;
+                    }
                 }
 
                 CalloriesAdded?.Invoke(this,
                         new CalloriesAddedEventArgs(exercise));
 
                 _lastCallories = exercise;
-
             }
 
             catch
             {
                 MessageBox.Show("Введите данные.", "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Метод добавления GroupBox на форму
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void AddGroupBoxData(object sender, EventArgs e)
+        {
+            ExerciseType typeExercise =
+                    _typesExersice[_comboBoxExercise.Text];
+
+            _groupBoxParametrExercise.Controls.Clear();
+            switch (typeExercise)
+            {
+                case ExerciseType.Running:
+                {
+                    AddRunningUserControl runningControl = new AddRunningUserControl();
+                    runningControl.Visible = true;
+                    _groupBoxParametrExercise.Controls.Add(runningControl);
+                    break;
+                }
+                case ExerciseType.Swimming:
+                {
+                    AddSwimmingUserControl swimmingControl = new AddSwimmingUserControl();
+                    swimmingControl.Visible = true;
+                    _groupBoxParametrExercise.Controls.Add(swimmingControl);
+                    break;
+                }
+                case ExerciseType.WeightLifting:
+                {
+                    AddWeightLiftingUserControl weightLiftingControl = new AddWeightLiftingUserControl();
+                    weightLiftingControl.Visible = true;
+                    _groupBoxParametrExercise.Controls.Add(weightLiftingControl);
+                    break;
+                }
+                default:
+                    break;
+
             }
         }
 
