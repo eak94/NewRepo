@@ -56,14 +56,15 @@
             _groupBoxResultCalloties.Text = "Результаты расчетов каллорий";
             _groupBoxResultCalloties.Enter += _groupBoxResultCalloties_Enter;
             // 
-            // dataControlCallories
+            // _dataControlCallories
             // 
+            _dataControlCallories.AllowUserToAddRows = false;
             _dataControlCallories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _dataControlCallories.BackgroundColor = Color.White;
             _dataControlCallories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             _dataControlCallories.GridColor = Color.White;
             _dataControlCallories.Location = new Point(8, 28);
-            _dataControlCallories.Name = "dataControlCallories";
+            _dataControlCallories.Name = "_dataControlCallories";
             _dataControlCallories.RowTemplate.Height = 28;
             _dataControlCallories.Size = new Size(810, 301);
             _dataControlCallories.TabIndex = 0;
@@ -92,28 +93,29 @@
             _buttonResetCallories.UseVisualStyleBackColor = true;
             _buttonResetCallories.Click += _buttonResetCallories_Click;
             // 
-            // buttonAddCallories
+            // _buttonAddCallories
             // 
             _buttonAddCallories.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             _buttonAddCallories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _buttonAddCallories.Location = new Point(734, 440);
-            _buttonAddCallories.Name = "buttonAddCallories";
+            _buttonAddCallories.Name = "_buttonAddCallories";
             _buttonAddCallories.Size = new Size(130, 31);
             _buttonAddCallories.TabIndex = 5;
             _buttonAddCallories.Text = "Добавить";
             _buttonAddCallories.UseVisualStyleBackColor = true;
             _buttonAddCallories.Click += buttonAddCallories_Click;
             // 
-            // buttonDelete
+            // _buttonDelete
             // 
             _buttonDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             _buttonDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _buttonDelete.Location = new Point(598, 440);
-            _buttonDelete.Name = "buttonDelete";
+            _buttonDelete.Location = new Point(586, 440);
+            _buttonDelete.Name = "_buttonDelete";
             _buttonDelete.Size = new Size(130, 31);
             _buttonDelete.TabIndex = 6;
             _buttonDelete.Text = "Удалить";
             _buttonDelete.UseVisualStyleBackColor = true;
+            _buttonDelete.Click += _buttonDelete_Click;
             // 
             // _buttonSaveCallories
             // 

@@ -1,7 +1,7 @@
 namespace Model
 {
     /// <summary>
-    /// Стиль плавания 
+    /// Перечисление стилей плавания 
     /// </summary>
     public enum SwimmingStyle
     {

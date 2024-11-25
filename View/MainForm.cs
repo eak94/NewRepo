@@ -32,6 +32,8 @@ namespace View
 
             _buttonAddCallories.Click += AddCalloriesButtonClick;
 
+            //_buttonDelete.Click += ;
+
             DeactivateElements();
         }
 
@@ -118,6 +120,11 @@ namespace View
         }
 
         private void buttonAddCallories_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _buttonDelete_Click(object sender, EventArgs e)
         {
 
         }

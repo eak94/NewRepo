@@ -1,5 +1,8 @@
 namespace Model
 {
+    /// <summary>
+    /// Перечисление типов упражнения
+    /// </summary>
     public enum ExerciseType
     {
         /// <summary>

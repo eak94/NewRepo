@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Model
 {
     /// <summary>
@@ -19,6 +21,7 @@ namespace Model
         /// <summary>
         /// Свойство Вес человека
         /// </summary>
+        [DisplayName("Вес человека")]
         public double WeightPerson
         {
             get
@@ -41,6 +44,7 @@ namespace Model
         /// <summary>
         /// Свойство Время
         /// </summary>
+        [DisplayName("Время тренировки")]
         public double Time
         {
             get
@@ -101,6 +105,7 @@ namespace Model
         /// <summary>
         /// Метод расчета каллорий 
         /// </summary>
+        [DisplayName("Количество сожженных каллорий")]
         public abstract double CalculateCalories { get; }
     }
 }
