@@ -28,7 +28,6 @@ namespace LB3
                 }
                 switch (action)
                 {
-                    //TODO: RSDN+
                     case 1:
                         {
                             ReadExerciseFromConsole.AddExercise();

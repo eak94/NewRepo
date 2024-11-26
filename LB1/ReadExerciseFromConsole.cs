@@ -55,12 +55,11 @@ namespace LB3
                     $"2 - Плавание\n" +
                     $"3 - Жим гантелей");
 
-                //TODO: rename+
                 _ = int.TryParse(Console.ReadLine(), out int exerciseType);
 
                 switch (exerciseType)
                 {
-                    //TODO: RSDN+
+                    //TODO: RSDN
                     case 1:
                         {
                             exercise = new Running();

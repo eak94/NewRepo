@@ -5,7 +5,6 @@ namespace Model
     /// </summary>
     public class Swimming : ExerciseBase
     {
-        //TODO: refactor to enumeration and dictionary with coefficients+
         /// <summary>
         /// Поле стиль плавания
         /// </summary>
@@ -105,6 +104,7 @@ namespace Model
         /// <returns></returns>
         private void CalculateMet()
         {
+            //TODO: remove?
             switch (Style)
             {
                 case SwimmingStyle.Brass:
