@@ -59,28 +59,28 @@ namespace LB3
 
                 switch (exerciseType)
                 {
-                    //TODO: RSDN
+                    //TODO: RSDN+
                     case 1:
-                        {
-                            exercise = new Running();
-                            break;
-                        }
+                    {
+                        exercise = new Running();
+                        break;
+                    }
                     case 2:
-                        {
-                            exercise = new Swimming();
-                            break;
-                        }
+                    {
+                        exercise = new Swimming();
+                        break;
+                    }
                     case 3:
-                        {
-                            exercise = new WeightLifting();
-                            break;
-                        }
+                    {
+                        exercise = new WeightLifting();
+                        break;
+                    }
                     default:
-                        {
-                            throw new ArgumentException
-                            ("Такого вида упражнений нет в списке." +
-                            "\nПопробуйте еще раз.");
-                        }
+                    {
+                        throw new ArgumentException
+                        ("Такого вида упражнений нет в списке." +
+                        "\nПопробуйте еще раз.");
+                    }
                 }
             });
 

@@ -72,7 +72,6 @@ namespace Model
         {
             get
             {
-                CalculateMet();
                 return _metCoefficients[_style] * Time * WeightPerson;
             }
         }
@@ -95,31 +94,5 @@ namespace Model
         /// </summary>
         public Swimming()
         { }
-
-
-        /// <summary>
-        /// Метод для опрееделения Met
-        /// </summary>
-        /// <param name="style">стиль плавания</param>
-        /// <returns></returns>
-        private void CalculateMet()
-        {
-            //TODO: remove?
-            switch (Style)
-            {
-                case SwimmingStyle.Brass:
-                    break;
-                case SwimmingStyle.CrawlModerate:
-                    break;
-                case SwimmingStyle.CrawlFast:
-                    break;
-                case SwimmingStyle.Backstroke:
-                    break;
-                case SwimmingStyle.Dolphin:
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }
