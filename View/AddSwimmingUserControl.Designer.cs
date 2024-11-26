@@ -32,132 +32,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            _groupBoxSwimming = new GroupBox();
-            _textBoxMetSwimming = new TextBox();
-            _labelMetSwimming = new Label();
-            _textBoxDistance = new TextBox();
-            _labelDistance = new Label();
-            _comboBoxStyleSwimming = new ComboBox();
             _labelStyleSwimming = new Label();
-            _groupBoxSwimming.SuspendLayout();
+            _comboBoxStyleSwimming = new ComboBox();
+            _labelDistance = new Label();
+            _textBoxDistance = new TextBox();
+            _labelMetSwimming = new Label();
+            _textBoxMetSwimming = new TextBox();
             SuspendLayout();
             // 
-            // _groupBoxSwimming
+            // _labelStyleSwimming
             // 
-            _groupBoxSwimming.Controls.Add(_textBoxMetSwimming);
-            _groupBoxSwimming.Controls.Add(_labelMetSwimming);
-            _groupBoxSwimming.Controls.Add(_textBoxDistance);
-            _groupBoxSwimming.Controls.Add(_labelDistance);
-            _groupBoxSwimming.Controls.Add(_comboBoxStyleSwimming);
-            _groupBoxSwimming.Controls.Add(_labelStyleSwimming);
-            _groupBoxSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _groupBoxSwimming.Location = new Point(3, 3);
-            _groupBoxSwimming.Name = "_groupBoxSwimming";
-            _groupBoxSwimming.Size = new Size(335, 244);
-            _groupBoxSwimming.TabIndex = 2;
-            _groupBoxSwimming.TabStop = false;
-            _groupBoxSwimming.Text = "Параметры плавания";
-            _groupBoxSwimming.Enter += _groupBoxRunning_Enter;
+            _labelStyleSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _labelStyleSwimming.AutoSize = true;
+            _labelStyleSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelStyleSwimming.Location = new Point(45, 63);
+            _labelStyleSwimming.Name = "_labelStyleSwimming";
+            _labelStyleSwimming.Size = new Size(123, 21);
+            _labelStyleSwimming.TabIndex = 2;
+            _labelStyleSwimming.Text = "Стиль плавания";
             // 
-            // _textBoxMetSwimming
+            // _comboBoxStyleSwimming
             // 
-            _textBoxMetSwimming.Location = new Point(18, 124);
-            _textBoxMetSwimming.Name = "_textBoxMetSwimming";
-            _textBoxMetSwimming.Size = new Size(292, 29);
-            _textBoxMetSwimming.TabIndex = 5;
-            // 
-            // _labelMetSwimming
-            // 
-            _labelMetSwimming.AutoSize = true;
-            _labelMetSwimming.Location = new Point(21, 100);
-            _labelMetSwimming.Name = "_labelMetSwimming";
-            _labelMetSwimming.Size = new Size(40, 21);
-            _labelMetSwimming.TabIndex = 4;
-            _labelMetSwimming.Text = "MET";
-            // 
-            // _textBoxDistance
-            // 
-            _textBoxDistance.Location = new Point(18, 189);
-            _textBoxDistance.Name = "_textBoxDistance";
-            _textBoxDistance.Size = new Size(292, 29);
-            _textBoxDistance.TabIndex = 2;
+            _comboBoxStyleSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _comboBoxStyleSwimming.DropDownStyle = ComboBoxStyle.DropDownList;
+            _comboBoxStyleSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _comboBoxStyleSwimming.FormattingEnabled = true;
+            _comboBoxStyleSwimming.Location = new Point(50, 87);
+            _comboBoxStyleSwimming.Name = "_comboBoxStyleSwimming";
+            _comboBoxStyleSwimming.Size = new Size(289, 29);
+            _comboBoxStyleSwimming.TabIndex = 1;
+            _comboBoxStyleSwimming.SelectedIndexChanged += _comboBoxStyleSwimming_SelectedIndexChanged;
             // 
             // _labelDistance
             // 
+            _labelDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _labelDistance.AutoSize = true;
-            _labelDistance.Location = new Point(18, 165);
+            _labelDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelDistance.Location = new Point(45, 197);
             _labelDistance.Name = "_labelDistance";
             _labelDistance.Size = new Size(106, 21);
             _labelDistance.TabIndex = 2;
             _labelDistance.Text = "Дистанция, м";
             // 
-            // _comboBoxStyleSwimming
+            // _textBoxDistance
             // 
-            _comboBoxStyleSwimming.DropDownStyle = ComboBoxStyle.DropDownList;
-            _comboBoxStyleSwimming.FormattingEnabled = true;
-            _comboBoxStyleSwimming.Location = new Point(18, 65);
-            _comboBoxStyleSwimming.Name = "_comboBoxStyleSwimming";
-            _comboBoxStyleSwimming.Size = new Size(292, 29);
-            _comboBoxStyleSwimming.TabIndex = 1;
-            _comboBoxStyleSwimming.SelectedIndexChanged += _comboBoxStyleSwimming_SelectedIndexChanged;
+            _textBoxDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _textBoxDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxDistance.Location = new Point(48, 221);
+            _textBoxDistance.Name = "_textBoxDistance";
+            _textBoxDistance.Size = new Size(289, 29);
+            _textBoxDistance.TabIndex = 2;
             // 
-            // _labelStyleSwimming
+            // _labelMetSwimming
             // 
-            _labelStyleSwimming.AutoSize = true;
-            _labelStyleSwimming.Location = new Point(18, 41);
-            _labelStyleSwimming.Name = "_labelStyleSwimming";
-            _labelStyleSwimming.Size = new Size(123, 21);
-            _labelStyleSwimming.TabIndex = 2;
-            _labelStyleSwimming.Text = "Стиль плавания";
+            _labelMetSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _labelMetSwimming.AutoSize = true;
+            _labelMetSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelMetSwimming.Location = new Point(48, 128);
+            _labelMetSwimming.Name = "_labelMetSwimming";
+            _labelMetSwimming.Size = new Size(40, 21);
+            _labelMetSwimming.TabIndex = 4;
+            _labelMetSwimming.Text = "MET";
+            // 
+            // _textBoxMetSwimming
+            // 
+            _textBoxMetSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _textBoxMetSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxMetSwimming.Location = new Point(48, 152);
+            _textBoxMetSwimming.Name = "_textBoxMetSwimming";
+            _textBoxMetSwimming.Size = new Size(289, 29);
+            _textBoxMetSwimming.TabIndex = 5;
             // 
             // AddSwimmingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(_groupBoxSwimming);
+            Controls.Add(_textBoxMetSwimming);
+            Controls.Add(_labelMetSwimming);
+            Controls.Add(_labelDistance);
+            Controls.Add(_textBoxDistance);
+            Controls.Add(_labelStyleSwimming);
+            Controls.Add(_comboBoxStyleSwimming);
             Name = "AddSwimmingUserControl";
-            Size = new Size(346, 253);
-            _groupBoxSwimming.ResumeLayout(false);
-            _groupBoxSwimming.PerformLayout();
+            Size = new Size(387, 321);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        /// <summary>
-        /// groupBox для типа упражнения плавание
-        /// </summary>
-        private GroupBox _groupBoxSwimming;
-
-        /// <summary>
-        /// textBox для Met для типа упражнения плавание
-        /// </summary>
-        private TextBox _textBoxMetSwimming;
-
-        /// <summary>
-        /// надпись для Met для типа упражнения плавание
-        /// </summary>
-        private Label _labelMetSwimming;
-
-        /// <summary>
-        /// textBox дистанция
-        /// </summary>
-        private TextBox _textBoxDistance;
-
-        /// <summary>
-        /// надпись для дистанции для типа упражнения плавание
-        /// </summary>
-        private Label _labelDistance;
-
-        /// <summary>
-        /// comboBox для стиля плавания
-        /// </summary>
-        private ComboBox _comboBoxStyleSwimming;
-
-        /// <summary>
-        /// надпись для стиля плавания для типа упражнения плавание
-        /// </summary>
         private Label _labelStyleSwimming;
+        private ComboBox _comboBoxStyleSwimming;
+        private Label _labelDistance;
+        private TextBox _textBoxDistance;
+        private Label _labelMetSwimming;
+        private TextBox _textBoxMetSwimming;
     }
 }

@@ -40,7 +40,7 @@ namespace View
         /// <summary>
         /// Словарь тип упражнения
         /// </summary>
-        
+
 
         /// <summary>
         /// Форма для добавления параметров расчета каллорий
@@ -64,7 +64,7 @@ namespace View
         private void FillComboBox<T>(T[] dataSource, ComboBox comboBox)
         {
             comboBox.DataSource = dataSource;
-            comboBox.SelectedItem = dataSource.GetValue(0);
+            comboBox.SelectedItem = null;
         }
 
         /// <summary>
@@ -83,28 +83,28 @@ namespace View
                 switch (typeExercise)
                 {
                     case ExerciseType.Running:
-                    {
-                        exercise = new Running();
-                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        break;
-                    }
+                        {
+                            exercise = new Running();
+                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            break;
+                        }
 
                     case ExerciseType.Swimming:
-                    {
-                        exercise = new Swimming();
-                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        break;
-                    }
+                        {
+                            exercise = new Swimming();
+                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            break;
+                        }
 
                     case ExerciseType.WeightLifting:
-                    {
-                        exercise = new WeightLifting();
-                        exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                        break;
-                    }
+                        {
+                            exercise = new WeightLifting();
+                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                            break;
+                        }
                 }
 
                 CalloriesAdded?.Invoke(this,
@@ -127,36 +127,51 @@ namespace View
         /// <param name="e">Данные о событии</param>
         private void AddGroupBoxData(object sender, EventArgs e)
         {
-            ExerciseType typeExercise =
-                    _typesExersice[_comboBoxExercise.Text];
+            ExerciseType typeExercise = _typesExersice[_comboBoxExercise.Text];
 
             _groupBoxParametrExercise.Controls.Clear();
+
+            Control controlToAdd = null;
+
             switch (typeExercise)
             {
                 case ExerciseType.Running:
-                {
-                    AddRunningUserControl runningControl = new AddRunningUserControl();
-                    runningControl.Visible = true;
-                    _groupBoxParametrExercise.Controls.Add(runningControl);
-                    break;
-                }
+                    {
+                        AddRunningUserControl runningControl = new AddRunningUserControl();
+                        controlToAdd = runningControl;
+                        break;
+                    }
                 case ExerciseType.Swimming:
-                {
-                    AddSwimmingUserControl swimmingControl = new AddSwimmingUserControl();
-                    swimmingControl.Visible = true;
-                    _groupBoxParametrExercise.Controls.Add(swimmingControl);
-                    break;
-                }
+                    {
+                        AddSwimmingUserControl swimmingControl = new AddSwimmingUserControl();
+                        controlToAdd = swimmingControl;
+                        break;
+                    }
                 case ExerciseType.WeightLifting:
-                {
-                    AddWeightLiftingUserControl weightLiftingControl = new AddWeightLiftingUserControl();
-                    weightLiftingControl.Visible = true;
-                    _groupBoxParametrExercise.Controls.Add(weightLiftingControl);
-                    break;
-                }
+                    {
+                        AddWeightLiftingUserControl weightLiftingControl = new AddWeightLiftingUserControl();
+                        controlToAdd = weightLiftingControl;
+                        break;
+                    }
                 default:
                     break;
+            }
 
+            if (controlToAdd != null)
+            {
+
+                _groupBoxParametrExercise.SuspendLayout();
+
+                controlToAdd.Visible = true;
+                controlToAdd.Location = new Point(
+                    (_groupBoxParametrExercise.Width - controlToAdd.Width) / 2,
+                    (_groupBoxParametrExercise.Height - controlToAdd.Height) / 2
+                );
+
+                _groupBoxParametrExercise.Controls.Add(controlToAdd);
+
+                _groupBoxParametrExercise.ResumeLayout();
+                _groupBoxParametrExercise.Visible = true;
             }
         }
 
@@ -191,6 +206,11 @@ namespace View
         }
 
         private void _groupBoxDataExercise_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _buttonDataCancel_Click(object sender, EventArgs e)
         {
 
         }

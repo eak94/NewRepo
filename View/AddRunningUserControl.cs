@@ -21,5 +21,15 @@ namespace View
         {
 
         }
+
+        private void _textBoxDistance_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddRunningUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

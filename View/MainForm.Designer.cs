@@ -62,13 +62,15 @@
             // _dataControlCallories
             // 
             _dataControlCallories.AllowUserToAddRows = false;
+            _dataControlCallories.AllowUserToDeleteRows = false;
+            _dataControlCallories.AllowUserToOrderColumns = true;
             _dataControlCallories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _dataControlCallories.BackgroundColor = Color.White;
+            _dataControlCallories.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             _dataControlCallories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             _dataControlCallories.GridColor = Color.White;
             _dataControlCallories.Location = new Point(8, 28);
             _dataControlCallories.Name = "_dataControlCallories";
-            _dataControlCallories.ReadOnly = true;
             _dataControlCallories.RowTemplate.Height = 28;
             _dataControlCallories.Size = new Size(810, 301);
             _dataControlCallories.TabIndex = 0;

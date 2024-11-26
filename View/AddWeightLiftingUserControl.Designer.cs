@@ -32,7 +32,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            _groupBoxWeightLifting = new GroupBox();
             _textBoxMetWeightLifting = new TextBox();
             _labelMetWeightLifting = new Label();
             _textBoxWorkingWeight = new TextBox();
@@ -41,30 +40,12 @@
             _textBoxRepetitions = new TextBox();
             _labelRepetitions = new Label();
             _labelWorkingWeight = new Label();
-            _groupBoxWeightLifting.SuspendLayout();
             SuspendLayout();
-            // 
-            // _groupBoxWeightLifting
-            // 
-            _groupBoxWeightLifting.Controls.Add(_textBoxMetWeightLifting);
-            _groupBoxWeightLifting.Controls.Add(_labelMetWeightLifting);
-            _groupBoxWeightLifting.Controls.Add(_textBoxWorkingWeight);
-            _groupBoxWeightLifting.Controls.Add(_textBoxMaxWeight);
-            _groupBoxWeightLifting.Controls.Add(_labelMaxWeight);
-            _groupBoxWeightLifting.Controls.Add(_textBoxRepetitions);
-            _groupBoxWeightLifting.Controls.Add(_labelRepetitions);
-            _groupBoxWeightLifting.Controls.Add(_labelWorkingWeight);
-            _groupBoxWeightLifting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _groupBoxWeightLifting.Location = new Point(3, 3);
-            _groupBoxWeightLifting.Name = "_groupBoxWeightLifting";
-            _groupBoxWeightLifting.Size = new Size(335, 294);
-            _groupBoxWeightLifting.TabIndex = 3;
-            _groupBoxWeightLifting.TabStop = false;
-            _groupBoxWeightLifting.Text = "Параметры жима штанги";
             // 
             // _textBoxMetWeightLifting
             // 
-            _textBoxMetWeightLifting.Location = new Point(19, 243);
+            _textBoxMetWeightLifting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxMetWeightLifting.Location = new Point(47, 247);
             _textBoxMetWeightLifting.Name = "_textBoxMetWeightLifting";
             _textBoxMetWeightLifting.Size = new Size(292, 29);
             _textBoxMetWeightLifting.TabIndex = 7;
@@ -72,7 +53,8 @@
             // _labelMetWeightLifting
             // 
             _labelMetWeightLifting.AutoSize = true;
-            _labelMetWeightLifting.Location = new Point(21, 219);
+            _labelMetWeightLifting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelMetWeightLifting.Location = new Point(49, 223);
             _labelMetWeightLifting.Name = "_labelMetWeightLifting";
             _labelMetWeightLifting.Size = new Size(40, 21);
             _labelMetWeightLifting.TabIndex = 8;
@@ -80,14 +62,16 @@
             // 
             // _textBoxWorkingWeight
             // 
-            _textBoxWorkingWeight.Location = new Point(18, 123);
+            _textBoxWorkingWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxWorkingWeight.Location = new Point(46, 127);
             _textBoxWorkingWeight.Name = "_textBoxWorkingWeight";
             _textBoxWorkingWeight.Size = new Size(292, 29);
             _textBoxWorkingWeight.TabIndex = 6;
             // 
             // _textBoxMaxWeight
             // 
-            _textBoxMaxWeight.Location = new Point(18, 63);
+            _textBoxMaxWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxMaxWeight.Location = new Point(46, 67);
             _textBoxMaxWeight.Name = "_textBoxMaxWeight";
             _textBoxMaxWeight.Size = new Size(292, 29);
             _textBoxMaxWeight.TabIndex = 5;
@@ -96,7 +80,8 @@
             // _labelMaxWeight
             // 
             _labelMaxWeight.AutoSize = true;
-            _labelMaxWeight.Location = new Point(21, 39);
+            _labelMaxWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelMaxWeight.Location = new Point(49, 43);
             _labelMaxWeight.Name = "_labelMaxWeight";
             _labelMaxWeight.Size = new Size(168, 21);
             _labelMaxWeight.TabIndex = 4;
@@ -104,7 +89,8 @@
             // 
             // _textBoxRepetitions
             // 
-            _textBoxRepetitions.Location = new Point(18, 183);
+            _textBoxRepetitions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _textBoxRepetitions.Location = new Point(46, 187);
             _textBoxRepetitions.Name = "_textBoxRepetitions";
             _textBoxRepetitions.Size = new Size(292, 29);
             _textBoxRepetitions.TabIndex = 2;
@@ -112,7 +98,8 @@
             // _labelRepetitions
             // 
             _labelRepetitions.AutoSize = true;
-            _labelRepetitions.Location = new Point(21, 159);
+            _labelRepetitions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelRepetitions.Location = new Point(49, 163);
             _labelRepetitions.Name = "_labelRepetitions";
             _labelRepetitions.Size = new Size(183, 21);
             _labelRepetitions.TabIndex = 2;
@@ -121,7 +108,8 @@
             // _labelWorkingWeight
             // 
             _labelWorkingWeight.AutoSize = true;
-            _labelWorkingWeight.Location = new Point(21, 99);
+            _labelWorkingWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _labelWorkingWeight.Location = new Point(49, 103);
             _labelWorkingWeight.Name = "_labelWorkingWeight";
             _labelWorkingWeight.Size = new Size(120, 21);
             _labelWorkingWeight.TabIndex = 2;
@@ -132,20 +120,21 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(_groupBoxWeightLifting);
+            Controls.Add(_textBoxMetWeightLifting);
+            Controls.Add(_labelMetWeightLifting);
+            Controls.Add(_textBoxWorkingWeight);
+            Controls.Add(_labelWorkingWeight);
+            Controls.Add(_textBoxMaxWeight);
+            Controls.Add(_labelRepetitions);
+            Controls.Add(_labelMaxWeight);
+            Controls.Add(_textBoxRepetitions);
             Name = "AddWeightLiftingUserControl";
-            Size = new Size(343, 307);
-            _groupBoxWeightLifting.ResumeLayout(false);
-            _groupBoxWeightLifting.PerformLayout();
+            Size = new Size(387, 321);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        /// <summary>
-        /// groupBox для типа упражнения жим штанги
-        /// </summary>
-        private GroupBox _groupBoxWeightLifting;
 
         /// <summary>
         /// textBox для максимального веса
