@@ -46,6 +46,17 @@ namespace Model
         }
 
         /// <summary>
+        /// Реализация свойства типа упраженения
+        /// </summary>
+        public override string ExerciseType
+        {
+            get
+            {
+                return "Бег";
+            }
+        }
+
+        /// <summary>
         /// Метод для расчета каллорий при беге 
         /// </summary>
         public override double CalculateCalories

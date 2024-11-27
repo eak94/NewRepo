@@ -1,7 +1,7 @@
 ﻿namespace View
 {
     /// <summary>
-    /// Главная форма
+    /// Класс главной формы
     /// </summary>
     partial class MainForm
     {
@@ -181,6 +181,11 @@
         #endregion
 
         /// <summary>
+        /// Таблица результатов расчета
+        /// </summary>
+        private DataGridView _dataControlCallories; 
+
+        /// <summary>
         /// GroupBox для результатов расчета каллорий
         /// </summary>
         private GroupBox _groupBoxResultCalloties;
@@ -206,11 +211,6 @@
         private Button _buttonAddCallories;
 
         /// <summary>
-        /// Таблица результатов расчета
-        /// </summary>
-        private DataGridView _dataControlCallories;
-
-        /// <summary>
         /// Кнопка "Удалить"
         /// </summary>
         private Button _buttonDelete;
@@ -224,5 +224,6 @@
         /// Кнопка "Добавить рандомный расчет"
         /// </summary>
         private Button _buttonAddRandom;
+
     }
 }

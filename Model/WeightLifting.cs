@@ -66,6 +66,17 @@ namespace Model
         }
 
         /// <summary>
+        /// Реализация свойства типа упраженения
+        /// </summary>
+        public override string ExerciseType
+        {
+            get
+            {
+                return "Жим штанги";
+            }
+        }
+
+        /// <summary>
         /// Метод для расчета каллорий для жима штанги
         /// </summary>
         public override double CalculateCalories

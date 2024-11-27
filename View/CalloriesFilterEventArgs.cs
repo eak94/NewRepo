@@ -13,7 +13,13 @@ namespace View
         /// </summary>
         public BindingList<ExerciseBase> FilteredCalloriesList { get; }
 
-        public CalloriesFilterEventArgs (BindingList<ExerciseBase> filteredCalloriesList)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="filteredCalloriesList">Отфильтрованный список
+        /// расчетов каллорий</param>
+        /// <exception cref="ArgumentNullException">Проверка списка на null</exception>
+        public CalloriesFilterEventArgs(BindingList<ExerciseBase> filteredCalloriesList)
         {
             if (filteredCalloriesList == null)
             {

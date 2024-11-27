@@ -1,7 +1,7 @@
 ﻿namespace View
 {
     /// <summary>
-    /// Форма для добавления
+    /// Класс для добавление элементов
     /// </summary>
     partial class DataForm
     {
@@ -201,6 +201,21 @@
         private GroupBox _groupBoxDataExercise;
 
         /// <summary>
+        /// groupBox данные о человеке
+        /// </summary>
+        private GroupBox _groupBoxDataPerson;
+
+        /// <summary>
+        /// groupBox данные о тренировке 
+        /// </summary>
+        private GroupBox _groupBoxDataTime;
+
+        /// <summary>
+        /// groupBox параметры по типу упражнение 
+        /// </summary>
+        private GroupBox _groupBoxParametrExercise;
+
+        /// <summary>
         /// comboBox тип упражнения
         /// </summary>
         private ComboBox _comboBoxExercise;
@@ -221,9 +236,9 @@
         private Button _buttonDataCancel;
 
         /// <summary>
-        /// groupBox данные о человеке
+        /// textBox время тренировки
         /// </summary>
-        private GroupBox _groupBoxDataPerson;
+        private TextBox _textBoxTime;
 
         /// <summary>
         /// textBox вес человека
@@ -236,23 +251,9 @@
         private Label _labelWeightPerson;
 
         /// <summary>
-        /// groupBox данные о тренировке 
-        /// </summary>
-        private GroupBox _groupBoxDataTime;
-
-        /// <summary>
-        /// textBox время тренировки
-        /// </summary>
-        private TextBox _textBoxTime;
-
-        /// <summary>
         /// подпись около textBox ", ч"
         /// </summary>
         private Label _labelTime;
-
-        /// <summary>
-        /// groupBox параметры по типу упражнение 
-        /// </summary>
-        private GroupBox _groupBoxParametrExercise;
     }
+        
 }

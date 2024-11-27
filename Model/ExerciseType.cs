@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Model
 {
     /// <summary>
@@ -8,16 +10,19 @@ namespace Model
         /// <summary>
         /// Бег
         /// </summary>
+        [Description("Бег")]
         Running,
 
         /// <summary>
         /// Плавание
         /// </summary>
+        [Description("Плавание")]
         Swimming,
 
         /// <summary>
         /// Тяжелая атлетика
         /// </summary>
+        [Description("Жим штанги")]
         WeightLifting,
     }
 }

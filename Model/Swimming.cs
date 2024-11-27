@@ -67,13 +67,22 @@ namespace Model
         }
 
         /// <summary>
+        /// Реализация свойства типа упраженения
+        /// </summary>
+        public override string ExerciseType
+        {
+            get
+            {
+                return "Плавание";
+            }
+        }
+        /// <summary>
         /// Метод для расчета каллорий при плавании 
         /// </summary>
         public override double CalculateCalories
         {
             get
             {
-                CalculateMet();
                 return _metCoefficients[_style] * Time * WeightPerson;
             }
         }
@@ -96,30 +105,5 @@ namespace Model
         /// </summary>
         public Swimming()
         { }
-
-
-        /// <summary>
-        /// Метод для опрееделения Met
-        /// </summary>
-        /// <param name="style">стиль плавания</param>
-        /// <returns></returns>
-        private void CalculateMet()
-        {
-            switch (Style)
-            {
-                case SwimmingStyle.Brass:
-                    break;
-                case SwimmingStyle.CrawlModerate:
-                    break;
-                case SwimmingStyle.CrawlFast:
-                    break;
-                case SwimmingStyle.Backstroke:
-                    break;
-                case SwimmingStyle.Dolphin:
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }

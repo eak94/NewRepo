@@ -21,7 +21,7 @@ namespace Model
         /// <summary>
         /// Свойство Вес человека
         /// </summary>
-        [DisplayName("Вес человека")]
+        [DisplayName("Вес человека, кг")]
         public double WeightPerson
         {
             get
@@ -44,7 +44,7 @@ namespace Model
         /// <summary>
         /// Свойство Время
         /// </summary>
-        [DisplayName("Время тренировки")]
+        [DisplayName("Время тренировки, ч")]
         public double Time
         {
             get
@@ -64,6 +64,12 @@ namespace Model
                 }
             }
         }
+
+        /// <summary>
+        /// Тип транспорта.
+        /// </summary>
+        [DisplayName("Тип упражнения")]
+        public abstract string ExerciseType { get; } 
 
         /// <summary>
         /// Конструктор, инициализирующий поля веса человека и времени тренировки
@@ -105,7 +111,7 @@ namespace Model
         /// <summary>
         /// Метод расчета каллорий 
         /// </summary>
-        [DisplayName("Количество сожженных каллорий")]
+        [DisplayName("Количество сожженных каллорий, Ккал")]
         public abstract double CalculateCalories { get; }
     }
 }

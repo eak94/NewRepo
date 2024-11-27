@@ -1,16 +1,20 @@
 ﻿namespace View
 {
+    /// <summary>
+    /// Класс для фильтрации
+    /// </summary>
     partial class FilterForm
     {
         /// <summary>
-        /// Required designer variable.
+        /// Необходимая переменная дизайнера.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Метод для явного освобождения ресурсов.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true если ресурсы необходимо
+        /// удалить,иначе false</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,76 +32,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            _groupBoxFilterType = new GroupBox();
-            _groupBoxFilterData = new GroupBox();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
+            _groupBoxFilterExercise = new GroupBox();
+            _checkBoxWeightLifting = new CheckBox();
+            _checkBoxSwimming = new CheckBox();
+            _checkBoxRunning = new CheckBox();
+            _groupBoxFilterWeightPerson = new GroupBox();
+            _textBoxWeightPerson = new TextBox();
             _checkBoxWeightPerson = new CheckBox();
             _buttonAgree = new Button();
-            _textBoxWeightPerson = new TextBox();
-            groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
-            checkBox4 = new CheckBox();
-            _groupBoxFilterType.SuspendLayout();
-            _groupBoxFilterData.SuspendLayout();
-            groupBox1.SuspendLayout();
+            _groupBoxTime = new GroupBox();
+            _textBoxTime = new TextBox();
+            _checkBoxTime = new CheckBox();
+            _groupBoxFilterExercise.SuspendLayout();
+            _groupBoxFilterWeightPerson.SuspendLayout();
+            _groupBoxTime.SuspendLayout();
             SuspendLayout();
             // 
-            // _groupBoxFilterType
+            // _groupBoxFilterExercise
             // 
-            _groupBoxFilterType.Controls.Add(checkBox3);
-            _groupBoxFilterType.Controls.Add(checkBox2);
-            _groupBoxFilterType.Controls.Add(checkBox1);
-            _groupBoxFilterType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _groupBoxFilterType.Location = new Point(35, 30);
-            _groupBoxFilterType.Name = "_groupBoxFilterType";
-            _groupBoxFilterType.Size = new Size(335, 140);
-            _groupBoxFilterType.TabIndex = 0;
-            _groupBoxFilterType.TabStop = false;
-            _groupBoxFilterType.Text = "По типу упражения ";
+            _groupBoxFilterExercise.Controls.Add(_checkBoxWeightLifting);
+            _groupBoxFilterExercise.Controls.Add(_checkBoxSwimming);
+            _groupBoxFilterExercise.Controls.Add(_checkBoxRunning);
+            _groupBoxFilterExercise.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _groupBoxFilterExercise.Location = new Point(35, 30);
+            _groupBoxFilterExercise.Name = "_groupBoxFilterExercise";
+            _groupBoxFilterExercise.Size = new Size(335, 140);
+            _groupBoxFilterExercise.TabIndex = 0;
+            _groupBoxFilterExercise.TabStop = false;
+            _groupBoxFilterExercise.Text = "По типу упражения ";
             // 
-            // _groupBoxFilterData
+            // _checkBoxWeightLifting
             // 
-            _groupBoxFilterData.Controls.Add(_textBoxWeightPerson);
-            _groupBoxFilterData.Controls.Add(_checkBoxWeightPerson);
-            _groupBoxFilterData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _groupBoxFilterData.Location = new Point(35, 188);
-            _groupBoxFilterData.Name = "_groupBoxFilterData";
-            _groupBoxFilterData.Size = new Size(335, 79);
-            _groupBoxFilterData.TabIndex = 1;
-            _groupBoxFilterData.TabStop = false;
-            _groupBoxFilterData.Text = "По данным человека";
+            _checkBoxWeightLifting.AutoSize = true;
+            _checkBoxWeightLifting.Location = new Point(15, 100);
+            _checkBoxWeightLifting.Name = "_checkBoxWeightLifting";
+            _checkBoxWeightLifting.Size = new Size(156, 25);
+            _checkBoxWeightLifting.TabIndex = 2;
+            _checkBoxWeightLifting.Text = "Тяжелая атлетика";
+            _checkBoxWeightLifting.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // _checkBoxSwimming
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(15, 31);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(52, 25);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Бег";
-            checkBox1.UseVisualStyleBackColor = true;
+            _checkBoxSwimming.AutoSize = true;
+            _checkBoxSwimming.Location = new Point(15, 65);
+            _checkBoxSwimming.Name = "_checkBoxSwimming";
+            _checkBoxSwimming.Size = new Size(98, 25);
+            _checkBoxSwimming.TabIndex = 1;
+            _checkBoxSwimming.Text = "Плавание";
+            _checkBoxSwimming.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // _checkBoxRunning
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(15, 65);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(98, 25);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Плавание";
-            checkBox2.UseVisualStyleBackColor = true;
+            _checkBoxRunning.AutoSize = true;
+            _checkBoxRunning.Location = new Point(15, 31);
+            _checkBoxRunning.Name = "_checkBoxRunning";
+            _checkBoxRunning.Size = new Size(52, 25);
+            _checkBoxRunning.TabIndex = 0;
+            _checkBoxRunning.Text = "Бег";
+            _checkBoxRunning.UseVisualStyleBackColor = true;
+            _checkBoxRunning.CheckedChanged += checkBox1_CheckedChanged;
             // 
-            // checkBox3
+            // _groupBoxFilterWeightPerson
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(15, 100);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(156, 25);
-            checkBox3.TabIndex = 2;
-            checkBox3.Text = "Тяжелая атлетика";
-            checkBox3.UseVisualStyleBackColor = true;
+            _groupBoxFilterWeightPerson.Controls.Add(_textBoxWeightPerson);
+            _groupBoxFilterWeightPerson.Controls.Add(_checkBoxWeightPerson);
+            _groupBoxFilterWeightPerson.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _groupBoxFilterWeightPerson.Location = new Point(35, 188);
+            _groupBoxFilterWeightPerson.Name = "_groupBoxFilterWeightPerson";
+            _groupBoxFilterWeightPerson.Size = new Size(335, 79);
+            _groupBoxFilterWeightPerson.TabIndex = 1;
+            _groupBoxFilterWeightPerson.TabStop = false;
+            _groupBoxFilterWeightPerson.Text = "По данным человека";
+            // 
+            // _textBoxWeightPerson
+            // 
+            _textBoxWeightPerson.Location = new Point(259, 35);
+            _textBoxWeightPerson.Name = "_textBoxWeightPerson";
+            _textBoxWeightPerson.Size = new Size(59, 29);
+            _textBoxWeightPerson.TabIndex = 4;
             // 
             // _checkBoxWeightPerson
             // 
@@ -120,41 +132,34 @@
             _buttonAgree.UseVisualStyleBackColor = true;
             _buttonAgree.Click += button1_Click;
             // 
-            // _textBoxWeightPerson
+            // _groupBoxTime
             // 
-            _textBoxWeightPerson.Location = new Point(259, 35);
-            _textBoxWeightPerson.Name = "_textBoxWeightPerson";
-            _textBoxWeightPerson.Size = new Size(59, 29);
-            _textBoxWeightPerson.TabIndex = 4;
+            _groupBoxTime.Controls.Add(_textBoxTime);
+            _groupBoxTime.Controls.Add(_checkBoxTime);
+            _groupBoxTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _groupBoxTime.Location = new Point(35, 284);
+            _groupBoxTime.Name = "_groupBoxTime";
+            _groupBoxTime.Size = new Size(335, 79);
+            _groupBoxTime.TabIndex = 5;
+            _groupBoxTime.TabStop = false;
+            _groupBoxTime.Text = "По времени тренировки";
             // 
-            // groupBox1
+            // _textBoxTime
             // 
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(checkBox4);
-            groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(35, 284);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(335, 79);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "По времени тренировки";
+            _textBoxTime.Location = new Point(259, 35);
+            _textBoxTime.Name = "_textBoxTime";
+            _textBoxTime.Size = new Size(59, 29);
+            _textBoxTime.TabIndex = 4;
             // 
-            // textBox1
+            // _checkBoxTime
             // 
-            textBox1.Location = new Point(259, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(59, 29);
-            textBox1.TabIndex = 4;
-            // 
-            // checkBox4
-            // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(15, 39);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(179, 25);
-            checkBox4.TabIndex = 3;
-            checkBox4.Text = "Время тренировки, ч";
-            checkBox4.UseVisualStyleBackColor = true;
+            _checkBoxTime.AutoSize = true;
+            _checkBoxTime.Location = new Point(15, 39);
+            _checkBoxTime.Name = "_checkBoxTime";
+            _checkBoxTime.Size = new Size(179, 25);
+            _checkBoxTime.TabIndex = 3;
+            _checkBoxTime.Text = "Время тренировки, ч";
+            _checkBoxTime.UseVisualStyleBackColor = true;
             // 
             // FilterForm
             // 
@@ -162,34 +167,84 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(408, 436);
-            Controls.Add(groupBox1);
+            Controls.Add(_groupBoxTime);
             Controls.Add(_buttonAgree);
-            Controls.Add(_groupBoxFilterData);
-            Controls.Add(_groupBoxFilterType);
+            Controls.Add(_groupBoxFilterWeightPerson);
+            Controls.Add(_groupBoxFilterExercise);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FilterForm";
             Text = "Фильтр";
-            _groupBoxFilterType.ResumeLayout(false);
-            _groupBoxFilterType.PerformLayout();
-            _groupBoxFilterData.ResumeLayout(false);
-            _groupBoxFilterData.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            _groupBoxFilterExercise.ResumeLayout(false);
+            _groupBoxFilterExercise.PerformLayout();
+            _groupBoxFilterWeightPerson.ResumeLayout(false);
+            _groupBoxFilterWeightPerson.PerformLayout();
+            _groupBoxTime.ResumeLayout(false);
+            _groupBoxTime.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox _groupBoxFilterType;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
-        private GroupBox _groupBoxFilterData;
+        /// <summary>
+        /// groupBox для фильтрации по весу человека
+        /// </summary>
         private CheckBox _checkBoxWeightPerson;
+
+        /// <summary>
+        /// checkBox для фильтрации 
+        /// по времени тренировки
+        /// </summary>
+        private CheckBox _checkBoxTime;
+
+        /// <summary>
+        /// checkBox для фильтрации по 
+        /// типу упражнения жиму штанги
+        /// </summary>
+        private CheckBox _checkBoxWeightLifting;
+
+        /// <summary>
+        /// checkBox для фильтрации по 
+        /// типу упраженения плавание
+        /// </summary>
+        private CheckBox _checkBoxSwimming;
+
+        /// <summary>
+        /// checkBox для фильтрации по 
+        /// типу упраженения бег
+        /// </summary>
+        private CheckBox _checkBoxRunning;
+
+        /// <summary>
+        /// groupBox для фильтрации по типу упражения
+        /// </summary>
+        private GroupBox _groupBoxFilterExercise;
+
+        /// <summary>
+        /// groupBox для фильтрации 
+        /// по времени тренировки
+        /// </summary>
+        private GroupBox _groupBoxTime;
+
+        /// <summary>
+        /// groupBox для фильтрации 
+        /// по данным о человеке
+        /// </summary>
+        private GroupBox _groupBoxFilterWeightPerson;
+
+        /// <summary>
+        /// Кнопка "Ок"
+        /// </summary>
         private Button _buttonAgree;
+
+        /// <summary>
+        /// textBox ", кг"
+        /// </summary>
         private TextBox _textBoxWeightPerson;
-        private GroupBox groupBox1;
-        private TextBox textBox1;
-        private CheckBox checkBox4;
+
+        /// <summary>
+        /// textBox ", ч"
+        /// </summary>
+        private TextBox _textBoxTime;
+
     }
 }
