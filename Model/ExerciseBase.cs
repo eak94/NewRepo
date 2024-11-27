@@ -1,10 +1,14 @@
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Базовый класс упражнения 
     /// </summary>
+    [XmlInclude(typeof(Running))]
+    [XmlInclude(typeof(Swimming))]
+    [XmlInclude(typeof(WeightLifting))]
     public abstract class ExerciseBase
     {
         /// <summary>
@@ -81,6 +85,7 @@ namespace Model
             WeightPerson = weightperson;
             Time = time;
         }
+
 
         /// <summary>
         /// Конструктор по умолчанию.

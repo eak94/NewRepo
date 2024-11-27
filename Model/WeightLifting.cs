@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace Model
 {
     /// <summary>
@@ -23,6 +25,7 @@ namespace Model
         /// <summary>
         /// Свойство поля вес 
         /// </summary>
+        [XmlElement]
         public double WorkingWeight
         {
             get
@@ -38,6 +41,7 @@ namespace Model
         /// <summary>
         /// Свойство поля количество повторений
         /// </summary>
+        [XmlElement]
         public int Repetitions
         {
             get
@@ -53,6 +57,7 @@ namespace Model
         /// <summary>
         /// Свойство поля количество повторений
         /// </summary>
+        [XmlElement]
         public double MaxWeight
         {
             get
@@ -68,6 +73,7 @@ namespace Model
         /// <summary>
         /// Реализация свойства типа упраженения
         /// </summary>
+        [XmlElement]
         public override string ExerciseType
         {
             get
@@ -79,6 +85,7 @@ namespace Model
         /// <summary>
         /// Метод для расчета каллорий для жима штанги
         /// </summary>
+        [XmlElement]
         public override double CalculateCalories
         {
             get

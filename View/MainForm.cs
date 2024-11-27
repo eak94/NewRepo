@@ -224,7 +224,7 @@ namespace View
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Файлы (*.tran)|*.tran|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*.txt)|*.txt|Все файлы (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
@@ -271,7 +271,7 @@ namespace View
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы (*tran.)|*.tran|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*txt.)|*.txt|Все файлы (*.*)|*.*"
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)

@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace Model
 {
     /// <summary>
@@ -32,6 +34,7 @@ namespace Model
         /// <summary>
         /// Свойство поля стиля плавания
         /// </summary>
+        [XmlElement]
         public SwimmingStyle Style
         {
             get
@@ -54,6 +57,7 @@ namespace Model
         /// <summary>
         /// Свойство поля дистанция
         /// </summary>
+        [XmlElement]
         public double Distance
         {
             get
@@ -69,6 +73,7 @@ namespace Model
         /// <summary>
         /// Реализация свойства типа упраженения
         /// </summary>
+        [XmlElement]
         public override string ExerciseType
         {
             get
@@ -79,6 +84,7 @@ namespace Model
         /// <summary>
         /// Метод для расчета каллорий при плавании 
         /// </summary>
+        [XmlElement]
         public override double CalculateCalories
         {
             get

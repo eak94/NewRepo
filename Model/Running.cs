@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace Model
 {
     /// <summary>
@@ -18,6 +20,7 @@ namespace Model
         /// <summary>
         /// Свойство поля интенсивность
         /// </summary>
+        [XmlElement]
         public double Intensity
         {
             get
@@ -33,6 +36,7 @@ namespace Model
         /// <summary>
         /// Свойство поля расстояние
         /// </summary>
+        [XmlElement]
         public double Distance
         {
             get
@@ -48,6 +52,7 @@ namespace Model
         /// <summary>
         /// Реализация свойства типа упраженения
         /// </summary>
+        [XmlElement]
         public override string ExerciseType
         {
             get
@@ -59,6 +64,7 @@ namespace Model
         /// <summary>
         /// Метод для расчета каллорий при беге 
         /// </summary>
+        [XmlElement]
         public override double CalculateCalories
         {
             get
