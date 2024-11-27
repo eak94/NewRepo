@@ -1,5 +1,6 @@
 using Model;
 using System.ComponentModel;
+using System.Xml.Serialization;
 using System.Windows.Forms;
 
 namespace View
@@ -38,6 +39,12 @@ namespace View
         private bool _isFiltr = false;
 
         /// <summary>
+		/// Поле для сохранения и открытия файла.
+		/// </summary>
+		private readonly XmlSerializer _serializerXml =
+            new XmlSerializer(typeof(BindingList<ExerciseBase>));
+
+        /// <summary>
         /// Конструктор Главной формы
         /// </summary>
         public MainForm()
@@ -48,9 +55,15 @@ namespace View
 
             _buttonAddCallories.Click += AddCalloriesButtonClick;
 
-            //_buttonFindCallories.Click += FilterCallotiesButtonClick();
+            _buttonFindCallories.Click += FilterCallotiesButtonClick;
+
+            _buttonResetCallories.Click += ResetedFilter;
 
             _buttonDelete.Click += RemoveCalloriesButtonClick;
+
+            _buttonOpenCallories.Click += OpenFile;
+
+            _buttonSaveCallories.Click += SaveFile;
 
             DeactivateElements();
         }
@@ -116,9 +129,14 @@ namespace View
             _buttonAddCallories.Enabled = !_isDataFormOpen 
                 && !_isFillerFormOpen && !_isFiltr;
 
+            _buttonDelete.Enabled = !_isDataFormOpen
+                && !_isFillerFormOpen && !_isFiltr;
+
             _buttonFindCallories.Enabled = !_isDataFormOpen &&
                 !_isFillerFormOpen;
+
             _buttonSaveCallories.Enabled = !_isFiltr;
+
             _buttonOpenCallories.Enabled = !_isFiltr;
         }
 
@@ -146,7 +164,6 @@ namespace View
                 }
             }
         }
-
 
         /// <summary>
         /// Метод нажатия на кнопку "Настроить фильтр"
@@ -186,6 +203,87 @@ namespace View
             FillingDataGridView(_filteredСalloriesList);
         }
 
+        /// <summary>
+		/// Метод нажатия на кнопку "Сбросить".
+		/// </summary>
+		/// <param name="sender">Событие.</param>
+		/// <param name="e">Данные о событие.</param>
+		private void ResetedFilter(object sender, EventArgs e)
+        {
+            FillingDataGridView(_calloriesList);
+            _isFiltr = false;
+            DeactivateElements();
+        }
+
+        /// <summary>
+		/// Метод для открытия данных из файла
+		/// </summary>
+		/// <param name="sender">Событие</param>
+		/// <param name="e">Данные о событие</param>
+		private void OpenFile(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Файлы (*.tran)|*.tran|Все файлы (*.*)|*.*"
+            };
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            string filePath = openFileDialog.FileName.ToString();
+
+            try
+            {
+                using (var file = new StreamReader(filePath))
+                {
+                    _calloriesList = (BindingList<ExerciseBase>)
+                        _serializerXml.Deserialize(file);
+                }
+
+                _dataControlCallories.DataSource = _calloriesList;
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Не удалось загрузить файл!\nОшибка: {ex.Message}";
+
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\nПодробности: {ex.InnerException.Message}";
+                }
+
+                MessageBox.Show(errorMessage, "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        /// <summary>
+		/// Метод для сохранения данных в файл
+		/// </summary>
+		/// <param name="sender">Событие</param>
+		/// <param name="e">Данные о событие</param>
+		private void SaveFile(object sender, EventArgs e)
+        {
+            if (!_calloriesList.Any() || _calloriesList is null)
+            {
+                MessageBox.Show("Список пуст!", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Файлы (*tran.)|*.tran|Все файлы (*.*)|*.*"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName.ToString();
+
+                using (var file = File.Create(filePath))
+                {
+                    _serializerXml.Serialize(file, _calloriesList);
+                }
+            }
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

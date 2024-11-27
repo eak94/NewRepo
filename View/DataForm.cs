@@ -38,11 +38,6 @@ namespace View
         };
 
         /// <summary>
-        /// Словарь тип упражнения
-        /// </summary>
-
-
-        /// <summary>
         /// Форма для добавления параметров расчета каллорий
         /// </summary>
         public DataForm()
