@@ -40,5 +40,10 @@ namespace View
                 };
             }
         }
+
+        private void _labelMaxWeight_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,7 +1,6 @@
 using Model;
 using System.ComponentModel;
 using System.Xml.Serialization;
-using System.Windows.Forms;
 
 namespace View
 {
@@ -18,25 +17,10 @@ namespace View
             new BindingList<ExerciseBase>();
 
         /// <summary>
-		/// Отфильтрованный лист для заполнения таблицы.
-		/// </summary>
-		private BindingList<ExerciseBase> _filteredСalloriesList;
-
-        /// <summary>
         /// Поле для хранения состояния формы
         /// добавления параметров для расчета
         /// </summary>
         private bool _isDataFormOpen = false;
-
-        /// <summary>
-		///  Поле для хранения состояния формы для фильтрации
-		/// </summary>
-		private bool _isFillerFormOpen = false;
-
-        /// <summary>
-        /// Поле для хранения состояния фильтра
-        /// </summary>
-        private bool _isFiltr = false;
 
         /// <summary>
 		/// Поле для сохранения и открытия файла.
@@ -55,12 +39,6 @@ namespace View
 
             _buttonAddCallories.Click += AddCalloriesButtonClick;
 
-            _buttonFindCallories.Click += FilterCallotiesButtonClick;
-
-            _buttonResetCallories.Click += ResetedFilter;
-
-            _buttonDelete.Click += RemoveCalloriesButtonClick;
-
             _buttonOpenCallories.Click += OpenFile;
 
             _buttonSaveCallories.Click += SaveFile;
@@ -75,6 +53,7 @@ namespace View
         private void FillingDataGridView(BindingList<ExerciseBase> calloriesList)
         {
             _dataControlCallories.DataSource = calloriesList;
+
             _dataControlCallories.AllowUserToResizeColumns = false;
             _dataControlCallories.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.Fill;
@@ -97,6 +76,7 @@ namespace View
             {
                 _isDataFormOpen = true;
                 DeactivateElements();
+
                 DataForm DataForm = new DataForm();
                 DataForm.FormClosed += (s, args) =>
                 {
@@ -116,8 +96,8 @@ namespace View
         /// данные, передаваемые при вызове события</param>
         private void AddedCallories(object sender, EventArgs exerciseBase)
         {
-            CalloriesAddedEventArgs addedEventArgs =
-                 exerciseBase as CalloriesAddedEventArgs;
+            CalloriesAddedEventArgs addedEventArgs = exerciseBase as CalloriesAddedEventArgs;
+            var newExercise = addedEventArgs?.ExerciseBase;
             _calloriesList.Add(addedEventArgs?.ExerciseBase);
         }
 
@@ -126,94 +106,9 @@ namespace View
         /// </summary>
         private void DeactivateElements()
         {
-            _buttonAddCallories.Enabled = !_isDataFormOpen 
-                && !_isFillerFormOpen && !_isFiltr;
-
-            _buttonDelete.Enabled = !_isDataFormOpen
-                && !_isFillerFormOpen && !_isFiltr;
-
-            _buttonFindCallories.Enabled = !_isDataFormOpen &&
-                !_isFillerFormOpen;
-
-            _buttonSaveCallories.Enabled = !_isFiltr;
-
-            _buttonOpenCallories.Enabled = !_isFiltr;
+            _buttonAddCallories.Enabled = !_isDataFormOpen;
         }
 
-        /// <summary>
-        /// Метод нажатия на кнопку "Удалить"
-        /// </summary>
-        /// <param name="sender">Событие</param>
-        /// <param name="e">данные о событии</param>
-        private void RemoveCalloriesButtonClick(object sender, EventArgs e)
-        {
-            if (_dataControlCallories.SelectedCells.Count != 0)
-            {
-                foreach (DataGridViewRow row in
-                    _dataControlCallories.SelectedRows)
-                {
-                    if (row.DataBoundItem is ExerciseBase callories)
-                    {
-                        _calloriesList.Remove(callories);
-                        if (_filteredСalloriesList is not null
-                            && _filteredСalloriesList.Count > 0)
-                        {
-                            _filteredСalloriesList.Remove(callories);
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Метод нажатия на кнопку "Настроить фильтр"
-        /// </summary>
-        /// <param name="sender">Событие.</param>
-        /// <param name="e">Данные о событие.</param>
-        private void FilterCallotiesButtonClick(object sender, EventArgs e)
-        {
-            if (!_isFillerFormOpen)
-            {
-                _isFillerFormOpen = true;
-                DeactivateElements();
-                FilterForm findForm = new FilterForm(_calloriesList);
-                findForm.FormClosed += (s, args) =>
-                {
-                    _isFillerFormOpen = false;
-                    DeactivateElements();
-                };
-                findForm.СalloriesFiltered += FilteredСallories;
-                findForm.Show();
-            }
-        }
-
-        /// <summary>
-		/// Обработчик фильтрации данных
-		/// </summary>
-		/// <param name="sender">Событие</param>
-		/// <param name="calloriesList">Данные о событие</param>
-		private void FilteredСallories(object sender, EventArgs calloriesList)
-        {
-            CalloriesFilterEventArgs filterEventArgs =
-                calloriesList as CalloriesFilterEventArgs;
-
-            _filteredСalloriesList = filterEventArgs?.FilteredCalloriesList;
-            _isFiltr = true;
-            DeactivateElements();
-            FillingDataGridView(_filteredСalloriesList);
-        }
-
-        /// <summary>
-		/// Метод нажатия на кнопку "Сбросить".
-		/// </summary>
-		/// <param name="sender">Событие.</param>
-		/// <param name="e">Данные о событие.</param>
-		private void ResetedFilter(object sender, EventArgs e)
-        {
-            FillingDataGridView(_calloriesList);
-            _isFiltr = false;
-            DeactivateElements();
-        }
 
         /// <summary>
 		/// Метод для открытия данных из файла

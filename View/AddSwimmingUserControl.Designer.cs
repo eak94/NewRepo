@@ -36,8 +36,6 @@
             _comboBoxStyleSwimming = new ComboBox();
             _labelDistance = new Label();
             _textBoxDistance = new TextBox();
-            _labelMetSwimming = new Label();
-            _textBoxMetSwimming = new TextBox();
             SuspendLayout();
             // 
             // _labelStyleSwimming
@@ -45,7 +43,7 @@
             _labelStyleSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _labelStyleSwimming.AutoSize = true;
             _labelStyleSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _labelStyleSwimming.Location = new Point(45, 63);
+            _labelStyleSwimming.Location = new Point(12, 23);
             _labelStyleSwimming.Name = "_labelStyleSwimming";
             _labelStyleSwimming.Size = new Size(123, 21);
             _labelStyleSwimming.TabIndex = 2;
@@ -57,9 +55,9 @@
             _comboBoxStyleSwimming.DropDownStyle = ComboBoxStyle.DropDownList;
             _comboBoxStyleSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _comboBoxStyleSwimming.FormattingEnabled = true;
-            _comboBoxStyleSwimming.Location = new Point(50, 87);
+            _comboBoxStyleSwimming.Location = new Point(141, 20);
             _comboBoxStyleSwimming.Name = "_comboBoxStyleSwimming";
-            _comboBoxStyleSwimming.Size = new Size(289, 29);
+            _comboBoxStyleSwimming.Size = new Size(150, 29);
             _comboBoxStyleSwimming.TabIndex = 1;
             // 
             // _labelDistance
@@ -67,55 +65,34 @@
             _labelDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _labelDistance.AutoSize = true;
             _labelDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _labelDistance.Location = new Point(45, 197);
+            _labelDistance.Location = new Point(12, 77);
             _labelDistance.Name = "_labelDistance";
             _labelDistance.Size = new Size(106, 21);
             _labelDistance.TabIndex = 2;
             _labelDistance.Text = "Дистанция, м";
+            _labelDistance.Click += _labelDistance_Click;
             // 
             // _textBoxDistance
             // 
             _textBoxDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _textBoxDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxDistance.Location = new Point(48, 221);
+            _textBoxDistance.Location = new Point(199, 74);
             _textBoxDistance.Name = "_textBoxDistance";
-            _textBoxDistance.Size = new Size(289, 29);
+            _textBoxDistance.Size = new Size(92, 29);
             _textBoxDistance.TabIndex = 2;
-            // 
-            // _labelMetSwimming
-            // 
-            _labelMetSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _labelMetSwimming.AutoSize = true;
-            _labelMetSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _labelMetSwimming.Location = new Point(48, 128);
-            _labelMetSwimming.Name = "_labelMetSwimming";
-            _labelMetSwimming.Size = new Size(40, 21);
-            _labelMetSwimming.TabIndex = 4;
-            _labelMetSwimming.Text = "MET";
-            // 
-            // _textBoxMetSwimming
-            // 
-            _textBoxMetSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _textBoxMetSwimming.Enabled = false;
-            _textBoxMetSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxMetSwimming.Location = new Point(48, 152);
-            _textBoxMetSwimming.Name = "_textBoxMetSwimming";
-            _textBoxMetSwimming.Size = new Size(289, 29);
-            _textBoxMetSwimming.TabIndex = 5;
+            _textBoxDistance.TextChanged += _textBoxDistance_TextChanged;
             // 
             // AddSwimmingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(_textBoxMetSwimming);
-            Controls.Add(_labelMetSwimming);
             Controls.Add(_labelDistance);
             Controls.Add(_textBoxDistance);
             Controls.Add(_labelStyleSwimming);
             Controls.Add(_comboBoxStyleSwimming);
             Name = "AddSwimmingUserControl";
-            Size = new Size(387, 321);
+            Size = new Size(315, 117);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -141,15 +118,5 @@
         /// textBox дистанция
         /// </summary>
         private TextBox _textBoxDistance;
-
-        /// <summary>
-        /// надпись для "Меt"
-        /// </summary>
-        private Label _labelMetSwimming;
-
-        /// <summary>
-        /// textBox для "Меt"
-        /// </summary>
-        private TextBox _textBoxMetSwimming;
     }
 }

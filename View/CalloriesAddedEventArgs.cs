@@ -12,6 +12,7 @@ namespace View
         /// </summary>
         public ExerciseBase ExerciseBase { get; }
 
+
         /// <summary>
         /// Конструктор 
         /// </summary>

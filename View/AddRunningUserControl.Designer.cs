@@ -34,8 +34,6 @@
         {
             _textBoxIntensity = new TextBox();
             _labelIntensity = new Label();
-            _textBoxMetRunning = new TextBox();
-            _labelMetRunning = new Label();
             _textBoxDistance = new TextBox();
             _labelDistance = new Label();
             SuspendLayout();
@@ -43,9 +41,9 @@
             // _textBoxIntensity
             // 
             _textBoxIntensity.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _textBoxIntensity.Location = new Point(51, 155);
+            _textBoxIntensity.Location = new Point(201, 68);
             _textBoxIntensity.Name = "_textBoxIntensity";
-            _textBoxIntensity.Size = new Size(285, 29);
+            _textBoxIntensity.Size = new Size(92, 29);
             _textBoxIntensity.TabIndex = 6;
             // 
             // _labelIntensity
@@ -53,37 +51,18 @@
             _labelIntensity.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _labelIntensity.AutoSize = true;
             _labelIntensity.BackColor = Color.White;
-            _labelIntensity.Location = new Point(52, 128);
+            _labelIntensity.Location = new Point(13, 71);
             _labelIntensity.Name = "_labelIntensity";
             _labelIntensity.Size = new Size(160, 21);
             _labelIntensity.TabIndex = 7;
             _labelIntensity.Text = "Интенсивность, км/ч";
             // 
-            // _textBoxMetRunning
-            // 
-            _textBoxMetRunning.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _textBoxMetRunning.Enabled = false;
-            _textBoxMetRunning.Location = new Point(50, 222);
-            _textBoxMetRunning.Name = "_textBoxMetRunning";
-            _textBoxMetRunning.Size = new Size(286, 29);
-            _textBoxMetRunning.TabIndex = 8;
-            // 
-            // _labelMetRunning
-            // 
-            _labelMetRunning.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _labelMetRunning.AutoSize = true;
-            _labelMetRunning.Location = new Point(54, 196);
-            _labelMetRunning.Name = "_labelMetRunning";
-            _labelMetRunning.Size = new Size(40, 21);
-            _labelMetRunning.TabIndex = 4;
-            _labelMetRunning.Text = "MET";
-            // 
             // _textBoxDistance
             // 
             _textBoxDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _textBoxDistance.Location = new Point(51, 90);
+            _textBoxDistance.Location = new Point(201, 15);
             _textBoxDistance.Name = "_textBoxDistance";
-            _textBoxDistance.Size = new Size(285, 29);
+            _textBoxDistance.Size = new Size(92, 29);
             _textBoxDistance.TabIndex = 2;
             // 
             // _labelDistance
@@ -91,7 +70,7 @@
             _labelDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _labelDistance.AutoSize = true;
             _labelDistance.BackColor = Color.White;
-            _labelDistance.Location = new Point(51, 63);
+            _labelDistance.Location = new Point(13, 17);
             _labelDistance.Name = "_labelDistance";
             _labelDistance.Size = new Size(114, 21);
             _labelDistance.TabIndex = 2;
@@ -104,28 +83,16 @@
             BackColor = Color.White;
             Controls.Add(_textBoxIntensity);
             Controls.Add(_labelIntensity);
-            Controls.Add(_labelMetRunning);
-            Controls.Add(_textBoxMetRunning);
             Controls.Add(_labelDistance);
             Controls.Add(_textBoxDistance);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "AddRunningUserControl";
-            Size = new Size(387, 321);
+            Size = new Size(315, 117);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        /// <summary>
-        /// textBox Met для типа упражнения бег
-        /// </summary>
-        private TextBox _textBoxMetRunning;
-
-        /// <summary>
-        /// надпись для Met для типа упражнения бег
-        /// </summary>
-        private Label _labelMetRunning;
 
         /// <summary>
         /// textBox дистанция для типа упражнения бег

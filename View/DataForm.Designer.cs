@@ -34,27 +34,26 @@
         {
             _groupBoxDataExercise = new GroupBox();
             _comboBoxExercise = new ComboBox();
-            _buttonDataAddRandomParametr = new Button();
             _buttonDataAgree = new Button();
             _buttonDataCancel = new Button();
-            _groupBoxDataPerson = new GroupBox();
             _textBoxWeightPerson = new TextBox();
             _labelWeightPerson = new Label();
-            _groupBoxDataTime = new GroupBox();
             _textBoxTime = new TextBox();
             _labelTime = new Label();
+            _groupBoxParametrExerciseBase = new GroupBox();
             _groupBoxParametrExercise = new GroupBox();
+            label2 = new Label();
             _groupBoxDataExercise.SuspendLayout();
-            _groupBoxDataPerson.SuspendLayout();
-            _groupBoxDataTime.SuspendLayout();
+            _groupBoxParametrExerciseBase.SuspendLayout();
+            _groupBoxParametrExercise.SuspendLayout();
             SuspendLayout();
             // 
             // _groupBoxDataExercise
             // 
             _groupBoxDataExercise.Controls.Add(_comboBoxExercise);
-            _groupBoxDataExercise.Location = new Point(53, 44);
+            _groupBoxDataExercise.Location = new Point(61, 31);
             _groupBoxDataExercise.Name = "_groupBoxDataExercise";
-            _groupBoxDataExercise.Size = new Size(280, 85);
+            _groupBoxDataExercise.Size = new Size(322, 85);
             _groupBoxDataExercise.TabIndex = 0;
             _groupBoxDataExercise.TabStop = false;
             _groupBoxDataExercise.Text = "Тип упражнения";
@@ -65,126 +64,116 @@
             _comboBoxExercise.FormattingEnabled = true;
             _comboBoxExercise.Location = new Point(16, 37);
             _comboBoxExercise.Name = "_comboBoxExercise";
-            _comboBoxExercise.Size = new Size(238, 29);
+            _comboBoxExercise.Size = new Size(280, 29);
             _comboBoxExercise.TabIndex = 0;
-            // 
-            // _buttonDataAddRandomParametr
-            // 
-            _buttonDataAddRandomParametr.Location = new Point(53, 398);
-            _buttonDataAddRandomParametr.Name = "_buttonDataAddRandomParametr";
-            _buttonDataAddRandomParametr.Size = new Size(280, 69);
-            _buttonDataAddRandomParametr.TabIndex = 1;
-            _buttonDataAddRandomParametr.Text = "Заполнить рандомными значениями";
-            _buttonDataAddRandomParametr.UseVisualStyleBackColor = true;
             // 
             // _buttonDataAgree
             // 
             _buttonDataAgree.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            _buttonDataAgree.Location = new Point(725, 485);
+            _buttonDataAgree.Location = new Point(582, 296);
             _buttonDataAgree.Name = "_buttonDataAgree";
-            _buttonDataAgree.Size = new Size(77, 33);
+            _buttonDataAgree.Size = new Size(162, 33);
             _buttonDataAgree.TabIndex = 2;
-            _buttonDataAgree.Text = "Ок";
+            _buttonDataAgree.Text = "Рассчитать";
             _buttonDataAgree.UseVisualStyleBackColor = true;
             // 
             // _buttonDataCancel
             // 
             _buttonDataCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            _buttonDataCancel.Location = new Point(606, 485);
+            _buttonDataCancel.Location = new Point(460, 296);
             _buttonDataCancel.Name = "_buttonDataCancel";
             _buttonDataCancel.Size = new Size(99, 33);
             _buttonDataCancel.TabIndex = 3;
             _buttonDataCancel.Text = "Отмена";
             _buttonDataCancel.UseVisualStyleBackColor = true;
             // 
-            // _groupBoxDataPerson
-            // 
-            _groupBoxDataPerson.Controls.Add(_textBoxWeightPerson);
-            _groupBoxDataPerson.Controls.Add(_labelWeightPerson);
-            _groupBoxDataPerson.Location = new Point(53, 285);
-            _groupBoxDataPerson.Name = "_groupBoxDataPerson";
-            _groupBoxDataPerson.Size = new Size(280, 98);
-            _groupBoxDataPerson.TabIndex = 4;
-            _groupBoxDataPerson.TabStop = false;
-            _groupBoxDataPerson.Text = "Данные о человеке";
-            // 
             // _textBoxWeightPerson
             // 
-            _textBoxWeightPerson.Location = new Point(15, 58);
+            _textBoxWeightPerson.Location = new Point(204, 89);
             _textBoxWeightPerson.Name = "_textBoxWeightPerson";
-            _textBoxWeightPerson.Size = new Size(239, 29);
+            _textBoxWeightPerson.Size = new Size(92, 29);
             _textBoxWeightPerson.TabIndex = 1;
             // 
             // _labelWeightPerson
             // 
             _labelWeightPerson.AutoSize = true;
-            _labelWeightPerson.Location = new Point(16, 34);
+            _labelWeightPerson.Location = new Point(16, 89);
             _labelWeightPerson.Name = "_labelWeightPerson";
-            _labelWeightPerson.Size = new Size(59, 21);
+            _labelWeightPerson.Size = new Size(129, 21);
             _labelWeightPerson.TabIndex = 0;
-            _labelWeightPerson.Text = "Вес, кг ";
-            // 
-            // _groupBoxDataTime
-            // 
-            _groupBoxDataTime.Controls.Add(_textBoxTime);
-            _groupBoxDataTime.Controls.Add(_labelTime);
-            _groupBoxDataTime.Location = new Point(53, 174);
-            _groupBoxDataTime.Name = "_groupBoxDataTime";
-            _groupBoxDataTime.Size = new Size(280, 105);
-            _groupBoxDataTime.TabIndex = 5;
-            _groupBoxDataTime.TabStop = false;
-            _groupBoxDataTime.Text = "Данные о тренировке ";
+            _labelWeightPerson.Text = "Вес человека, кг ";
             // 
             // _textBoxTime
             // 
-            _textBoxTime.Location = new Point(16, 58);
+            _textBoxTime.Location = new Point(204, 41);
             _textBoxTime.Name = "_textBoxTime";
-            _textBoxTime.Size = new Size(238, 29);
+            _textBoxTime.Size = new Size(92, 29);
             _textBoxTime.TabIndex = 1;
             // 
             // _labelTime
             // 
             _labelTime.AutoSize = true;
-            _labelTime.Location = new Point(16, 34);
+            _labelTime.Location = new Point(16, 41);
             _labelTime.Name = "_labelTime";
-            _labelTime.Size = new Size(71, 21);
+            _labelTime.Size = new Size(160, 21);
             _labelTime.TabIndex = 0;
-            _labelTime.Text = "Время, ч";
+            _labelTime.Text = "Время тренировки, ч";
+            // 
+            // _groupBoxParametrExerciseBase
+            // 
+            _groupBoxParametrExerciseBase.BackColor = Color.Transparent;
+            _groupBoxParametrExerciseBase.Controls.Add(_textBoxWeightPerson);
+            _groupBoxParametrExerciseBase.Controls.Add(_labelWeightPerson);
+            _groupBoxParametrExerciseBase.Controls.Add(_textBoxTime);
+            _groupBoxParametrExerciseBase.Controls.Add(_labelTime);
+            _groupBoxParametrExerciseBase.FlatStyle = FlatStyle.Flat;
+            _groupBoxParametrExerciseBase.Location = new Point(61, 135);
+            _groupBoxParametrExerciseBase.Name = "_groupBoxParametrExerciseBase";
+            _groupBoxParametrExerciseBase.Size = new Size(322, 142);
+            _groupBoxParametrExerciseBase.TabIndex = 5;
+            _groupBoxParametrExerciseBase.TabStop = false;
             // 
             // _groupBoxParametrExercise
             // 
             _groupBoxParametrExercise.BackColor = Color.Transparent;
+            _groupBoxParametrExercise.Controls.Add(label2);
             _groupBoxParametrExercise.FlatStyle = FlatStyle.Flat;
-            _groupBoxParametrExercise.Location = new Point(355, 44);
+            _groupBoxParametrExercise.Location = new Point(421, 31);
             _groupBoxParametrExercise.Name = "_groupBoxParametrExercise";
-            _groupBoxParametrExercise.Size = new Size(447, 423);
-            _groupBoxParametrExercise.TabIndex = 5;
+            _groupBoxParametrExercise.Size = new Size(322, 246);
+            _groupBoxParametrExercise.TabIndex = 6;
             _groupBoxParametrExercise.TabStop = false;
-            _groupBoxParametrExercise.Text = "Данные по типу упражнения";
+            _groupBoxParametrExercise.Text = "Параметры по типу упражнения";
             _groupBoxParametrExercise.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 21);
+            label2.TabIndex = 0;
             // 
             // DataForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(866, 548);
+            ClientSize = new Size(813, 350);
             Controls.Add(_groupBoxParametrExercise);
-            Controls.Add(_groupBoxDataTime);
-            Controls.Add(_groupBoxDataPerson);
+            Controls.Add(_groupBoxParametrExerciseBase);
             Controls.Add(_buttonDataCancel);
             Controls.Add(_buttonDataAgree);
-            Controls.Add(_buttonDataAddRandomParametr);
             Controls.Add(_groupBoxDataExercise);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "DataForm";
             Text = "Добавить расчет каллорий";
             _groupBoxDataExercise.ResumeLayout(false);
-            _groupBoxDataPerson.ResumeLayout(false);
-            _groupBoxDataPerson.PerformLayout();
-            _groupBoxDataTime.ResumeLayout(false);
-            _groupBoxDataTime.PerformLayout();
+            _groupBoxParametrExerciseBase.ResumeLayout(false);
+            _groupBoxParametrExerciseBase.PerformLayout();
+            _groupBoxParametrExercise.ResumeLayout(false);
+            _groupBoxParametrExercise.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -196,19 +185,9 @@
         private GroupBox _groupBoxDataExercise;
 
         /// <summary>
-        /// groupBox данные о человеке
-        /// </summary>
-        private GroupBox _groupBoxDataPerson;
-
-        /// <summary>
-        /// groupBox данные о тренировке 
-        /// </summary>
-        private GroupBox _groupBoxDataTime;
-
-        /// <summary>
         /// groupBox параметры по типу упражнение 
         /// </summary>
-        private GroupBox _groupBoxParametrExercise;
+        private GroupBox _groupBoxParametrExerciseBase;
 
         /// <summary>
         /// comboBox тип упражнения
@@ -216,12 +195,7 @@
         private ComboBox _comboBoxExercise;
 
         /// <summary>
-        /// Кнопка добавить рандрмные параметры
-        /// </summary>
-        private Button _buttonDataAddRandomParametr;
-
-        /// <summary>
-        /// Кнопка "Ок"
+        /// Кнопка "Рассчитать"
         /// </summary>
         private Button _buttonDataAgree;
 
@@ -264,7 +238,8 @@
         /// Пользовательский элемент управления по типу упражнения жим штанги
         /// </summary>
         private AddWeightLiftingUserControl _addWeightLiftingUserControl;
-
+        private GroupBox _groupBoxParametrExercise;
+        private Label label2;
     }
         
 }

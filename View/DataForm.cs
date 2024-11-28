@@ -1,14 +1,4 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View
 {
@@ -21,6 +11,11 @@ namespace View
         /// 
         /// </summary>
         private List<IElementAddedble> _elementAddableControls;
+
+        /// <summary>
+        /// Активный 
+        /// </summary>
+        private IElementAddedble _elementActiveElement;
 
         /// <summary>
         /// Событие добавления движения.
@@ -79,6 +74,7 @@ namespace View
             };
         }
 
+
         /// <summary>
         /// Заполнение comboBox массивом данных comboBox
         /// </summary>
@@ -90,10 +86,8 @@ namespace View
             comboBox.SelectedItem = null;
         }
 
-
-
         /// <summary>
-        /// Метод нажатия на кнопку "Ок"
+        /// Метод нажатия на кнопку "Рассчитать"
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
@@ -101,42 +95,27 @@ namespace View
         {
             try
             {
-                ExerciseBase exerciseBase = null;
 
+                ExerciseBase exerciseElementBase = null;
                 foreach (var userControl in _elementAddableControls)
                 {
-  
-                    if (userControl is UserControl control && control.Visible)
-                    {
-                        if (userControl is IElementAddedble elementControl)
-                        {
-                            exerciseBase = elementControl.Element;
+                    
 
-                            if (exerciseBase == null)
-                            {
-                                MessageBox.Show("Некорректные данные для выбранного упражнения.",
-                                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Выбранный элемент управления не поддерживает добавление данных.",
-                                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+                    if (((UserControl)userControl).Visible)
+                    {
+                        exerciseElementBase.Time = Convert.ToDouble(_textBoxTime.Text);
+                        exerciseElementBase = userControl.Element;
                     }
                 }
 
-                ElementAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseBase));
-
-                MessageBox.Show($"Добавлены данные: {exerciseBase?.GetType().Name}",
-                                "Данные добавлены", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ElementAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseElementBase));
             }
+            
             catch (Exception exception)
             {
                 MessageBox.Show($"{exception.Message}. Введите корректные данные.",
-                                 "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Предупреждение", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
@@ -147,18 +126,20 @@ namespace View
         /// <param name="e">Данные о событии</param>
         private void AddGroupBoxData(object sender, EventArgs e)
         {
+            _textBoxTime.Clear();
+            _textBoxWeightPerson.Clear();
+
             ExerciseType typeExercise;
             if (!_typesExersice.TryGetValue(_comboBoxExercise.Text, out typeExercise))
             {
-                MessageBox.Show("Выберите правильный тип упражнения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
+                MessageBox.Show("Выберите правильный тип упражнения.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-
-            _groupBoxParametrExercise.Controls.Clear();
 
             Control controlToAdd = null;
             IElementAddedble elementControl = null;
-
+          
             switch (typeExercise)
             {
                 case ExerciseType.Running:
@@ -179,6 +160,12 @@ namespace View
                     return;
             }
 
+            if (_elementActiveElement != null)
+            {
+                _groupBoxParametrExercise.Controls.Remove((Control)_elementActiveElement);
+                _elementActiveElement = null;
+            }
+
             if (controlToAdd != null)
             {
                 _groupBoxParametrExercise.SuspendLayout();
@@ -191,14 +178,18 @@ namespace View
 
                 _groupBoxParametrExercise.Controls.Add(controlToAdd);
 
+                _elementActiveElement = elementControl;
+
                 _groupBoxParametrExercise.ResumeLayout();
-                _groupBoxParametrExercise.Visible = true;
             }
             else
             {
-                MessageBox.Show("Не удалось создать элемент управления для выбранного типа упражнения.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Не удалось создать элемент управления" +
+                    " для выбранного типа упражнения.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            _groupBoxParametrExercise.Visible = true;
+
         }
 
         /// <summary>

@@ -98,7 +98,7 @@ namespace Model
         /// <param name="distance">дистанция</param>
         /// <param name="time">время</param>
         /// <returns></returns>
-        private void CalculateMet(double distance, double time)
+        public void CalculateMet(double distance, double time)
         {
             int metSlow = 8;
             int metModerate = 10;
