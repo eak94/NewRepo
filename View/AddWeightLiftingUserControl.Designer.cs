@@ -44,6 +44,7 @@
             // 
             // _textBoxMetWeightLifting
             // 
+            _textBoxMetWeightLifting.Enabled = false;
             _textBoxMetWeightLifting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _textBoxMetWeightLifting.Location = new Point(47, 247);
             _textBoxMetWeightLifting.Name = "_textBoxMetWeightLifting";
@@ -75,7 +76,6 @@
             _textBoxMaxWeight.Name = "_textBoxMaxWeight";
             _textBoxMaxWeight.Size = new Size(292, 29);
             _textBoxMaxWeight.TabIndex = 5;
-            _textBoxMaxWeight.TextChanged += _textBoxMaxWeight_TextChanged;
             // 
             // _labelMaxWeight
             // 
@@ -115,7 +115,7 @@
             _labelWorkingWeight.TabIndex = 2;
             _labelWorkingWeight.Text = "Рабочий вес, кг";
             // 
-            // _addWeightLiftingUserControl
+            // AddWeightLiftingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -128,7 +128,7 @@
             Controls.Add(_labelRepetitions);
             Controls.Add(_labelMaxWeight);
             Controls.Add(_textBoxRepetitions);
-            Name = "_addWeightLiftingUserControl";
+            Name = "AddWeightLiftingUserControl";
             Size = new Size(387, 321);
             ResumeLayout(false);
             PerformLayout();

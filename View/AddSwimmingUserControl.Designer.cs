@@ -61,7 +61,6 @@
             _comboBoxStyleSwimming.Name = "_comboBoxStyleSwimming";
             _comboBoxStyleSwimming.Size = new Size(289, 29);
             _comboBoxStyleSwimming.TabIndex = 1;
-            _comboBoxStyleSwimming.SelectedIndexChanged += _comboBoxStyleSwimming_SelectedIndexChanged;
             // 
             // _labelDistance
             // 
@@ -97,13 +96,14 @@
             // _textBoxMetSwimming
             // 
             _textBoxMetSwimming.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _textBoxMetSwimming.Enabled = false;
             _textBoxMetSwimming.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _textBoxMetSwimming.Location = new Point(48, 152);
             _textBoxMetSwimming.Name = "_textBoxMetSwimming";
             _textBoxMetSwimming.Size = new Size(289, 29);
             _textBoxMetSwimming.TabIndex = 5;
             // 
-            // _addSwimmingUserControl
+            // AddSwimmingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -114,7 +114,7 @@
             Controls.Add(_textBoxDistance);
             Controls.Add(_labelStyleSwimming);
             Controls.Add(_comboBoxStyleSwimming);
-            Name = "_addSwimmingUserControl";
+            Name = "AddSwimmingUserControl";
             Size = new Size(387, 321);
             ResumeLayout(false);
             PerformLayout();

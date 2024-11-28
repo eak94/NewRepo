@@ -284,44 +284,5 @@ namespace View
                 }
             }
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void _groupBoxResultCalloties_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _buttonResetCallories_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _buttonSaveCallories_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _buttonOpenCallories_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewResultCalloties_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void buttonAddCallories_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _buttonDelete_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

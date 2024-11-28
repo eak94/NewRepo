@@ -90,7 +90,6 @@
             _checkBoxRunning.TabIndex = 0;
             _checkBoxRunning.Text = "Бег";
             _checkBoxRunning.UseVisualStyleBackColor = true;
-            _checkBoxRunning.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // _groupBoxFilterWeightPerson
             // 
@@ -130,7 +129,6 @@
             _buttonAgree.TabIndex = 2;
             _buttonAgree.Text = "Применить";
             _buttonAgree.UseVisualStyleBackColor = true;
-            _buttonAgree.Click += button1_Click;
             // 
             // _groupBoxTime
             // 

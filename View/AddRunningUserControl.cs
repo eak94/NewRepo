@@ -25,85 +25,18 @@ namespace View
         }
 
         /// <summary>
-        /// Метод для проверки числа
-        /// </summary>
-        /// <param name="number">Число</param>
-        /// <returns>Проверенное число</returns>
-        public static double CheckNumber(double number)
-        {
-            if (number <= 0)
-            {
-                throw new ArgumentException("Введенное число должно быть " +
-                    "положительным или не равным нулю");
-            }
-            else
-            {
-                return number;
-            }
-        }
-
-        /// <summary>
         /// Добавляемый элемент тип упражнения - бег
         /// </summary>
         public ExerciseBase Element
         {
             get
             {
-                double distance = 0;
-                double intensity = 0;
-
-                if (!string.IsNullOrWhiteSpace(_textBoxDistance.Text) &&
-                    double.TryParse(_textBoxDistance.Text, out distance))
-                {
-                    distance = CheckNumber(distance);
-                }
-                else
-                {
-                    MessageBox.Show("Введите корректное значение для дистанции.",
-                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return null;
-                }
-
-                if (!string.IsNullOrWhiteSpace(_textBoxIntensity.Text) &&
-                    double.TryParse(_textBoxIntensity.Text, out intensity))
-                {
-
-                    intensity = CheckNumber(intensity);
-                }
-                else
-                {
-                    MessageBox.Show("Введите корректное значение для интенсивности.", 
-                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return null;
-                }
-
                 return new Running()
                 {
-                    Intensity = intensity,
-                    Distance = distance
+                    Intensity = Convert.ToDouble(_textBoxIntensity.Text),
+                    Distance = Convert.ToDouble(_textBoxDistance.Text),
                 };
             }
-        }
-
-
-        private void _textBoxMetRunning_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _textBoxDistance_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddRunningUserControl_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddRunningUserControl_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -29,13 +29,29 @@ namespace View
         };
 
         /// <summary>
+        /// Словарь коэффициентов MET
+        /// </summary>
+        private static readonly Dictionary<SwimmingStyle, int> _metCoefficients = new()
+        {
+            { SwimmingStyle.Brass, 5 },
+            { SwimmingStyle.CrawlModerate, 6 },
+            { SwimmingStyle.CrawlFast, 8 },
+            { SwimmingStyle.Backstroke, 4 },
+            { SwimmingStyle.Dolphin, 10 }
+        };
+
+        /// <summary>
         /// Конструктор пользовательского элемента типа плавание
         /// </summary>
         public AddSwimmingUserControl()
         {
             InitializeComponent();
 
-            FillComboBox(_typesSwimmingStyle.Keys.ToArray(), _comboBoxStyleSwimming);
+            FillComboBox(_typesSwimmingStyle.Keys.ToArray(),
+                _comboBoxStyleSwimming);
+
+            _comboBoxStyleSwimming.SelectedIndexChanged += 
+                ComboBoxStyleSwimming;
         }
 
         /// <summary>
@@ -50,6 +66,29 @@ namespace View
         }
 
         /// <summary>
+        /// Обработчик изменения выбора стиля плавания
+        /// </summary>
+        private void ComboBoxStyleSwimming(object sender, EventArgs e)
+        {
+            if (_comboBoxStyleSwimming.SelectedItem != null)
+            {
+                string selectedStyle = 
+                    _comboBoxStyleSwimming.SelectedItem.ToString();
+
+                if (_typesSwimmingStyle.TryGetValue
+                    (selectedStyle, out SwimmingStyle style))
+                {
+                    
+                    if (_metCoefficients.TryGetValue
+                        (style, out int metCoefficient))
+                    {
+                        _textBoxMetSwimming.Text = metCoefficient.ToString();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Добавляемый элемент тип упражнения плавание
         /// </summary>
         public ExerciseBase Element
@@ -58,20 +97,10 @@ namespace View
             {
                 return new Swimming()
                 {
-                    Distance = Convert.ToDouble(
-                            _textBoxDistance.Text)
+                    Distance = Convert.ToDouble(_textBoxDistance.Text),
                 };
             }
         }
-
-        private void _groupBoxRunning_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _comboBoxStyleSwimming_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

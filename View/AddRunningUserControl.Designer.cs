@@ -24,11 +24,6 @@
             base.Dispose(disposing);
         }
 
-        public string Distance
-        {
-            get { return _textBoxDistance.Text; }
-        }
-
         #region Код, автоматически созданный конструктором компонентов
 
         /// <summary> 
@@ -67,11 +62,11 @@
             // _textBoxMetRunning
             // 
             _textBoxMetRunning.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _textBoxMetRunning.Enabled = false;
             _textBoxMetRunning.Location = new Point(50, 222);
             _textBoxMetRunning.Name = "_textBoxMetRunning";
             _textBoxMetRunning.Size = new Size(286, 29);
-            _textBoxMetRunning.TabIndex = 5;
-            _textBoxMetRunning.TextChanged += _textBoxMetRunning_TextChanged;
+            _textBoxMetRunning.TabIndex = 8;
             // 
             // _labelMetRunning
             // 
@@ -90,7 +85,6 @@
             _textBoxDistance.Name = "_textBoxDistance";
             _textBoxDistance.Size = new Size(285, 29);
             _textBoxDistance.TabIndex = 2;
-            _textBoxDistance.TextChanged += _textBoxDistance_TextChanged;
             // 
             // _labelDistance
             // 
@@ -103,7 +97,7 @@
             _labelDistance.TabIndex = 2;
             _labelDistance.Text = "Дистанция, км";
             // 
-            // _addRunningUserControl
+            // AddRunningUserControl
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -115,9 +109,8 @@
             Controls.Add(_labelDistance);
             Controls.Add(_textBoxDistance);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Name = "_addRunningUserControl";
+            Name = "AddRunningUserControl";
             Size = new Size(387, 321);
-            Load += AddRunningUserControl_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

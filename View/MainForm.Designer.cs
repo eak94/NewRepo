@@ -57,7 +57,6 @@
             _groupBoxResultCalloties.TabIndex = 0;
             _groupBoxResultCalloties.TabStop = false;
             _groupBoxResultCalloties.Text = "Результаты расчетов каллорий";
-            _groupBoxResultCalloties.Enter += _groupBoxResultCalloties_Enter;
             // 
             // _dataControlCallories
             // 
@@ -74,7 +73,6 @@
             _dataControlCallories.RowTemplate.Height = 28;
             _dataControlCallories.Size = new Size(810, 301);
             _dataControlCallories.TabIndex = 0;
-            _dataControlCallories.CellContentClick += dataGridView1_CellContentClick;
             // 
             // _buttonOpenCallories
             // 
@@ -85,7 +83,6 @@
             _buttonOpenCallories.TabIndex = 2;
             _buttonOpenCallories.Text = "Открыть";
             _buttonOpenCallories.UseVisualStyleBackColor = true;
-            _buttonOpenCallories.Click += _buttonOpenCallories_Click;
             // 
             // _buttonResetCallories
             // 
@@ -97,7 +94,6 @@
             _buttonResetCallories.TabIndex = 4;
             _buttonResetCallories.Text = "Сбросить фильтр";
             _buttonResetCallories.UseVisualStyleBackColor = true;
-            _buttonResetCallories.Click += _buttonResetCallories_Click;
             // 
             // _buttonAddCallories
             // 
@@ -109,7 +105,6 @@
             _buttonAddCallories.TabIndex = 5;
             _buttonAddCallories.Text = "Добавить";
             _buttonAddCallories.UseVisualStyleBackColor = true;
-            _buttonAddCallories.Click += buttonAddCallories_Click;
             // 
             // _buttonDelete
             // 
@@ -121,7 +116,6 @@
             _buttonDelete.TabIndex = 6;
             _buttonDelete.Text = "Удалить";
             _buttonDelete.UseVisualStyleBackColor = true;
-            _buttonDelete.Click += _buttonDelete_Click;
             // 
             // _buttonSaveCallories
             // 
@@ -132,7 +126,6 @@
             _buttonSaveCallories.TabIndex = 8;
             _buttonSaveCallories.Text = "Сохранить";
             _buttonSaveCallories.UseVisualStyleBackColor = true;
-            _buttonSaveCallories.Click += _buttonSaveCallories_Click;
             // 
             // _buttonAddRandom
             // 

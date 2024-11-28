@@ -58,7 +58,6 @@
             _groupBoxDataExercise.TabIndex = 0;
             _groupBoxDataExercise.TabStop = false;
             _groupBoxDataExercise.Text = "Тип упражнения";
-            _groupBoxDataExercise.Enter += _groupBoxDataExercise_Enter;
             // 
             // _comboBoxExercise
             // 
@@ -68,7 +67,6 @@
             _comboBoxExercise.Name = "_comboBoxExercise";
             _comboBoxExercise.Size = new Size(238, 29);
             _comboBoxExercise.TabIndex = 0;
-            _comboBoxExercise.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // _buttonDataAddRandomParametr
             // 
@@ -88,7 +86,6 @@
             _buttonDataAgree.TabIndex = 2;
             _buttonDataAgree.Text = "Ок";
             _buttonDataAgree.UseVisualStyleBackColor = true;
-            _buttonDataAgree.Click += button2_Click;
             // 
             // _buttonDataCancel
             // 
@@ -99,7 +96,6 @@
             _buttonDataCancel.TabIndex = 3;
             _buttonDataCancel.Text = "Отмена";
             _buttonDataCancel.UseVisualStyleBackColor = true;
-            _buttonDataCancel.Click += _buttonDataCancel_Click;
             // 
             // _groupBoxDataPerson
             // 
@@ -127,7 +123,6 @@
             _labelWeightPerson.Size = new Size(59, 21);
             _labelWeightPerson.TabIndex = 0;
             _labelWeightPerson.Text = "Вес, кг ";
-            _labelWeightPerson.Click += label1_Click;
             // 
             // _groupBoxDataTime
             // 

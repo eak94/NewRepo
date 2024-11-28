@@ -26,7 +26,7 @@ namespace View
         }
 
         /// <summary>
-        /// Добавляемый элемент тип упражнения - бег
+        /// Добавляемый элемент тип упражнения - жим штанги
         /// </summary>
         public ExerciseBase Element
         {
@@ -34,19 +34,11 @@ namespace View
             {
                 return new WeightLifting()
                 {
-                    WorkingWeight = Convert.ToDouble(
-                            _textBoxWorkingWeight.Text),
-                    Repetitions = (int)Convert.ToDouble
-                    (_textBoxRepetitions.Text),
-                    MaxWeight = Convert.ToDouble(
-                            _textBoxMaxWeight.Text),
+                    WorkingWeight = Convert.ToDouble(_textBoxWorkingWeight.Text),
+                    Repetitions = (int)Convert.ToDouble(_textBoxRepetitions.Text),
+                    MaxWeight = Convert.ToDouble(_textBoxMaxWeight.Text),
                 };
             }
-        }
-
-        private void _textBoxMaxWeight_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

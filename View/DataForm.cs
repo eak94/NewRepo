@@ -90,6 +90,8 @@ namespace View
             comboBox.SelectedItem = null;
         }
 
+
+
         /// <summary>
         /// Метод нажатия на кнопку "Ок"
         /// </summary>
@@ -100,37 +102,57 @@ namespace View
             try
             {
                 ExerciseBase exerciseBase = null;
+
                 foreach (var userControl in _elementAddableControls)
                 {
-                    if (((UserControl)userControl).Visible)
+  
+                    if (userControl is UserControl control && control.Visible)
                     {
-                        exerciseBase = userControl.Element;
-                        if (exerciseBase == null)
+                        if (userControl is IElementAddedble elementControl)
                         {
-                            MessageBox.Show("Некорректные данные для выбранного упражнения.", 
-                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return; 
+                            exerciseBase = elementControl.Element;
+
+                            if (exerciseBase == null)
+                            {
+                                MessageBox.Show("Некорректные данные для выбранного упражнения.",
+                                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Выбранный элемент управления не поддерживает добавление данных.",
+                                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
                     }
                 }
 
                 ElementAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseBase));
+
+                MessageBox.Show($"Добавлены данные: {exerciseBase?.GetType().Name}",
+                                "Данные добавлены", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exception)
             {
-                MessageBox.Show($"{exception.Message}. Введите корректные данные.", 
-                    "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"{exception.Message}. Введите корректные данные.",
+                                 "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         /// <summary>
-        /// Метод добавления GroupBox пользовательского интерфейса на форму
+        /// Метод добавления пользовательского интерфейса на форму
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
         private void AddGroupBoxData(object sender, EventArgs e)
         {
-            ExerciseType typeExercise = _typesExersice[_comboBoxExercise.Text];
+            ExerciseType typeExercise;
+            if (!_typesExersice.TryGetValue(_comboBoxExercise.Text, out typeExercise))
+            {
+                MessageBox.Show("Выберите правильный тип упражнения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
 
             _groupBoxParametrExercise.Controls.Clear();
 
@@ -140,28 +162,21 @@ namespace View
             switch (typeExercise)
             {
                 case ExerciseType.Running:
-                    {
-                        var runningControl = new AddRunningUserControl();
-                        elementControl = runningControl; 
-                        controlToAdd = runningControl; 
-                        break;
-                    }
-                case ExerciseType.Swimming:
-                    {
-                        var swimmingControl = new AddSwimmingUserControl();
-                        elementControl = swimmingControl; 
-                        controlToAdd = swimmingControl;
-                        break;
-                    }
-                case ExerciseType.WeightLifting:
-                    {
-                        var weightLiftingControl = new AddWeightLiftingUserControl();
-                        elementControl = weightLiftingControl; 
-                        controlToAdd = weightLiftingControl; 
-                        break;
-                    }
-                default:
+                    controlToAdd = new AddRunningUserControl();
+                    elementControl = (IElementAddedble)controlToAdd;
                     break;
+                case ExerciseType.Swimming:
+                    controlToAdd = new AddSwimmingUserControl();
+                    elementControl = (IElementAddedble)controlToAdd;
+                    break;
+                case ExerciseType.WeightLifting:
+                    controlToAdd = new AddWeightLiftingUserControl();
+                    elementControl = (IElementAddedble)controlToAdd;
+                    break;
+                default:
+                    MessageBox.Show("Тип упражнения не поддерживается.",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
             }
 
             if (controlToAdd != null)
@@ -178,9 +193,11 @@ namespace View
 
                 _groupBoxParametrExercise.ResumeLayout();
                 _groupBoxParametrExercise.Visible = true;
-
-                ExerciseBase element = elementControl.Element;
-                
+            }
+            else
+            {
+                MessageBox.Show("Не удалось создать элемент управления для выбранного типа упражнения.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -223,46 +240,6 @@ namespace View
             {
                 e.Handled = true;
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _groupBoxDataExercise_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void _buttonDataCancel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
