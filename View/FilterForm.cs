@@ -83,14 +83,14 @@ namespace View
                         typeof(Running));
                 }
 
-               //CheckedData();
-               //if (_filteredСalloriesList.Count == 0
-               //    || _filteredСalloriesList is null)
-               //{
-               //    MessageBox.Show("Совпадений не найдено.", "Информация",
-               //        MessageBoxButtons.OK, MessageBoxIcon.Information);
-               //    return;
-               //}
+               CheckedData();
+               if (_filteredСalloriesList.Count == 0
+                   || _filteredСalloriesList is null)
+               {
+                   MessageBox.Show("Совпадений не найдено.", "Информация",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   return;
+               }
 
                 СalloriesFiltered.Invoke(this,
                 new CalloriesFilterEventArgs(_filteredСalloriesList));
@@ -124,69 +124,69 @@ namespace View
             }
         }
 
-        ///// <summary>
-        ///// Метод фильтрации по данным человека(весу) и времени тренировки
-        ///// </summary>
-        //private void CheckedData()
-        //{
-        //    BindingList<ExerciseBase> exersiceList =
-        //        new BindingList<ExerciseBase>();
-        //
-        //    bool statusCheckBox = _checkBoxFindCar.Checked
-        //        || _checkBoxFindHybridCar.Checked
-        //        || _checkBoxFindHelicopter.Checked;
-        //
-        //    exersiceList = statusCheckBox
-        //        ? [.. _filteredTransportList]
-        //        : [.. _transportList];
-        //
-        //    if (_checkBoxMass.Checked)
-        //    {
-        //        if (!string.IsNullOrEmpty(_textBoxMass.Text))
-        //        {
-        //            FilteredWeight(exersiceList,
-        //            Convert.ToDouble(_textBoxMass.Text));
-        //            _filteredTransportList = transportList;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Введите вес.", "Предупреждение",
-        //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        }
-        //    }
-        //
-        //    if (_checkBoxCapacity.Checked)
-        //    {
-        //        if (!string.IsNullOrEmpty(_textBoxCapacity.Text))
-        //        {
-        //            FilteredTime(exersiceList,
-        //            Convert.ToDouble(_textBoxCapacity.Text));
-        //            _filteredTransportList = transportList;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Введите время тренировки.", "Предупреждение",
-        //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        }
-        //    }
-        //}
-
         /// <summary>
-        /// Метод фильтрации данных по массе.
+        /// Метод фильтрации по данным человека(весу) и времени тренировки
         /// </summary>
-        /// <param name="transportList">Отфильтрованный список.</param>
-        /// <param name="Mass">Масса.</param>
-       //private static void FilteredTime(
-       //    BindingList<TransportBase> transportList, double Mass)
-       //{
-       //    for (int i = transportList.Count - 1; i >= 0; i--)
-       //    {
-       //        if (transportList[i].Mass != Mass)
-       //        {
-       //            transportList.RemoveAt(i);
-       //        }
-       //    }
-       //}
+        private void CheckedData()
+        {
+            BindingList<ExerciseBase> exersiceList =
+                new BindingList<ExerciseBase>();
+        
+            bool statusCheckBox = _checkBoxFindCar.Checked
+                || _checkBoxFindHybridCar.Checked
+                || _checkBoxFindHelicopter.Checked;
+        
+            exersiceList = statusCheckBox
+                ? [.. _filteredTransportList]
+                : [.. _transportList];
+        
+            if (_checkBoxMass.Checked)
+            {
+                if (!string.IsNullOrEmpty(_textBoxMass.Text))
+                {
+                    FilteredWeight(exersiceList,
+                    Convert.ToDouble(_textBoxMass.Text));
+                    _filteredTransportList = transportList;
+                }
+                else
+                {
+                    MessageBox.Show("Введите вес.", "Предупреждение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        
+            if (_checkBoxCapacity.Checked)
+            {
+                if (!string.IsNullOrEmpty(_textBoxCapacity.Text))
+                {
+                    FilteredTime(exersiceList,
+                    Convert.ToDouble(_textBoxCapacity.Text));
+                    _filteredTransportList = transportList;
+                }
+                else
+                {
+                    MessageBox.Show("Введите время тренировки.", "Предупреждение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+          /// <summary>
+          /// Метод фильтрации данных по весу
+          /// </summary>
+          /// <param name="transportList">Отфильтрованный список</param>
+          /// <param name="Mass">Вес</param>
+         private static void FilteredTime(
+             BindingList<ExerciseBase> transportList, double Weight)
+         {
+             for (int i = transportList.Count - 1; i >= 0; i--)
+             {
+                 if (transportList[i].Weight != Weight)
+                 {
+                     transportList.RemoveAt(i);
+                 }
+             }
+         }
 
         private void button1_Click(object sender, EventArgs e)
         {

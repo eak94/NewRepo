@@ -12,7 +12,7 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Освободить все используемые ресурсы.
+        /// Освободить все используемые ресурсы
         /// </summary>
         /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
@@ -122,11 +122,34 @@
 
         #endregion
 
+        /// <summary>
+        /// Надпись для стиля плавания
+        /// </summary>
         private Label _labelStyleSwimming;
+
+        /// <summary>
+        /// comboBox
+        /// </summary>
         private ComboBox _comboBoxStyleSwimming;
+
+        /// <summary>
+        /// надпись ", м"
+        /// </summary>
         private Label _labelDistance;
+
+        /// <summary>
+        /// textBox дистанция
+        /// </summary>
         private TextBox _textBoxDistance;
+
+        /// <summary>
+        /// надпись для "Меt"
+        /// </summary>
         private Label _labelMetSwimming;
+
+        /// <summary>
+        /// textBox для "Меt"
+        /// </summary>
         private TextBox _textBoxMetSwimming;
     }
 }

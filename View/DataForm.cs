@@ -23,6 +23,11 @@ namespace View
 		public EventHandler CalloriesAdded;
 
         /// <summary>
+		/// Поле для обработки события отмена.
+		/// </summary>
+		public EventHandler CalloriesCancel;
+
+        /// <summary>
 		/// Поле для хранения последнего добавленного объекта
 		/// </summary>
 		private ExerciseBase _lastCallories;
@@ -49,6 +54,13 @@ namespace View
             _buttonDataAgree.Click += new EventHandler(AgreeButtonClick);
 
             _comboBoxExercise.SelectedIndexChanged += new EventHandler(AddGroupBoxData);
+
+            _buttonDataCancel.Click += new EventHandler(CancelButtonClick);
+
+            _textBoxTime.KeyPress += new KeyPressEventHandler(TextBoxKeyPress);
+
+            _textBoxWeightPerson.KeyPress += new KeyPressEventHandler(TextBoxKeyPress);
+
         }
 
         /// <summary>
@@ -75,32 +87,23 @@ namespace View
 
             try
             {
-                switch (typeExercise)
-                {
-                    case ExerciseType.Running:
-                        {
-                            exercise = new Running();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
+                exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
 
-                    case ExerciseType.Swimming:
-                        {
-                            exercise = new Swimming();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
-
-                    case ExerciseType.WeightLifting:
-                        {
-                            exercise = new WeightLifting();
-                            exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
-                            break;
-                        }
-                }
+               //switch (typeExercise)
+               //{
+               //    case ExerciseType.Running:
+               //        {
+               //            AddRunningUserControl runningControl = 
+               //                (AddRunningUserControl)_groupBoxParametrExercise.Controls[0];
+               //            exercise = new Running()
+               //            {
+               //                Intensity = Convert.ToDouble(runningControl._textBoxIntensity.Text),
+               //                Distance = Convert.ToDouble(runningControl._textBoxDistance.Text)
+               //            };
+               //            break;
+               //        }
+               //}
 
                 CalloriesAdded?.Invoke(this,
                         new CalloriesAddedEventArgs(exercise));
@@ -167,6 +170,47 @@ namespace View
 
                 _groupBoxParametrExercise.ResumeLayout();
                 _groupBoxParametrExercise.Visible = true;
+            }
+        }
+
+        /// <summary>
+		/// Метод нажатия на кнопку "Отмена"
+		/// </summary>
+		/// <param name="sender">Событие</param>
+		/// <param name="e">Данные о событие</param>
+		private void CancelButtonClick(object sender, EventArgs e)
+        {
+            if (_lastCallories != null)
+            {
+                CalloriesCancel?.Invoke(this, new CalloriesAddedEventArgs(_lastCallories));
+            }
+        }
+
+        /// <summary>
+		/// Проверка данных вводимых в textBox
+		/// </summary>
+		/// <param name="sender">Событие</param>
+		/// <param name="e">Данные о событии</param>
+		private void TextBoxKeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '0' &&
+                string.IsNullOrEmpty(textBox.Text.Trim('0')))
+            {
+                e.Handled = true;
             }
         }
 

@@ -48,6 +48,21 @@ namespace View
             comboBox.SelectedItem = dataSource.GetValue(0);
         }
 
+        /// <summary>
+        /// Добавляемый элемент тип упражнения плавание
+        /// </summary>
+        public ExerciseBase Element
+        {
+            get
+            {
+                return new Swimming()
+                {
+                    Distance = Convert.ToDouble(
+                            _textBoxDistance.Text)
+                };
+            }
+        }
+
         private void _groupBoxRunning_Enter(object sender, EventArgs e)
         {
 

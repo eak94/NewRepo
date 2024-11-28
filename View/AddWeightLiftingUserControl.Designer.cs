@@ -137,20 +137,30 @@
         #endregion
 
         /// <summary>
+        /// textBox для рабочего веса 
+        /// </summary>
+        private TextBox _textBoxWorkingWeight;
+
+        /// <summary>
+        /// textBox для Met для типа упражнения жим штанги
+        /// </summary>
+        private TextBox _textBoxMetWeightLifting;
+
+        /// <summary>
         /// textBox для максимального веса
         /// </summary>
         private TextBox _textBoxMaxWeight;
-
-        /// <summary>
-        /// надпись для максимального веса
-        /// </summary>
-        private Label _labelMaxWeight;
 
         /// <summary>
         /// textBox для количества повторений
         /// </summary>
         private TextBox _textBoxRepetitions;
 
+        /// <summary>
+        /// надпись для максимального веса
+        /// </summary>
+        private Label _labelMaxWeight;
+                
         /// <summary>
         /// надпись для количества повторений
         /// </summary>
@@ -160,16 +170,7 @@
         /// надпись для рабочего веса 
         /// </summary>
         private Label _labelWorkingWeight;
-
-        /// <summary>
-        /// textBox для рабочего веса 
-        /// </summary>
-        private TextBox _textBoxWorkingWeight;
-
-        /// <summary>
-        /// textBox для Met для типа упражнения жим штанги
-        /// </summary>
-        private TextBox _textBoxMetWeightLifting;
+           
 
         /// <summary>
         /// надпись для Met для типа упражнения жим штанги

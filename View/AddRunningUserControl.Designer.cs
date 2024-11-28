@@ -24,6 +24,11 @@
             base.Dispose(disposing);
         }
 
+        public string Distance
+        {
+            get { return _textBoxDistance.Text; }
+        }
+
         #region Код, автоматически созданный конструктором компонентов
 
         /// <summary> 
@@ -112,6 +117,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "AddRunningUserControl";
             Size = new Size(387, 321);
+            Load += AddRunningUserControl_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
