@@ -15,7 +15,7 @@ namespace View
     /// Пользовательский элемент управления для 
     /// типа упражнения жим штанги
     /// </summary>
-    public partial class AddWeightLiftingUserControl : UserControl
+    public partial class AddWeightLiftingUserControl : UserControl, IElementAddedble
     {
         /// <summary>
         /// Конструктор класса

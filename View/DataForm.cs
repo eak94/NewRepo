@@ -18,6 +18,16 @@ namespace View
     public partial class DataForm : Form
     {
         /// <summary>
+        /// 
+        /// </summary>
+        private List<IElementAddedble> _elementAddableControls;
+
+        /// <summary>
+        /// Событие добавления движения.
+        /// </summary>
+        public EventHandler ElementAdded;
+
+        /// <summary>
 		/// Поле для обработки события добавления
 		/// </summary>
 		public EventHandler CalloriesAdded;
@@ -61,6 +71,12 @@ namespace View
 
             _textBoxWeightPerson.KeyPress += new KeyPressEventHandler(TextBoxKeyPress);
 
+            _elementAddableControls = new List<IElementAddedble>()
+            {
+                _addRunningUserControl,
+                _addSwimmingUserControl,
+                _addWeightLiftingUserControl
+            };
         }
 
         /// <summary>
@@ -81,45 +97,34 @@ namespace View
         /// <param name="e">Данные о событии</param>
         private void AgreeButtonClick(object sender, EventArgs e)
         {
-            ExerciseType typeExercise =
-                    _typesExersice[_comboBoxExercise.Text];
-            ExerciseBase exercise = null;
-
             try
             {
-                exercise.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                exercise.Time = Convert.ToDouble(_textBoxWeightPerson.Text);
+                ExerciseBase exerciseBase = null;
+                foreach (var userControl in _elementAddableControls)
+                {
+                    if (((UserControl)userControl).Visible)
+                    {
+                        exerciseBase = userControl.Element;
+                        if (exerciseBase == null)
+                        {
+                            MessageBox.Show("Некорректные данные для выбранного упражнения.", 
+                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return; 
+                        }
+                    }
+                }
 
-               //switch (typeExercise)
-               //{
-               //    case ExerciseType.Running:
-               //        {
-               //            AddRunningUserControl runningControl = 
-               //                (AddRunningUserControl)_groupBoxParametrExercise.Controls[0];
-               //            exercise = new Running()
-               //            {
-               //                Intensity = Convert.ToDouble(runningControl._textBoxIntensity.Text),
-               //                Distance = Convert.ToDouble(runningControl._textBoxDistance.Text)
-               //            };
-               //            break;
-               //        }
-               //}
-
-                CalloriesAdded?.Invoke(this,
-                        new CalloriesAddedEventArgs(exercise));
-
-                _lastCallories = exercise;
+                ElementAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseBase));
             }
-
-            catch
+            catch (Exception exception)
             {
-                MessageBox.Show("Введите данные.", "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"{exception.Message}. Введите корректные данные.", 
+                    "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         /// <summary>
-        /// Метод добавления GroupBox на форму
+        /// Метод добавления GroupBox пользовательского интерфейса на форму
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
@@ -130,25 +135,29 @@ namespace View
             _groupBoxParametrExercise.Controls.Clear();
 
             Control controlToAdd = null;
+            IElementAddedble elementControl = null;
 
             switch (typeExercise)
             {
                 case ExerciseType.Running:
                     {
-                        AddRunningUserControl runningControl = new AddRunningUserControl();
-                        controlToAdd = runningControl;
+                        var runningControl = new AddRunningUserControl();
+                        elementControl = runningControl; 
+                        controlToAdd = runningControl; 
                         break;
                     }
                 case ExerciseType.Swimming:
                     {
-                        AddSwimmingUserControl swimmingControl = new AddSwimmingUserControl();
+                        var swimmingControl = new AddSwimmingUserControl();
+                        elementControl = swimmingControl; 
                         controlToAdd = swimmingControl;
                         break;
                     }
                 case ExerciseType.WeightLifting:
                     {
-                        AddWeightLiftingUserControl weightLiftingControl = new AddWeightLiftingUserControl();
-                        controlToAdd = weightLiftingControl;
+                        var weightLiftingControl = new AddWeightLiftingUserControl();
+                        elementControl = weightLiftingControl; 
+                        controlToAdd = weightLiftingControl; 
                         break;
                     }
                 default:
@@ -157,7 +166,6 @@ namespace View
 
             if (controlToAdd != null)
             {
-
                 _groupBoxParametrExercise.SuspendLayout();
 
                 controlToAdd.Visible = true;
@@ -170,6 +178,9 @@ namespace View
 
                 _groupBoxParametrExercise.ResumeLayout();
                 _groupBoxParametrExercise.Visible = true;
+
+                ExerciseBase element = elementControl.Element;
+                
             }
         }
 

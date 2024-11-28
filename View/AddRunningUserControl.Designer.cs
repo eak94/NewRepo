@@ -103,7 +103,7 @@
             _labelDistance.TabIndex = 2;
             _labelDistance.Text = "Дистанция, км";
             // 
-            // AddRunningUserControl
+            // _addRunningUserControl
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -115,7 +115,7 @@
             Controls.Add(_labelDistance);
             Controls.Add(_textBoxDistance);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Name = "AddRunningUserControl";
+            Name = "_addRunningUserControl";
             Size = new Size(387, 321);
             Load += AddRunningUserControl_Load_1;
             ResumeLayout(false);

@@ -10,7 +10,7 @@ namespace View
     /// <summary>
     /// Интерфейс добавления элементов
     /// </summary>
-    internal interface IElementAddedble
+    public interface IElementAddedble
     {
         /// <summary>
         /// Добавляемый элемент

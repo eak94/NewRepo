@@ -103,7 +103,7 @@
             _textBoxMetSwimming.Size = new Size(289, 29);
             _textBoxMetSwimming.TabIndex = 5;
             // 
-            // AddSwimmingUserControl
+            // _addSwimmingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -114,7 +114,7 @@
             Controls.Add(_textBoxDistance);
             Controls.Add(_labelStyleSwimming);
             Controls.Add(_comboBoxStyleSwimming);
-            Name = "AddSwimmingUserControl";
+            Name = "_addSwimmingUserControl";
             Size = new Size(387, 321);
             ResumeLayout(false);
             PerformLayout();

@@ -115,7 +115,7 @@
             _labelWorkingWeight.TabIndex = 2;
             _labelWorkingWeight.Text = "Рабочий вес, кг";
             // 
-            // AddWeightLiftingUserControl
+            // _addWeightLiftingUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -128,7 +128,7 @@
             Controls.Add(_labelRepetitions);
             Controls.Add(_labelMaxWeight);
             Controls.Add(_textBoxRepetitions);
-            Name = "AddWeightLiftingUserControl";
+            Name = "_addWeightLiftingUserControl";
             Size = new Size(387, 321);
             ResumeLayout(false);
             PerformLayout();

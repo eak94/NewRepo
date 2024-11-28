@@ -254,6 +254,22 @@
         /// подпись около textBox ", ч"
         /// </summary>
         private Label _labelTime;
+
+        /// <summary>
+        /// Пользовательский элемент управления по типу упражнения бег
+        /// </summary>
+        private AddRunningUserControl _addRunningUserControl;
+
+        /// <summary>
+        /// Пользовательский элемент управления по типу упражнения плавание
+        /// </summary>
+        private AddSwimmingUserControl _addSwimmingUserControl;
+
+        /// <summary>
+        /// Пользовательский элемент управления по типу упражнения жим штанги
+        /// </summary>
+        private AddWeightLiftingUserControl _addWeightLiftingUserControl;
+
     }
         
 }

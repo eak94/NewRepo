@@ -14,7 +14,7 @@ namespace View
     /// <summary>
     /// Пользовательский элемент типа упражнения плавание
     /// </summary>
-    public partial class AddSwimmingUserControl : UserControl
+    public partial class AddSwimmingUserControl : UserControl, IElementAddedble
     {
         /// <summary>
         /// Словарь стилей плавания
@@ -34,6 +34,7 @@ namespace View
         public AddSwimmingUserControl()
         {
             InitializeComponent();
+
             FillComboBox(_typesSwimmingStyle.Keys.ToArray(), _comboBoxStyleSwimming);
         }
 
