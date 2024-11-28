@@ -59,7 +59,6 @@ namespace LB3
 
                 switch (exerciseType)
                 {
-                    //TODO: RSDN+
                     case 1:
                     {
                         exercise = new Running();
