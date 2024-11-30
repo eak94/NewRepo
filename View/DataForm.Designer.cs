@@ -42,7 +42,9 @@
             _labelTime = new Label();
             _groupBoxParametrExerciseBase = new GroupBox();
             _groupBoxParametrExercise = new GroupBox();
-            label2 = new Label();
+            _addWeightLiftingUserControl = new AddWeightLiftingUserControl();
+            _addSwimmingUserControl = new AddSwimmingUserControl();
+            _addRunningUserControl = new AddRunningUserControl();
             _groupBoxDataExercise.SuspendLayout();
             _groupBoxParametrExerciseBase.SuspendLayout();
             _groupBoxParametrExercise.SuspendLayout();
@@ -70,7 +72,7 @@
             // _buttonDataAgree
             // 
             _buttonDataAgree.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            _buttonDataAgree.Location = new Point(582, 296);
+            _buttonDataAgree.Location = new Point(604, 296);
             _buttonDataAgree.Name = "_buttonDataAgree";
             _buttonDataAgree.Size = new Size(162, 33);
             _buttonDataAgree.TabIndex = 2;
@@ -80,7 +82,7 @@
             // _buttonDataCancel
             // 
             _buttonDataCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            _buttonDataCancel.Location = new Point(460, 296);
+            _buttonDataCancel.Location = new Point(486, 296);
             _buttonDataCancel.Name = "_buttonDataCancel";
             _buttonDataCancel.Size = new Size(99, 33);
             _buttonDataCancel.TabIndex = 3;
@@ -136,23 +138,41 @@
             // _groupBoxParametrExercise
             // 
             _groupBoxParametrExercise.BackColor = Color.Transparent;
-            _groupBoxParametrExercise.Controls.Add(label2);
+            _groupBoxParametrExercise.Controls.Add(_addWeightLiftingUserControl);
+            _groupBoxParametrExercise.Controls.Add(_addSwimmingUserControl);
+            _groupBoxParametrExercise.Controls.Add(_addRunningUserControl);
             _groupBoxParametrExercise.FlatStyle = FlatStyle.Flat;
             _groupBoxParametrExercise.Location = new Point(421, 31);
             _groupBoxParametrExercise.Name = "_groupBoxParametrExercise";
-            _groupBoxParametrExercise.Size = new Size(322, 246);
+            _groupBoxParametrExercise.Size = new Size(345, 246);
             _groupBoxParametrExercise.TabIndex = 6;
             _groupBoxParametrExercise.TabStop = false;
             _groupBoxParametrExercise.Text = "Параметры по типу упражнения";
-            _groupBoxParametrExercise.Visible = false;
             // 
-            // label2
+            // _addWeightLiftingUserControl
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 41);
-            label2.Name = "label2";
-            label2.Size = new Size(0, 21);
-            label2.TabIndex = 0;
+            _addWeightLiftingUserControl.BackColor = Color.White;
+            _addWeightLiftingUserControl.Location = new Point(18, 37);
+            _addWeightLiftingUserControl.Name = "_addWeightLiftingUserControl";
+            _addWeightLiftingUserControl.Size = new Size(315, 191);
+            _addWeightLiftingUserControl.TabIndex = 2;
+            // 
+            // _addSwimmingUserControl
+            // 
+            _addSwimmingUserControl.BackColor = Color.White;
+            _addSwimmingUserControl.Location = new Point(18, 69);
+            _addSwimmingUserControl.Name = "_addSwimmingUserControl";
+            _addSwimmingUserControl.Size = new Size(315, 117);
+            _addSwimmingUserControl.TabIndex = 1;
+            // 
+            // _addRunningUserControl
+            // 
+            _addRunningUserControl.BackColor = Color.White;
+            _addRunningUserControl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _addRunningUserControl.Location = new Point(16, 69);
+            _addRunningUserControl.Name = "_addRunningUserControl";
+            _addRunningUserControl.Size = new Size(315, 117);
+            _addRunningUserControl.TabIndex = 0;
             // 
             // DataForm
             // 
@@ -173,7 +193,6 @@
             _groupBoxParametrExerciseBase.ResumeLayout(false);
             _groupBoxParametrExerciseBase.PerformLayout();
             _groupBoxParametrExercise.ResumeLayout(false);
-            _groupBoxParametrExercise.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -225,21 +244,30 @@
         private Label _labelTime;
 
         /// <summary>
-        /// Пользовательский элемент управления по типу упражнения бег
+        /// groupBox параметры упражнения
+        /// </summary>
+        private GroupBox _groupBoxParametrExercise;
+
+        /// <summary>
+        /// Пользовательский элемент для 
+        /// добавления параметров по типу 
+        /// упражнения бег 
         /// </summary>
         private AddRunningUserControl _addRunningUserControl;
 
         /// <summary>
-        /// Пользовательский элемент управления по типу упражнения плавание
-        /// </summary>
-        private AddSwimmingUserControl _addSwimmingUserControl;
-
-        /// <summary>
-        /// Пользовательский элемент управления по типу упражнения жим штанги
+        /// Пользовательский элемент для 
+        /// добавления параметров по типу 
+        /// упражнения жим штанги
         /// </summary>
         private AddWeightLiftingUserControl _addWeightLiftingUserControl;
-        private GroupBox _groupBoxParametrExercise;
-        private Label label2;
+
+        /// <summary>
+        /// Пользовательский элемент для 
+        /// добавления параметров по типу 
+        /// упражнения плавание 
+        /// </summary>
+        private AddSwimmingUserControl _addSwimmingUserControl;
     }
         
 }

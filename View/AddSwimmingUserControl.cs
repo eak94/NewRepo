@@ -60,6 +60,7 @@ namespace View
                 return new Swimming()
                 {
                     Distance = Convert.ToDouble(_textBoxDistance.Text),
+                    Style = _typesSwimmingStyle[_comboBoxStyleSwimming.SelectedItem.ToString()]
                 };
             }
         }

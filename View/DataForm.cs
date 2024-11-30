@@ -13,16 +13,6 @@ namespace View
         private List<IElementAddedble> _elementAddableControls;
 
         /// <summary>
-        /// Активный 
-        /// </summary>
-        private IElementAddedble _elementActiveElement;
-
-        /// <summary>
-        /// Событие добавления движения.
-        /// </summary>
-        public EventHandler ElementAdded;
-
-        /// <summary>
 		/// Поле для обработки события добавления
 		/// </summary>
 		public EventHandler CalloriesAdded;
@@ -54,17 +44,23 @@ namespace View
         {
             InitializeComponent();
 
+            _addRunningUserControl.Visible = false;
+
+            _addSwimmingUserControl.Visible = false;
+
+            _addWeightLiftingUserControl.Visible = false;
+
             FillComboBox(_typesExersice.Keys.ToArray(), _comboBoxExercise);
 
-            _buttonDataAgree.Click += new EventHandler(AgreeButtonClick);
+            _buttonDataAgree.Click += AgreeButtonClick;
 
-            _comboBoxExercise.SelectedIndexChanged += new EventHandler(AddGroupBoxData);
+            _comboBoxExercise.SelectedIndexChanged += ChangeExercise;
 
-            _buttonDataCancel.Click += new EventHandler(CancelButtonClick);
+            _buttonDataCancel.Click += CancelButtonClick;
 
-            _textBoxTime.KeyPress += new KeyPressEventHandler(TextBoxKeyPress);
+            _textBoxTime.KeyPress += TextBoxKeyPress;
 
-            _textBoxWeightPerson.KeyPress += new KeyPressEventHandler(TextBoxKeyPress);
+            _textBoxWeightPerson.KeyPress += TextBoxKeyPress;
 
             _elementAddableControls = new List<IElementAddedble>()
             {
@@ -87,6 +83,18 @@ namespace View
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        public void ChangeExercise(object sender, EventArgs e)
+        {
+            _addRunningUserControl.Visible = _comboBoxExercise.SelectedIndex == 0;
+            _addSwimmingUserControl.Visible = _comboBoxExercise.SelectedIndex == 1;
+            _addWeightLiftingUserControl.Visible = _comboBoxExercise.SelectedIndex == 2;
+        }
+
+        /// <summary>
         /// Метод нажатия на кнопку "Рассчитать"
         /// </summary>
         /// <param name="sender">Событие</param>
@@ -95,101 +103,27 @@ namespace View
         {
             try
             {
-
                 ExerciseBase exerciseElementBase = null;
                 foreach (var userControl in _elementAddableControls)
                 {
-                    
-
                     if (((UserControl)userControl).Visible)
                     {
-                        exerciseElementBase.Time = Convert.ToDouble(_textBoxTime.Text);
                         exerciseElementBase = userControl.Element;
+                        exerciseElementBase.Time = Convert.ToDouble(_textBoxTime.Text);
+                        exerciseElementBase.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
                     }
                 }
 
-                ElementAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseElementBase));
+                _lastCallories = exerciseElementBase;
+
+                CalloriesAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseElementBase));
             }
-            
             catch (Exception exception)
             {
                 MessageBox.Show($"{exception.Message}. Введите корректные данные.",
                     "Предупреждение", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
-        }
-
-        /// <summary>
-        /// Метод добавления пользовательского интерфейса на форму
-        /// </summary>
-        /// <param name="sender">Событие</param>
-        /// <param name="e">Данные о событии</param>
-        private void AddGroupBoxData(object sender, EventArgs e)
-        {
-            _textBoxTime.Clear();
-            _textBoxWeightPerson.Clear();
-
-            ExerciseType typeExercise;
-            if (!_typesExersice.TryGetValue(_comboBoxExercise.Text, out typeExercise))
-            {
-                MessageBox.Show("Выберите правильный тип упражнения.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            Control controlToAdd = null;
-            IElementAddedble elementControl = null;
-          
-            switch (typeExercise)
-            {
-                case ExerciseType.Running:
-                    controlToAdd = new AddRunningUserControl();
-                    elementControl = (IElementAddedble)controlToAdd;
-                    break;
-                case ExerciseType.Swimming:
-                    controlToAdd = new AddSwimmingUserControl();
-                    elementControl = (IElementAddedble)controlToAdd;
-                    break;
-                case ExerciseType.WeightLifting:
-                    controlToAdd = new AddWeightLiftingUserControl();
-                    elementControl = (IElementAddedble)controlToAdd;
-                    break;
-                default:
-                    MessageBox.Show("Тип упражнения не поддерживается.",
-                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-            }
-
-            if (_elementActiveElement != null)
-            {
-                _groupBoxParametrExercise.Controls.Remove((Control)_elementActiveElement);
-                _elementActiveElement = null;
-            }
-
-            if (controlToAdd != null)
-            {
-                _groupBoxParametrExercise.SuspendLayout();
-
-                controlToAdd.Visible = true;
-                controlToAdd.Location = new Point(
-                    (_groupBoxParametrExercise.Width - controlToAdd.Width) / 2,
-                    (_groupBoxParametrExercise.Height - controlToAdd.Height) / 2
-                );
-
-                _groupBoxParametrExercise.Controls.Add(controlToAdd);
-
-                _elementActiveElement = elementControl;
-
-                _groupBoxParametrExercise.ResumeLayout();
-            }
-            else
-            {
-                MessageBox.Show("Не удалось создать элемент управления" +
-                    " для выбранного типа упражнения.", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            _groupBoxParametrExercise.Visible = true;
-
         }
 
         /// <summary>
@@ -232,5 +166,6 @@ namespace View
                 e.Handled = true;
             }
         }
+
     }
 }

@@ -2,6 +2,7 @@ using Model;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
+
 namespace View
 {
     /// <summary>
@@ -17,10 +18,19 @@ namespace View
             new BindingList<ExerciseBase>();
 
         /// <summary>
-        /// Поле для хранения состояния формы
-        /// добавления параметров для расчета
+		///  Поле для хранения состояния формы DataForm.
+		/// </summary>
+		private bool _isDataFormOpen = false;
+
+        /// <summary>
+        ///  Поле для хранения состояния формы FindForm.
         /// </summary>
-        private bool _isDataFormOpen = false;
+        private bool _isFindFormOpen = false;
+
+        /// <summary>
+        /// Поле для хранения состояния фильтра.
+        /// </summary>
+        private bool _isFiltered = false;
 
         /// <summary>
 		/// Поле для сохранения и открытия файла.
@@ -38,6 +48,8 @@ namespace View
             FillingDataGridView(_calloriesList);
 
             _buttonAddCallories.Click += AddCalloriesButtonClick;
+
+            _buttonDelete.Click += ClickDeleteElementButton;
 
             _buttonOpenCallories.Click += OpenFile;
 
@@ -66,6 +78,19 @@ namespace View
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="exerciseBase"></param>
+        private void CancelCallories(object sender, EventArgs exerciseBase)
+        {
+            CalloriesAddedEventArgs addedEventArgs =
+                exerciseBase as CalloriesAddedEventArgs;
+
+            _calloriesList.Remove(addedEventArgs?.ExerciseBase);
+        }
+
+        /// <summary>
         /// Метод нажатия на кнопку "Добавить"
         /// </summary>
         /// <param name="sender">Событие</param>
@@ -84,6 +109,7 @@ namespace View
                     DeactivateElements();
                 };
                 DataForm.CalloriesAdded += AddedCallories;
+                DataForm.CalloriesCancel += CancelCallories;
                 DataForm.Show();
             }
         }
@@ -106,9 +132,29 @@ namespace View
         /// </summary>
         private void DeactivateElements()
         {
-            _buttonAddCallories.Enabled = !_isDataFormOpen;
+            _buttonAddCallories.Enabled = !_isFindFormOpen &&
+                !_isFiltered && !_isDataFormOpen;
+            _buttonFindCallories.Enabled = !_isDataFormOpen &&
+                !_isFindFormOpen;
+            _buttonSaveCallories.Enabled = !_isFiltered;
+            _buttonOpenCallories.Enabled = !_isFiltered;
         }
 
+        /// <summary>
+        /// Метод для кнопки "Удалить"
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void ClickDeleteElementButton(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in _dataControlCallories.SelectedRows)
+            {
+                if (row.DataBoundItem is ExerciseBase element)
+                {
+                    _calloriesList.Remove(element);
+                }
+            }
+        }
 
         /// <summary>
 		/// Метод для открытия данных из файла
