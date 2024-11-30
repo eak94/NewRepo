@@ -170,6 +170,7 @@
             Controls.Add(_groupBoxFilterWeightPerson);
             Controls.Add(_groupBoxFilterExercise);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FilterForm";
             Text = "Фильтр";
             _groupBoxFilterExercise.ResumeLayout(false);

@@ -91,7 +91,8 @@ namespace Model
             get
             {
                 double met = CalculateMet(WorkingWeight, MaxWeight);
-                return met * Time * WeightPerson;
+                double calories = met * Time * WeightPerson;
+                return Math.Round(calories, 2);
             }
         }
 

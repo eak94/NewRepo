@@ -81,6 +81,7 @@ namespace Model
                 return "Плавание";
             }
         }
+
         /// <summary>
         /// Метод для расчета каллорий при плавании 
         /// </summary>
@@ -89,7 +90,8 @@ namespace Model
         {
             get
             {
-                return _metCoefficients[_style] * Time * WeightPerson;
+                double calories = _metCoefficients[_style] * Time * WeightPerson;
+                return Math.Round(calories, 2);
             }
         }
 

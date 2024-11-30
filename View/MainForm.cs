@@ -59,6 +59,8 @@ namespace View
 
             _buttonFillterCallories.Click += FillterButtonClick;
 
+            _buttonResetCallories.Click += ResetedFilter;
+
             _buttonOpenCallories.Click += OpenFile;
 
             _buttonSaveCallories.Click += SaveFile;
@@ -214,6 +216,18 @@ namespace View
             _isFiltered = true;
             DeactivateElements();
             FillingDataGridView(_filteredExerciseList);
+        }
+
+        /// <summary>
+        /// Метод нажатия на кнопку "Сбросить".
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событие</param>
+        private void ResetedFilter(object sender, EventArgs e)
+        {
+            FillingDataGridView(_calloriesList);
+            _isFiltered = false;
+            DeactivateElements();
         }
 
         /// <summary>

@@ -21,7 +21,6 @@ namespace Model
         /// </summary>
         private double _weightPerson;
 
-
         /// <summary>
         /// Свойство Вес человека
         /// </summary>

@@ -159,13 +159,6 @@ namespace View
             {
                 e.Handled = true;
             }
-
-            if (e.KeyChar == '0' &&
-                string.IsNullOrEmpty(textBox.Text.Trim('0')))
-            {
-                e.Handled = true;
-            }
         }
-
     }
 }

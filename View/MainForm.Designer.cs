@@ -232,10 +232,11 @@
         /// </summary>
         private Button _buttonSaveCallories;
 
+#if DEBUG
         /// <summary>
         /// Кнопка "Добавить рандомный расчет"
         /// </summary>
         private Button _buttonAddRandom;
-
+#endif
     }
 }

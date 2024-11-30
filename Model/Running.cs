@@ -70,7 +70,8 @@ namespace Model
             get
             {
                 CalculateMet(Distance, Time);
-                return Intensity * Time * WeightPerson;
+                double calories = Intensity * Time * WeightPerson;
+                return Math.Round(calories, 2);
             }
         }
 
