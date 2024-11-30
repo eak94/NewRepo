@@ -17,6 +17,12 @@ namespace View
         private BindingList<ExerciseBase> _calloriesList =
             new BindingList<ExerciseBase>();
 
+
+        /// <summary>
+		/// Отфильтрованный лист для заполнения таблицы.
+		/// </summary>
+		private BindingList<ExerciseBase> _filteredExerciseList;
+
         /// <summary>
 		///  Поле для хранения состояния формы DataForm.
 		/// </summary>
@@ -51,9 +57,15 @@ namespace View
 
             _buttonDelete.Click += ClickDeleteElementButton;
 
+            _buttonFillterCallories.Click += FillterButtonClick;
+
             _buttonOpenCallories.Click += OpenFile;
 
             _buttonSaveCallories.Click += SaveFile;
+
+#if DEBUG
+            _buttonAddRandom.Click += ClickRandomButton;
+#endif
 
             DeactivateElements();
         }
@@ -78,16 +90,26 @@ namespace View
         }
 
         /// <summary>
-        /// 
+        /// Обработчик отмены добавления
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="exerciseBase"></param>
+        /// <param name="sender">Событие</param>
+        /// <param name="exerciseBase">Жанные о событии</param>
         private void CancelCallories(object sender, EventArgs exerciseBase)
         {
             CalloriesAddedEventArgs addedEventArgs =
                 exerciseBase as CalloriesAddedEventArgs;
 
             _calloriesList.Remove(addedEventArgs?.ExerciseBase);
+        }
+
+        /// <summary>
+        /// Метода нажатия на кнопку "Добавить рандомный расчет".
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void ClickRandomButton(object sender, EventArgs e)
+        {
+            _calloriesList.Add(RandomCallories.GetRandomExercise());
         }
 
         /// <summary>
@@ -134,7 +156,7 @@ namespace View
         {
             _buttonAddCallories.Enabled = !_isFindFormOpen &&
                 !_isFiltered && !_isDataFormOpen;
-            _buttonFindCallories.Enabled = !_isDataFormOpen &&
+            _buttonFillterCallories.Enabled = !_isDataFormOpen &&
                 !_isFindFormOpen;
             _buttonSaveCallories.Enabled = !_isFiltered;
             _buttonOpenCallories.Enabled = !_isFiltered;
@@ -154,6 +176,44 @@ namespace View
                     _calloriesList.Remove(element);
                 }
             }
+        }
+
+        /// <summary>
+		/// Метод нажатия на кнопку "Настроить фильтр"
+		/// </summary>
+		/// <param name="sender">Событие</param>
+		/// <param name="e">Данные о событие</param>
+		private void FillterButtonClick(object sender, EventArgs e)
+        {
+            if (!_isFindFormOpen)
+            {
+                _isFindFormOpen = true;
+                DeactivateElements();
+                FilterForm findForm = new FilterForm(_calloriesList);
+                findForm.FormClosed += (s, args) =>
+                {
+                    _isFindFormOpen = false;
+                    DeactivateElements();
+                };
+                findForm.СalloriesFiltered += FilteredExersice;
+                findForm.Show();
+            }
+        }
+
+        /// <summary>
+		/// Обработчик фильтрации данных.
+		/// </summary>
+		/// <param name="sender">Событие.</param>
+		/// <param name="transportList">Данные о событие.</param>
+		private void FilteredExersice(object sender, EventArgs exerciseList)
+        {
+            CalloriesFilterEventArgs filterEventArgs =
+                exerciseList as CalloriesFilterEventArgs;
+
+            _filteredExerciseList = filterEventArgs?.FilteredCalloriesList;
+            _isFiltered = true;
+            DeactivateElements();
+            FillingDataGridView(_filteredExerciseList);
         }
 
         /// <summary>

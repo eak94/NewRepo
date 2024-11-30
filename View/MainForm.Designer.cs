@@ -32,6 +32,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             _groupBoxResultCalloties = new GroupBox();
             _dataControlCallories = new DataGridView();
             _buttonOpenCallories = new Button();
@@ -40,7 +42,7 @@
             _buttonDelete = new Button();
             _buttonSaveCallories = new Button();
             _buttonAddRandom = new Button();
-            _buttonFindCallories = new Button();
+            _buttonFillterCallories = new Button();
             _groupBoxResultCalloties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_dataControlCallories).BeginInit();
             SuspendLayout();
@@ -66,11 +68,28 @@
             _dataControlCallories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _dataControlCallories.BackgroundColor = Color.White;
             _dataControlCallories.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            _dataControlCallories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             _dataControlCallories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            _dataControlCallories.DefaultCellStyle = dataGridViewCellStyle4;
             _dataControlCallories.GridColor = Color.White;
             _dataControlCallories.Location = new Point(8, 28);
             _dataControlCallories.Name = "_dataControlCallories";
-            _dataControlCallories.RowTemplate.Height = 28;
+            _dataControlCallories.RowTemplate.Height = 30;
+            _dataControlCallories.RowTemplate.Resizable = DataGridViewTriState.True;
             _dataControlCallories.Size = new Size(810, 301);
             _dataControlCallories.TabIndex = 0;
             // 
@@ -138,16 +157,16 @@
             _buttonAddRandom.Text = "Добавить рандомный расчет";
             _buttonAddRandom.UseVisualStyleBackColor = true;
             // 
-            // _buttonFindCallories
+            // _buttonFillterCallories
             // 
-            _buttonFindCallories.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            _buttonFindCallories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _buttonFindCallories.Location = new Point(40, 440);
-            _buttonFindCallories.Name = "_buttonFindCallories";
-            _buttonFindCallories.Size = new Size(170, 31);
-            _buttonFindCallories.TabIndex = 10;
-            _buttonFindCallories.Text = "Настроить фильтр";
-            _buttonFindCallories.UseVisualStyleBackColor = true;
+            _buttonFillterCallories.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            _buttonFillterCallories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _buttonFillterCallories.Location = new Point(40, 440);
+            _buttonFillterCallories.Name = "_buttonFillterCallories";
+            _buttonFillterCallories.Size = new Size(170, 31);
+            _buttonFillterCallories.TabIndex = 10;
+            _buttonFillterCallories.Text = "Настроить фильтр";
+            _buttonFillterCallories.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -155,7 +174,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(900, 497);
-            Controls.Add(_buttonFindCallories);
+            Controls.Add(_buttonFillterCallories);
             Controls.Add(_buttonAddRandom);
             Controls.Add(_buttonSaveCallories);
             Controls.Add(_buttonDelete);
@@ -191,7 +210,7 @@
         /// <summary>
         /// Кнопка "Настроить фильтр"
         /// </summary>
-        private Button _buttonFindCallories;
+        private Button _buttonFillterCallories;
 
         /// <summary>
         /// Кнопка "Сбросить фильтр"
