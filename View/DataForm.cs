@@ -34,7 +34,7 @@ namespace View
         {
             {"Бег", ExerciseType.Running},
             {"Плавание", ExerciseType.Swimming},
-            {"Жим штанги", ExerciseType.WeightLifting},
+            {"Тяжелая атлетика", ExerciseType.WeightLifting},
         };
 
         /// <summary>

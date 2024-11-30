@@ -22,7 +22,7 @@ namespace Model
         /// <summary>
         /// Тяжелая атлетика
         /// </summary>
-        [Description("Жим штанги")]
+        [Description("Тяжелая атлетика")]
         WeightLifting,
     }
 }
