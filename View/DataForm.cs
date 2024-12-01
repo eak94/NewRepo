@@ -10,7 +10,7 @@ namespace View
         /// <summary>
         /// 
         /// </summary>
-        private List<IElementAddedble> _elementAddableControls;
+        private List<IElementAddadble> _elementAddableControls;
 
         /// <summary>
 		/// Поле для обработки события добавления
@@ -58,11 +58,7 @@ namespace View
 
             _buttonDataCancel.Click += CancelButtonClick;
 
-            _textBoxTime.KeyPress += TextBoxKeyPress;
-
-            _textBoxWeightPerson.KeyPress += TextBoxKeyPress;
-
-            _elementAddableControls = new List<IElementAddedble>()
+            _elementAddableControls = new List<IElementAddadble>()
             {
                 _addRunningUserControl,
                 _addSwimmingUserControl,
@@ -83,15 +79,18 @@ namespace View
         }
 
         /// <summary>
-        /// 
+        /// Метод отображает соответствующий элемент управления
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
         public void ChangeExercise(object sender, EventArgs e)
         {
-            _addRunningUserControl.Visible = _comboBoxExercise.SelectedIndex == 0;
-            _addSwimmingUserControl.Visible = _comboBoxExercise.SelectedIndex == 1;
-            _addWeightLiftingUserControl.Visible = _comboBoxExercise.SelectedIndex == 2;
+            _addRunningUserControl.Visible = 
+                _comboBoxExercise.SelectedIndex == 0;
+            _addSwimmingUserControl.Visible =
+                _comboBoxExercise.SelectedIndex == 1;
+            _addWeightLiftingUserControl.Visible = 
+                _comboBoxExercise.SelectedIndex == 2;
         }
 
         /// <summary>
@@ -109,8 +108,8 @@ namespace View
                     if (((UserControl)userControl).Visible)
                     {
                         exerciseElementBase = userControl.Element;
-                        exerciseElementBase.Time = Convert.ToDouble(_textBoxTime.Text);
-                        exerciseElementBase.WeightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
+                        exerciseElementBase.Time = Convert.ToDouble(_numBoxTime.Text);
+                        exerciseElementBase.WeightPerson = Convert.ToDouble(_numBoxWeightPerson.Text);
                     }
                 }
 
@@ -136,28 +135,6 @@ namespace View
             if (_lastCallories != null)
             {
                 CalloriesCancel?.Invoke(this, new CalloriesAddedEventArgs(_lastCallories));
-            }
-        }
-
-        /// <summary>
-		/// Проверка данных вводимых в textBox
-		/// </summary>
-		/// <param name="sender">Событие</param>
-		/// <param name="e">Данные о событии</param>
-		private void TextBoxKeyPress(object sender, KeyPressEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-
-            if (!char.IsControl(e.KeyChar)
-                && !char.IsDigit(e.KeyChar)
-                && e.KeyChar != ',')
-            {
-                e.Handled = true;
-            }
-
-            if (e.KeyChar == ',' && textBox.Text.Contains(","))
-            {
-                e.Handled = true;
             }
         }
     }

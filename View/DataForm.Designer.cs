@@ -36,9 +36,9 @@
             _comboBoxExercise = new ComboBox();
             _buttonDataAgree = new Button();
             _buttonDataCancel = new Button();
-            _textBoxWeightPerson = new TextBox();
+            _numBoxWeightPerson = new NumBox();
             _labelWeightPerson = new Label();
-            _textBoxTime = new TextBox();
+            _numBoxTime = new NumBox();
             _labelTime = new Label();
             _groupBoxParametrExerciseBase = new GroupBox();
             _groupBoxParametrExercise = new GroupBox();
@@ -89,12 +89,12 @@
             _buttonDataCancel.Text = "Отмена";
             _buttonDataCancel.UseVisualStyleBackColor = true;
             // 
-            // _textBoxWeightPerson
+            //_numBoxWeightPerson
             // 
-            _textBoxWeightPerson.Location = new Point(204, 89);
-            _textBoxWeightPerson.Name = "_textBoxWeightPerson";
-            _textBoxWeightPerson.Size = new Size(92, 29);
-            _textBoxWeightPerson.TabIndex = 1;
+            _numBoxWeightPerson.Location = new Point(204, 89);
+            _numBoxWeightPerson.Name = "_numBoxWeightPerson";
+            _numBoxWeightPerson.Size = new Size(92, 29);
+            _numBoxWeightPerson.TabIndex = 1;
             // 
             // _labelWeightPerson
             // 
@@ -105,12 +105,12 @@
             _labelWeightPerson.TabIndex = 0;
             _labelWeightPerson.Text = "Вес человека, кг ";
             // 
-            // _textBoxTime
+            // _numBoxTime
             // 
-            _textBoxTime.Location = new Point(204, 41);
-            _textBoxTime.Name = "_textBoxTime";
-            _textBoxTime.Size = new Size(92, 29);
-            _textBoxTime.TabIndex = 1;
+            _numBoxTime.Location = new Point(204, 41);
+            _numBoxTime.Name = "_numBoxTime";
+            _numBoxTime.Size = new Size(92, 29);
+            _numBoxTime.TabIndex = 1;
             // 
             // _labelTime
             // 
@@ -124,9 +124,9 @@
             // _groupBoxParametrExerciseBase
             // 
             _groupBoxParametrExerciseBase.BackColor = Color.Transparent;
-            _groupBoxParametrExerciseBase.Controls.Add(_textBoxWeightPerson);
+            _groupBoxParametrExerciseBase.Controls.Add(_numBoxWeightPerson);
             _groupBoxParametrExerciseBase.Controls.Add(_labelWeightPerson);
-            _groupBoxParametrExerciseBase.Controls.Add(_textBoxTime);
+            _groupBoxParametrExerciseBase.Controls.Add(_numBoxTime);
             _groupBoxParametrExerciseBase.Controls.Add(_labelTime);
             _groupBoxParametrExerciseBase.FlatStyle = FlatStyle.Flat;
             _groupBoxParametrExerciseBase.Location = new Point(61, 135);
@@ -224,14 +224,14 @@
         private Button _buttonDataCancel;
 
         /// <summary>
-        /// textBox время тренировки
+        /// NumBox время тренировки
         /// </summary>
-        private TextBox _textBoxTime;
+        private NumBox _numBoxTime;
 
         /// <summary>
-        /// textBox вес человека
+        /// NumBox вес человека
         /// </summary>
-        private TextBox _textBoxWeightPerson;
+        private NumBox _numBoxWeightPerson;
 
         /// <summary>
         /// подпись около textBox ", кг"

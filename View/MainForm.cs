@@ -2,7 +2,8 @@ using Model;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-
+//заблокировать кнопку сбросить фильтр, когда фильтр применен 
+//доработать ошибки
 namespace View
 {
     /// <summary>
@@ -16,7 +17,6 @@ namespace View
         /// </summary>
         private BindingList<ExerciseBase> _calloriesList =
             new BindingList<ExerciseBase>();
-
 
         /// <summary>
 		/// Отфильтрованный лист для заполнения таблицы.
@@ -59,7 +59,11 @@ namespace View
 
             _buttonFillterCallories.Click += FillterButtonClick;
 
+            _buttonFillterCallories.Click += ShowIfFiltered;
+
             _buttonResetCallories.Click += ResetedFilter;
+
+            _buttonResetCallories.Click += ShowIfFiltered;
 
             _buttonOpenCallories.Click += OpenFile;
 
@@ -162,6 +166,7 @@ namespace View
                 !_isFindFormOpen;
             _buttonSaveCallories.Enabled = !_isFiltered;
             _buttonOpenCallories.Enabled = !_isFiltered;
+            _buttonDelete.Enabled = !_isFiltered;
         }
 
         /// <summary>
@@ -199,6 +204,28 @@ namespace View
                 };
                 findForm.СalloriesFiltered += FilteredExersice;
                 findForm.Show();
+            }
+        }
+
+        /// <summary>
+        /// Метод, меняющий состояния кнопок "отфильтровать" и 
+        /// "Сбросить фильтр", который позволяет пользователю 
+        /// понять отфильтрован ли список.
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void ShowIfFiltered(object sender, EventArgs e)
+        {
+            if (_isFiltered == true)
+            {
+                _buttonResetCallories.Enabled = true;
+                _buttonDelete.Enabled = false;
+            }
+            else
+            {
+                _buttonFillterCallories.Enabled = true;
+                _buttonResetCallories.Enabled = true;
+                _buttonDelete.Enabled = true;
             }
         }
 
@@ -250,23 +277,21 @@ namespace View
             {
                 using (var file = new StreamReader(filePath))
                 {
-                    _calloriesList = (BindingList<ExerciseBase>)
-                        _serializerXml.Deserialize(file);
+                    _calloriesList = 
+                        (BindingList<ExerciseBase>)_serializerXml.Deserialize(file);
                 }
 
                 _dataControlCallories.DataSource = _calloriesList;
+                MessageBox.Show("Файл успешно загружен.",
+                    "Загрузка завершена",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                string errorMessage = $"Не удалось загрузить файл!\nОшибка: {ex.Message}";
-
-                if (ex.InnerException != null)
-                {
-                    errorMessage += $"\nПодробности: {ex.InnerException.Message}";
-                }
-
-                MessageBox.Show(errorMessage, "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Не удалось загрузить файл.\n" +
+                   "Файл повреждён или не соответствует формату.",
+                   "Ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -279,8 +304,9 @@ namespace View
         {
             if (!_calloriesList.Any() || _calloriesList is null)
             {
-                MessageBox.Show("Список пуст!", "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Отсутствуют данные для сохранения.",
+                    "Данные не сохранены",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -297,6 +323,10 @@ namespace View
                 {
                     _serializerXml.Serialize(file, _calloriesList);
                 }
+
+                MessageBox.Show("Файл успешно сохранён.",
+                    "Сохранение завершено",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

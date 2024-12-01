@@ -14,7 +14,7 @@ namespace View
     /// <summary>
     /// Пользовательский элемент управления типа упражнения бег
     /// </summary>
-    public partial class AddRunningUserControl : UserControl, IElementAddedble
+    public partial class AddRunningUserControl : UserControl, IElementAddadble
     {
         /// <summary>
         /// Конструктор класса 
@@ -33,8 +33,8 @@ namespace View
             {
                 return new Running()
                 {
-                    Intensity = Convert.ToDouble(_textBoxIntensity.Text),
-                    Distance = Convert.ToDouble(_textBoxDistance.Text),
+                    Intensity = Convert.ToDouble(_numBoxIntensity.Text),
+                    Distance = Convert.ToDouble(_numBoxDistance.Text),
                 };
             }
         }

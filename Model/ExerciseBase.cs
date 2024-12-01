@@ -72,7 +72,7 @@ namespace Model
         /// Тип транспорта.
         /// </summary>
         [DisplayName("Тип упражнения")]
-        public abstract string ExerciseType { get; } 
+        public abstract string ExerciseType { get; }
 
         /// <summary>
         /// Конструктор, инициализирующий поля веса человека и времени тренировки
@@ -101,7 +101,7 @@ namespace Model
         /// <exception cref="ArgumentException"></exception>
         protected static double CheckNumberBase(double number)
         {
-            if (number <= 0)
+            if (number <= 0 || double.IsNaN(number))
             {
                 throw new ArgumentException("Введенное число должно быть положительным " +
                     "или не равным нулю");

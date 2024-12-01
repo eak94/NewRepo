@@ -15,7 +15,7 @@ namespace View
     /// Пользовательский элемент управления для 
     /// типа упражнения жим штанги
     /// </summary>
-    public partial class AddWeightLiftingUserControl : UserControl, IElementAddedble
+    public partial class AddWeightLiftingUserControl : UserControl, IElementAddadble
     {
         /// <summary>
         /// Конструктор класса
@@ -34,9 +34,9 @@ namespace View
             {
                 return new WeightLifting()
                 {
-                    WorkingWeight = Convert.ToDouble(_textBoxWorkingWeight.Text),
-                    Repetitions = (int)Convert.ToDouble(_textBoxRepetitions.Text),
-                    MaxWeight = Convert.ToDouble(_textBoxMaxWeight.Text),
+                    WorkingWeight = Convert.ToDouble(_numBoxWorkingWeight.Text),
+                    Repetitions = (int)Convert.ToDouble(_numBoxRepetitions.Text),
+                    MaxWeight = Convert.ToDouble(_numBoxMaxWeight.Text),
                 };
             }
         }

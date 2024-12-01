@@ -35,7 +35,7 @@
             _labelStyleSwimming = new Label();
             _comboBoxStyleSwimming = new ComboBox();
             _labelDistance = new Label();
-            _textBoxDistance = new TextBox();
+            _numBoxDistance = new NumBox();
             SuspendLayout();
             // 
             // _labelStyleSwimming
@@ -72,15 +72,15 @@
             _labelDistance.Text = "Дистанция, м";
             _labelDistance.Click += _labelDistance_Click;
             // 
-            // _textBoxDistance
+            // _numBoxDistance
             // 
-            _textBoxDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            _textBoxDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxDistance.Location = new Point(199, 74);
-            _textBoxDistance.Name = "_textBoxDistance";
-            _textBoxDistance.Size = new Size(92, 29);
-            _textBoxDistance.TabIndex = 2;
-            _textBoxDistance.TextChanged += _textBoxDistance_TextChanged;
+            _numBoxDistance.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _numBoxDistance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _numBoxDistance.Location = new Point(199, 74);
+            _numBoxDistance.Name = "_numBoxDistance";
+            _numBoxDistance.Size = new Size(92, 29);
+            _numBoxDistance.TabIndex = 2;
+            _numBoxDistance.TextChanged += _textBoxDistance_TextChanged;
             // 
             // AddSwimmingUserControl
             // 
@@ -88,7 +88,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(_labelDistance);
-            Controls.Add(_textBoxDistance);
+            Controls.Add(_numBoxDistance);
             Controls.Add(_labelStyleSwimming);
             Controls.Add(_comboBoxStyleSwimming);
             Name = "AddSwimmingUserControl";
@@ -115,8 +115,8 @@
         private Label _labelDistance;
 
         /// <summary>
-        /// textBox дистанция
+        /// NumBox дистанция
         /// </summary>
-        private TextBox _textBoxDistance;
+        private NumBox _numBoxDistance;
     }
 }

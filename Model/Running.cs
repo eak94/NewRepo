@@ -29,7 +29,14 @@ namespace Model
             }
             set
             {
+                double maxIntensity = 44.72;
                 _intensity = CheckNumberBase(value);
+
+                if (value > maxIntensity)
+                {
+                    throw new ArgumentException("Интенсивность не может быть " +
+                        $"больше {maxIntensity} км/ч");
+                }
             }
         }
 

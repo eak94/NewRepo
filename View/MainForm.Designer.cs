@@ -32,8 +32,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             _groupBoxResultCalloties = new GroupBox();
             _dataControlCallories = new DataGridView();
             _buttonOpenCallories = new Button();
@@ -41,7 +41,9 @@
             _buttonAddCallories = new Button();
             _buttonDelete = new Button();
             _buttonSaveCallories = new Button();
+#if DEBUG
             _buttonAddRandom = new Button();
+#endif
             _buttonFillterCallories = new Button();
             _groupBoxResultCalloties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_dataControlCallories).BeginInit();
@@ -68,26 +70,27 @@
             _dataControlCallories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             _dataControlCallories.BackgroundColor = Color.White;
             _dataControlCallories.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            _dataControlCallories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            _dataControlCallories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             _dataControlCallories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            _dataControlCallories.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            _dataControlCallories.DefaultCellStyle = dataGridViewCellStyle2;
             _dataControlCallories.GridColor = Color.White;
             _dataControlCallories.Location = new Point(8, 28);
             _dataControlCallories.Name = "_dataControlCallories";
+            _dataControlCallories.ReadOnly = true;
             _dataControlCallories.RowTemplate.Height = 30;
             _dataControlCallories.RowTemplate.Resizable = DataGridViewTriState.True;
             _dataControlCallories.Size = new Size(810, 301);
@@ -145,6 +148,7 @@
             _buttonSaveCallories.TabIndex = 8;
             _buttonSaveCallories.Text = "Сохранить";
             _buttonSaveCallories.UseVisualStyleBackColor = true;
+#if DEBUG
             // 
             // _buttonAddRandom
             // 
@@ -156,6 +160,7 @@
             _buttonAddRandom.TabIndex = 9;
             _buttonAddRandom.Text = "Добавить рандомный расчет";
             _buttonAddRandom.UseVisualStyleBackColor = true;
+#endif
             // 
             // _buttonFillterCallories
             // 
@@ -175,7 +180,9 @@
             BackColor = Color.White;
             ClientSize = new Size(900, 497);
             Controls.Add(_buttonFillterCallories);
+#if DEBUG
             Controls.Add(_buttonAddRandom);
+#endif
             Controls.Add(_buttonSaveCallories);
             Controls.Add(_buttonDelete);
             Controls.Add(_buttonAddCallories);
@@ -195,7 +202,7 @@
         /// <summary>
         /// Таблица результатов расчета
         /// </summary>
-        private DataGridView _dataControlCallories; 
+        private DataGridView _dataControlCallories;
 
         /// <summary>
         /// GroupBox для результатов расчета каллорий

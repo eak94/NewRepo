@@ -39,12 +39,26 @@ namespace View
         public FilterForm(BindingList<ExerciseBase> calloriesList)
         {
             _calloriesList = calloriesList;
-        
-            InitializeComponent();
 
-            _buttonAgree.Click += new EventHandler(AgreeButtonClick);
+            InitializeComponent();
+            _numBoxTime.Enabled = false;
+            _numBoxWeightPerson.Enabled = false;
+            _checkBoxTime.CheckedChanged += ChangeTextBoxState;
+            _checkBoxWeightPerson.CheckedChanged += ChangeTextBoxState;
+            _buttonAgree.Click += AgreeButtonClick;
 
         }
+
+        /// <summary>
+        /// Метод изменения состояния текстовых полей.
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void ChangeTextBoxState(object sender, EventArgs e)
+        {
+            _numBoxTime.Enabled = _checkBoxTime.Checked;
+            _numBoxWeightPerson.Enabled = _checkBoxWeightPerson.Checked;
+        }
+
         /// <summary>
         /// Метод нажатия на кнопку "Применить"
         /// </summary>
@@ -61,29 +75,44 @@ namespace View
             if (checkClick)
             {
                 _filteredСalloriesList = new BindingList<ExerciseBase>();
+                List<ExerciseBase> filterdExercises = null;
+                List<string> typeFilterCriteria = new List<string>();
+                ExerciseBase element = null;
+                double? time = GetValueFromNumBox(_numBoxTime);
+                double? weight = GetValueFromNumBox(_numBoxWeightPerson);
 
                 if (_checkBoxWeightLifting.Checked)
                 {
-                    FilteredTypeExercise(_calloriesList,
-                        _filteredСalloriesList,
-                        typeof(WeightLifting));
+                    element = new WeightLifting();
+                    typeFilterCriteria.Add(element.ExerciseType);
                 }
 
                 if (_checkBoxSwimming.Checked)
                 {
-                    FilteredTypeExercise(_calloriesList,
-                        _filteredСalloriesList,
-                        typeof(Swimming));
+                    element = new Swimming();
+                    typeFilterCriteria.Add(element.ExerciseType);
                 }
 
                 if (_checkBoxRunning.Checked)
                 {
-                    FilteredTypeExercise(_calloriesList,
-                        _filteredСalloriesList,
-                        typeof(Running));
+                    element = new Running();
+                    typeFilterCriteria.Add(element.ExerciseType);
                 }
 
-                CheckedData();
+                filterdExercises = _calloriesList.Where(obj =>
+                   (typeFilterCriteria.Count == 0 ||
+                   typeFilterCriteria.Contains(obj.ExerciseType))
+                   &&
+                   (!time.HasValue ||
+                   obj.Time == time)
+                   &&
+                   (!weight.HasValue ||
+                   obj.WeightPerson == weight)
+                ).ToList();
+
+                _filteredСalloriesList = new BindingList<ExerciseBase>
+                    (filterdExercises);
+
                 if (_filteredСalloriesList.Count == 0
                     || _filteredСalloriesList is null)
                 {
@@ -103,91 +132,24 @@ namespace View
         }
 
         /// <summary>
-        /// Метод фильтрации данных по типу упражнения
+        /// Метод чтения значения из поля ввода данных.
         /// </summary>
-        /// <typeparam name="ExerciseBase">Тип списка</typeparam>
-        /// <param name="exerciseList">Исходный список</param>
-        /// <param name="filteredExerciseList">Отфильтрованный список</param>
-        /// <param name="typeExercise">Тип упражнения</param>
-        private static void FilteredTypeExercise<ExerciseBase>(
-          BindingList<ExerciseBase> exerciseList,
-           BindingList<ExerciseBase> filteredExerciseList,
-           Type typeExercise)
+        /// <param name="numBox"></param>
+        /// <returns></returns>
+        private double? GetValueFromNumBox(TextBox numBox)
         {
-            foreach (var exercise in exerciseList)
+            if (!numBox.Enabled)
             {
-                if (typeExercise == exercise.GetType())
-                {
-                    filteredExerciseList.Add(exercise);
-                }
+                return null;
+            }
+            if (string.IsNullOrWhiteSpace(numBox.Text))
+            {
+                return null;
+            }
+            else
+            {
+                return Convert.ToDouble(numBox.Text);
             }
         }
-
-        /// <summary>
-        /// Метод фильтрации по данным типа упражнения
-        /// </summary>
-        private void CheckedData()
-        {
-            BindingList<ExerciseBase> exerciseList =
-                new BindingList<ExerciseBase>();
-        
-            bool statusCheckBox = _checkBoxSwimming.Checked
-                || _checkBoxRunning.Checked
-                || _checkBoxWeightLifting.Checked;
-
-            exerciseList = statusCheckBox
-                ? new BindingList<ExerciseBase>(_filteredСalloriesList)
-                : new BindingList<ExerciseBase>(exerciseList);
-
-            if (_checkBoxTime.Checked)
-            {
-                if (!string.IsNullOrEmpty(_textBoxTime.Text))
-                {
-                    double time = Convert.ToDouble(_textBoxTime.Text);
-                    Filtered(exerciseList, time, exercise => exercise.Time);
-                    _filteredСalloriesList = exerciseList;
-                }
-                else
-                {
-                    MessageBox.Show("Введите время тренировки.", "Предупреждение",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-
-            if (_checkBoxWeightPerson.Checked)
-            {
-                if (!string.IsNullOrEmpty(_textBoxWeightPerson.Text))
-                {
-                    double weightPerson = Convert.ToDouble(_textBoxWeightPerson.Text);
-                    Filtered(exerciseList, weightPerson, exercise => exercise.WeightPerson);
-                    _filteredСalloriesList = exerciseList;
-                }
-                else
-                {
-                    MessageBox.Show("Введите массу.", "Предупреждение",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="exerciseList"></param>
-        /// <param name="filterValue"></param>
-        /// <param name="filterFunc"></param>
-        private static void Filtered<T>(BindingList<ExerciseBase> exerciseList, 
-            T filterValue, Func<ExerciseBase, T> filterFunc)
-        {
-            for (int i = exerciseList.Count - 1; i >= 0; i--)
-            {
-                if (!EqualityComparer<T>.Default.Equals(filterFunc(exerciseList[i]), filterValue))
-                {
-                    exerciseList.RemoveAt(i);
-                }
-            }
-        }
-
     }
 }

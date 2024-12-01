@@ -1,4 +1,6 @@
-﻿namespace View
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace View
 {
     /// <summary>
     /// Пользовательский элемент управления
@@ -32,29 +34,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            _textBoxWorkingWeight = new TextBox();
-            _textBoxMaxWeight = new TextBox();
+            _numBoxWorkingWeight = new NumBox();
+            _numBoxMaxWeight = new NumBox();
             _labelMaxWeight = new Label();
-            _textBoxRepetitions = new TextBox();
+            _numBoxRepetitions = new NumBox();
             _labelRepetitions = new Label();
             _labelWorkingWeight = new Label();
             SuspendLayout();
             // 
-            // _textBoxWorkingWeight
+            // _numBoxWorkingWeight
             // 
-            _textBoxWorkingWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxWorkingWeight.Location = new Point(208, 77);
-            _textBoxWorkingWeight.Name = "_textBoxWorkingWeight";
-            _textBoxWorkingWeight.Size = new Size(92, 29);
-            _textBoxWorkingWeight.TabIndex = 6;
+            _numBoxWorkingWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _numBoxWorkingWeight.Location = new Point(208, 77);
+            _numBoxWorkingWeight.Name = "_numBoxWorkingWeight";
+            _numBoxWorkingWeight.Size = new Size(92, 29);
+            _numBoxWorkingWeight.TabIndex = 6;
             // 
-            // _textBoxMaxWeight
+            // _numBoxMaxWeight
             // 
-            _textBoxMaxWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxMaxWeight.Location = new Point(208, 24);
-            _textBoxMaxWeight.Name = "_textBoxMaxWeight";
-            _textBoxMaxWeight.Size = new Size(92, 29);
-            _textBoxMaxWeight.TabIndex = 5;
+            _numBoxMaxWeight.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _numBoxMaxWeight.Location = new Point(208, 24);
+            _numBoxMaxWeight.Name = "_numBoxMaxWeight";
+            _numBoxMaxWeight.Size = new Size(92, 29);
+            _numBoxMaxWeight.TabIndex = 5;
             // 
             // _labelMaxWeight
             // 
@@ -67,13 +69,13 @@
             _labelMaxWeight.Text = "Максимальный вес, кг";
             _labelMaxWeight.Click += _labelMaxWeight_Click;
             // 
-            // _textBoxRepetitions
+            // _numBoxRepetitions
             // 
-            _textBoxRepetitions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            _textBoxRepetitions.Location = new Point(208, 131);
-            _textBoxRepetitions.Name = "_textBoxRepetitions";
-            _textBoxRepetitions.Size = new Size(92, 29);
-            _textBoxRepetitions.TabIndex = 2;
+            _numBoxRepetitions.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _numBoxRepetitions.Location = new Point(208, 131);
+            _numBoxRepetitions.Name = "_numBoxRepetitions";
+            _numBoxRepetitions.Size = new Size(92, 29);
+            _numBoxRepetitions.TabIndex = 2;
             // 
             // _labelRepetitions
             // 
@@ -100,12 +102,12 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(_textBoxWorkingWeight);
+            Controls.Add(_numBoxWorkingWeight);
             Controls.Add(_labelWorkingWeight);
-            Controls.Add(_textBoxMaxWeight);
+            Controls.Add(_numBoxMaxWeight);
             Controls.Add(_labelRepetitions);
             Controls.Add(_labelMaxWeight);
-            Controls.Add(_textBoxRepetitions);
+            Controls.Add(_numBoxRepetitions);
             Name = "AddWeightLiftingUserControl";
             Size = new Size(315, 191);
             ResumeLayout(false);
@@ -115,19 +117,19 @@
         #endregion
 
         /// <summary>
-        /// textBox для рабочего веса 
+        /// NumBox для рабочего веса 
         /// </summary>
-        private TextBox _textBoxWorkingWeight;
+        private NumBox _numBoxWorkingWeight;
 
         /// <summary>
-        /// textBox для максимального веса
+        /// NumBox для максимального веса
         /// </summary>
-        private TextBox _textBoxMaxWeight;
+        private NumBox _numBoxMaxWeight;
 
         /// <summary>
-        /// textBox для количества повторений
+        /// NumBox для количества повторений
         /// </summary>
-        private TextBox _textBoxRepetitions;
+        private NumBox _numBoxRepetitions;
 
         /// <summary>
         /// надпись для максимального веса

@@ -1,4 +1,6 @@
-﻿namespace View
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace View
 {
     /// <summary>
     /// Класс для фильтрации
@@ -37,11 +39,11 @@
             _checkBoxSwimming = new CheckBox();
             _checkBoxRunning = new CheckBox();
             _groupBoxFilterWeightPerson = new GroupBox();
-            _textBoxWeightPerson = new TextBox();
+            _numBoxWeightPerson = new NumBox();
             _checkBoxWeightPerson = new CheckBox();
             _buttonAgree = new Button();
             _groupBoxTime = new GroupBox();
-            _textBoxTime = new TextBox();
+            _numBoxTime = new NumBox();
             _checkBoxTime = new CheckBox();
             _groupBoxFilterExercise.SuspendLayout();
             _groupBoxFilterWeightPerson.SuspendLayout();
@@ -93,7 +95,7 @@
             // 
             // _groupBoxFilterWeightPerson
             // 
-            _groupBoxFilterWeightPerson.Controls.Add(_textBoxWeightPerson);
+            _groupBoxFilterWeightPerson.Controls.Add(_numBoxWeightPerson);
             _groupBoxFilterWeightPerson.Controls.Add(_checkBoxWeightPerson);
             _groupBoxFilterWeightPerson.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _groupBoxFilterWeightPerson.Location = new Point(35, 188);
@@ -103,12 +105,12 @@
             _groupBoxFilterWeightPerson.TabStop = false;
             _groupBoxFilterWeightPerson.Text = "По данным человека";
             // 
-            // _textBoxWeightPerson
+            // _numBoxWeightPerson
             // 
-            _textBoxWeightPerson.Location = new Point(259, 35);
-            _textBoxWeightPerson.Name = "_textBoxWeightPerson";
-            _textBoxWeightPerson.Size = new Size(59, 29);
-            _textBoxWeightPerson.TabIndex = 4;
+            _numBoxWeightPerson.Location = new Point(259, 35);
+            _numBoxWeightPerson.Name = "_numBoxWeightPerson";
+            _numBoxWeightPerson.Size = new Size(59, 29);
+            _numBoxWeightPerson.TabIndex = 4;
             // 
             // _checkBoxWeightPerson
             // 
@@ -132,7 +134,7 @@
             // 
             // _groupBoxTime
             // 
-            _groupBoxTime.Controls.Add(_textBoxTime);
+            _groupBoxTime.Controls.Add(_numBoxTime);
             _groupBoxTime.Controls.Add(_checkBoxTime);
             _groupBoxTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             _groupBoxTime.Location = new Point(35, 284);
@@ -142,12 +144,12 @@
             _groupBoxTime.TabStop = false;
             _groupBoxTime.Text = "По времени тренировки";
             // 
-            // _textBoxTime
+            // _numBoxTime
             // 
-            _textBoxTime.Location = new Point(259, 35);
-            _textBoxTime.Name = "_textBoxTime";
-            _textBoxTime.Size = new Size(59, 29);
-            _textBoxTime.TabIndex = 4;
+            _numBoxTime.Location = new Point(259, 35);
+            _numBoxTime.Name = "_numBoxTime";
+            _numBoxTime.Size = new Size(59, 29);
+            _numBoxTime.TabIndex = 4;
             // 
             // _checkBoxTime
             // 
@@ -236,14 +238,14 @@
         private Button _buttonAgree;
 
         /// <summary>
-        /// textBox ", кг"
+        /// NumBox для веса человека 
         /// </summary>
-        private TextBox _textBoxWeightPerson;
+        private NumBox _numBoxWeightPerson;
 
         /// <summary>
-        /// textBox ", ч"
+        /// NumBox для времени тренировки
         /// </summary>
-        private TextBox _textBoxTime;
+        private NumBox _numBoxTime;
 
     }
 }

@@ -14,7 +14,7 @@ namespace View
     /// <summary>
     /// Пользовательский элемент типа упражнения плавание
     /// </summary>
-    public partial class AddSwimmingUserControl : UserControl, IElementAddedble
+    public partial class AddSwimmingUserControl : UserControl, IElementAddadble
     {
         /// <summary>
         /// Словарь стилей плавания
@@ -59,7 +59,7 @@ namespace View
             {
                 return new Swimming()
                 {
-                    Distance = Convert.ToDouble(_textBoxDistance.Text),
+                    Distance = Convert.ToDouble(_numBoxDistance.Text),
                     Style = _typesSwimmingStyle[_comboBoxStyleSwimming.SelectedItem.ToString()]
                 };
             }
