@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace View
 {
@@ -57,6 +58,20 @@ namespace View
         {
             _numBoxTime.Enabled = _checkBoxTime.Checked;
             _numBoxWeightPerson.Enabled = _checkBoxWeightPerson.Checked;
+        }
+
+        /// <summary>
+        /// Изменение чекбоксов 
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void ResetControls(object sender, EventArgs e)
+        {
+            _checkBoxWeightPerson.Checked = false;
+            _checkBoxTime.Checked = false;
+            _checkBoxWeightLifting.Checked = false;
+            _checkBoxSwimming.Checked = false;
+            _checkBoxRunning.Checked = false;
         }
 
         /// <summary>

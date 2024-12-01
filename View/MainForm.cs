@@ -2,8 +2,7 @@ using Model;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-//заблокировать кнопку сбросить фильтр, когда фильтр применен 
-//доработать ошибки
+
 namespace View
 {
     /// <summary>
@@ -167,6 +166,7 @@ namespace View
             _buttonSaveCallories.Enabled = !_isFiltered;
             _buttonOpenCallories.Enabled = !_isFiltered;
             _buttonDelete.Enabled = !_isFiltered;
+            _buttonAddRandom.Enabled = !_isFiltered;
         }
 
         /// <summary>
