@@ -34,7 +34,7 @@ namespace View
         {
             {"Бег", ExerciseType.Running},
             {"Плавание", ExerciseType.Swimming},
-            {"Тяжелая атлетика", ExerciseType.WeightLifting},
+            {"Жим штанги", ExerciseType.WeightLifting},
         };
 
         /// <summary>
@@ -102,17 +102,42 @@ namespace View
         {
             try
             {
+                if (_comboBoxExercise.SelectedItem == null)
+                {
+                    MessageBox.Show("Выберите тип упражнения.",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(_numBoxTime.Text) 
+                    || string.IsNullOrEmpty(_numBoxWeightPerson.Text) 
+                    || Convert.ToDouble(_numBoxTime.Text) == 0 
+                    || Convert.ToDouble(_numBoxWeightPerson.Text) == 0)
+
+                {
+                    MessageBox.Show("Поля не могут быть пустыми или заполнены 0. " +
+                        "Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
                 ExerciseBase exerciseElementBase = null;
+
                 foreach (var userControl in _elementAddableControls)
                 {
                     if (((UserControl)userControl).Visible)
                     {
-                        exerciseElementBase = userControl.Element;
+                        var elementControl = (IElementAddadble)userControl;
+
+                        if (!elementControl.ValidateInput())
+                        {
+                            return; 
+                        }
+                        exerciseElementBase = elementControl.Element;
                         exerciseElementBase.Time = Convert.ToDouble(_numBoxTime.Text);
                         exerciseElementBase.WeightPerson = Convert.ToDouble(_numBoxWeightPerson.Text);
                     }
                 }
-
                 _lastCallories = exerciseElementBase;
 
                 CalloriesAdded?.Invoke(this, new CalloriesAddedEventArgs(exerciseElementBase));

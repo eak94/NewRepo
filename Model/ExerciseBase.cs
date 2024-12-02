@@ -103,7 +103,7 @@ namespace Model
         {
             if (number <= 0 || double.IsNaN(number))
             {
-                throw new ArgumentException("Введенное число должно быть положительным " +
+                throw new ArgumentException("Поле время или вес человека должно быть положительным " +
                     "или не равным нулю");
             }
             else

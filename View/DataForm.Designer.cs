@@ -82,14 +82,14 @@
             // _buttonDataCancel
             // 
             _buttonDataCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            _buttonDataCancel.Location = new Point(486, 296);
+            _buttonDataCancel.Location = new Point(385, 296);
             _buttonDataCancel.Name = "_buttonDataCancel";
-            _buttonDataCancel.Size = new Size(99, 33);
+            _buttonDataCancel.Size = new Size(200, 33);
             _buttonDataCancel.TabIndex = 3;
-            _buttonDataCancel.Text = "Отмена";
+            _buttonDataCancel.Text = "Отменить добавление";
             _buttonDataCancel.UseVisualStyleBackColor = true;
             // 
-            //_numBoxWeightPerson
+            // _numBoxWeightPerson
             // 
             _numBoxWeightPerson.Location = new Point(204, 89);
             _numBoxWeightPerson.Name = "_numBoxWeightPerson";

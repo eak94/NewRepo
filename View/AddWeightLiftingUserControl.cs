@@ -41,9 +41,38 @@ namespace View
             }
         }
 
-        private void _labelMaxWeight_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод проверки введенных данные
+        /// </summary>
+        public bool ValidateInput()
         {
+            if (string.IsNullOrEmpty(_numBoxWorkingWeight.Text) 
+                || !double.TryParse(_numBoxWorkingWeight.Text, out var workingWeight) 
+                || workingWeight <= 0)
+            {
+                MessageBox.Show("Значение в поле Рабочий вес должно быть положительное и больше 0." +
+                    " Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
+            if (string.IsNullOrEmpty(_numBoxRepetitions.Text) 
+                || !int.TryParse(_numBoxRepetitions.Text, out var repetitions) 
+                || repetitions <= 0)
+            {
+                MessageBox.Show("Значение в поле Количество повторений должно быть положительное и больше 0. " +
+                    "Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(_numBoxMaxWeight.Text)
+                || !double.TryParse(_numBoxMaxWeight.Text, out var maxWeight) 
+                || maxWeight <= 0)
+            {
+                MessageBox.Show("Значение в поле Максимальный вес должно быть положительное и больше 0." +
+                    " Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

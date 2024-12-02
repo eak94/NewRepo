@@ -33,6 +33,11 @@ namespace View
         public EventHandler СalloriesFiltered;
 
         /// <summary>
+        /// Событие сброса фильтрации списка
+        /// </summary>
+        public EventHandler CalloriesUnfiltered;
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="calloriesList">Исходных список 
@@ -47,6 +52,7 @@ namespace View
             _checkBoxTime.CheckedChanged += ChangeTextBoxState;
             _checkBoxWeightPerson.CheckedChanged += ChangeTextBoxState;
             _buttonAgree.Click += AgreeButtonClick;
+            _buttonReset.Click += ResetFilter;
 
         }
 
@@ -65,7 +71,7 @@ namespace View
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
-        private void ResetControls(object sender, EventArgs e)
+        private void ResetCheckBoxes(object sender, EventArgs e)
         {
             _checkBoxWeightPerson.Checked = false;
             _checkBoxTime.Checked = false;
@@ -144,6 +150,18 @@ namespace View
                 MessageBox.Show("Заполните критерии поиска.", "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        /// <summary>
+        /// Метод нажатия на кнопку "Сбросить".
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событие</param>
+        private void ResetFilter(object sender, EventArgs e)
+        {
+            ResetCheckBoxes(sender, e);
+            CalloriesUnfiltered.Invoke(this,
+               new CalloriesFilterEventArgs(_calloriesList));
         }
 
         /// <summary>

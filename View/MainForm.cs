@@ -60,10 +60,6 @@ namespace View
 
             _buttonFillterCallories.Click += ShowIfFiltered;
 
-            _buttonResetCallories.Click += ResetedFilter;
-
-            _buttonResetCallories.Click += ShowIfFiltered;
-
             _buttonOpenCallories.Click += OpenFile;
 
             _buttonSaveCallories.Click += SaveFile;
@@ -102,7 +98,7 @@ namespace View
         private void CancelCallories(object sender, EventArgs exerciseBase)
         {
             CalloriesAddedEventArgs addedEventArgs =
-                exerciseBase as CalloriesAddedEventArgs;
+               exerciseBase as CalloriesAddedEventArgs;
 
             _calloriesList.Remove(addedEventArgs?.ExerciseBase);
         }
@@ -149,8 +145,8 @@ namespace View
         /// данные, передаваемые при вызове события</param>
         private void AddedCallories(object sender, EventArgs exerciseBase)
         {
-            CalloriesAddedEventArgs addedEventArgs = exerciseBase as CalloriesAddedEventArgs;
-            var newExercise = addedEventArgs?.ExerciseBase;
+            CalloriesAddedEventArgs addedEventArgs = exerciseBase
+                as CalloriesAddedEventArgs;
             _calloriesList.Add(addedEventArgs?.ExerciseBase);
         }
 
@@ -159,8 +155,7 @@ namespace View
         /// </summary>
         private void DeactivateElements()
         {
-            _buttonAddCallories.Enabled = !_isFindFormOpen &&
-                !_isFiltered && !_isDataFormOpen;
+            _buttonAddCallories.Enabled = !_isFiltered && !_isDataFormOpen;
             _buttonFillterCallories.Enabled = !_isDataFormOpen &&
                 !_isFindFormOpen;
             _buttonSaveCallories.Enabled = !_isFiltered;
@@ -195,22 +190,21 @@ namespace View
             if (!_isFindFormOpen)
             {
                 _isFindFormOpen = true;
-                DeactivateElements();
                 FilterForm findForm = new FilterForm(_calloriesList);
                 findForm.FormClosed += (s, args) =>
                 {
                     _isFindFormOpen = false;
+                    _isFiltered = false;
                     DeactivateElements();
                 };
                 findForm.СalloriesFiltered += FilteredExersice;
+                findForm.CalloriesUnfiltered += ResetFilter;
                 findForm.Show();
             }
         }
 
         /// <summary>
-        /// Метод, меняющий состояния кнопок "отфильтровать" и 
-        /// "Сбросить фильтр", который позволяет пользователю 
-        /// понять отфильтрован ли список.
+        /// Метод, меняющий состояния кнопок 
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
@@ -218,26 +212,24 @@ namespace View
         {
             if (_isFiltered == true)
             {
-                _buttonResetCallories.Enabled = true;
                 _buttonDelete.Enabled = false;
             }
             else
             {
                 _buttonFillterCallories.Enabled = true;
-                _buttonResetCallories.Enabled = true;
                 _buttonDelete.Enabled = true;
             }
         }
 
         /// <summary>
-		/// Обработчик фильтрации данных.
+		/// Обработчик фильтрации данных
 		/// </summary>
-		/// <param name="sender">Событие.</param>
-		/// <param name="transportList">Данные о событие.</param>
+		/// <param name="sender">Событие</param>
+		/// <param name="transportList">Данные о событие</param>
 		private void FilteredExersice(object sender, EventArgs exerciseList)
         {
             CalloriesFilterEventArgs filterEventArgs =
-                exerciseList as CalloriesFilterEventArgs;
+                 exerciseList as CalloriesFilterEventArgs;
 
             _filteredExerciseList = filterEventArgs?.FilteredCalloriesList;
             _isFiltered = true;
@@ -246,15 +238,15 @@ namespace View
         }
 
         /// <summary>
-        /// Метод нажатия на кнопку "Сбросить".
+        /// Метод нажатия на кнопку "Сбросить" на фильтр форме
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событие</param>
-        private void ResetedFilter(object sender, EventArgs e)
+        private void ResetFilter(object sender, EventArgs e)
         {
-            FillingDataGridView(_calloriesList);
             _isFiltered = false;
             DeactivateElements();
+            FillingDataGridView(_calloriesList);
         }
 
         /// <summary>

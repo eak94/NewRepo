@@ -70,7 +70,6 @@
             _labelDistance.Size = new Size(106, 21);
             _labelDistance.TabIndex = 2;
             _labelDistance.Text = "Дистанция, м";
-            _labelDistance.Click += _labelDistance_Click;
             // 
             // _numBoxDistance
             // 
@@ -80,7 +79,6 @@
             _numBoxDistance.Name = "_numBoxDistance";
             _numBoxDistance.Size = new Size(92, 29);
             _numBoxDistance.TabIndex = 2;
-            _numBoxDistance.TextChanged += _textBoxDistance_TextChanged;
             // 
             // AddSwimmingUserControl
             // 

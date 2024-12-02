@@ -16,5 +16,7 @@ namespace View
         /// Добавляемый элемент
         /// </summary>
         ExerciseBase Element { get; }
+
+        bool ValidateInput();
     }
 }

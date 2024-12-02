@@ -65,15 +65,26 @@ namespace View
             }
         }
 
-        private void _labelDistance_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод проверки введенных данные 
+        /// </summary>
+        public bool ValidateInput()
         {
+            if (string.IsNullOrEmpty(_numBoxDistance.Text) 
+                || !double.TryParse(_numBoxDistance.Text, out var distance) 
+                || distance <= 0)
 
+            {
+                MessageBox.Show("Значение в поле Дистанция должно быть " +
+                    "положительное и больше 0. Введите корректные данные.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            return true;
         }
 
-        private void _textBoxDistance_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

@@ -67,7 +67,6 @@ namespace View
             _labelMaxWeight.Size = new Size(168, 21);
             _labelMaxWeight.TabIndex = 4;
             _labelMaxWeight.Text = "Максимальный вес, кг";
-            _labelMaxWeight.Click += _labelMaxWeight_Click;
             // 
             // _numBoxRepetitions
             // 

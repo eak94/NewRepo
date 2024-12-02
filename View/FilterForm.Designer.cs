@@ -45,6 +45,7 @@ namespace View
             _groupBoxTime = new GroupBox();
             _numBoxTime = new NumBox();
             _checkBoxTime = new CheckBox();
+            _buttonReset = new Button();
             _groupBoxFilterExercise.SuspendLayout();
             _groupBoxFilterWeightPerson.SuspendLayout();
             _groupBoxTime.SuspendLayout();
@@ -68,9 +69,9 @@ namespace View
             _checkBoxWeightLifting.AutoSize = true;
             _checkBoxWeightLifting.Location = new Point(15, 100);
             _checkBoxWeightLifting.Name = "_checkBoxWeightLifting";
-            _checkBoxWeightLifting.Size = new Size(156, 25);
+            _checkBoxWeightLifting.Size = new Size(119, 25);
             _checkBoxWeightLifting.TabIndex = 2;
-            _checkBoxWeightLifting.Text = "Тяжелая атлетика";
+            _checkBoxWeightLifting.Text = "Жим штанги";
             _checkBoxWeightLifting.UseVisualStyleBackColor = true;
             // 
             // _checkBoxSwimming
@@ -161,12 +162,23 @@ namespace View
             _checkBoxTime.Text = "Время тренировки, ч";
             _checkBoxTime.UseVisualStyleBackColor = true;
             // 
+            // _buttonReset
+            // 
+            _buttonReset.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            _buttonReset.Location = new Point(35, 379);
+            _buttonReset.Name = "_buttonReset";
+            _buttonReset.Size = new Size(160, 31);
+            _buttonReset.TabIndex = 6;
+            _buttonReset.Text = "Сбросить фильтр";
+            _buttonReset.UseVisualStyleBackColor = true;
+            // 
             // FilterForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(408, 436);
+            Controls.Add(_buttonReset);
             Controls.Add(_groupBoxTime);
             Controls.Add(_buttonAgree);
             Controls.Add(_groupBoxFilterWeightPerson);
@@ -238,6 +250,11 @@ namespace View
         private Button _buttonAgree;
 
         /// <summary>
+        /// Кнопка "Сбросить фильтр"
+        /// </summary>
+        private Button _buttonReset;
+
+        /// <summary>
         /// NumBox для веса человека 
         /// </summary>
         private NumBox _numBoxWeightPerson;
@@ -247,5 +264,6 @@ namespace View
         /// </summary>
         private NumBox _numBoxTime;
 
+        
     }
 }
