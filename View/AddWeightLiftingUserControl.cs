@@ -50,8 +50,10 @@ namespace View
                 || !double.TryParse(_numBoxWorkingWeight.Text, out var workingWeight) 
                 || workingWeight <= 0)
             {
-                MessageBox.Show("Значение в поле Рабочий вес должно быть положительное и больше 0." +
-                    " Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Значение в поле Рабочий вес " +
+                    "должно быть положительное и больше 0." +
+                    " Введите корректные данные.", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -59,8 +61,10 @@ namespace View
                 || !int.TryParse(_numBoxRepetitions.Text, out var repetitions) 
                 || repetitions <= 0)
             {
-                MessageBox.Show("Значение в поле Количество повторений должно быть положительное и больше 0. " +
-                    "Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Значение в поле Количество " +
+                    "повторений должно быть положительное и больше 0. " +
+                    "Введите корректные данные.", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -68,8 +72,10 @@ namespace View
                 || !double.TryParse(_numBoxMaxWeight.Text, out var maxWeight) 
                 || maxWeight <= 0)
             {
-                MessageBox.Show("Значение в поле Максимальный вес должно быть положительное и больше 0." +
-                    " Введите корректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Значение в поле Максимальный " +
+                    "вес должно быть положительное и больше 0." +
+                    " Введите корректные данные.", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

@@ -39,17 +39,26 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Метод проверки введенных данные
+        /// </summary>
+        /// <returns></returns>
         public bool ValidateInput()
         {
-            if (string.IsNullOrEmpty(_numBoxIntensity.Text) || !double.TryParse(_numBoxIntensity.Text, out var intensity) || intensity <= 0)
+            if (string.IsNullOrEmpty(_numBoxIntensity.Text) 
+                || !double.TryParse(_numBoxIntensity.Text, out var intensity) 
+                || intensity <= 0)
             {
-                MessageBox.Show("Введите корректную интенсивность (больше 0).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите корректную интенсивность (больше 0).",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (string.IsNullOrEmpty(_numBoxDistance.Text) || !double.TryParse(_numBoxDistance.Text, out var distance) || distance <= 0)
+            if (string.IsNullOrEmpty(_numBoxDistance.Text) |
+                | !double.TryParse(_numBoxDistance.Text, out var distance) || distance <= 0)
             {
-                MessageBox.Show("Введите корректное расстояние (больше 0).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите корректное расстояние (больше 0).",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
