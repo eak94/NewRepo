@@ -161,7 +161,9 @@ namespace View
             _buttonSaveCallories.Enabled = !_isFiltered;
             _buttonOpenCallories.Enabled = !_isFiltered;
             _buttonDelete.Enabled = !_isFiltered;
+#if DEBUG
             _buttonAddRandom.Enabled = !_isFiltered;
+#endif
         }
 
         /// <summary>
