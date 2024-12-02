@@ -13,10 +13,10 @@
             KeyPress += new KeyPressEventHandler(CheckInput);
         }
         /// <summary>
-        /// Корректировка ввода данных.
+        /// Корректировка ввода данных
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект, содержащий данные о событии.</param>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Объект, содержащий данные о событии</param>
         private void CheckInput(object sender, KeyPressEventArgs e)
         {
             char symbol = e.KeyChar;

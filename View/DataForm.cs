@@ -8,7 +8,7 @@ namespace View
     public partial class DataForm : Form
     {
         /// <summary>
-        /// 
+        /// Список элементов интефейса
         /// </summary>
         private List<IElementAddadble> _elementAddableControls;
 
@@ -18,7 +18,7 @@ namespace View
 		public EventHandler CalloriesAdded;
 
         /// <summary>
-		/// Поле для обработки события отмена.
+		/// Поле для обработки события отмена
 		/// </summary>
 		public EventHandler CalloriesCancel;
 
@@ -38,7 +38,7 @@ namespace View
         };
 
         /// <summary>
-        /// Форма для добавления параметров расчета каллорий
+        /// Конструктор для добавления параметров расчета каллорий
         /// </summary>
         public DataForm()
         {
@@ -68,7 +68,7 @@ namespace View
 
 
         /// <summary>
-        /// Заполнение comboBox массивом данных comboBox
+        /// Заполнение comboBox массивом данных 
         /// </summary>
         /// <param name="dataSource">Массив данных.</param>
         /// <param name="comboBox">ComboBox</param>
@@ -151,7 +151,7 @@ namespace View
         }
 
         /// <summary>
-		/// Метод нажатия на кнопку "Отмена"
+		/// Метод нажатия на кнопку "Отменить добавление"
 		/// </summary>
 		/// <param name="sender">Событие</param>
 		/// <param name="e">Данные о событие</param>

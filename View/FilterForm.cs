@@ -1,14 +1,7 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
 
 namespace View
 {
@@ -38,7 +31,7 @@ namespace View
         public EventHandler CalloriesUnfiltered;
 
         /// <summary>
-        /// Конструктор
+        /// Конструктор для фильтрации расчетов 
         /// </summary>
         /// <param name="calloriesList">Исходных список 
         /// результатов расчета каллорий</param>
@@ -57,7 +50,7 @@ namespace View
         }
 
         /// <summary>
-        /// Метод изменения состояния текстовых полей.
+        /// Метод изменения состояния текстовых полей
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событии</param>
         private void ChangeTextBoxState(object sender, EventArgs e)
@@ -153,7 +146,7 @@ namespace View
         }
 
         /// <summary>
-        /// Метод нажатия на кнопку "Сбросить".
+        /// Метод нажатия на кнопку "Сбросить фильтр".
         /// </summary>
         /// <param name="sender">Событие</param>
         /// <param name="e">Данные о событие</param>
@@ -167,8 +160,6 @@ namespace View
         /// <summary>
         /// Метод чтения значения из поля ввода данных.
         /// </summary>
-        /// <param name="numBox"></param>
-        /// <returns></returns>
         private double? GetValueFromNumBox(TextBox numBox)
         {
             if (!numBox.Enabled)

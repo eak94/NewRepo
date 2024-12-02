@@ -17,6 +17,11 @@ namespace View
         /// </summary>
         ExerciseBase Element { get; }
 
+        /// <summary>
+        /// Метод провери введенных данных
+        /// </summary>
+        /// <returns>Возвращает true, если данные корректны,
+        /// в противном случае возвращает false</returns>
         bool ValidateInput();
     }
 }
