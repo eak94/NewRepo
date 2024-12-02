@@ -54,8 +54,8 @@ namespace View
                 return false;
             }
 
-            if (string.IsNullOrEmpty(_numBoxDistance.Text) |
-                | !double.TryParse(_numBoxDistance.Text, out var distance) || distance <= 0)
+            if (string.IsNullOrEmpty(_numBoxDistance.Text) || 
+                !double.TryParse(_numBoxDistance.Text, out var distance) || distance <= 0)
             {
                 MessageBox.Show("Введите корректное расстояние (больше 0).",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
