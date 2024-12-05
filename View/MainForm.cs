@@ -66,6 +66,7 @@ namespace View
 
 #if DEBUG
             _buttonAddRandom.Click += ClickRandomButton;
+            
 #endif
 
             DeactivateElements();
@@ -162,9 +163,10 @@ namespace View
             _buttonOpenCallories.Enabled = !_isFiltered;
             _buttonDelete.Enabled = !_isFiltered;
 #if DEBUG
-            _buttonAddRandom.Enabled = !_isFiltered;
+            _buttonAddRandom.Enabled = !_isFindFormOpen; 
 #endif
         }
+      
 
         /// <summary>
         /// Метод для кнопки "Удалить"
@@ -260,7 +262,7 @@ namespace View
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Файлы (*.txt)|*.txt|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*.tran)|*.tran|Все файлы (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
@@ -306,7 +308,7 @@ namespace View
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы (*txt.)|*.txt|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*tran.)|*.tran|Все файлы (*.*)|*.*"
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)

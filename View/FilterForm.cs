@@ -46,6 +46,7 @@ namespace View
             _checkBoxWeightPerson.CheckedChanged += ChangeTextBoxState;
             _buttonAgree.Click += AgreeButtonClick;
             _buttonReset.Click += ResetFilter;
+            this.FormClosed += ResetFilter;
 
         }
 

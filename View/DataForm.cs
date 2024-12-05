@@ -85,11 +85,11 @@ namespace View
         /// <param name="e">Данные о событии</param>
         public void ChangeExercise(object sender, EventArgs e)
         {
-            _addRunningUserControl.Visible = 
+            _addRunningUserControl.Visible =
                 _comboBoxExercise.SelectedIndex == 0;
             _addSwimmingUserControl.Visible =
                 _comboBoxExercise.SelectedIndex == 1;
-            _addWeightLiftingUserControl.Visible = 
+            _addWeightLiftingUserControl.Visible =
                 _comboBoxExercise.SelectedIndex == 2;
         }
 
@@ -109,9 +109,9 @@ namespace View
                     return;
                 }
 
-                if (string.IsNullOrEmpty(_numBoxTime.Text) 
-                    || string.IsNullOrEmpty(_numBoxWeightPerson.Text) 
-                    || Convert.ToDouble(_numBoxTime.Text) == 0 
+                if (string.IsNullOrEmpty(_numBoxTime.Text)
+                    || string.IsNullOrEmpty(_numBoxWeightPerson.Text)
+                    || Convert.ToDouble(_numBoxTime.Text) == 0
                     || Convert.ToDouble(_numBoxWeightPerson.Text) == 0)
 
                 {
@@ -131,7 +131,7 @@ namespace View
 
                         if (!elementControl.ValidateInput())
                         {
-                            return; 
+                            return;
                         }
                         exerciseElementBase = elementControl.Element;
                         exerciseElementBase.Time = Convert.ToDouble(_numBoxTime.Text);
@@ -161,6 +161,11 @@ namespace View
             {
                 CalloriesCancel?.Invoke(this, new CalloriesAddedEventArgs(_lastCallories));
             }
+        }
+
+        private void DataForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

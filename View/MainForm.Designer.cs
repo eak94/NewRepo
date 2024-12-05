@@ -40,9 +40,7 @@
             _buttonAddCallories = new Button();
             _buttonDelete = new Button();
             _buttonSaveCallories = new Button();
-#if DEBUG
             _buttonAddRandom = new Button();
-#endif
             _buttonFillterCallories = new Button();
             _groupBoxResultCalloties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_dataControlCallories).BeginInit();
@@ -136,7 +134,6 @@
             _buttonSaveCallories.TabIndex = 8;
             _buttonSaveCallories.Text = "Сохранить";
             _buttonSaveCallories.UseVisualStyleBackColor = true;
-#if DEBUG
             // 
             // _buttonAddRandom
             // 
@@ -148,7 +145,6 @@
             _buttonAddRandom.TabIndex = 9;
             _buttonAddRandom.Text = "Добавить рандомный расчет";
             _buttonAddRandom.UseVisualStyleBackColor = true;
-#endif
             // 
             // _buttonFillterCallories
             // 
@@ -168,15 +164,14 @@
             BackColor = Color.White;
             ClientSize = new Size(900, 497);
             Controls.Add(_buttonFillterCallories);
-#if DEBUG
             Controls.Add(_buttonAddRandom);
-#endif
             Controls.Add(_buttonSaveCallories);
             Controls.Add(_buttonDelete);
             Controls.Add(_buttonAddCallories);
             Controls.Add(_buttonOpenCallories);
             Controls.Add(_groupBoxResultCalloties);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             Text = "Калькулятор каллорий";
             _groupBoxResultCalloties.ResumeLayout(false);
@@ -184,7 +179,7 @@
             ResumeLayout(false);
         }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// Таблица результатов расчета

@@ -71,17 +71,17 @@
             // 
             // _buttonDataAgree
             // 
-            _buttonDataAgree.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _buttonDataAgree.Anchor = AnchorStyles.Right;
             _buttonDataAgree.Location = new Point(604, 296);
             _buttonDataAgree.Name = "_buttonDataAgree";
             _buttonDataAgree.Size = new Size(162, 33);
             _buttonDataAgree.TabIndex = 2;
-            _buttonDataAgree.Text = "Рассчитать";
+            _buttonDataAgree.Text = "Добавить расчет";
             _buttonDataAgree.UseVisualStyleBackColor = true;
             // 
             // _buttonDataCancel
             // 
-            _buttonDataCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _buttonDataCancel.Anchor = AnchorStyles.Right;
             _buttonDataCancel.Location = new Point(385, 296);
             _buttonDataCancel.Name = "_buttonDataCancel";
             _buttonDataCancel.Size = new Size(200, 33);
@@ -123,6 +123,7 @@
             // 
             // _groupBoxParametrExerciseBase
             // 
+            _groupBoxParametrExerciseBase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             _groupBoxParametrExerciseBase.BackColor = Color.Transparent;
             _groupBoxParametrExerciseBase.Controls.Add(_numBoxWeightPerson);
             _groupBoxParametrExerciseBase.Controls.Add(_labelWeightPerson);
@@ -137,6 +138,7 @@
             // 
             // _groupBoxParametrExercise
             // 
+            _groupBoxParametrExercise.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _groupBoxParametrExercise.BackColor = Color.Transparent;
             _groupBoxParametrExercise.Controls.Add(_addWeightLiftingUserControl);
             _groupBoxParametrExercise.Controls.Add(_addSwimmingUserControl);
@@ -186,7 +188,8 @@
             Controls.Add(_buttonDataAgree);
             Controls.Add(_groupBoxDataExercise);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "DataForm";
             Text = "Добавить расчет каллорий";
             _groupBoxDataExercise.ResumeLayout(false);
