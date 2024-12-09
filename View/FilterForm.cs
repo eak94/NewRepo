@@ -31,6 +31,12 @@ namespace View
         public EventHandler CalloriesUnfiltered;
 
         /// <summary>
+        /// Событие, вызываемое для 
+        /// применения фильтра к списку упражнений
+        /// </summary>
+        public event Action<BindingList<ExerciseBase>> ApplyFilter;
+
+        /// <summary>
         /// Конструктор для фильтрации расчетов 
         /// </summary>
         /// <param name="calloriesList">Исходных список 
@@ -46,7 +52,7 @@ namespace View
             _checkBoxWeightPerson.CheckedChanged += ChangeTextBoxState;
             _buttonAgree.Click += AgreeButtonClick;
             _buttonReset.Click += ResetFilter;
-            this.FormClosed += ResetFilter;
+            _buttonReset.Click += ResetCheckBoxes;
 
         }
 
@@ -90,7 +96,6 @@ namespace View
             if (checkClick)
             {
                 _filteredСalloriesList = new BindingList<ExerciseBase>();
-                List<ExerciseBase> filterdExercises = null;
                 List<string> typeFilterCriteria = new List<string>();
                 ExerciseBase element = null;
                 double? time = GetValueFromNumBox(_numBoxTime);
@@ -101,43 +106,26 @@ namespace View
                     element = new WeightLifting();
                     typeFilterCriteria.Add(element.ExerciseType);
                 }
-
                 if (_checkBoxSwimming.Checked)
                 {
                     element = new Swimming();
                     typeFilterCriteria.Add(element.ExerciseType);
                 }
-
                 if (_checkBoxRunning.Checked)
                 {
                     element = new Running();
                     typeFilterCriteria.Add(element.ExerciseType);
                 }
 
-                filterdExercises = _calloriesList.Where(obj =>
-                   (typeFilterCriteria.Count == 0 ||
-                   typeFilterCriteria.Contains(obj.ExerciseType))
-                   &&
-                   (!time.HasValue ||
-                   obj.Time == time)
-                   &&
-                   (!weight.HasValue ||
-                   obj.WeightPerson == weight)
+                var filteredExercises = _calloriesList.Where(obj =>
+                    (typeFilterCriteria.Count == 0 || typeFilterCriteria.Contains(obj.ExerciseType)) &&
+                    (!time.HasValue || obj.Time == time) &&
+                    (!weight.HasValue || obj.WeightPerson == weight)
                 ).ToList();
 
-                _filteredСalloriesList = new BindingList<ExerciseBase>
-                    (filterdExercises);
+                _filteredСalloriesList = new BindingList<ExerciseBase>(filteredExercises);
 
-                if (_filteredСalloriesList.Count == 0
-                    || _filteredСalloriesList is null)
-                {
-                    MessageBox.Show("Совпадений не найдено.", "Информация",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                СalloriesFiltered.Invoke(this,
-                new CalloriesFilterEventArgs(_filteredСalloriesList));
+                ApplyFilter?.Invoke(_filteredСalloriesList);
             }
             else
             {
@@ -153,9 +141,8 @@ namespace View
         /// <param name="e">Данные о событие</param>
         private void ResetFilter(object sender, EventArgs e)
         {
-            ResetCheckBoxes(sender, e);
-            CalloriesUnfiltered.Invoke(this,
-               new CalloriesFilterEventArgs(_calloriesList));
+            _filteredСalloriesList = null;
+            ApplyFilter?.Invoke(_calloriesList);
         }
 
         /// <summary>
@@ -175,6 +162,34 @@ namespace View
             {
                 return Convert.ToDouble(numBox.Text);
             }
+        }
+
+        /// <summary>
+        /// Обработчик события обновления данных
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        public void HandleDataUpdated(object sender, EventArgs e)
+        {
+            if (_filteredСalloriesList == null || !_filteredСalloriesList.Any())
+            {
+                UpdateDisplay(sender, e);
+            }
+            else
+            {
+                AgreeButtonClick(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Метод для обновляет отображение данных
+        /// </summary>
+        /// <param name="sender">Событие</param>
+        /// <param name="e">Данные о событии</param>
+        private void UpdateDisplay(object sender, EventArgs e)
+        {
+            var listToPass = _filteredСalloriesList ?? _calloriesList;
+            ApplyFilter?.Invoke(listToPass);
         }
     }
 }

@@ -44,6 +44,11 @@ namespace View
             new XmlSerializer(typeof(BindingList<ExerciseBase>));
 
         /// <summary>
+        /// Событие, срабатывающее при обновлении данных
+        /// </summary>
+        public event EventHandler DataUpdated;
+
+        /// <summary>
         /// Конструктор Главной формы
         /// </summary>
         public MainForm()
@@ -66,29 +71,25 @@ namespace View
 
 #if DEBUG
             _buttonAddRandom.Click += ClickRandomButton;
-            
-#endif
 
-            DeactivateElements();
+#endif
         }
 
         /// <summary>
         /// Метод заполнения таблицы результатов расчета 
         /// </summary>
-        /// <param name="calloriesList"></param>
+        /// <param name="calloriesList">Список объектов ExerciseBase,
+        /// содержащих данные для отображения в таблице</param>
         private void FillingDataGridView(BindingList<ExerciseBase> calloriesList)
         {
+            _dataControlCallories.DataSource = null; 
             _dataControlCallories.DataSource = calloriesList;
 
             _dataControlCallories.AllowUserToResizeColumns = false;
-            _dataControlCallories.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-            _dataControlCallories.DefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
-            _dataControlCallories.ColumnHeadersDefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
-            _dataControlCallories.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            _dataControlCallories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            _dataControlCallories.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            _dataControlCallories.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            _dataControlCallories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>
@@ -157,16 +158,14 @@ namespace View
         private void DeactivateElements()
         {
             _buttonAddCallories.Enabled = !_isFiltered && !_isDataFormOpen;
-            _buttonFillterCallories.Enabled = !_isDataFormOpen &&
-                !_isFindFormOpen;
+            _buttonFillterCallories.Enabled = !_isFindFormOpen && !_isDataFormOpen;
             _buttonSaveCallories.Enabled = !_isFiltered;
             _buttonOpenCallories.Enabled = !_isFiltered;
-            _buttonDelete.Enabled = !_isFiltered;
 #if DEBUG
-            _buttonAddRandom.Enabled = !_isFindFormOpen; 
+            _buttonAddRandom.Enabled = !_isFiltered;
 #endif
         }
-      
+
 
         /// <summary>
         /// Метод для кнопки "Удалить"
@@ -175,14 +174,27 @@ namespace View
         /// <param name="e">Данные о событии</param>
         private void ClickDeleteElementButton(object sender, EventArgs e)
         {
+            var currentList = _isFiltered ? _filteredExerciseList : _calloriesList;
+            var itemsToRemove = new List<ExerciseBase>();
             foreach (DataGridViewRow row in _dataControlCallories.SelectedRows)
             {
                 if (row.DataBoundItem is ExerciseBase element)
                 {
-                    _calloriesList.Remove(element);
+                    itemsToRemove.Add(element);
                 }
             }
+
+            foreach (var item in itemsToRemove)
+            {
+                currentList.Remove(item);
+                if (_isFiltered)
+                {
+                    _calloriesList.Remove(item);
+                }
+            }
+            DataUpdated?.Invoke(this, EventArgs.Empty);
         }
+
 
         /// <summary>
 		/// Метод нажатия на кнопку "Настроить фильтр"
@@ -191,21 +203,37 @@ namespace View
 		/// <param name="e">Данные о событие</param>
 		private void FillterButtonClick(object sender, EventArgs e)
         {
-            if (!_isFindFormOpen)
+            if (_isFindFormOpen) return;
+
+            _isFindFormOpen = true;
+            FilterForm filterForm = new FilterForm(_calloriesList);
+
+            filterForm.ApplyFilter += (filteredItems) =>
             {
-                _isFindFormOpen = true;
-                FilterForm findForm = new FilterForm(_calloriesList);
-                findForm.FormClosed += (s, args) =>
+                if (filteredItems == _calloriesList) 
                 {
-                    _isFindFormOpen = false;
                     _isFiltered = false;
-                    DeactivateElements();
-                };
-                findForm.СalloriesFiltered += FilteredExersice;
-                findForm.CalloriesUnfiltered += ResetFilter;
-                findForm.Show();
-            }
+                    FillingDataGridView(_calloriesList);
+                }
+                else
+                {
+                    _filteredExerciseList = filteredItems;
+                    _isFiltered = true;
+                    FillingDataGridView(_filteredExerciseList);
+                }
+
+                DeactivateElements(); 
+            };
+
+            filterForm.FormClosed += (s, e) =>
+            {
+                _isFindFormOpen = false;
+                DeactivateElements(); 
+            };
+
+            filterForm.Show();
         }
+
 
         /// <summary>
         /// Метод, меняющий состояния кнопок при фильтрации
@@ -214,15 +242,7 @@ namespace View
         /// <param name="e">Данные о событии</param>
         private void ShowIfFiltered(object sender, EventArgs e)
         {
-            if (_isFiltered == true)
-            {
-                _buttonDelete.Enabled = false;
-            }
-            else
-            {
-                _buttonFillterCallories.Enabled = true;
-                _buttonDelete.Enabled = true;
-            }
+            _buttonFillterCallories.Enabled = !_isFiltered;
         }
 
         /// <summary>
@@ -249,8 +269,8 @@ namespace View
         private void ResetFilter(object sender, EventArgs e)
         {
             _isFiltered = false;
-            DeactivateElements();
             FillingDataGridView(_calloriesList);
+            DeactivateElements();
         }
 
         /// <summary>
@@ -273,7 +293,7 @@ namespace View
             {
                 using (var file = new StreamReader(filePath))
                 {
-                    _calloriesList = 
+                    _calloriesList =
                         (BindingList<ExerciseBase>)_serializerXml.Deserialize(file);
                 }
 
